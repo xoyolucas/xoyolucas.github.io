@@ -176,7 +176,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="CMake简介"><a href="#CMake简介" class="headerlink" title="CMake简介"></a>CMake简介</h1><p>过去的Make工具，例如 GNU Make，QT 的 qmake，微软的 MS nmake，BSD Make（pmake），Makepp等等，遵循着不同的规范和标准，所执行的 Makefile 格式也千差万别。<br>CMake是一个跨平台的、开源的构建工具。CMake是makefile的上层工具，目的是为了产生可移植的makefile，并简化自己动手写makefile时的巨大工作量。目前很多开源的项目都可以通过CMake工具来轻松构建工程。代码的分享者提供源代码和相应的Cmake配置文件，使用者就可以非常方便的在自己的电脑上构建相应的工程，进行开发和调试。开发者编写一种平台无关的 CMakeList.txt 文件来定制整个编译流程，然后再根据目标用户的平台进一步生成所需的本地化Makefile和工程文件，如Unix的Makefile或Windows的Visual Studio工程，做到“Write once, run everywhere”。</p>
+<h1 id="CMake语法"><a href="#CMake语法" class="headerlink" title="CMake语法"></a>CMake语法</h1>
       
 
       
@@ -184,7 +185,29 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CMake</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Language//" class="article-tag-list-link color4">Language</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
         <p class="article-more-link">
@@ -238,9 +261,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="设置分级标题"><a href="#设置分级标题" class="headerlink" title="设置分级标题"></a>设置分级标题</h1><p>使用#号可表示1-6级标题，一级标题对应一个#号，二级标题对应两个#号，以此类推。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br><span class="line">#### 四级标题</span><br></pre></td></tr></table></figure></p>
+        <h2 id="设置分级标题"><a href="#设置分级标题" class="headerlink" title="设置分级标题"></a>设置分级标题</h2><p>使用#号可表示1-6级标题，一级标题对应一个#号，二级标题对应两个#号，以此类推。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br><span class="line">#### 四级标题</span><br></pre></td></tr></table></figure></p>
 <hr>
-<h1 id="段落设置"><a href="#段落设置" class="headerlink" title="段落设置"></a>段落设置</h1><p>Markdown 段落没有特殊的格式，直接编写文字就好，段落的换行是使用两个以上空格加上回车。<br>也可以在段落后面使用一个空行来表示重新开始一个段落。</p>
+<h2 id="段落设置"><a href="#段落设置" class="headerlink" title="段落设置"></a>段落设置</h2><p>Markdown 段落没有特殊的格式，直接编写文字就好，段落的换行是使用两个以上空格加上回车。<br>也可以在段落后面使用一个空行来表示重新开始一个段落。</p>
         
           <a class="article-more-a" href="/2019/06/02/Markdown语法/#more">more >></a>
         
@@ -329,18 +352,14 @@
       
         <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a><br>
+        
+          <a class="article-more-a" href="/2019/05/26/hello-world/#more">more >></a>
+        
       
 
       
-    </div>
+    </p></div>
     <div class="article-info article-info-index">
       
       
@@ -493,6 +512,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
               </li>
             
             <div class="clearfix"></div>
