@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="xoyolucas&#39;s blog">
 <meta property="og:description" content="CMake简介过去的Make工具，例如 GNU Make，QT 的 qmake，微软的 MS nmake，BSD Make（pmake），Makepp等等，遵循着不同的规范和标准，所执行的 Makefile 格式也千差万别。CMake是一个跨平台的、开源的构建工具。CMake是makefile的上层工具，目的是为了产生可移植的makefile，并简化自己动手写makefile时的巨大工作量。目前很">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-21T16:54:58.637Z">
+<meta property="og:updated_time" content="2019-08-11T17:08:09.148Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CMake">
 <meta name="twitter:description" content="CMake简介过去的Make工具，例如 GNU Make，QT 的 qmake，微软的 MS nmake，BSD Make（pmake），Makepp等等，遵循着不同的规范和标准，所执行的 Makefile 格式也千差万别。CMake是一个跨平台的、开源的构建工具。CMake是makefile的上层工具，目的是为了产生可移植的makefile，并简化自己动手写makefile时的巨大工作量。目前很">
@@ -179,8 +179,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="CMake简介"><a href="#CMake简介" class="headerlink" title="CMake简介"></a>CMake简介</h1><p>过去的Make工具，例如 GNU Make，QT 的 qmake，微软的 MS nmake，BSD Make（pmake），Makepp等等，遵循着不同的规范和标准，所执行的 Makefile 格式也千差万别。<br>CMake是一个跨平台的、开源的构建工具。CMake是makefile的上层工具，目的是为了产生可移植的makefile，并简化自己动手写makefile时的巨大工作量。目前很多开源的项目都可以通过CMake工具来轻松构建工程。代码的分享者提供源代码和相应的Cmake配置文件，使用者就可以非常方便的在自己的电脑上构建相应的工程，进行开发和调试。开发者编写一种平台无关的 CMakeList.txt 文件来定制整个编译流程，然后再根据目标用户的平台进一步生成所需的本地化Makefile和工程文件，如Unix的Makefile或Windows的Visual Studio工程，做到“Write once, run everywhere”。</p>
-<h1 id="CMake语法"><a href="#CMake语法" class="headerlink" title="CMake语法"></a>CMake语法</h1>
+        <h2 id="CMake简介"><a href="#CMake简介" class="headerlink" title="CMake简介"></a>CMake简介</h2><p>过去的Make工具，例如 GNU Make，QT 的 qmake，微软的 MS nmake，BSD Make（pmake），Makepp等等，遵循着不同的规范和标准，所执行的 Makefile 格式也千差万别。<br>CMake是一个跨平台的、开源的构建工具。CMake是makefile的上层工具，目的是为了产生可移植的makefile，并简化自己动手写makefile时的巨大工作量。目前很多开源的项目都可以通过CMake工具来轻松构建工程。代码的分享者提供源代码和相应的Cmake配置文件，使用者就可以非常方便的在自己的电脑上构建相应的工程，进行开发和调试。开发者编写一种平台无关的 CMakeList.txt 文件来定制整个编译流程，然后再根据目标用户的平台进一步生成所需的本地化Makefile和工程文件，如Unix的Makefile或Windows的Visual Studio工程，做到“Write once, run everywhere”。</p>
+<h2 id="CMake语法"><a href="#CMake语法" class="headerlink" title="CMake语法"></a>CMake语法</h2><ul>
+<li>cmake文件，可以包含命令+注释+空格+换行</li>
+<li>cmake编写的源文件以CMakeLists.txt命名或.cmake为扩展名</li>
+<li>CMakeLists.txt编写的整个项目的构建规则(放在最顶层目录)，可通过add_subdirectory()命令把下一层源码目录的构建规则添加进去</li>
+<li>Cmake源文件中所有有效的语句都是命令（内置的命令或自定义函数/宏命令）</li>
+</ul>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>用“#”进行注释，开始到行尾结束；使用括号参数来实现多行注释(#[=<em>[注释内容]=</em>])<br>其中*号表示0个或者多个=，左边=号的数量要等于右边=的数量<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#单行注释</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#[[多行注释</span></span><br><span class="line">   房东的猫 </span><br><span class="line">   房东的猫]]</span><br></pre></td></tr></table></figure></p>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>语法格式：set(变量名 变量值) 变量名是大小写敏感<br>变量引用: ${变量名}&ensp;$ENV{VAR}<br>$ENV{VAR}是对环境变量VAR的引用；cmake支持变量嵌套引用，解引用的顺序从内到外<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span>(var <span class="number">711</span>)</span><br><span class="line"><span class="keyword">message</span>(<span class="string">"var = $&#123;var&#125;"</span>)</span><br><span class="line"><span class="keyword">message</span>(<span class="string">"PATH = $ENV&#123;PATH&#125;"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span>(inner_var <span class="keyword">test</span>)</span><br><span class="line"><span class="keyword">set</span>(outer_test_var <span class="number">711</span>)</span><br><span class="line"><span class="keyword">message</span>(<span class="string">"nest variable value is :$&#123;outer_$&#123;inner_var&#125;_var&#125;"</span>)</span><br></pre></td></tr></table></figure></p>
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>列表也是字符串，这个变量有多个值，每个值用分号”;”进行分隔<br>set(列表名 值1 值2 … 值N) 或者 set(列表名 “值1;值2; …;值N”)<br>不加引号的引用cmake将自动在分号处进行切分成多个列表元素，并把它们作为多个独立的参数传给命令。加了引号的引用cmake不会进行切分并保持分号不动，整个引号内的内容当作一个参数传给命令。<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span>(list_var <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span>) <span class="comment"># list_var = 1;2;3;4</span></span><br><span class="line"><span class="keyword">set</span>(list_foo <span class="string">"5;6;7;8"</span>) <span class="comment"># list_foo = 5;6;7;8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span>(list_var <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span>) <span class="comment"># list_var = 1;2;3;4</span></span><br><span class="line"><span class="keyword">set</span>(list_foo <span class="string">"5;6;7;8"</span>) <span class="comment"># list_foo = 5;6;7;8</span></span><br><span class="line"><span class="keyword">message</span>(<span class="variable">$&#123;list_var&#125;</span>)<span class="comment">#输出： 1234</span></span><br><span class="line"><span class="keyword">message</span>(<span class="variable">$&#123;list_foo&#125;</span>)<span class="comment">#输出：5678</span></span><br><span class="line"><span class="keyword">message</span>(<span class="string">"$&#123;list_var&#125;"</span>)<span class="comment">#输出：1;2;3;4</span></span><br><span class="line"><span class="keyword">message</span>(<span class="string">"$&#123;list_foo&#125;"</span>)<span class="comment">#输出：5;6;7;8</span></span><br></pre></td></tr></table></figure></p>
+
       
 
       
@@ -274,6 +283,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2019/08/11/C-11新特性/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          C++11新特性
+        
+      </div>
+    </a>
+  
   
     <a href="/2019/06/02/Markdown语法/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">Markdown语法</div>
@@ -303,7 +321,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CMake简介"><span class="toc-number">1.</span> <span class="toc-text">CMake简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CMake语法"><span class="toc-number">2.</span> <span class="toc-text">CMake语法</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CMake简介"><span class="toc-number">1.</span> <span class="toc-text">CMake简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CMake语法"><span class="toc-number">2.</span> <span class="toc-text">CMake语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注释"><span class="toc-number">2.1.</span> <span class="toc-text">注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#变量"><span class="toc-number">2.2.</span> <span class="toc-text">变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#列表"><span class="toc-number">2.3.</span> <span class="toc-text">列表</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
