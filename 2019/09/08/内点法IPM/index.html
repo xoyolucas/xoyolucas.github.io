@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="xoyolucas&#39;s blog">
 <meta property="og:description" content="内点法简介内点法(Interior Point Method)是一种求解线性规划或非线性凸优化问题的算法。它是由John von Neumann发明的，他利用戈尔丹的线性齐次系统提出了这种新的求解线性规划的方法。后被Narendra Karmarkar于1984年推广应用到线性规划，即Karmarkar算法。内点法属于约束优化算法，约束优化算法的基本思想是：通过引入效用函数的方法将约束优化问题转换">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-09T17:38:59.316Z">
+<meta property="og:updated_time" content="2019-09-14T17:16:20.839Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="内点法IPM">
 <meta name="twitter:description" content="内点法简介内点法(Interior Point Method)是一种求解线性规划或非线性凸优化问题的算法。它是由John von Neumann发明的，他利用戈尔丹的线性齐次系统提出了这种新的求解线性规划的方法。后被Narendra Karmarkar于1984年推广应用到线性规划，即Karmarkar算法。内点法属于约束优化算法，约束优化算法的基本思想是：通过引入效用函数的方法将约束优化问题转换">
@@ -179,11 +179,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="内点法简介"><a href="#内点法简介" class="headerlink" title="内点法简介"></a>内点法简介</h2><p><strong><em>内点法(Interior Point Method)</em></strong>是一种求解线性规划或非线性凸优化问题的算法。它是由John von Neumann发明的，他利用戈尔丹的线性齐次系统提出了这种新的求解线性规划的方法。后被Narendra Karmarkar于1984年推广应用到线性规划，即Karmarkar算法。<br>内点法属于约束优化算法，约束优化算法的基本思想是：<strong>通过引入效用函数的方法将约束优化问题转换成无约束问题</strong>，再利用优化迭代过程不断地更新效用函数，以使得算法收敛。相当于在可行域的边界筑起一道很高的“围墙”，当迭代点靠近边界时，目标函数徒然增大，以示惩罚，阻止迭代点穿越边界，这样就可以将最优解“挡”在可行域之内了。</p>
+        <h2 id="内点法简介"><a href="#内点法简介" class="headerlink" title="内点法简介"></a>内点法简介</h2><p><strong><em>内点法(Interior Point Method)</em></strong>是一种求解线性规划或非线性凸优化问题的算法。它是由John von Neumann发明的，他利用戈尔丹的线性齐次系统提出了这种新的求解线性规划的方法。后被Narendra Karmarkar于1984年推广应用到线性规划，即Karmarkar算法。<br>内点法属于约束优化算法，约束优化算法的基本思想是：<strong>通过引入效用函数的方法将约束优化问题转换成无约束问题</strong>，再利用优化迭代过程不断地更新效用函数，以使得算法收敛。相当于在可行域的边界筑起一道很高的“围墙”，当迭代点靠近边界时，目标函数徒然增大，以示惩罚，阻止迭代点穿越边界，这样就可以将最优解“挡”在可行域之内了。<br><a id="more"></a></p>
 <h2 id="内点法算法流程"><a href="#内点法算法流程" class="headerlink" title="内点法算法流程"></a>内点法算法流程</h2><h3 id="1-线性规划问题一般形式"><a href="#1-线性规划问题一般形式" class="headerlink" title="1. 线性规划问题一般形式"></a>1. 线性规划问题一般形式</h3><p>$$ min \ f(x)=c^Tx $$<br>$$ s.t. \ Ax&lt;=b $$<br>矩阵A为m*n的满秩矩阵，其中m为约束条件的个数，n为变量的个数。通常约束条件个数大于变量的个数，即m&gt;n。</p>
-<h3 id="2-线性规划问题转换"><a href="#2-线性规划问题转换" class="headerlink" title="2. 线性规划问题转换"></a>2. 线性规划问题转换</h3><p>内点法中有一个惩罚函数，用于描述凸集。与单纯形法不同，它通过遍历内部可行区域来搜索最优解。<br>线性规划问题进行转换<br>$$f(x) = c^Tx + </p>
+<h3 id="2-线性规划问题转换"><a href="#2-线性规划问题转换" class="headerlink" title="2. 线性规划问题转换"></a>2. 线性规划问题转换</h3><p>内点法中有一个惩罚函数，用于描述凸集。与单纯形法不同，它通过遍历内部可行区域来搜索最优解。<br>线性规划问题进行转换<br>$$f(x) = c^Tx + \$$</p>
 <h3 id="3-计算函数的梯度和Hessian矩阵"><a href="#3-计算函数的梯度和Hessian矩阵" class="headerlink" title="3. 计算函数的梯度和Hessian矩阵"></a>3. 计算函数的梯度和Hessian矩阵</h3><p>为了求函数的极小值，根据微积分的经典结果，我们只需令函数的梯度等于零，然后计算梯度为零时对应的解x*<br>函数的梯度：  </p>
-<p>Hessian矩阵：<br>对角矩阵<br>因为$D$为正定矩阵，所以Hessian矩阵至少为半正定矩阵。所以函数$f(x)$是一个凸函数。而且矩阵$D$为可逆矩阵，矩阵$A$满秩，所以Hessian矩阵为可逆矩阵。于是函数$f(x)$为强凸函数。计算$f’(x)=0$的根，可以用高效的牛顿迭代法。</p>
+<p>Hessian黑塞矩阵(多元函数的二阶偏导数构成的方阵)：<br>定义对角矩阵，<br>Hessian矩阵写成$H_f = A^TDA$的形式</p>
+<p>因为$D$为正定矩阵，所以Hessian矩阵至少为半正定矩阵。所以函数$f(x)$是一个凸函数。而且矩阵$D$为可逆矩阵，矩阵$A$满秩，所以Hessian矩阵为可逆矩阵。于是函数$f(x)$为强凸函数。计算$f’(x)=0$的根，可以用高效的牛顿迭代法。</p>
 <h3 id="4-牛顿迭代法计算"><a href="#4-牛顿迭代法计算" class="headerlink" title="4. 牛顿迭代法计算"></a>4. 牛顿迭代法计算</h3><p>牛顿迭代法（Newton’s method）又称为牛顿-拉夫逊（拉弗森）方法（Newton-Raphson method），它是牛顿在17世纪提出的一种在实数域和复数域上近似求解方程的方法。<br>多数方程不存在求根公式，因此求精确根非常困难，甚至不可能，从而寻找方程的近似根就显得特别重要。方法使用函数$f(x)$的泰勒级数的前面几项来寻找方程$f(x)=0$的根。牛顿迭代法是求方程根的重要方法之一，其最大优点是在方程$f(x)$的单根附近具有平方收敛，而且该法还可以用来求方程的重根、复根，此时线性收敛，但是可通过一些方法变成超线性收敛。该方法广泛用于计算机编程中。<br><strong>优点：</strong>二阶收敛，收敛速度快；<br><strong>缺点：</strong>牛顿法是一种迭代算法，每一步都需要求解目标函数的Hessian矩阵的逆矩阵，计算比较复杂。</p>
 <p><strong><em>步骤：</em></strong><br><a href="https://www.cnblogs.com/maybe2030/p/4751804.html" target="_blank" rel="noopener">https://www.cnblogs.com/maybe2030/p/4751804.html</a><br><a href="https://zhuanlan.zhihu.com/p/34426575" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/34426575</a></p>
 <h3 id="5-内点法例子"><a href="#5-内点法例子" class="headerlink" title="5. 内点法例子"></a>5. 内点法例子</h3><h2 id="内点法VS单纯形法"><a href="#内点法VS单纯形法" class="headerlink" title="内点法VS单纯形法"></a>内点法VS单纯形法</h2><ul>
@@ -485,11 +486,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IPM</a>
+                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
+                <a href="javascript:void(0)" class="js-tag color4">IPM</a>
               </li>
              
               <li class="article-tag-list-item">

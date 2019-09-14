@@ -8,15 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Markdown公式 | xoyolucas&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="Markdown">
+  <meta name="description" content="插入公式行中公式和独立公式，行中公式放在文中与其它文字混编，独立公式单独成行。  行中公式：将公式插入到本行内，符号：$公式内容$，如：$x+y$ 独行公式：将公式插入到新的一行内，并且居中，符号：$$公式内容$$，如：$$xyz$$  公式自动编号,自动编号后的公式可在全文任意处使用 \eqref{eq:公式名} 语句引用。 1234\begin&amp;#123;equation&amp;#125;数学公式\">
+<meta name="keywords" content="Markdown">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Markdown公式">
 <meta property="og:url" content="http://yoursite.com/2019/09/12/Markdown公式/index.html">
 <meta property="og:site_name" content="xoyolucas&#39;s blog">
+<meta property="og:description" content="插入公式行中公式和独立公式，行中公式放在文中与其它文字混编，独立公式单独成行。  行中公式：将公式插入到本行内，符号：$公式内容$，如：$x+y$ 独行公式：将公式插入到新的一行内，并且居中，符号：$$公式内容$$，如：$$xyz$$  公式自动编号,自动编号后的公式可在全文任意处使用 \eqref{eq:公式名} 语句引用。 1234\begin&amp;#123;equation&amp;#125;数学公式\">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-11T16:25:32.439Z">
+<meta property="og:updated_time" content="2019-09-14T18:09:51.229Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Markdown公式">
+<meta name="twitter:description" content="插入公式行中公式和独立公式，行中公式放在文中与其它文字混编，独立公式单独成行。  行中公式：将公式插入到本行内，符号：$公式内容$，如：$x+y$ 独行公式：将公式插入到新的一行内，并且居中，符号：$$公式内容$$，如：$$xyz$$  公式自动编号,自动编号后的公式可在全文任意处使用 \eqref{eq:公式名} 语句引用。 1234\begin&amp;#123;equation&amp;#125;数学公式\">
   
     <link rel="alternative" href="/atom.xml" title="xoyolucas&#39;s blog" type="application/atom+xml">
   
@@ -176,7 +179,28 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="插入公式"><a href="#插入公式" class="headerlink" title="插入公式"></a>插入公式</h2><p>行中公式和独立公式，行中公式放在文中与其它文字混编，独立公式单独成行。</p>
+<ul>
+<li>行中公式：将公式插入到本行内，符号：$公式内容$，如：$x+y$</li>
+<li><p>独行公式：将公式插入到新的一行内，并且居中，符号：$$公式内容$$，如：$$xyz$$</p>
+</li>
+<li><p>公式自动编号,自动编号后的公式可在全文任意处使用 \eqref{eq:公式名} 语句引用。</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;equation&#125;</span><br><span class="line">数学公式</span><br><span class="line">\label&#123;eq:当前公式名&#125;</span><br><span class="line">\end&#123;equation&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>若需要显示更大或更小的字符，在符号前插入 \large 或 \small 命令。</p>
+<h2 id="占位符"><a href="#占位符" class="headerlink" title="占位符"></a>占位符</h2><ol>
+<li>quad空格，符号：\quad，如：$x \quad y$</li>
+<li>两个quad空格，符号：\qquad，如：$x \qquad y$</li>
+<li>大空格，符号\，如：$x \ y$</li>
+<li>中空格，符号\:，如：$x : y$</li>
+<li>小空格，符号\,，如：$x , y$</li>
+<li>没有空格，符号<code></code>，如：$xy$; 紧贴，符号!，如：$x ! y$</li>
+</ol>
+<h2 id="上下标"><a href="#上下标" class="headerlink" title="上下标"></a>上下标</h2><p>^ 表示上标, _ 表示下标。如果上下标的内容多于一个字符，需要用 {} 将这些内容括成一个整体。上下标可以嵌套，也可以同时使用。</p>
+<h2 id="输入特殊符号"><a href="#输入特殊符号" class="headerlink" title="输入特殊符号"></a>输入特殊符号</h2><p>若找不到需要的符号，可使用\rm{Detexify^2}来画出想要的符号。Detexify网站<a href="http://detexify.kirelabs.org/classify.html" target="_blank" rel="noopener">http://detexify.kirelabs.org/classify.html</a></p>
+<p><a href="http://latex.codecogs.com/eqneditor/editor.php" target="_blank" rel="noopener">Markdown中Latex风格公式在线输入：http://latex.codecogs.com/eqneditor/editor.php</a></p>
+
       
 
       
@@ -299,7 +323,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#插入公式"><span class="toc-number">1.</span> <span class="toc-text">插入公式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#占位符"><span class="toc-number">2.</span> <span class="toc-text">占位符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#上下标"><span class="toc-number">3.</span> <span class="toc-text">上下标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输入特殊符号"><span class="toc-number">4.</span> <span class="toc-text">输入特殊符号</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -460,11 +484,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IPM</a>
+                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
+                <a href="javascript:void(0)" class="js-tag color4">IPM</a>
               </li>
              
               <li class="article-tag-list-item">

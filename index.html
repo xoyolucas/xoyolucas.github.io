@@ -176,7 +176,28 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="插入公式"><a href="#插入公式" class="headerlink" title="插入公式"></a>插入公式</h2><p>行中公式和独立公式，行中公式放在文中与其它文字混编，独立公式单独成行。</p>
+<ul>
+<li>行中公式：将公式插入到本行内，符号：$公式内容$，如：$x+y$</li>
+<li><p>独行公式：将公式插入到新的一行内，并且居中，符号：$$公式内容$$，如：$$xyz$$</p>
+</li>
+<li><p>公式自动编号,自动编号后的公式可在全文任意处使用 \eqref{eq:公式名} 语句引用。</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;equation&#125;</span><br><span class="line">数学公式</span><br><span class="line">\label&#123;eq:当前公式名&#125;</span><br><span class="line">\end&#123;equation&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>若需要显示更大或更小的字符，在符号前插入 \large 或 \small 命令。</p>
+<h2 id="占位符"><a href="#占位符" class="headerlink" title="占位符"></a>占位符</h2><ol>
+<li>quad空格，符号：\quad，如：$x \quad y$</li>
+<li>两个quad空格，符号：\qquad，如：$x \qquad y$</li>
+<li>大空格，符号\，如：$x \ y$</li>
+<li>中空格，符号\:，如：$x : y$</li>
+<li>小空格，符号\,，如：$x , y$</li>
+<li>没有空格，符号<code></code>，如：$xy$; 紧贴，符号!，如：$x ! y$</li>
+</ol>
+<h2 id="上下标"><a href="#上下标" class="headerlink" title="上下标"></a>上下标</h2><p>^ 表示上标, _ 表示下标。如果上下标的内容多于一个字符，需要用 {} 将这些内容括成一个整体。上下标可以嵌套，也可以同时使用。</p>
+<h2 id="输入特殊符号"><a href="#输入特殊符号" class="headerlink" title="输入特殊符号"></a>输入特殊符号</h2><p>若找不到需要的符号，可使用\rm{Detexify^2}来画出想要的符号。Detexify网站<a href="http://detexify.kirelabs.org/classify.html" target="_blank" rel="noopener">http://detexify.kirelabs.org/classify.html</a></p>
+<p><a href="http://latex.codecogs.com/eqneditor/editor.php" target="_blank" rel="noopener">Markdown中Latex风格公式在线输入：http://latex.codecogs.com/eqneditor/editor.php</a></p>
+
       
 
       
@@ -260,24 +281,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="内点法简介"><a href="#内点法简介" class="headerlink" title="内点法简介"></a>内点法简介</h2><p><strong><em>内点法(Interior Point Method)</em></strong>是一种求解线性规划或非线性凸优化问题的算法。它是由John von Neumann发明的，他利用戈尔丹的线性齐次系统提出了这种新的求解线性规划的方法。后被Narendra Karmarkar于1984年推广应用到线性规划，即Karmarkar算法。<br>内点法属于约束优化算法，约束优化算法的基本思想是：<strong>通过引入效用函数的方法将约束优化问题转换成无约束问题</strong>，再利用优化迭代过程不断地更新效用函数，以使得算法收敛。相当于在可行域的边界筑起一道很高的“围墙”，当迭代点靠近边界时，目标函数徒然增大，以示惩罚，阻止迭代点穿越边界，这样就可以将最优解“挡”在可行域之内了。</p>
-<h2 id="内点法算法流程"><a href="#内点法算法流程" class="headerlink" title="内点法算法流程"></a>内点法算法流程</h2><h3 id="1-线性规划问题一般形式"><a href="#1-线性规划问题一般形式" class="headerlink" title="1. 线性规划问题一般形式"></a>1. 线性规划问题一般形式</h3><p>$$ min \ f(x)=c^Tx $$<br>$$ s.t. \ Ax&lt;=b $$<br>矩阵A为m*n的满秩矩阵，其中m为约束条件的个数，n为变量的个数。通常约束条件个数大于变量的个数，即m&gt;n。</p>
-<h3 id="2-线性规划问题转换"><a href="#2-线性规划问题转换" class="headerlink" title="2. 线性规划问题转换"></a>2. 线性规划问题转换</h3><p>内点法中有一个惩罚函数，用于描述凸集。与单纯形法不同，它通过遍历内部可行区域来搜索最优解。<br>线性规划问题进行转换<br>$$f(x) = c^Tx + </p>
-<h3 id="3-计算函数的梯度和Hessian矩阵"><a href="#3-计算函数的梯度和Hessian矩阵" class="headerlink" title="3. 计算函数的梯度和Hessian矩阵"></a>3. 计算函数的梯度和Hessian矩阵</h3><p>为了求函数的极小值，根据微积分的经典结果，我们只需令函数的梯度等于零，然后计算梯度为零时对应的解x*<br>函数的梯度：  </p>
-<p>Hessian矩阵：<br>对角矩阵<br>因为$D$为正定矩阵，所以Hessian矩阵至少为半正定矩阵。所以函数$f(x)$是一个凸函数。而且矩阵$D$为可逆矩阵，矩阵$A$满秩，所以Hessian矩阵为可逆矩阵。于是函数$f(x)$为强凸函数。计算$f’(x)=0$的根，可以用高效的牛顿迭代法。</p>
-<h3 id="4-牛顿迭代法计算"><a href="#4-牛顿迭代法计算" class="headerlink" title="4. 牛顿迭代法计算"></a>4. 牛顿迭代法计算</h3><p>牛顿迭代法（Newton’s method）又称为牛顿-拉夫逊（拉弗森）方法（Newton-Raphson method），它是牛顿在17世纪提出的一种在实数域和复数域上近似求解方程的方法。<br>多数方程不存在求根公式，因此求精确根非常困难，甚至不可能，从而寻找方程的近似根就显得特别重要。方法使用函数$f(x)$的泰勒级数的前面几项来寻找方程$f(x)=0$的根。牛顿迭代法是求方程根的重要方法之一，其最大优点是在方程$f(x)$的单根附近具有平方收敛，而且该法还可以用来求方程的重根、复根，此时线性收敛，但是可通过一些方法变成超线性收敛。该方法广泛用于计算机编程中。<br><strong>优点：</strong>二阶收敛，收敛速度快；<br><strong>缺点：</strong>牛顿法是一种迭代算法，每一步都需要求解目标函数的Hessian矩阵的逆矩阵，计算比较复杂。</p>
-<p><strong><em>步骤：</em></strong><br><a href="https://www.cnblogs.com/maybe2030/p/4751804.html" target="_blank" rel="noopener">https://www.cnblogs.com/maybe2030/p/4751804.html</a><br><a href="https://zhuanlan.zhihu.com/p/34426575" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/34426575</a></p>
-<h3 id="5-内点法例子"><a href="#5-内点法例子" class="headerlink" title="5. 内点法例子"></a>5. 内点法例子</h3><h2 id="内点法VS单纯形法"><a href="#内点法VS单纯形法" class="headerlink" title="内点法VS单纯形法"></a>内点法VS单纯形法</h2><ul>
-<li>线性规划单纯形法：通过一系列迭代达到最优解，迭代点沿着可行多面体的边界从一个顶点到另一个顶点，直到得到最优解。一般而言单纯形法每次迭代的开销相对内点法来说较小，但所需迭代次数较多。</li>
-<li>线性规划内点法：同样是通过一系列迭代达到最优解，但其是从多面体内部逐渐收敛到最优解。一般而言内点法每次迭代的开销相对单纯形法来说较大，但所需迭代次数较少。</li>
-</ul>
-<h2 id="拟牛顿法"><a href="#拟牛顿法" class="headerlink" title="拟牛顿法"></a>拟牛顿法</h2><p>拟牛顿法是求解非线性优化问题最有效的方法之一，于20世纪50年代由美国Argonne国家实验室的物理学家W.C.Davidon所提出来。Davidon设计的这种算法在当时看来是非线性优化领域最具创造性的发明之一。不久R. Fletcher和M. J. D. Powell证实了这种新的算法远比其他方法快速和可靠，使得非线性优化这门学科在一夜之间突飞猛进。</p>
-<p>拟牛顿法的本质思想是改善牛顿法每次需要求解复杂的Hessian矩阵的逆矩阵的缺陷，它使用正定矩阵来近似Hessian矩阵的逆，从而简化了运算的复杂度。拟牛顿法和最速下降法一样只要求每一步迭代时知道目标函数的梯度。通过测量梯度的变化，构造一个目标函数的模型使之足以产生超线性收敛性。这类方法大大优于最速下降法，尤其对于困难的问题。另外，因为拟牛顿法不需要二阶导数的信息，所以有时比牛顿法更为有效。如今，优化软件中包含了大量的拟牛顿算法用来解决无约束，约束，和大规模的优化问题。</p>
-
+        <h2 id="内点法简介"><a href="#内点法简介" class="headerlink" title="内点法简介"></a>内点法简介</h2><p><strong><em>内点法(Interior Point Method)</em></strong>是一种求解线性规划或非线性凸优化问题的算法。它是由John von Neumann发明的，他利用戈尔丹的线性齐次系统提出了这种新的求解线性规划的方法。后被Narendra Karmarkar于1984年推广应用到线性规划，即Karmarkar算法。<br>内点法属于约束优化算法，约束优化算法的基本思想是：<strong>通过引入效用函数的方法将约束优化问题转换成无约束问题</strong>，再利用优化迭代过程不断地更新效用函数，以使得算法收敛。相当于在可行域的边界筑起一道很高的“围墙”，当迭代点靠近边界时，目标函数徒然增大，以示惩罚，阻止迭代点穿越边界，这样就可以将最优解“挡”在可行域之内了。<br>
+        
+          <a class="article-more-a" href="/2019/09/08/内点法IPM/#more">more >></a>
+        
       
 
       
-    </div>
+    </p></div>
     <div class="article-info article-info-index">
       
       
@@ -1135,11 +1146,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IPM</a>
+                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
+                <a href="javascript:void(0)" class="js-tag color4">IPM</a>
               </li>
              
               <li class="article-tag-list-item">
