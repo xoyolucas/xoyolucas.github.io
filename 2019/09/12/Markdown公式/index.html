@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Markdown公式 | xoyolucas&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="插入公式行中公式和独立公式，行中公式放在文中与其它文字混编，独立公式单独成行。  行中公式：将公式插入到本行内，符号：$公式内容$，如：$x+y$ 独行公式：将公式插入到新的一行内，并且居中，符号：$$公式内容$$，如：$$xyz$$  公式自动编号,自动编号后的公式可在全文任意处使用 \eqref{eq:公式名} 语句引用。 1234\begin&amp;#123;equation&amp;#125;数学公式\">
+  <meta name="description" content="插入公式行中公式和独立公式，行中公式放在文中与其它文字混编，独立公式单独成行。  行中公式：将公式插入到本行内 1$公式内容$，如：$x+y$  独行公式：将公式插入到新的一行内，并且居中 1$公式内容$，如：$xyz$">
 <meta name="keywords" content="Markdown">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Markdown公式">
 <meta property="og:url" content="http://yoursite.com/2019/09/12/Markdown公式/index.html">
 <meta property="og:site_name" content="xoyolucas&#39;s blog">
-<meta property="og:description" content="插入公式行中公式和独立公式，行中公式放在文中与其它文字混编，独立公式单独成行。  行中公式：将公式插入到本行内，符号：$公式内容$，如：$x+y$ 独行公式：将公式插入到新的一行内，并且居中，符号：$$公式内容$$，如：$$xyz$$  公式自动编号,自动编号后的公式可在全文任意处使用 \eqref{eq:公式名} 语句引用。 1234\begin&amp;#123;equation&amp;#125;数学公式\">
+<meta property="og:description" content="插入公式行中公式和独立公式，行中公式放在文中与其它文字混编，独立公式单独成行。  行中公式：将公式插入到本行内 1$公式内容$，如：$x+y$  独行公式：将公式插入到新的一行内，并且居中 1$公式内容$，如：$xyz$">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-14T18:09:51.229Z">
+<meta property="og:updated_time" content="2019-09-22T17:33:37.240Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Markdown公式">
-<meta name="twitter:description" content="插入公式行中公式和独立公式，行中公式放在文中与其它文字混编，独立公式单独成行。  行中公式：将公式插入到本行内，符号：$公式内容$，如：$x+y$ 独行公式：将公式插入到新的一行内，并且居中，符号：$$公式内容$$，如：$$xyz$$  公式自动编号,自动编号后的公式可在全文任意处使用 \eqref{eq:公式名} 语句引用。 1234\begin&amp;#123;equation&amp;#125;数学公式\">
+<meta name="twitter:description" content="插入公式行中公式和独立公式，行中公式放在文中与其它文字混编，独立公式单独成行。  行中公式：将公式插入到本行内 1$公式内容$，如：$x+y$  独行公式：将公式插入到新的一行内，并且居中 1$公式内容$，如：$xyz$">
   
     <link rel="alternative" href="/atom.xml" title="xoyolucas&#39;s blog" type="application/atom+xml">
   
@@ -181,25 +181,50 @@
       
         <h2 id="插入公式"><a href="#插入公式" class="headerlink" title="插入公式"></a>插入公式</h2><p>行中公式和独立公式，行中公式放在文中与其它文字混编，独立公式单独成行。</p>
 <ul>
-<li>行中公式：将公式插入到本行内，符号：$公式内容$，如：$x+y$</li>
-<li><p>独行公式：将公式插入到新的一行内，并且居中，符号：$$公式内容$$，如：$$xyz$$</p>
+<li><p>行中公式：将公式插入到本行内</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$公式内容$，如：$x+y$</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>公式自动编号,自动编号后的公式可在全文任意处使用 \eqref{eq:公式名} 语句引用。</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;equation&#125;</span><br><span class="line">数学公式</span><br><span class="line">\label&#123;eq:当前公式名&#125;</span><br><span class="line">\end&#123;equation&#125;</span><br></pre></td></tr></table></figure>
+<li><p>独行公式：将公式插入到新的一行内，并且居中</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$公式内容$，如：$xyz$</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li>公式自动编号, 自动编号后的公式可在全文任意处使用 ‘\eqref{eq: 公式名}’ 语句引用。<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;equation&#125;</span><br><span class="line">数学公式</span><br><span class="line">\label&#123;eq:当前公式名&#125;</span><br><span class="line">\end&#123;equation&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>若需要显示更大或更小的字符，在符号前插入 \large 或 \small 命令。</p>
-<h2 id="占位符"><a href="#占位符" class="headerlink" title="占位符"></a>占位符</h2><ol>
-<li>quad空格，符号：\quad，如：$x \quad y$</li>
-<li>两个quad空格，符号：\qquad，如：$x \qquad y$</li>
-<li>大空格，符号\，如：$x \ y$</li>
-<li>中空格，符号\:，如：$x : y$</li>
-<li>小空格，符号\,，如：$x , y$</li>
-<li>没有空格，符号<code></code>，如：$xy$; 紧贴，符号!，如：$x ! y$</li>
-</ol>
-<h2 id="上下标"><a href="#上下标" class="headerlink" title="上下标"></a>上下标</h2><p>^ 表示上标, _ 表示下标。如果上下标的内容多于一个字符，需要用 {} 将这些内容括成一个整体。上下标可以嵌套，也可以同时使用。</p>
-<h2 id="输入特殊符号"><a href="#输入特殊符号" class="headerlink" title="输入特殊符号"></a>输入特殊符号</h2><p>若找不到需要的符号，可使用\rm{Detexify^2}来画出想要的符号。Detexify网站<a href="http://detexify.kirelabs.org/classify.html" target="_blank" rel="noopener">http://detexify.kirelabs.org/classify.html</a></p>
-<p><a href="http://latex.codecogs.com/eqneditor/editor.php" target="_blank" rel="noopener">Markdown中Latex风格公式在线输入：http://latex.codecogs.com/eqneditor/editor.php</a></p>
+<h2 id="占位符"><a href="#占位符" class="headerlink" title="占位符"></a>占位符</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. quad空格，符号：\quad，如：$x \quad y$</span><br><span class="line">2. 两个quad空格，符号：\qquad，如：$x \qquad y$</span><br><span class="line">3. 大空格，符号\，如：$x\y$</span><br><span class="line">4. 中空格，符号\:，如：$x\:y$</span><br><span class="line">5. 小空格，符号\,，如：$x\,y$</span><br><span class="line">6. 没有空格，符号``，如：$xy$; 紧贴，符号\!，如：$x\!y$</span><br></pre></td></tr></table></figure>
+<h2 id="上下标"><a href="#上下标" class="headerlink" title="上下标"></a>上下标</h2><p>^ 表示上标, _ 表示下标。上下标的内容多于一个字符时，需用 {} 将这些内容括成一个整体。上下标可以嵌套和同时使用。<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ x^&#123;y^z&#125;=(<span class="number">1</span>+&#123;e&#125;^x)^&#123;-<span class="number">2</span>xy^w&#125; $</span><br></pre></td></tr></table></figure></p>
+<p>$ x^{y^z}=(1+{e}^x)^{-2xy^w} $</p>
+<ul>
+<li>如果要在左右两边都有上下标，可以用 \sideset 命令。<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ \sideset&#123;^a_b&#125;&#123;^c_d&#125;\bigotimes $</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>$ \sideset{^a_b}{^c_d}\bigotimes $</p>
+<h2 id="括号和分隔符"><a href="#括号和分隔符" class="headerlink" title="括号和分隔符"></a>括号和分隔符</h2><p>()、[] 和 | 表示符号本身，使用 {} 来表示 {} 。<br>|   输入  |   显示  |   输入  |   显示   |<br>|:——-:|:——-:|:——-:|:——-:|<br>| \langle |$\langle$| \rangle |$\rangle$|<br>|  \lceil | $\lceil$|  \rceil |$\rceil$ |<br>| \lfloor |$\lfloor$| \rfloor |$\rfloor$|<br>| \lbrace |$\lbrace$| \rbrace |$\rbrace$|</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">有时候要用 \left. 或 \right. 进行匹配而不显示本身。</span><br><span class="line">$ f(x,y,z) = 3y^2z \left( 3+\frac&#123;7x+5&#125;&#123;1+y^2&#125; \right) $</span><br></pre></td></tr></table></figure>
+<p>$ f(x,y,z) = 3y^2z \left( 3+\frac{7x+5}{1+y^2} \right) $</p>
+<h2 id="分数"><a href="#分数" class="headerlink" title="分数"></a>分数</h2><p>通常使用 \frac {分子} {分母} 命令产生一个分数，分数可嵌套。可直接输入 \frac ab 来快速生成一个。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">如果分式很复杂，可使用分子\over分母命令，此时分数仅有一层。</span><br><span class="line">$ \frac&#123;a-1&#125;&#123;b-1&#125; \quad + \quad &#123;a+1\over b+1&#125; $</span><br><span class="line">$ \left \frac&#123;\rm &#123;d&#125;u&#125;&#123;\rm &#123;d&#125;x&#125; \right |_&#123;x=0&#125; $</span><br></pre></td></tr></table></figure></p>
+<p>$ \frac{a-1}{b-1} \quad + \quad {a+1\over b+1} $<br>$ \left \frac{\rm {d}u}{\rm {d}x} \right |_{x=0} $ </p>
+<h2 id="开方"><a href="#开方" class="headerlink" title="开方"></a>开方</h2><p>使用 \sqrt [根指数，省略时为2] {被开方数} 命令输入开方。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ \sqrt&#123;2&#125; \quad and \quad \sqrt[n]&#123;3&#125; $</span><br></pre></td></tr></table></figure></p>
+<p>$ \sqrt{2} \quad and \quad \sqrt[n]{3} $</p>
+<h2 id="公式中的省略号"><a href="#公式中的省略号" class="headerlink" title="公式中的省略号"></a>公式中的省略号</h2><p>数学公式中常见的两种省略号，\ldots表示与文本底线对齐的省略号，\cdots表示与文本中线对齐的省略号。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ f(x_1,x_2,\underbrace&#123;\ldots&#125;_&#123;\rm ldots&#125; ,x_n) = x_1^2 + x_2^2 + \underbrace&#123;\cdots&#125;_&#123;\rm cdots&#125; + x_n^2 $</span><br></pre></td></tr></table></figure></p>
+<p>$ f(x_1,x_2,\underbrace{\ldots}_{\rm ldots} ,x_n) = x_1^2 + x_2^2 + \underbrace{\cdots}_{\rm cdots} + x_n^2 $</p>
+<h2 id="公式矢量"><a href="#公式矢量" class="headerlink" title="公式矢量"></a>公式矢量</h2><p>使用 \vec{矢量} 来自动产生一个矢量。也可以使用 \overrightarrow 等命令自定义字母上方的符号。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ \vec&#123;a&#125; \cdot \vec&#123;b&#125;=0 $</span><br><span class="line">$ \overleftarrow&#123;xy&#125; \quad and \quad \overleftrightarrow&#123;xy&#125; \quad and \quad \overrightarrow&#123;xy&#125; $</span><br></pre></td></tr></table></figure></p>
+<p>$ \vec{a} \cdot \vec{b}=0 $<br>$ \overleftarrow{xy} \quad and \quad \overleftrightarrow{xy} \quad and \quad \overrightarrow{xy} $</p>
+<h2 id="积分"><a href="#积分" class="headerlink" title="积分"></a>积分</h2><p>使用 \int_ 积分下限^积分上限 {被积表达式} 来输入一个积分；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$\int_0^1 &#123;x^2&#125; \,&#123;\rm d&#125;x$</span><br><span class="line">\, 和 &#123;\rm d&#125; 部分可省略，加入能使式子更美观。</span><br></pre></td></tr></table></figure></p>
+<p>$\int_0^1 {x^2} \,{\rm d}x$</p>
+<h2 id="极限"><a href="#极限" class="headerlink" title="极限"></a>极限</h2><p>使用 \int_积分下限^积分上限 {被积表达式} 来输入一个积分。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ \lim_&#123;n \to +\infty&#125; \frac&#123;1&#125;&#123;n(n+1)&#125; \quad and \quad \lim_&#123;x\leftarrow&#123;示例&#125;&#125; \frac&#123;1&#125;&#123;n(n+1)&#125; $</span><br></pre></td></tr></table></figure></p>
+<p>$ \lim_{n \to +\infty} \frac{1}{n(n+1)} \quad and \quad \lim_{x\leftarrow{示例}} \frac{1}{n(n+1)} $</p>
+<h2 id="累加和累乘"><a href="#累加和累乘" class="headerlink" title="累加和累乘"></a>累加和累乘</h2><p>使用 \sum_{下标表达式}^{上标表达式} {累加表达式} 来输入一个累加。<br>使用 \prod \bigcup \bigcap 来分别输入累乘、并集和交集。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ \sum_&#123;i=1&#125;^n \frac&#123;1&#125;&#123;i^2&#125; \quad and \quad \prod_&#123;i=1&#125;^n \frac&#123;1&#125;&#123;i^2&#125; \quad and \quad \bigcup_&#123;i=1&#125;^&#123;2&#125; R $</span><br></pre></td></tr></table></figure></p>
+<p>$ \sum_{i=1}^n \frac{1}{i^2} \quad and \quad \prod_{i=1}^n \frac{1}{i^2} \quad and \quad \bigcup_{i=1}^{2} R $</p>
+<h2 id="希腊字母"><a href="#希腊字母" class="headerlink" title="希腊字母"></a>希腊字母</h2><p>输入 \小写希腊字母英文全称 和 \首字母大写希腊字母英文全称 代表小写和大写希腊字母。对于大写希腊字母与现有字母相同的，直接输入大写字母即可。</p>
+<p>部分字母变量有其他形式，以\var-开头。</p>
+<h2 id="参考网站"><a href="#参考网站" class="headerlink" title="参考网站"></a>参考网站</h2><ul>
+<li>若找不到需要的符号，可使用\rm{Detexify^2}来画出想要的符号。Detexify网站<a href="http://detexify.kirelabs.org/classify.html" target="_blank" rel="noopener">http://detexify.kirelabs.org/classify.html</a></li>
+<li><a href="http://latex.codecogs.com/eqneditor/editor.php" target="_blank" rel="noopener">Markdown中Latex风格公式在线输入：http://latex.codecogs.com/eqneditor/editor.php</a></li>
+</ul>
 
       
 
@@ -323,7 +348,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#插入公式"><span class="toc-number">1.</span> <span class="toc-text">插入公式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#占位符"><span class="toc-number">2.</span> <span class="toc-text">占位符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#上下标"><span class="toc-number">3.</span> <span class="toc-text">上下标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输入特殊符号"><span class="toc-number">4.</span> <span class="toc-text">输入特殊符号</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#插入公式"><span class="toc-number">1.</span> <span class="toc-text">插入公式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#占位符"><span class="toc-number">2.</span> <span class="toc-text">占位符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#上下标"><span class="toc-number">3.</span> <span class="toc-text">上下标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#括号和分隔符"><span class="toc-number">4.</span> <span class="toc-text">括号和分隔符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分数"><span class="toc-number">5.</span> <span class="toc-text">分数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开方"><span class="toc-number">6.</span> <span class="toc-text">开方</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#公式中的省略号"><span class="toc-number">7.</span> <span class="toc-text">公式中的省略号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#公式矢量"><span class="toc-number">8.</span> <span class="toc-text">公式矢量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#积分"><span class="toc-number">9.</span> <span class="toc-text">积分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#极限"><span class="toc-number">10.</span> <span class="toc-text">极限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#累加和累乘"><span class="toc-number">11.</span> <span class="toc-text">累加和累乘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#希腊字母"><span class="toc-number">12.</span> <span class="toc-text">希腊字母</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考网站"><span class="toc-number">13.</span> <span class="toc-text">参考网站</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -484,11 +509,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IPM</a>
+                <a href="javascript:void(0)" class="js-tag color4">ACO</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -496,7 +517,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ACO</a>
+                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">IPM</a>
               </li>
             
             <div class="clearfix"></div>
