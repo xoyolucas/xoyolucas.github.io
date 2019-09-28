@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="xoyolucas&#39;s blog">
 <meta property="og:description" content="插入公式行中公式和独立公式，行中公式放在文中与其它文字混编，独立公式单独成行。  行中公式：将公式插入到本行内 1$公式内容$，如：$x+y$  独行公式：将公式插入到新的一行内，并且居中 1$公式内容$，如：$xyz$">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-28T15:44:19.747Z">
+<meta property="og:updated_time" content="2019-09-28T16:46:28.394Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Markdown公式">
 <meta name="twitter:description" content="插入公式行中公式和独立公式，行中公式放在文中与其它文字混编，独立公式单独成行。  行中公式：将公式插入到本行内 1$公式内容$，如：$x+y$  独行公式：将公式插入到新的一行内，并且居中 1$公式内容$，如：$xyz$">
@@ -190,7 +190,7 @@
 </ul>
 <a id="more"></a>
 <ul>
-<li>公式自动编号, 自动编号后的公式可在全文任意处使用 ‘\eqref{eq: 公式名}’ 语句引用。<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;equation&#125;</span><br><span class="line">数学公式</span><br><span class="line">\label&#123;eq:当前公式名&#125;</span><br><span class="line">\end&#123;equation&#125;</span><br></pre></td></tr></table></figure>
+<li>公式自动编号, 自动编号后的公式可在全文任意处使用 \eqref{eq: 公式名} 语句引用。<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;equation&#125;</span><br><span class="line">数学公式</span><br><span class="line">\label&#123;eq:当前公式名&#125;</span><br><span class="line">\end&#123;equation&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>若需要显示更大或更小的字符，在符号前插入 \large 或 \small 命令。</p>
@@ -242,7 +242,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">有时候要用 \left. 或 \right. 进行匹配而不显示本身。</span><br><span class="line">$ f(x,y,z) = 3y^2z \left( 3+\frac&#123;7x+5&#125;&#123;1+y^2&#125; \right) $</span><br></pre></td></tr></table></figure>
 <p>$ f(x,y,z) = 3y^2z \left( 3+\frac{7x+5}{1+y^2} \right) $</p>
 <h2 id="分数"><a href="#分数" class="headerlink" title="分数"></a>分数</h2><p>通常使用 \frac {分子} {分母} 命令产生一个分数，分数可嵌套。可直接输入 \frac ab 来快速生成一个。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">如果分式很复杂，可使用分子\over分母命令，此时分数仅有一层。</span><br><span class="line">$ \frac&#123;a-1&#125;&#123;b-1&#125; \quad + \quad &#123;a+1\over b+1&#125; $</span><br><span class="line">$ \left \frac&#123;\rm &#123;d&#125;u&#125;&#123;\rm &#123;d&#125;x&#125; \right |_&#123;x=0&#125; $</span><br></pre></td></tr></table></figure></p>
-<p>$ \frac{a-1}{b-1} \quad + \quad {a+1\over b+1} $<br>$ \left \frac{\rm {d}u}{\rm {d}x} \right |_{x=0} $ </p>
+<p>$ \frac{a-1}{b-1} \quad + \quad {a+1\over b+1} $<br>$ \left \frac{\rm d{u}}{\rm d{x}} \right|_{x=0} $ </p>
 <h2 id="开方"><a href="#开方" class="headerlink" title="开方"></a>开方</h2><p>使用 \sqrt [根指数，省略时为2] {被开方数} 命令输入开方。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ \sqrt&#123;2&#125; \quad and \quad \sqrt[n]&#123;3&#125; $</span><br></pre></td></tr></table></figure></p>
 <p>$ \sqrt{2} \quad and \quad \sqrt[n]{3} $</p>
 <h2 id="公式中的省略号"><a href="#公式中的省略号" class="headerlink" title="公式中的省略号"></a>公式中的省略号</h2><p>数学公式中常见的两种省略号，\ldots表示与文本底线对齐的省略号，\cdots表示与文本中线对齐的省略号。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ f(x_1,x_2,\underbrace&#123;\ldots&#125;_&#123;\rm ldots&#125; ,x_n) = x_1^2 + x_2^2 + \underbrace&#123;\cdots&#125;_&#123;\rm cdots&#125; + x_n^2 $</span><br></pre></td></tr></table></figure></p>
@@ -255,8 +255,8 @@
 <p>$ \lim_{n \to +\infty} \frac{1}{n(n+1)} \quad and \quad \lim_{x\leftarrow{示例}} \frac{1}{n(n+1)} $</p>
 <h2 id="累加和累乘"><a href="#累加和累乘" class="headerlink" title="累加和累乘"></a>累加和累乘</h2><p>使用 \sum_{下标表达式}^{上标表达式} {累加表达式} 来输入一个累加。<br>使用 \prod \bigcup \bigcap 来分别输入累乘、并集和交集。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ \sum_&#123;i=1&#125;^n \frac&#123;1&#125;&#123;i^2&#125; \quad and \quad \prod_&#123;i=1&#125;^n \frac&#123;1&#125;&#123;i^2&#125; \quad and \quad \bigcup_&#123;i=1&#125;^&#123;2&#125; R $</span><br></pre></td></tr></table></figure></p>
 <p>$ \sum_{i=1}^n \frac{1}{i^2} \quad and \quad \prod_{i=1}^n \frac{1}{i^2} \quad and \quad \bigcup_{i=1}^{2} R $</p>
-<h2 id="希腊字母"><a href="#希腊字母" class="headerlink" title="希腊字母"></a>希腊字母</h2><p>输入 \小写希腊字母英文全称 和 \首字母大写希腊字母英文全称 代表小写和大写希腊字母。对于大写希腊字母与现有字母相同的，直接输入大写字母即可。</p>
-<p>部分字母变量有其他形式，以\var-开头。</p>
+<h2 id="希腊字母"><a href="#希腊字母" class="headerlink" title="希腊字母"></a>希腊字母</h2><p>输入 \小写希腊字母英文全称 和 \首字母大写希腊字母英文全称 代表小写和大写希腊字母。对于大写希腊字母与现有字母相同的，直接输入大写字母即可。<br>输入|显示|输入|显示|输入|显示|输入|显示<br>:–:|:–:|:–:|:–:|:–:|:–:|:–:|:–:<br>\alpha|$\alpha$|A|$A$|\beta|$\beta$|B|$B$<br>\gamma|$\gamma$|\Gamma|$\Gamma$|\delta|$\delta$|\Delta|$\Delta$<br>\epsilon|$\epsilon$|E|$E$|\zeta|$\zeta$|Z|$Z$<br>\eta|$\eta$|H|$H$|\theta|$\theta$|\Theta|$\Theta$<br>\iota|$\iota$|I|$I$|\kappa|$\kappa$|K|$K$<br>\lambda|$\lambda$|\Lambda|$\Lambda$|\mu|$\mu$|M|$M$<br>\nu|$\nu$|N|$N$|\xi|$\xi$|\Xi|$\Xi$<br>o|$o$|O|$O$|\pi|$\pi$|\Pi|$\Pi$<br>\rho|$\rho$|P|$P$|\sigma|$\sigma$|\Sigma|$\Sigma$<br>\tau|$\tau$|T|$T$|\upsilon|$\upsilon$|\Upsilon|$\Upsilon$<br>\phi|$\phi$|\Phi|$\Phi$|\chi|$\chi$|X|$X$<br>\psi|$\psi$|\Psi|$\Psi$|\omega|$\omega$|\Omega|$\Omega$</p>
+<p>部分字母变量有其他形式，以\var-开头。<br>小写形式|大写形式|变量形式|显示<br>:–:|:–:|:–:|:–:<br>\epsilon|E|\varepsilon|$\epsilon$ $\mid E$ $\mid \varepsilon$<br>\theta|\Theta|\vartheta|$\theta$ $\mid \Theta$ $\mid \vartheta$<br>\rho|P|\varrho|$\rho$ $\mid P$ $\mid \varrho$<br>\sigma|\Sigma|\varsigma|$\sigma$ $\mid \Sigma$ $\mid \varsigma$<br>\phi|\Phi|\varphi|$\phi$ $\mid \Phi$ $\mid \varphi$</p>
 <h2 id="参考网站"><a href="#参考网站" class="headerlink" title="参考网站"></a>参考网站</h2><ul>
 <li>若找不到需要的符号，可使用\rm{Detexify^2}来画出想要的符号。Detexify网站<a href="http://detexify.kirelabs.org/classify.html" target="_blank" rel="noopener">http://detexify.kirelabs.org/classify.html</a></li>
 <li><a href="http://latex.codecogs.com/eqneditor/editor.php" target="_blank" rel="noopener">Markdown中Latex风格公式在线输入：http://latex.codecogs.com/eqneditor/editor.php</a></li>
@@ -533,11 +533,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
               </li>
              
               <li class="article-tag-list-item">
