@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="xoyolucas&#39;s blog">
 <meta property="og:description" content="粒子群算法的概念粒子群优化算法(PSO Particle swarm optimization)是一种进化计算技术(evolutionary computation),和蚁群算法，鱼群算法一样是一种群体智能的优化算法。算法的思想源于对鸟群觅食的行为研究，最早由Kennedy和Eberhart在1995年提出的。 粒子群优化算法的基本思想：是通过群体中个体之间的协作和信息共享来寻找最优解。用粒子来模">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-31T17:05:50.608Z">
+<meta property="og:updated_time" content="2019-10-31T17:10:28.625Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="粒子群优化算法">
 <meta name="twitter:description" content="粒子群算法的概念粒子群优化算法(PSO Particle swarm optimization)是一种进化计算技术(evolutionary computation),和蚁群算法，鱼群算法一样是一种群体智能的优化算法。算法的思想源于对鸟群觅食的行为研究，最早由Kennedy和Eberhart在1995年提出的。 粒子群优化算法的基本思想：是通过群体中个体之间的协作和信息共享来寻找最优解。用粒子来模">
@@ -184,7 +184,7 @@
 <h2 id="PSO算法的基本流程"><a href="#PSO算法的基本流程" class="headerlink" title="PSO算法的基本流程"></a>PSO算法的基本流程</h2><ol>
 <li>初始化设置最大迭代次数，目标函数的自变量个数，粒子的最大速度，位置信息为整个搜索空间，在速度区间和搜索空间上随机初始化速度和位置，设置粒子群规模为M，每个粒子随机初始化一个速度。</li>
 <li>个体极值与全局最优解，定义适应度函数，个体极值为每个粒子找到的最优解，从这些最优解找到一个全局值，为本次全局最优解。与历史全局最优比较，进行更新。</li>
-<li>更新速度和位置，粒子在解空间中运动，通过追踪个体极值Pbest和群体极值Gbest更新个体位置<br>$$ v^k_id=wv^{k-1}_{id}+c_1r_1(pbest_{id}-x^{k-1}_{id})+c_2r_2(gbest_d-x^{k-1}<em>{id}) $$<br>$$ x^k</em>{id}=x^{k-1}<em>{id}+v^{k-1}</em>{id} $$</li>
+<li>更新速度和位置，粒子在解空间中运动，通过追踪个体极值Pbest和群体极值Gbest更新个体位置<br>$$v^k_{id}=wv^{k-1}_{id}+c_1r_1(pbest_{id}-x^{k-1}_{id})+c_2r_2(gbest_d-x^{k-1}<em>{id})$$<br>$$x^k</em>{id}=x^{k-1}<em>{id}+v^{k-1}</em>{id}$$</li>
 <li>终止条件： (1)达到设定迭代次数； (2)迭代次数之间的差值满足最小界限</li>
 </ol>
 <h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><p>PSO的优势：在于简单容易实现并且没有许多参数的调节。目前已被广泛应用于函数优化、神经网络训练、模糊系统控制以及其他遗传算法的应用领域。</p>
@@ -496,11 +496,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IPM</a>
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+                <a href="javascript:void(0)" class="js-tag color4">IPM</a>
               </li>
              
               <li class="article-tag-list-item">
