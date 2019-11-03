@@ -6,22 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hexo中gitment的配置 | xoyolucas&#39;s blog</title>
+  <title>Archives: 2019/11 | xoyolucas&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="注册OAuth Application先注册一个新的OAuth Application。其他内容可以随意填写，但要确保填入正确的 callback URL(博客的域名，如Hexo博客部署到Github, 域名”http://xoyolucas.github.io&amp;quot;)， 注册成功后生成client_id及client_secret。">
-<meta name="keywords" content="Hexo">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Hexo中gitment的配置">
-<meta property="og:url" content="http://yoursite.com/2019/10/21/Hexo中gitment的配置/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="xoyolucas&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/archives/2019/11/index.html">
 <meta property="og:site_name" content="xoyolucas&#39;s blog">
-<meta property="og:description" content="注册OAuth Application先注册一个新的OAuth Application。其他内容可以随意填写，但要确保填入正确的 callback URL(博客的域名，如Hexo博客部署到Github, 域名”http://xoyolucas.github.io&amp;quot;)， 注册成功后生成client_id及client_secret。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2019/10/21/Hexo中gitment的配置/gitment.JPG">
-<meta property="og:updated_time" content="2019-10-27T07:59:07.615Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo中gitment的配置">
-<meta name="twitter:description" content="注册OAuth Application先注册一个新的OAuth Application。其他内容可以随意填写，但要确保填入正确的 callback URL(博客的域名，如Hexo博客部署到Github, 域名”http://xoyolucas.github.io&amp;quot;)， 注册成功后生成client_id及client_secret。">
-<meta name="twitter:image" content="http://yoursite.com/2019/10/21/Hexo中gitment的配置/gitment.JPG">
+<meta name="twitter:title" content="xoyolucas&#39;s blog">
   
     <link rel="alternative" href="/atom.xml" title="xoyolucas&#39;s blog" type="application/atom+xml">
   
@@ -161,192 +154,71 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Hexo中gitment的配置" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Hexo中gitment的配置
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/11/03/C-14新特性/" class="archive-article-date">
+  	<time datetime="2019-11-03T10:00:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-03</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/11/03/C-14新特性/">C++14新特性</a>
     </h1>
   
 
-        
-        <a href="/2019/10/21/Hexo中gitment的配置/" class="archive-article-date">
-  	<time datetime="2019-10-20T16:27:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="注册OAuth-Application"><a href="#注册OAuth-Application" class="headerlink" title="注册OAuth Application"></a>注册OAuth Application</h2><p>先注册一个新的<a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">OAuth Application</a>。其他内容可以随意填写，但要确保填入正确的 callback URL(博客的域名，如Hexo博客部署到Github, 域名”<a href="http://xoyolucas.github.io&quot;)，" target="_blank" rel="noopener">http://xoyolucas.github.io&quot;)，</a> 注册成功后生成client_id及client_secret。<br><a id="more"></a><br><img src="/2019/10/21/Hexo中gitment的配置/gitment.JPG" alt="OAuth Application注册" title="OAuth Application注册"></p>
-<h2 id="Gitment配置"><a href="#Gitment配置" class="headerlink" title="Gitment配置"></a>Gitment配置</h2><p>git客户端在博客目录下执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save gitment</span><br></pre></td></tr></table></figure></p>
-<p>在主题配置文件_config.yml配置<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#yilla主题</span></span><br><span class="line"><span class="attr">gitment_owner:</span> <span class="string">'xoyolucas'</span>  <span class="comment">#你的 GitHub ID</span></span><br><span class="line"><span class="attr">gitment_repo:</span> <span class="string">'blog_gitment'</span>  <span class="comment">#存储评论的 repo</span></span><br><span class="line"><span class="attr">gitment_oauth:</span></span><br><span class="line"><span class="attr">  client_id:</span> <span class="string">'2636b6dc4277d28ba25a'</span>  <span class="comment">#client ID</span></span><br><span class="line"><span class="attr">  client_secret:</span> <span class="string">'44deab42854b59e88df97698a3d883d5f2c02194'</span>  <span class="comment">#client secret</span></span><br><span class="line"><span class="string">///////////////////////////////////或者////////////////////////////////////////</span></span><br><span class="line"><span class="attr">gitment:</span> <span class="attr">enable:</span> <span class="literal">true</span> <span class="comment"># 是否开启gitment评论系统 </span></span><br><span class="line"><span class="attr">mint:</span> <span class="literal">true</span> <span class="comment"># </span></span><br><span class="line"><span class="attr">count:</span> <span class="literal">true</span> <span class="comment"># 是否显示评论数 </span></span><br><span class="line"><span class="attr">lazy:</span> <span class="literal">true</span> <span class="comment"># 懒加载，设置为ture时需手动展开评论 </span></span><br><span class="line"><span class="attr">cleanly:</span> <span class="literal">true</span> <span class="comment"># 是否隐藏'Powered by ...' </span></span><br><span class="line"><span class="attr">language:</span> <span class="string">en</span> <span class="comment"># 语言，置空则随主题的语言 </span></span><br><span class="line"><span class="attr">github_user:</span>  <span class="comment"># Github用户名 </span></span><br><span class="line"><span class="attr">github_repo:</span>  <span class="comment"># 在Github新建一个仓库用于存放评论，这是仓库名 </span></span><br><span class="line"><span class="attr">client_id:</span>  <span class="comment"># 注册OAuth Application时生成 </span></span><br><span class="line"><span class="attr">client_secret:</span>  <span class="comment"># 注册OAuth Application时生成 </span></span><br><span class="line"><span class="attr">proxy_gateway:</span> <span class="comment"># Address of api proxy</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="初始化评论"><a href="#初始化评论" class="headerlink" title="初始化评论"></a>初始化评论</h2><p>页面发布后，你需要访问页面并使用你的 GitHub 账号登录，点击初始化按钮。</p>
-<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><ol>
-<li>repo: ‘The repo to store comments</li>
-<li>Error: Not Found问题</li>
-<li>Error: Comments Not Initialized</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Language//" class="article-tag-list-link color4">Language</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
-      
 
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/10/21/Hexo中gitment的配置/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/10/27/c-11新特性/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          c++11新特性
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/09/12/Markdown公式/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Markdown公式</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#注册OAuth-Application"><span class="toc-number">1.</span> <span class="toc-text">注册OAuth Application</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gitment配置"><span class="toc-number">2.</span> <span class="toc-text">Gitment配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#初始化评论"><span class="toc-number">3.</span> <span class="toc-text">初始化评论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遇到的问题"><span class="toc-number">4.</span> <span class="toc-text">遇到的问题</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
-  <div id="gitment-ctn"></div> 
-<link rel="stylesheet" href="https://www.wenjunjiang.win/css/gitment.css">
-<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
-<script>
-var gitment = new Gitment({
-  id: "http://yoursite.com/2019/10/21/Hexo中gitment的配置/",
-  owner: 'xoyolucas',
-  repo: 'blog_gitment',
-  oauth: {
-    client_id: '2636b6dc4277d28ba25a',
-    client_secret: '44deab42854b59e88df97698a3d883d5f2c02194',
-  },
-})
-gitment.render('gitment-ctn')
-</script>
-  
+    
 
 
           </div>
@@ -369,8 +241,8 @@ gitment.render('gitment-ctn')
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
