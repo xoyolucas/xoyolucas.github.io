@@ -6,20 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>内点法IPM | xoyolucas&#39;s blog</title>
+  <title>Tag: BFS | xoyolucas&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="内点法简介内点法(Interior Point Method)是一种求解线性规划或非线性凸优化问题的算法。它是由John von Neumann发明的，他利用戈尔丹的线性齐次系统提出了这种新的求解线性规划的方法。后被Narendra Karmarkar于1984年推广应用到线性规划，即Karmarkar算法。内点法属于约束优化算法，约束优化算法的基本思想是：通过引入效用函数的方法将约束优化问题转换">
-<meta name="keywords" content="IPM">
-<meta property="og:type" content="article">
-<meta property="og:title" content="内点法IPM">
-<meta property="og:url" content="http://yoursite.com/2019/09/08/内点法IPM/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="xoyolucas&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/tags/BFS/index.html">
 <meta property="og:site_name" content="xoyolucas&#39;s blog">
-<meta property="og:description" content="内点法简介内点法(Interior Point Method)是一种求解线性规划或非线性凸优化问题的算法。它是由John von Neumann发明的，他利用戈尔丹的线性齐次系统提出了这种新的求解线性规划的方法。后被Narendra Karmarkar于1984年推广应用到线性规划，即Karmarkar算法。内点法属于约束优化算法，约束优化算法的基本思想是：通过引入效用函数的方法将约束优化问题转换">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-14T17:16:20.839Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="内点法IPM">
-<meta name="twitter:description" content="内点法简介内点法(Interior Point Method)是一种求解线性规划或非线性凸优化问题的算法。它是由John von Neumann发明的，他利用戈尔丹的线性齐次系统提出了这种新的求解线性规划的方法。后被Narendra Karmarkar于1984年推广应用到线性规划，即Karmarkar算法。内点法属于约束优化算法，约束优化算法的基本思想是：通过引入效用函数的方法将约束优化问题转换">
+<meta name="twitter:title" content="xoyolucas&#39;s blog">
   
     <link rel="alternative" href="/atom.xml" title="xoyolucas&#39;s blog" type="application/atom+xml">
   
@@ -159,60 +154,52 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-内点法IPM" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      内点法IPM
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/11/05/广度优先搜索和深度优先搜索/" class="archive-article-date">
+  	<time datetime="2019-11-04T16:08:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-05</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/11/05/广度优先搜索和深度优先搜索/">广度优先搜索和深度优先搜索</a>
     </h1>
   
 
-        
-        <a href="/2019/09/08/内点法IPM/" class="archive-article-date">
-  	<time datetime="2019-09-08T12:37:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="内点法简介"><a href="#内点法简介" class="headerlink" title="内点法简介"></a>内点法简介</h2><p><strong><em>内点法(Interior Point Method)</em></strong>是一种求解线性规划或非线性凸优化问题的算法。它是由John von Neumann发明的，他利用戈尔丹的线性齐次系统提出了这种新的求解线性规划的方法。后被Narendra Karmarkar于1984年推广应用到线性规划，即Karmarkar算法。<br>内点法属于约束优化算法，约束优化算法的基本思想是：<strong>通过引入效用函数的方法将约束优化问题转换成无约束问题</strong>，再利用优化迭代过程不断地更新效用函数，以使得算法收敛。相当于在可行域的边界筑起一道很高的“围墙”，当迭代点靠近边界时，目标函数徒然增大，以示惩罚，阻止迭代点穿越边界，这样就可以将最优解“挡”在可行域之内了。<br><a id="more"></a></p>
-<h2 id="内点法算法流程"><a href="#内点法算法流程" class="headerlink" title="内点法算法流程"></a>内点法算法流程</h2><h3 id="1-线性规划问题一般形式"><a href="#1-线性规划问题一般形式" class="headerlink" title="1. 线性规划问题一般形式"></a>1. 线性规划问题一般形式</h3><p>$$ min \ f(x)=c^Tx $$<br>$$ s.t. \ Ax&lt;=b $$<br>矩阵A为m*n的满秩矩阵，其中m为约束条件的个数，n为变量的个数。通常约束条件个数大于变量的个数，即m&gt;n。</p>
-<h3 id="2-线性规划问题转换"><a href="#2-线性规划问题转换" class="headerlink" title="2. 线性规划问题转换"></a>2. 线性规划问题转换</h3><p>内点法中有一个惩罚函数，用于描述凸集。与单纯形法不同，它通过遍历内部可行区域来搜索最优解。<br>线性规划问题进行转换<br>$$f(x) = c^Tx + \$$</p>
-<h3 id="3-计算函数的梯度和Hessian矩阵"><a href="#3-计算函数的梯度和Hessian矩阵" class="headerlink" title="3. 计算函数的梯度和Hessian矩阵"></a>3. 计算函数的梯度和Hessian矩阵</h3><p>为了求函数的极小值，根据微积分的经典结果，我们只需令函数的梯度等于零，然后计算梯度为零时对应的解x*<br>函数的梯度：  </p>
-<p>Hessian黑塞矩阵(多元函数的二阶偏导数构成的方阵)：<br>定义对角矩阵，<br>Hessian矩阵写成$H_f = A^TDA$的形式</p>
-<p>因为$D$为正定矩阵，所以Hessian矩阵至少为半正定矩阵。所以函数$f(x)$是一个凸函数。而且矩阵$D$为可逆矩阵，矩阵$A$满秩，所以Hessian矩阵为可逆矩阵。于是函数$f(x)$为强凸函数。计算$f’(x)=0$的根，可以用高效的牛顿迭代法。</p>
-<h3 id="4-牛顿迭代法计算"><a href="#4-牛顿迭代法计算" class="headerlink" title="4. 牛顿迭代法计算"></a>4. 牛顿迭代法计算</h3><p>牛顿迭代法（Newton’s method）又称为牛顿-拉夫逊（拉弗森）方法（Newton-Raphson method），它是牛顿在17世纪提出的一种在实数域和复数域上近似求解方程的方法。<br>多数方程不存在求根公式，因此求精确根非常困难，甚至不可能，从而寻找方程的近似根就显得特别重要。方法使用函数$f(x)$的泰勒级数的前面几项来寻找方程$f(x)=0$的根。牛顿迭代法是求方程根的重要方法之一，其最大优点是在方程$f(x)$的单根附近具有平方收敛，而且该法还可以用来求方程的重根、复根，此时线性收敛，但是可通过一些方法变成超线性收敛。该方法广泛用于计算机编程中。<br><strong>优点：</strong>二阶收敛，收敛速度快；<br><strong>缺点：</strong>牛顿法是一种迭代算法，每一步都需要求解目标函数的Hessian矩阵的逆矩阵，计算比较复杂。</p>
-<p><strong><em>步骤：</em></strong><br><a href="https://www.cnblogs.com/maybe2030/p/4751804.html" target="_blank" rel="noopener">https://www.cnblogs.com/maybe2030/p/4751804.html</a><br><a href="https://zhuanlan.zhihu.com/p/34426575" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/34426575</a></p>
-<h3 id="5-内点法例子"><a href="#5-内点法例子" class="headerlink" title="5. 内点法例子"></a>5. 内点法例子</h3><h2 id="内点法VS单纯形法"><a href="#内点法VS单纯形法" class="headerlink" title="内点法VS单纯形法"></a>内点法VS单纯形法</h2><ul>
-<li>线性规划单纯形法：通过一系列迭代达到最优解，迭代点沿着可行多面体的边界从一个顶点到另一个顶点，直到得到最优解。一般而言单纯形法每次迭代的开销相对内点法来说较小，但所需迭代次数较多。</li>
-<li>线性规划内点法：同样是通过一系列迭代达到最优解，但其是从多面体内部逐渐收敛到最优解。一般而言内点法每次迭代的开销相对单纯形法来说较大，但所需迭代次数较少。</li>
-</ul>
-<h2 id="拟牛顿法"><a href="#拟牛顿法" class="headerlink" title="拟牛顿法"></a>拟牛顿法</h2><p>拟牛顿法是求解非线性优化问题最有效的方法之一，于20世纪50年代由美国Argonne国家实验室的物理学家W.C.Davidon所提出来。Davidon设计的这种算法在当时看来是非线性优化领域最具创造性的发明之一。不久R. Fletcher和M. J. D. Powell证实了这种新的算法远比其他方法快速和可靠，使得非线性优化这门学科在一夜之间突飞猛进。</p>
-<p>拟牛顿法的本质思想是改善牛顿法每次需要求解复杂的Hessian矩阵的逆矩阵的缺陷，它使用正定矩阵来近似Hessian矩阵的逆，从而简化了运算的复杂度。拟牛顿法和最速下降法一样只要求每一步迭代时知道目标函数的梯度。通过测量梯度的变化，构造一个目标函数的模型使之足以产生超线性收敛性。这类方法大大优于最速下降法，尤其对于困难的问题。另外，因为拟牛顿法不需要二阶导数的信息，所以有时比牛顿法更为有效。如今，优化软件中包含了大量的拟牛顿算法用来解决无约束，约束，和大规模的优化问题。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">IPM</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">BFS</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DFS</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -225,142 +212,17 @@
 	</div>
 
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/08/内点法IPM/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/09/12/Markdown公式/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Markdown公式
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/09/05/粒子群算法/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">粒子群优化算法</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#内点法简介"><span class="toc-number">1.</span> <span class="toc-text">内点法简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内点法算法流程"><span class="toc-number">2.</span> <span class="toc-text">内点法算法流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-线性规划问题一般形式"><span class="toc-number">2.1.</span> <span class="toc-text">1. 线性规划问题一般形式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-线性规划问题转换"><span class="toc-number">2.2.</span> <span class="toc-text">2. 线性规划问题转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-计算函数的梯度和Hessian矩阵"><span class="toc-number">2.3.</span> <span class="toc-text">3. 计算函数的梯度和Hessian矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-牛顿迭代法计算"><span class="toc-number">2.4.</span> <span class="toc-text">4. 牛顿迭代法计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-内点法例子"><span class="toc-number">2.5.</span> <span class="toc-text">5. 内点法例子</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内点法VS单纯形法"><span class="toc-number">3.</span> <span class="toc-text">内点法VS单纯形法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拟牛顿法"><span class="toc-number">4.</span> <span class="toc-text">拟牛顿法</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
-  <div id="gitment-ctn"></div> 
-<link rel="stylesheet" href="https://www.wenjunjiang.win/css/gitment.css">
-<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
-<script>
-var gitment = new Gitment({
-  id: "http://yoursite.com/2019/09/08/内点法IPM/",
-  owner: 'xoyolucas',
-  repo: 'blog_gitment',
-  oauth: {
-    client_id: '2636b6dc4277d28ba25a',
-    client_secret: '44deab42854b59e88df97698a3d883d5f2c02194',
-  },
-})
-gitment.render('gitment-ctn')
-</script>
-  
+    
 
 
           </div>
@@ -383,9 +245,9 @@ gitment.render('gitment-ctn')
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
