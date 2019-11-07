@@ -8,20 +8,20 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>广度优先搜索和深度优先搜索 | xoyolucas&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="图的表示邻接链表，可扩展性强，鲁棒性高，但无法快速判断link(u,v)是否为图中的一条边。邻接矩阵，表示方法简单，可快速判断link(u,v)是否存在，但空间需求稍大。  稀疏图：邻接链表,空间复杂度：$\Theta(V+E)$; 稠密图：邻接矩阵,空间复杂度：$\Theta(V^2)$  广度优先搜索Prim最小生成树和Dijkstra单源最短路算法都是类似思想。构建“广度优先树”，以源节点s">
+  <meta name="description" content="图的表示邻接链表，可扩展性强，鲁棒性高，但无法快速判断link(u,v)是否为图中的一条边。邻接矩阵，表示方法简单，可快速判断link(u,v)是否存在，但空间需求稍大。  稀疏图：邻接链表,空间复杂度：$\Theta(V+E)$; 稠密图：邻接矩阵,空间复杂度：$\Theta(V^2)$&amp;nbsp;  广度优先搜索Prim最小生成树和Dijkstra单源最短路算法都是类似思想。构建“广度优先树”">
 <meta name="keywords" content="BFS,DFS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="广度优先搜索和深度优先搜索">
 <meta property="og:url" content="http://yoursite.com/2019/11/05/广度优先搜索和深度优先搜索/index.html">
 <meta property="og:site_name" content="xoyolucas&#39;s blog">
-<meta property="og:description" content="图的表示邻接链表，可扩展性强，鲁棒性高，但无法快速判断link(u,v)是否为图中的一条边。邻接矩阵，表示方法简单，可快速判断link(u,v)是否存在，但空间需求稍大。  稀疏图：邻接链表,空间复杂度：$\Theta(V+E)$; 稠密图：邻接矩阵,空间复杂度：$\Theta(V^2)$  广度优先搜索Prim最小生成树和Dijkstra单源最短路算法都是类似思想。构建“广度优先树”，以源节点s">
+<meta property="og:description" content="图的表示邻接链表，可扩展性强，鲁棒性高，但无法快速判断link(u,v)是否为图中的一条边。邻接矩阵，表示方法简单，可快速判断link(u,v)是否存在，但空间需求稍大。  稀疏图：邻接链表,空间复杂度：$\Theta(V+E)$; 稠密图：邻接矩阵,空间复杂度：$\Theta(V^2)$&amp;nbsp;  广度优先搜索Prim最小生成树和Dijkstra单源最短路算法都是类似思想。构建“广度优先树”">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/11/05/广度优先搜索和深度优先搜索/BFS.JPG">
 <meta property="og:image" content="http://yoursite.com/2019/11/05/广度优先搜索和深度优先搜索/DFS.JPG">
-<meta property="og:updated_time" content="2019-11-06T17:10:37.590Z">
+<meta property="og:updated_time" content="2019-11-07T15:24:47.208Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="广度优先搜索和深度优先搜索">
-<meta name="twitter:description" content="图的表示邻接链表，可扩展性强，鲁棒性高，但无法快速判断link(u,v)是否为图中的一条边。邻接矩阵，表示方法简单，可快速判断link(u,v)是否存在，但空间需求稍大。  稀疏图：邻接链表,空间复杂度：$\Theta(V+E)$; 稠密图：邻接矩阵,空间复杂度：$\Theta(V^2)$  广度优先搜索Prim最小生成树和Dijkstra单源最短路算法都是类似思想。构建“广度优先树”，以源节点s">
+<meta name="twitter:description" content="图的表示邻接链表，可扩展性强，鲁棒性高，但无法快速判断link(u,v)是否为图中的一条边。邻接矩阵，表示方法简单，可快速判断link(u,v)是否存在，但空间需求稍大。  稀疏图：邻接链表,空间复杂度：$\Theta(V+E)$; 稠密图：邻接矩阵,空间复杂度：$\Theta(V^2)$&amp;nbsp;  广度优先搜索Prim最小生成树和Dijkstra单源最短路算法都是类似思想。构建“广度优先树”">
 <meta name="twitter:image" content="http://yoursite.com/2019/11/05/广度优先搜索和深度优先搜索/BFS.JPG">
   
     <link rel="alternative" href="/atom.xml" title="xoyolucas&#39;s blog" type="application/atom+xml">
@@ -185,32 +185,14 @@
         <h2 id="图的表示"><a href="#图的表示" class="headerlink" title="图的表示"></a>图的表示</h2><p>邻接链表，可扩展性强，鲁棒性高，但无法快速判断link(u,v)是否为图中的一条边。<br>邻接矩阵，表示方法简单，可快速判断link(u,v)是否存在，但空间需求稍大。</p>
 <ul>
 <li>稀疏图：邻接链表,空间复杂度：$\Theta(V+E)$;</li>
-<li>稠密图：邻接矩阵,空间复杂度：$\Theta(V^2)$</li>
+<li>稠密图：邻接矩阵,空间复杂度：$\Theta(V^2)$<br>&nbsp;</li>
 </ul>
 <h2 id="广度优先搜索"><a href="#广度优先搜索" class="headerlink" title="广度优先搜索"></a>广度优先搜索</h2><p>Prim最小生成树和Dijkstra单源最短路算法都是类似思想。<br>构建“广度优先树”，以源节点s为根节点，将根节点s放入已访问队列，此时已访问队列只有节点s。取队列中的点s，扫描节点s的邻接链表，将所有邻接点加入队列中，将边加入该树中。迭代遍历下一个列表中点的邻接链表，重复此过程，每个节点最多入队一次。<br>广度优先搜索的运行时间为$O(V + E)$，其中V为顶点数，E为边数。</p>
 <h3 id="BFS流程示例"><a href="#BFS流程示例" class="headerlink" title="BFS流程示例"></a>BFS流程示例</h3><p><img src="/2019/11/05/广度优先搜索和深度优先搜索/BFS.JPG" alt="BFS示例"></p>
-<h3 id="BFS伪代码："><a href="#BFS伪代码：" class="headerlink" title="BFS伪代码："></a>BFS伪代码：</h3><pre><code class="c++">BFS(G,s)
-<span class="keyword">for</span> each vertex u∈G.V-{s}
-    u.color = WHITE
-    u.d = ∞
-    u.π = NIL
-s.color = GRAY
-s.d = <span class="number">0</span>
-s.π = NIL
-Q = ∅
-ENQUEUE(Q,s)
-<span class="keyword">while</span>(Q ≠ ∅)
-    u = DEQUEUE(Q)
-    <span class="keyword">for</span> each v ∈ G.Adj[u]
-        <span class="keyword">if</span> v.color == WHITE
-            v.color = GRAY
-            v.d = u.d + <span class="number">1</span>
-            v.π = u
-            ENQUEUE(Q,v)
-    u.color = BLACK
-</code></pre>
-<h2 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h2><h3 id="DFS流程示例"><a href="#DFS流程示例" class="headerlink" title="DFS流程示例"></a>DFS流程示例</h3><p><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS.JPG" alt="DFS示例"></p>
-
+<h3 id="BFS伪代码"><a href="#BFS伪代码" class="headerlink" title="BFS伪代码"></a>BFS伪代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">BFS(G,s)</span><br><span class="line"><span class="keyword">for</span> each vertex u∈G.V-&#123;s&#125;</span><br><span class="line">    u.color = WHITE</span><br><span class="line">    u.d = ∞</span><br><span class="line">    u.π = NIL</span><br><span class="line">s.color = GRAY</span><br><span class="line">s.d = <span class="number">0</span></span><br><span class="line">s.π = NIL</span><br><span class="line">Q = ∅</span><br><span class="line">ENQUEUE(Q,s)</span><br><span class="line"><span class="keyword">while</span>(Q ≠ ∅)</span><br><span class="line">    u = DEQUEUE(Q)</span><br><span class="line">    <span class="keyword">for</span> each v ∈ G.Adj[u]</span><br><span class="line">        <span class="keyword">if</span> v.color == WHITE</span><br><span class="line">            v.color = GRAY</span><br><span class="line">            v.d = u.d + <span class="number">1</span></span><br><span class="line">            v.π = u</span><br><span class="line">            ENQUEUE(Q,v)</span><br><span class="line">    u.color = BLACK</span><br></pre></td></tr></table></figure>
+<p>假设一个节点衍生出来的相邻节点平均的个数是N个，当起点开始搜索的时候，队列有一个节点，当起点pop后，把它相邻的节点push，那么队列就有N个节点，当下一层的搜索中再加入元素到队列的时候，节点数达到了N2，你可以想想，一旦N是一个比较大的数的时候，这个树的层次又比较深，那这个队列就得需要很大的内存空间了。于是广度优先搜索的缺点出来了：在树的层次较深&amp;子节点数较多的情况下，消耗内存十分严重。广度优先搜索适用于节点的子节点数量不多，并且树的层次不会太深的情况。<br>&nbsp;</p>
+<h2 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h2><h3 id="DFS流程示例"><a href="#DFS流程示例" class="headerlink" title="DFS流程示例"></a>DFS流程示例</h3><p><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS.JPG" alt="DFS示例"><br><!-- <img src="DFS.JPG" width="80%"> --></p>
+<h3 id="DFS伪代码"><a href="#DFS伪代码" class="headerlink" title="DFS伪代码"></a>DFS伪代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">procedure <span class="title">DFS</span><span class="params">(G)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> 每个顶点u∈V[G] <span class="keyword">do</span></span><br><span class="line">        color[u]←White;</span><br><span class="line">        π[u]←NIL;</span><br><span class="line">    time←<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> 每个顶点u∈V[G] <span class="keyword">do</span></span><br><span class="line">        <span class="keyword">if</span> color[u]=White</span><br><span class="line">            then DFS_Visit(G,u);</span><br><span class="line"></span><br><span class="line"><span class="function">procedure <span class="title">DFS_Visit</span><span class="params">(G,u)</span></span>;</span><br><span class="line">    color[u]←Gray;              Δ白色结点u已被发现</span><br><span class="line">    d[u]←time←time+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> 每个顶点v∈Adj[u] <span class="keyword">do</span>     Δ探寻边(u,v)</span><br><span class="line">       <span class="keyword">if</span> color[v]=White </span><br><span class="line">            π[v]←u;</span><br><span class="line">            DFS_Visit(G,v);</span><br><span class="line">    color[u]←Black;             Δ完成后置u为黑色</span><br><span class="line">    f[u]←time←time+<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -308,6 +290,15 @@ ENQUEUE(Q,s)
   
 <nav id="article-nav">
   
+    <a href="/2019/11/07/C-智能指针/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          C++智能指针
+        
+      </div>
+    </a>
+  
   
     <a href="/2019/11/03/C-14新特性/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">C++14新特性</div>
@@ -337,7 +328,7 @@ ENQUEUE(Q,s)
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#图的表示"><span class="toc-number">1.</span> <span class="toc-text">图的表示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#广度优先搜索"><span class="toc-number">2.</span> <span class="toc-text">广度优先搜索</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BFS流程示例"><span class="toc-number">2.1.</span> <span class="toc-text">BFS流程示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BFS伪代码："><span class="toc-number">2.2.</span> <span class="toc-text">BFS伪代码：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#深度优先搜索"><span class="toc-number">3.</span> <span class="toc-text">深度优先搜索</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DFS流程示例"><span class="toc-number">3.1.</span> <span class="toc-text">DFS流程示例</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#图的表示"><span class="toc-number">1.</span> <span class="toc-text">图的表示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#广度优先搜索"><span class="toc-number">2.</span> <span class="toc-text">广度优先搜索</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BFS流程示例"><span class="toc-number">2.1.</span> <span class="toc-text">BFS流程示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BFS伪代码"><span class="toc-number">2.2.</span> <span class="toc-text">BFS伪代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#深度优先搜索"><span class="toc-number">3.</span> <span class="toc-text">深度优先搜索</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DFS流程示例"><span class="toc-number">3.1.</span> <span class="toc-text">DFS流程示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DFS伪代码"><span class="toc-number">3.2.</span> <span class="toc-text">DFS伪代码</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -490,11 +481,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
+                <a href="javascript:void(0)" class="js-tag color2">C++;pointer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -502,7 +493,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">IPM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PSO</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -518,11 +517,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PSO</a>
+                <a href="javascript:void(0)" class="js-tag color4">ACO</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ACO</a>
+                <a href="javascript:void(0)" class="js-tag color3">C++;Smart pointer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++;Smart pointer；</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++;Smart pointer;</a>
               </li>
             
             <div class="clearfix"></div>
