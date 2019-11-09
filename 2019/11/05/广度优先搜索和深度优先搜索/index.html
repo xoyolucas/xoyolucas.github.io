@@ -18,7 +18,17 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/11/05/广度优先搜索和深度优先搜索/BFS.JPG">
 <meta property="og:image" content="http://yoursite.com/2019/11/05/广度优先搜索和深度优先搜索/DFS.JPG">
-<meta property="og:updated_time" content="2019-11-07T15:24:47.208Z">
+<meta property="og:image" content="http://yoursite.com/2019/11/05/广度优先搜索和深度优先搜索/DFS1.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/05/广度优先搜索和深度优先搜索/DFS2.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/05/广度优先搜索和深度优先搜索/DFS3.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/05/广度优先搜索和深度优先搜索/DFS4.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/05/广度优先搜索和深度优先搜索/DFS5.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/05/广度优先搜索和深度优先搜索/DFS6.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/05/广度优先搜索和深度优先搜索/DFS7.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/05/广度优先搜索和深度优先搜索/DFS8.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/05/广度优先搜索和深度优先搜索/DFS9.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/05/广度优先搜索和深度优先搜索/DFS10.png">
+<meta property="og:updated_time" content="2019-11-09T16:01:05.591Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="广度优先搜索和深度优先搜索">
 <meta name="twitter:description" content="图的表示邻接链表，可扩展性强，鲁棒性高，但无法快速判断link(u,v)是否为图中的一条边。邻接矩阵，表示方法简单，可快速判断link(u,v)是否存在，但空间需求稍大。  稀疏图：邻接链表,空间复杂度：$\Theta(V+E)$; 稠密图：邻接矩阵,空间复杂度：$\Theta(V^2)$&amp;nbsp;  广度优先搜索Prim最小生成树和Dijkstra单源最短路算法都是类似思想。构建“广度优先树”">
@@ -190,8 +200,27 @@
 <h2 id="广度优先搜索"><a href="#广度优先搜索" class="headerlink" title="广度优先搜索"></a>广度优先搜索</h2><p>Prim最小生成树和Dijkstra单源最短路算法都是类似思想。<br>构建“广度优先树”，以源节点s为根节点，将根节点s放入已访问队列，此时已访问队列只有节点s。取队列中的点s，扫描节点s的邻接链表，将所有邻接点加入队列中，将边加入该树中。迭代遍历下一个列表中点的邻接链表，重复此过程，每个节点最多入队一次。<br>广度优先搜索的运行时间为$O(V + E)$，其中V为顶点数，E为边数。</p>
 <h3 id="BFS流程示例"><a href="#BFS流程示例" class="headerlink" title="BFS流程示例"></a>BFS流程示例</h3><p><img src="/2019/11/05/广度优先搜索和深度优先搜索/BFS.JPG" alt="BFS示例"></p>
 <h3 id="BFS伪代码"><a href="#BFS伪代码" class="headerlink" title="BFS伪代码"></a>BFS伪代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">BFS(G,s)</span><br><span class="line"><span class="keyword">for</span> each vertex u∈G.V-&#123;s&#125;</span><br><span class="line">    u.color = WHITE</span><br><span class="line">    u.d = ∞</span><br><span class="line">    u.π = NIL</span><br><span class="line">s.color = GRAY</span><br><span class="line">s.d = <span class="number">0</span></span><br><span class="line">s.π = NIL</span><br><span class="line">Q = ∅</span><br><span class="line">ENQUEUE(Q,s)</span><br><span class="line"><span class="keyword">while</span>(Q ≠ ∅)</span><br><span class="line">    u = DEQUEUE(Q)</span><br><span class="line">    <span class="keyword">for</span> each v ∈ G.Adj[u]</span><br><span class="line">        <span class="keyword">if</span> v.color == WHITE</span><br><span class="line">            v.color = GRAY</span><br><span class="line">            v.d = u.d + <span class="number">1</span></span><br><span class="line">            v.π = u</span><br><span class="line">            ENQUEUE(Q,v)</span><br><span class="line">    u.color = BLACK</span><br></pre></td></tr></table></figure>
-<p>假设一个节点衍生出来的相邻节点平均的个数是N个，当起点开始搜索的时候，队列有一个节点，当起点pop后，把它相邻的节点push，那么队列就有N个节点，当下一层的搜索中再加入元素到队列的时候，节点数达到了N2，你可以想想，一旦N是一个比较大的数的时候，这个树的层次又比较深，那这个队列就得需要很大的内存空间了。于是广度优先搜索的缺点出来了：在树的层次较深&amp;子节点数较多的情况下，消耗内存十分严重。广度优先搜索适用于节点的子节点数量不多，并且树的层次不会太深的情况。<br>&nbsp;</p>
-<h2 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h2><h3 id="DFS流程示例"><a href="#DFS流程示例" class="headerlink" title="DFS流程示例"></a>DFS流程示例</h3><p><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS.JPG" alt="DFS示例"><br><!-- <img src="DFS.JPG" width="80%"> --></p>
+<p>假设一个节点衍生出来的相邻节点平均的个数是N个，当起点开始搜索的时候，队列queue只有一个起点，当起点pop后，把它相邻的节点push，那么队列就有N个节点，当下一层的搜索中再加入元素到队列的时候，节点数达到了N2，你可以想想，一旦N是一个比较大的数的时候，这个树的层次又比较深，那这个队列就得需要很大的内存空间了。于是广度优先搜索的缺点出来了：在树的层次较深且子节点数较多的情况下，消耗内存十分严重。广度优先搜索适用于节点的子节点数量不多，并且树的层次不会太深的情况。<br>&nbsp;</p>
+<h2 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h2><p>深度优先搜索(DFS, Depth First Search)是一个针对图和树的遍历算法。DFS的实现方式和BFS大同小异，只是把queue换成了stack而已。stack后进先出LIFO(Last Input First Output)的特性，DFS的操作步骤如下： </p>
+<ol>
+<li>把起始点放入stack； </li>
+<li>从stack中访问栈顶的点；</li>
+<li>找出与此点邻接且尚未遍历的点，进行标记，然后全部放入stack中；</li>
+<li>如果此点没有未遍历的邻接点，则将此点从stack中弹出;</li>
+<li>重复2-4步骤，直到stack为空为止;</li>
+</ol>
+<h3 id="DFS流程示例"><a href="#DFS流程示例" class="headerlink" title="DFS流程示例"></a>DFS流程示例</h3><p><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS.JPG" alt="DFS示例"><br><!-- <img src="DFS.JPG" width="80%"> --><br>假定左分枝和右分枝中优先选择左分枝<br><strong>1. 将树节点(起点1)放入stack中，起点1标为已遍历；</strong><br><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS1.png" width="70%"></p>
+<p><strong>2. 访问栈顶元素节点1，找出节点1的邻接节点，选择节点2，标记为已遍历，放入stack。</strong><br><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS2.png" width="70%"></p>
+<p><strong>3. 从stack中取栈顶节点2，找出节点2的邻接节点，节点1已经标记，选择节点3并标记，放入stack中。</strong><br><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS3.png" width="70%"></p>
+<p><strong>4. 从stack中取栈顶节点3，找出节点2的邻接节点，节点2已经标记，选择节点4标记，放入stack中。</strong><br><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS4.png" width="70%"></p>
+<p><strong>5. 从stack中取栈顶节点4，找出节点4的邻接节点，节点3已经标记，选择节点5标记，放入stack中。</strong><br><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS5.png" width="70%"></p>
+<p><strong>6. 从stack中取出栈顶的节点5，找出与节点5邻接的节点，都已经标记过，则将节点5从stack中弹出。</strong><br><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS6.png" width="70%"></p>
+<p><strong>7. 当前stack栈顶节点是4，找出与节点4邻接的节点，选择还未标记的节点6，标记为已遍历，然后放入stack中；</strong><br><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS7.png" width="70%"></p>
+<p><strong>8. 当前stack栈顶的节点是6，找出与节点6邻接的节点，选择还未标记的节点7，标记为已遍历，然后放入stack中；</strong><br><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS8.png" width="70%"></p>
+<p><strong>9. 当前stack栈顶的节点是7，找出与节点7邻接的节点，没有未遍历的节点，将节点7从stack中弹出。</strong></p>
+<p><strong>10. 当前stack栈顶的节点是6，找出与节点6邻接的节点，选择还未标记的节点8，标记为已遍历，然后放入stack中；</strong><br><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS9.png" width="70%"></p>
+<p><strong>11. 当前stack栈顶的节点是8，找出与节点8邻接的节点，选择还未标记的节点9，标记为已遍历，然后放入stack中；</strong><br><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS10.png" width="70%"></p>
+<p><strong>12. 当前stack栈顶的节点是9，没有未遍历的邻接点，将节点9弹出，依次类推，直到栈为空；</strong></p>
 <h3 id="DFS伪代码"><a href="#DFS伪代码" class="headerlink" title="DFS伪代码"></a>DFS伪代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">procedure <span class="title">DFS</span><span class="params">(G)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> 每个顶点u∈V[G] <span class="keyword">do</span></span><br><span class="line">        color[u]←White;</span><br><span class="line">        π[u]←NIL;</span><br><span class="line">    time←<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> 每个顶点u∈V[G] <span class="keyword">do</span></span><br><span class="line">        <span class="keyword">if</span> color[u]=White</span><br><span class="line">            then DFS_Visit(G,u);</span><br><span class="line"></span><br><span class="line"><span class="function">procedure <span class="title">DFS_Visit</span><span class="params">(G,u)</span></span>;</span><br><span class="line">    color[u]←Gray;              Δ白色结点u已被发现</span><br><span class="line">    d[u]←time←time+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> 每个顶点v∈Adj[u] <span class="keyword">do</span>     Δ探寻边(u,v)</span><br><span class="line">       <span class="keyword">if</span> color[v]=White </span><br><span class="line">            π[v]←u;</span><br><span class="line">            DFS_Visit(G,v);</span><br><span class="line">    color[u]←Black;             Δ完成后置u为黑色</span><br><span class="line">    f[u]←time←time+<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
       
 
@@ -481,11 +510,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
+                <a href="javascript:void(0)" class="js-tag color4">C++;Smart pointer;</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++;Smart pointer;</a>
+                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -501,10 +530,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">BFS</a>
               </li>
              
@@ -517,7 +542,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ACO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
               </li>
             
             <div class="clearfix"></div>
