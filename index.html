@@ -281,17 +281,17 @@
 <li>如果此点没有未遍历的邻接点，则将此点从stack中弹出;</li>
 <li>重复2-4步骤，直到stack为空为止;</li>
 </ol>
-<h3 id="DFS流程示例"><a href="#DFS流程示例" class="headerlink" title="DFS流程示例"></a>DFS流程示例</h3><p><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS.JPG" alt="DFS示例"><br><!-- <img src="DFS.JPG" width="80%"> --><br>假定左分枝和右分枝中优先选择左分枝<br><strong>1. 将树节点(起点1)放入stack中，起点1标为已遍历；</strong><br><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS1.png" width="70%"></p>
-<p><strong>2. 访问栈顶元素节点1，找出节点1的邻接节点，选择节点2，标记为已遍历，放入stack。</strong><br><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS2.png" width="70%"></p>
-<p><strong>3. 从stack中取栈顶节点2，找出节点2的邻接节点，节点1已经标记，选择节点3并标记，放入stack中。</strong><br><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS3.png" width="70%"></p>
-<p><strong>4. 从stack中取栈顶节点3，找出节点2的邻接节点，节点2已经标记，选择节点4标记，放入stack中。</strong><br><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS4.png" width="70%"></p>
-<p><strong>5. 从stack中取栈顶节点4，找出节点4的邻接节点，节点3已经标记，选择节点5标记，放入stack中。</strong><br><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS5.png" width="70%"></p>
-<p><strong>6. 从stack中取出栈顶的节点5，找出与节点5邻接的节点，都已经标记过，则将节点5从stack中弹出。</strong><br><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS6.png" width="70%"></p>
-<p><strong>7. 当前stack栈顶节点是4，找出与节点4邻接的节点，选择还未标记的节点6，标记为已遍历，然后放入stack中；</strong><br><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS7.png" width="70%"></p>
-<p><strong>8. 当前stack栈顶的节点是6，找出与节点6邻接的节点，选择还未标记的节点7，标记为已遍历，然后放入stack中；</strong><br><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS8.png" width="70%"></p>
+<h3 id="DFS流程示例"><a href="#DFS流程示例" class="headerlink" title="DFS流程示例"></a>DFS流程示例</h3><p><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS.JPG" alt="DFS示例"><br><!-- <img src="DFS.JPG" width="80%"> --><br>假定左分枝和右分枝中优先选择左分枝<br><strong>1. 将树节点(起点1)放入stack中，起点1标为已遍历；</strong><br><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS1.png" width="50%"></p>
+<p><strong>2. 访问栈顶元素节点1，找出节点1的邻接节点，选择节点2，标记为已遍历，放入stack。</strong><br><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS2.png" width="50%"></p>
+<p><strong>3. 从stack中取栈顶节点2，找出节点2的邻接节点，节点1已经标记，选择节点3并标记，放入stack中。</strong><br><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS3.png" width="50%"></p>
+<p><strong>4. 从stack中取栈顶节点3，找出节点2的邻接节点，节点2已经标记，选择节点4标记，放入stack中。</strong><br><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS4.png" width="50%"></p>
+<p><strong>5. 从stack中取栈顶节点4，找出节点4的邻接节点，节点3已经标记，选择节点5标记，放入stack中。</strong><br><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS5.png" width="50%"></p>
+<p><strong>6. 从stack中取出栈顶的节点5，找出与节点5邻接的节点，都已经标记过，则将节点5从stack中弹出。</strong><br><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS6.png" width="50%"></p>
+<p><strong>7. 当前stack栈顶节点是4，找出与节点4邻接的节点，选择还未标记的节点6，标记为已遍历，然后放入stack中；</strong><br><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS7.png" width="50%"></p>
+<p><strong>8. 当前stack栈顶的节点是6，找出与节点6邻接的节点，选择还未标记的节点7，标记为已遍历，然后放入stack中；</strong><br><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS8.png" width="50%"></p>
 <p><strong>9. 当前stack栈顶的节点是7，找出与节点7邻接的节点，没有未遍历的节点，将节点7从stack中弹出。</strong></p>
-<p><strong>10. 当前stack栈顶的节点是6，找出与节点6邻接的节点，选择还未标记的节点8，标记为已遍历，然后放入stack中；</strong><br><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS9.png" width="70%"></p>
-<p><strong>11. 当前stack栈顶的节点是8，找出与节点8邻接的节点，选择还未标记的节点9，标记为已遍历，然后放入stack中；</strong><br><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS10.png" width="70%"></p>
+<p><strong>10. 当前stack栈顶的节点是6，找出与节点6邻接的节点，选择还未标记的节点8，标记为已遍历，然后放入stack中；</strong><br><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS9.png" width="50%"></p>
+<p><strong>11. 当前stack栈顶的节点是8，找出与节点8邻接的节点，选择还未标记的节点9，标记为已遍历，然后放入stack中；</strong><br><img src="/2019/11/05/广度优先搜索和深度优先搜索/DFS10.png" width="50%"></p>
 <p><strong>12. 当前stack栈顶的节点是9，没有未遍历的邻接点，将节点9弹出，依次类推，直到栈为空；</strong></p>
 <h3 id="DFS伪代码"><a href="#DFS伪代码" class="headerlink" title="DFS伪代码"></a>DFS伪代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">procedure <span class="title">DFS</span><span class="params">(G)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> 每个顶点u∈V[G] <span class="keyword">do</span></span><br><span class="line">        color[u]←White;</span><br><span class="line">        π[u]←NIL;</span><br><span class="line">    time←<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> 每个顶点u∈V[G] <span class="keyword">do</span></span><br><span class="line">        <span class="keyword">if</span> color[u]=White</span><br><span class="line">            then DFS_Visit(G,u);</span><br><span class="line"></span><br><span class="line"><span class="function">procedure <span class="title">DFS_Visit</span><span class="params">(G,u)</span></span>;</span><br><span class="line">    color[u]←Gray;              Δ白色结点u已被发现</span><br><span class="line">    d[u]←time←time+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> 每个顶点v∈Adj[u] <span class="keyword">do</span>     Δ探寻边(u,v)</span><br><span class="line">       <span class="keyword">if</span> color[v]=White </span><br><span class="line">            π[v]←u;</span><br><span class="line">            DFS_Visit(G,v);</span><br><span class="line">    color[u]←Black;             Δ完成后置u为黑色</span><br><span class="line">    f[u]←time←time+<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
       
@@ -1169,19 +1169,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++;Smart pointer;</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">CMake</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1206,10 +1206,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ACO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
               </li>
             
             <div class="clearfix"></div>
