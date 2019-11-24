@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="xoyolucas&#39;s blog">
 <meta property="og:description" content="智能指针简介&amp;emsp;&amp;emsp;指针可以说是C++的“万恶之源”，在没有智能指针之前，对堆内存的管理就是简单的new和delete。但是一个很大的问题就是容易忘了delete释放，即使是资深码农，也可能会在某一个地方忘记delete它，造成内存泄漏。很多时候我们new出来的对象生命周期多样，因而要很小时的确定delete释放的时机。当我们写一个new语句时，一般就会立即把delete语句直接也">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-24T15:25:27.175Z">
+<meta property="og:updated_time" content="2019-11-24T15:45:11.662Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++智能指针">
 <meta name="twitter:description" content="智能指针简介&amp;emsp;&amp;emsp;指针可以说是C++的“万恶之源”，在没有智能指针之前，对堆内存的管理就是简单的new和delete。但是一个很大的问题就是容易忘了delete释放，即使是资深码农，也可能会在某一个地方忘记delete它，造成内存泄漏。很多时候我们new出来的对象生命周期多样，因而要很小时的确定delete释放的时机。当我们写一个new语句时，一般就会立即把delete语句直接也">
@@ -179,7 +179,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="智能指针简介"><a href="#智能指针简介" class="headerlink" title="智能指针简介"></a>智能指针简介</h2><p>&emsp;&emsp;指针可以说是C++的“万恶之源”，在没有智能指针之前，对堆内存的管理就是简单的new和delete。但是一个很大的问题就是容易忘了delete释放，即使是资深码农，也可能会在某一个地方忘记delete它，造成内存泄漏。很多时候我们new出来的对象生命周期多样，因而要很小时的确定delete释放的时机。当我们写一个new语句时，一般就会立即把delete语句直接也写了，但是我们不能避免程序还未执行到delete时就跳转了或者在函数中没有执行到最后的delete语句就返回了，如果我们不在每一个可能跳转或者返回的语句前释放资源，就会造成内存泄露。在实际工程中，我们往往希望把精力放在应用和算法的实现上，而不是费尽心思在语言的细枝末节如：内存的释放。<br>&emsp;&emsp;于是c++推出了智能指针，如今有四个智能指针: <strong><em>auto_ptr,shared_ptr,weak_ptr,unique_ptr</em></strong>，其中第一个已经被c++11弃用了，后三个是c++11支持的。使用智能指针可以很大程度上的避免内存泄漏问题，因为智能指针就是一个类，当超出了类的作用域是，类会自动调用析构函数，析构函数会自动释放资源。</p>
+        <h2 id="智能指针简介"><a href="#智能指针简介" class="headerlink" title="智能指针简介"></a>智能指针简介</h2><p>&emsp;&emsp;指针可以说是C++的“万恶之源”，在没有智能指针之前，对堆内存的管理就是简单的new和delete。但是一个很大的问题就是容易忘了delete释放，即使是资深码农，也可能会在某一个地方忘记delete它，造成内存泄漏。很多时候我们new出来的对象生命周期多样，因而要很小时的确定delete释放的时机。当我们写一个new语句时，一般就会立即把delete语句直接也写了，但是我们不能避免程序还未执行到delete时就跳转了或者在函数中没有执行到最后的delete语句就返回了，如果我们不在每一个可能跳转或者返回的语句前释放资源，就会造成内存泄露。在实际工程中，我们往往希望把精力放在应用和算法的实现上，而不是费尽心思在语言的细枝末节如：内存的释放。<br><a id="more"></a><br>&emsp;&emsp;于是c++推出了智能指针，如今有四个智能指针: <strong><em>auto_ptr,shared_ptr,weak_ptr,unique_ptr</em></strong>，其中第一个已经被c++11弃用了，后三个是c++11支持的。使用智能指针可以很大程度上的避免内存泄漏问题，因为智能指针就是一个类，当超出了类的作用域是，类会自动调用析构函数，析构函数会自动释放资源。</p>
 <p>&nbsp;</p>
 <h2 id="std-auto-ptr"><a href="#std-auto-ptr" class="headerlink" title="std::auto_ptr"></a>std::auto_ptr</h2><p>将指针做成一个auto_ptr类，包含原始指针成员。当auto_ptr类型的对象被释放时，利用析构函数，将拥有的原始指针delete掉。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">class</span> <span class="title">auto_ptr</span>&#123;</span></span><br><span class="line">　　T* ptr;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//runGame函数执行完时，monster1被释放，然后它的析构函数也把指向的对象一起释放</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">runGame</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">auto_ptr</span>&lt;Monster&gt; monster1(<span class="keyword">new</span> Monster());<span class="comment">//monster1 指向 一个怪物</span></span><br><span class="line">    monster1-&gt;doSomething();<span class="comment">//怪物做某种事</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><strong>复制auto_ptr对象时，把指针指传给复制出来的对象，原有对象的指针成员随后重置为nullptr。因此，auto_ptr是独占性的，不允许多个auto_ptr指向同一个资源。</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">runGame</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">auto_ptr</span>&lt;Monster&gt; monster1(<span class="keyword">new</span> Monster());<span class="comment">//monster1 指向 一个怪物</span></span><br><span class="line">    monster1-&gt;doSomething();<span class="comment">//怪物做某种事</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">auto_ptr</span>&lt;Monster&gt; monster2 = monster1;<span class="comment">//转移指针</span></span><br><span class="line">    monster2-&gt;doSomething();<span class="comment">//怪物做某种事</span></span><br><span class="line">    monster1-&gt;doSomething();<span class="comment">//Oops!monster1智能指针指向了nullptr，运行期崩溃。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -477,6 +477,10 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
@@ -485,15 +489,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
