@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="xoyolucas&#39;s blog">
 <meta property="og:description" content="智能指针简介&amp;emsp;&amp;emsp;指针可以说是C++的“万恶之源”，在没有智能指针之前，对堆内存的管理就是简单的new和delete。但是一个很大的问题就是容易忘了delete释放，即使是资深码农，也可能会在某一个地方忘记delete它，造成内存泄漏。很多时候我们new出来的对象生命周期多样，因而要很小时的确定delete释放的时机。当我们写一个new语句时，一般就会立即把delete语句直接也">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-24T15:45:11.662Z">
+<meta property="og:updated_time" content="2019-11-26T15:45:35.501Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++智能指针">
 <meta name="twitter:description" content="智能指针简介&amp;emsp;&amp;emsp;指针可以说是C++的“万恶之源”，在没有智能指针之前，对堆内存的管理就是简单的new和delete。但是一个很大的问题就是容易忘了delete释放，即使是资深码农，也可能会在某一个地方忘记delete它，造成内存泄漏。很多时候我们new出来的对象生命周期多样，因而要很小时的确定delete释放的时机。当我们写一个new语句时，一般就会立即把delete语句直接也">
@@ -184,7 +184,7 @@
 <h2 id="std-auto-ptr"><a href="#std-auto-ptr" class="headerlink" title="std::auto_ptr"></a>std::auto_ptr</h2><p>将指针做成一个auto_ptr类，包含原始指针成员。当auto_ptr类型的对象被释放时，利用析构函数，将拥有的原始指针delete掉。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">class</span> <span class="title">auto_ptr</span>&#123;</span></span><br><span class="line">　　T* ptr;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//runGame函数执行完时，monster1被释放，然后它的析构函数也把指向的对象一起释放</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">runGame</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">auto_ptr</span>&lt;Monster&gt; monster1(<span class="keyword">new</span> Monster());<span class="comment">//monster1 指向 一个怪物</span></span><br><span class="line">    monster1-&gt;doSomething();<span class="comment">//怪物做某种事</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><strong>复制auto_ptr对象时，把指针指传给复制出来的对象，原有对象的指针成员随后重置为nullptr。因此，auto_ptr是独占性的，不允许多个auto_ptr指向同一个资源。</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">runGame</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">auto_ptr</span>&lt;Monster&gt; monster1(<span class="keyword">new</span> Monster());<span class="comment">//monster1 指向 一个怪物</span></span><br><span class="line">    monster1-&gt;doSomething();<span class="comment">//怪物做某种事</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">auto_ptr</span>&lt;Monster&gt; monster2 = monster1;<span class="comment">//转移指针</span></span><br><span class="line">    monster2-&gt;doSomething();<span class="comment">//怪物做某种事</span></span><br><span class="line">    monster1-&gt;doSomething();<span class="comment">//Oops!monster1智能指针指向了nullptr，运行期崩溃。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;memory&gt;//auto_ptr的头文件</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Test(<span class="built_in">string</span> s)&#123;</span><br><span class="line">        str = s;</span><br><span class="line">       <span class="built_in">cout</span>&lt;&lt;<span class="string">"Test creat\n"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    ~Test()&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"Test delete:"</span>&lt;&lt;str&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setStr</span><span class="params">(<span class="built_in">string</span> s)</span></span>&#123;</span><br><span class="line">        str = s;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;str&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">string</span> str;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">auto_ptr</span>&lt;Test&gt; ptest(<span class="keyword">new</span> Test(<span class="string">"123"</span>));<span class="comment">//调用构造函数输出Test creat</span></span><br><span class="line">    ptest-&gt;setStr(<span class="string">"hello "</span>);<span class="comment">//修改成员变量的值</span></span><br><span class="line">    ptest-&gt;print();<span class="comment">//输出hello</span></span><br><span class="line">    ptest.reset(<span class="keyword">new</span> Test(<span class="string">"123"</span>));<span class="comment">//成员函数reset()重新绑定指向的对象，而原来的对象则会被释放，所以这里会调用一次构造函数，还有调用一次析构函数释放掉之前的对象</span></span><br><span class="line">    ptest-&gt;print();<span class="comment">//输出123</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//此时还剩下一个对象，调用一次析构函数释放该对象</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>智能指针可以像类的原始指针一样访问类的public成员，成员函数get()返回一个原始的指针，成员函数reset()重新绑定指向的对象，而原来的对象则会被释放。注意我们访问auto_ptr的成员函数时用的是“.”，访问指向对象的成员时用的是“-&gt;”。我们也可用声明一个空智能指针auto_ptr<test>ptest();<br>还有一个值得我们注意的成员函数是release，这个函数只是把智能指针赋值为空，但是它原来指向的内存并没有被释放，相当于它只是释放了对资源的所有权，析构函数没有被调用。当我们想要在中途释放资源，而不是等到智能指针被析构时才释放，我们可以使用<strong>ptest.reset();</strong> 语句。<br><strong><em>不要用auto_ptr!不要用auto_ptr!不要用auto_ptr!</em></strong>，它是c++11以前的最原始的智能指针，但是在c++11中已经被弃用(会报warning)。它的替代品，即c++11新智能指针 <strong><em>unique_ptr,shared_ptr,weak_ptr</em></strong>。</test></p>
+<p>智能指针可以像类的原始指针一样访问类的public成员，成员函数get()返回一个原始的指针，成员函数reset()重新绑定指向的对象，而原来的对象则会被释放。注意我们访问auto_ptr的成员函数时用的是“.”，访问指向对象的成员时用的是“-&gt;”。我们也可用声明一个空智能指针auto_ptr<test>ptest();<br>还有一个值得我们注意的成员函数是<strong>ptest.release()</strong>，这个函数只是把智能指针赋值为空，但是它原来指向的内存并没有被释放，相当于它只是释放了对资源的所有权，析构函数没有被调用。当我们想要在中途释放资源，而不是等到智能指针被析构时才释放，我们可以使用<strong>ptest.reset();</strong> 语句。<br><strong><em>不要用auto_ptr!不要用auto_ptr!不要用auto_ptr!</em></strong>它是c++11以前的最原始的智能指针，但是在c++11中已经被弃用(会报warning)。它的替代品，即c++11新智能指针 <strong><em>unique_ptr,shared_ptr,weak_ptr</em></strong>。</test></p>
 <p>&nbsp;</p>
 <h2 id="std-unique-ptr"><a href="#std-unique-ptr" class="headerlink" title="std::unique_ptr"></a>std::unique_ptr</h2><p>unique_ptr一种强引用指针，它的特点是独占。unique_ptr可以算是auto_ptr的翻版(都是独占资源的指针,内部实现也基本差不多)。但是unique_ptr的名字能更好的体现它的用法，在语法上比auto_ptr更安全(尝试复制unique_ptr时会编译期出错，而auto_ptr能通过编译期但在运行期埋下出错的隐患)。假如需要转移所有权，那么需要用std::move(std::unique_ptr对象)，尽管转移所有权后还是有可能出现原有指针调用就崩溃的情况。<br>但是这个语法能强制你在转移所有权时清晰的知道自己做了什么，从而不乱调用原有指针。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">runGame</span><span class="params">()</span></span>&#123;</span><br><span class="line">　　<span class="built_in">std</span>::<span class="built_in">unique_ptr</span>&lt;Monster&gt; monster1(<span class="keyword">new</span> Monster());<span class="comment">//monster1 指向 一个怪物</span></span><br><span class="line">　　<span class="built_in">std</span>::<span class="built_in">unique_ptr</span>&lt;Monster&gt; monster2 = monster1;<span class="comment">//Error!编译期出错，不允许复制指针指向同一个资源。</span></span><br><span class="line">　　<span class="built_in">std</span>::<span class="built_in">unique_ptr</span>&lt;Monster&gt; monster3 = <span class="built_in">std</span>::move(monster1);<span class="comment">//转移所有权给monster3.</span></span><br><span class="line">　　monster1-&gt;doSomething();<span class="comment">//Oops!monster1指向nullptr，运行期崩溃</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>&nbsp;</p>
@@ -298,6 +298,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/11/26/leetcode题解/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          leetcode题解
+        
+      </div>
+    </a>
   
   
     <a href="/2019/11/05/广度优先搜索和深度优先搜索/" id="article-nav-older" class="article-nav-link-wrap">
@@ -477,10 +486,6 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
@@ -489,7 +494,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -497,11 +502,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IPM</a>
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">IPM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -510,6 +519,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
               </li>
              
               <li class="article-tag-list-item">
