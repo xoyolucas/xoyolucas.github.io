@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hexo中gitment的配置 | xoyolucas&#39;s blog</title>
+  <title>Hexo中Gitment的配置 | xoyolucas&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="注册OAuth Application先注册一个新的OAuth Application。其他内容可以随意填写，但要确保填入正确的 callback URL(博客的域名，如Hexo博客部署到Github, 域名”http://xoyolucas.github.io&amp;quot;)， 注册成功后生成client_id及client_secret。">
 <meta name="keywords" content="Hexo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo中gitment的配置">
+<meta property="og:title" content="Hexo中Gitment的配置">
 <meta property="og:url" content="http://yoursite.com/2019/10/21/Hexo中gitment的配置/index.html">
 <meta property="og:site_name" content="xoyolucas&#39;s blog">
 <meta property="og:description" content="注册OAuth Application先注册一个新的OAuth Application。其他内容可以随意填写，但要确保填入正确的 callback URL(博客的域名，如Hexo博客部署到Github, 域名”http://xoyolucas.github.io&amp;quot;)， 注册成功后生成client_id及client_secret。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/10/21/Hexo中gitment的配置/gitment.JPG">
-<meta property="og:updated_time" content="2019-10-27T07:59:07.615Z">
+<meta property="og:updated_time" content="2019-12-07T08:01:27.367Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo中gitment的配置">
+<meta name="twitter:title" content="Hexo中Gitment的配置">
 <meta name="twitter:description" content="注册OAuth Application先注册一个新的OAuth Application。其他内容可以随意填写，但要确保填入正确的 callback URL(博客的域名，如Hexo博客部署到Github, 域名”http://xoyolucas.github.io&amp;quot;)， 注册成功后生成client_id及client_secret。">
 <meta name="twitter:image" content="http://yoursite.com/2019/10/21/Hexo中gitment的配置/gitment.JPG">
   
@@ -64,7 +64,7 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/none">相册</a></li>
+				<li><a href="/photo">相册</a></li>
 	        
 			</ul>
 		</nav>
@@ -146,7 +146,7 @@
 				
 					<li style="width: 50%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/none">相册</a></li>
+					<li style="width: 50%"><a href="/photo">相册</a></li>
 		        
 				</ul>
 			</nav>
@@ -168,7 +168,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hexo中gitment的配置
+      Hexo中Gitment的配置
     </h1>
   
 
@@ -186,7 +186,7 @@
 <p>在主题配置文件_config.yml配置<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#yilla主题</span></span><br><span class="line"><span class="attr">gitment_owner:</span> <span class="string">'xoyolucas'</span>  <span class="comment">#你的 GitHub ID</span></span><br><span class="line"><span class="attr">gitment_repo:</span> <span class="string">'blog_gitment'</span>  <span class="comment">#存储评论的 repo</span></span><br><span class="line"><span class="attr">gitment_oauth:</span></span><br><span class="line"><span class="attr">  client_id:</span> <span class="string">'2636b6dc4277d28ba25a'</span>  <span class="comment">#client ID</span></span><br><span class="line"><span class="attr">  client_secret:</span> <span class="string">'44deab42854b59e88df97698a3d883d5f2c02194'</span>  <span class="comment">#client secret</span></span><br><span class="line"><span class="string">///////////////////////////////////或者////////////////////////////////////////</span></span><br><span class="line"><span class="attr">gitment:</span> <span class="attr">enable:</span> <span class="literal">true</span> <span class="comment"># 是否开启gitment评论系统 </span></span><br><span class="line"><span class="attr">mint:</span> <span class="literal">true</span> <span class="comment"># </span></span><br><span class="line"><span class="attr">count:</span> <span class="literal">true</span> <span class="comment"># 是否显示评论数 </span></span><br><span class="line"><span class="attr">lazy:</span> <span class="literal">true</span> <span class="comment"># 懒加载，设置为ture时需手动展开评论 </span></span><br><span class="line"><span class="attr">cleanly:</span> <span class="literal">true</span> <span class="comment"># 是否隐藏'Powered by ...' </span></span><br><span class="line"><span class="attr">language:</span> <span class="string">en</span> <span class="comment"># 语言，置空则随主题的语言 </span></span><br><span class="line"><span class="attr">github_user:</span>  <span class="comment"># Github用户名 </span></span><br><span class="line"><span class="attr">github_repo:</span>  <span class="comment"># 在Github新建一个仓库用于存放评论，这是仓库名 </span></span><br><span class="line"><span class="attr">client_id:</span>  <span class="comment"># 注册OAuth Application时生成 </span></span><br><span class="line"><span class="attr">client_secret:</span>  <span class="comment"># 注册OAuth Application时生成 </span></span><br><span class="line"><span class="attr">proxy_gateway:</span> <span class="comment"># Address of api proxy</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="初始化评论"><a href="#初始化评论" class="headerlink" title="初始化评论"></a>初始化评论</h2><p>页面发布后，你需要访问页面并使用你的 GitHub 账号登录，点击初始化按钮。</p>
 <h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><ol>
-<li>repo: ‘The repo to store comments</li>
+<li>repo: The repo to store comments</li>
 <li>Error: Not Found问题</li>
 <li>Error: Comments Not Initialized</li>
 </ol>
@@ -460,7 +460,7 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -468,15 +468,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -488,19 +484,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">IPM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PSO</a>
+                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ACO</a>
+                <a href="javascript:void(0)" class="js-tag color4">PSO</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -509,6 +501,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ACO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
               </li>
             
             <div class="clearfix"></div>
