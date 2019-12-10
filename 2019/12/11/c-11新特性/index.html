@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>内点法IPM | xoyolucas&#39;s blog</title>
+  <title>c++11新特性 | xoyolucas&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="内点法简介内点法(Interior Point Method)是一种求解线性规划或非线性凸优化问题的算法。它是由John von Neumann发明的，他利用戈尔丹的线性齐次系统提出了这种新的求解线性规划的方法。后被Narendra Karmarkar于1984年推广应用到线性规划，即Karmarkar算法。内点法属于约束优化算法，约束优化算法的基本思想是：通过引入效用函数的方法将约束优化问题转换">
-<meta name="keywords" content="IPM">
+  <meta name="description" content="[toc] new language features:move semanticsvariadic templatesrvalue referencesforwarding referencesinitializer listsstatic assertionsautolambda expressionsdecltypetype aliasesnullptrstrongly-typed enum">
+<meta name="keywords" content="C++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="内点法IPM">
-<meta property="og:url" content="http://yoursite.com/2019/09/08/内点法IPM/index.html">
+<meta property="og:title" content="c++11新特性">
+<meta property="og:url" content="http://yoursite.com/2019/12/11/c-11新特性/index.html">
 <meta property="og:site_name" content="xoyolucas&#39;s blog">
-<meta property="og:description" content="内点法简介内点法(Interior Point Method)是一种求解线性规划或非线性凸优化问题的算法。它是由John von Neumann发明的，他利用戈尔丹的线性齐次系统提出了这种新的求解线性规划的方法。后被Narendra Karmarkar于1984年推广应用到线性规划，即Karmarkar算法。内点法属于约束优化算法，约束优化算法的基本思想是：通过引入效用函数的方法将约束优化问题转换">
+<meta property="og:description" content="[toc] new language features:move semanticsvariadic templatesrvalue referencesforwarding referencesinitializer listsstatic assertionsautolambda expressionsdecltypetype aliasesnullptrstrongly-typed enum">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-14T17:16:20.839Z">
+<meta property="og:updated_time" content="2019-12-10T16:19:24.518Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="内点法IPM">
-<meta name="twitter:description" content="内点法简介内点法(Interior Point Method)是一种求解线性规划或非线性凸优化问题的算法。它是由John von Neumann发明的，他利用戈尔丹的线性齐次系统提出了这种新的求解线性规划的方法。后被Narendra Karmarkar于1984年推广应用到线性规划，即Karmarkar算法。内点法属于约束优化算法，约束优化算法的基本思想是：通过引入效用函数的方法将约束优化问题转换">
+<meta name="twitter:title" content="c++11新特性">
+<meta name="twitter:description" content="[toc] new language features:move semanticsvariadic templatesrvalue referencesforwarding referencesinitializer listsstatic assertionsautolambda expressionsdecltypetype aliasesnullptrstrongly-typed enum">
   
     <link rel="alternative" href="/atom.xml" title="xoyolucas&#39;s blog" type="application/atom+xml">
   
@@ -159,40 +159,28 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-内点法IPM" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-c-11新特性" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      内点法IPM
+      c++11新特性
     </h1>
   
 
         
-        <a href="/2019/09/08/内点法IPM/" class="archive-article-date">
-  	<time datetime="2019-09-08T12:37:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
+        <a href="/2019/12/11/c-11新特性/" class="archive-article-date">
+  	<time datetime="2019-12-10T16:10:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="内点法简介"><a href="#内点法简介" class="headerlink" title="内点法简介"></a>内点法简介</h2><p><strong><em>内点法(Interior Point Method)</em></strong>是一种求解线性规划或非线性凸优化问题的算法。它是由John von Neumann发明的，他利用戈尔丹的线性齐次系统提出了这种新的求解线性规划的方法。后被Narendra Karmarkar于1984年推广应用到线性规划，即Karmarkar算法。<br>内点法属于约束优化算法，约束优化算法的基本思想是：<strong>通过引入效用函数的方法将约束优化问题转换成无约束问题</strong>，再利用优化迭代过程不断地更新效用函数，以使得算法收敛。相当于在可行域的边界筑起一道很高的“围墙”，当迭代点靠近边界时，目标函数徒然增大，以示惩罚，阻止迭代点穿越边界，这样就可以将最优解“挡”在可行域之内了。<br><a id="more"></a></p>
-<h2 id="内点法算法流程"><a href="#内点法算法流程" class="headerlink" title="内点法算法流程"></a>内点法算法流程</h2><h3 id="1-线性规划问题一般形式"><a href="#1-线性规划问题一般形式" class="headerlink" title="1. 线性规划问题一般形式"></a>1. 线性规划问题一般形式</h3><p>$$ min \ f(x)=c^Tx $$<br>$$ s.t. \ Ax&lt;=b $$<br>矩阵A为m*n的满秩矩阵，其中m为约束条件的个数，n为变量的个数。通常约束条件个数大于变量的个数，即m&gt;n。</p>
-<h3 id="2-线性规划问题转换"><a href="#2-线性规划问题转换" class="headerlink" title="2. 线性规划问题转换"></a>2. 线性规划问题转换</h3><p>内点法中有一个惩罚函数，用于描述凸集。与单纯形法不同，它通过遍历内部可行区域来搜索最优解。<br>线性规划问题进行转换<br>$$f(x) = c^Tx + \$$</p>
-<h3 id="3-计算函数的梯度和Hessian矩阵"><a href="#3-计算函数的梯度和Hessian矩阵" class="headerlink" title="3. 计算函数的梯度和Hessian矩阵"></a>3. 计算函数的梯度和Hessian矩阵</h3><p>为了求函数的极小值，根据微积分的经典结果，我们只需令函数的梯度等于零，然后计算梯度为零时对应的解x*<br>函数的梯度：  </p>
-<p>Hessian黑塞矩阵(多元函数的二阶偏导数构成的方阵)：<br>定义对角矩阵，<br>Hessian矩阵写成$H_f = A^TDA$的形式</p>
-<p>因为$D$为正定矩阵，所以Hessian矩阵至少为半正定矩阵。所以函数$f(x)$是一个凸函数。而且矩阵$D$为可逆矩阵，矩阵$A$满秩，所以Hessian矩阵为可逆矩阵。于是函数$f(x)$为强凸函数。计算$f’(x)=0$的根，可以用高效的牛顿迭代法。</p>
-<h3 id="4-牛顿迭代法计算"><a href="#4-牛顿迭代法计算" class="headerlink" title="4. 牛顿迭代法计算"></a>4. 牛顿迭代法计算</h3><p>牛顿迭代法（Newton’s method）又称为牛顿-拉夫逊（拉弗森）方法（Newton-Raphson method），它是牛顿在17世纪提出的一种在实数域和复数域上近似求解方程的方法。<br>多数方程不存在求根公式，因此求精确根非常困难，甚至不可能，从而寻找方程的近似根就显得特别重要。方法使用函数$f(x)$的泰勒级数的前面几项来寻找方程$f(x)=0$的根。牛顿迭代法是求方程根的重要方法之一，其最大优点是在方程$f(x)$的单根附近具有平方收敛，而且该法还可以用来求方程的重根、复根，此时线性收敛，但是可通过一些方法变成超线性收敛。该方法广泛用于计算机编程中。<br><strong>优点：</strong>二阶收敛，收敛速度快；<br><strong>缺点：</strong>牛顿法是一种迭代算法，每一步都需要求解目标函数的Hessian矩阵的逆矩阵，计算比较复杂。</p>
-<p><strong><em>步骤：</em></strong><br><a href="https://www.cnblogs.com/maybe2030/p/4751804.html" target="_blank" rel="noopener">https://www.cnblogs.com/maybe2030/p/4751804.html</a><br><a href="https://zhuanlan.zhihu.com/p/34426575" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/34426575</a></p>
-<h3 id="5-内点法例子"><a href="#5-内点法例子" class="headerlink" title="5. 内点法例子"></a>5. 内点法例子</h3><h2 id="内点法VS单纯形法"><a href="#内点法VS单纯形法" class="headerlink" title="内点法VS单纯形法"></a>内点法VS单纯形法</h2><ul>
-<li>线性规划单纯形法：通过一系列迭代达到最优解，迭代点沿着可行多面体的边界从一个顶点到另一个顶点，直到得到最优解。一般而言单纯形法每次迭代的开销相对内点法来说较小，但所需迭代次数较多。</li>
-<li>线性规划内点法：同样是通过一系列迭代达到最优解，但其是从多面体内部逐渐收敛到最优解。一般而言内点法每次迭代的开销相对单纯形法来说较大，但所需迭代次数较少。</li>
-</ul>
-<h2 id="拟牛顿法"><a href="#拟牛顿法" class="headerlink" title="拟牛顿法"></a>拟牛顿法</h2><p>拟牛顿法是求解非线性优化问题最有效的方法之一，于20世纪50年代由美国Argonne国家实验室的物理学家W.C.Davidon所提出来。Davidon设计的这种算法在当时看来是非线性优化领域最具创造性的发明之一。不久R. Fletcher和M. J. D. Powell证实了这种新的算法远比其他方法快速和可靠，使得非线性优化这门学科在一夜之间突飞猛进。</p>
-<p>拟牛顿法的本质思想是改善牛顿法每次需要求解复杂的Hessian矩阵的逆矩阵的缺陷，它使用正定矩阵来近似Hessian矩阵的逆，从而简化了运算的复杂度。拟牛顿法和最速下降法一样只要求每一步迭代时知道目标函数的梯度。通过测量梯度的变化，构造一个目标函数的模型使之足以产生超线性收敛性。这类方法大大优于最速下降法，尤其对于困难的问题。另外，因为拟牛顿法不需要二阶导数的信息，所以有时比牛顿法更为有效。如今，优化软件中包含了大量的拟牛顿算法用来解决无约束，约束，和大规模的优化问题。</p>
+        <p>[toc]</p>
+<h2 id="new-language-features"><a href="#new-language-features" class="headerlink" title="new language features:"></a>new language features:</h2><h3 id="move-semantics"><a href="#move-semantics" class="headerlink" title="move semantics"></a>move semantics</h3><h3 id="variadic-templates"><a href="#variadic-templates" class="headerlink" title="variadic templates"></a>variadic templates</h3><h3 id="rvalue-references"><a href="#rvalue-references" class="headerlink" title="rvalue references"></a>rvalue references</h3><h3 id="forwarding-references"><a href="#forwarding-references" class="headerlink" title="forwarding references"></a>forwarding references</h3><h3 id="initializer-lists"><a href="#initializer-lists" class="headerlink" title="initializer lists"></a>initializer lists</h3><h3 id="static-assertions"><a href="#static-assertions" class="headerlink" title="static assertions"></a>static assertions</h3><h3 id="auto"><a href="#auto" class="headerlink" title="auto"></a>auto</h3><h3 id="lambda-expressions"><a href="#lambda-expressions" class="headerlink" title="lambda expressions"></a>lambda expressions</h3><h3 id="decltype"><a href="#decltype" class="headerlink" title="decltype"></a>decltype</h3><h3 id="type-aliases"><a href="#type-aliases" class="headerlink" title="type aliases"></a>type aliases</h3><h3 id="nullptr"><a href="#nullptr" class="headerlink" title="nullptr"></a>nullptr</h3><h3 id="strongly-typed-enums"><a href="#strongly-typed-enums" class="headerlink" title="strongly-typed enums"></a>strongly-typed enums</h3><h3 id="attributes"><a href="#attributes" class="headerlink" title="attributes"></a>attributes</h3><h3 id="constexpr"><a href="#constexpr" class="headerlink" title="constexpr"></a>constexpr</h3><h3 id="delegating-constructors"><a href="#delegating-constructors" class="headerlink" title="delegating constructors"></a>delegating constructors</h3><h3 id="user-defined-literals"><a href="#user-defined-literals" class="headerlink" title="user-defined literals"></a>user-defined literals</h3><h3 id="explicit-virtual-overrides"><a href="#explicit-virtual-overrides" class="headerlink" title="explicit virtual overrides"></a>explicit virtual overrides</h3><h3 id="final-specifier"><a href="#final-specifier" class="headerlink" title="final specifier"></a>final specifier</h3><h3 id="default-functions"><a href="#default-functions" class="headerlink" title="default functions"></a>default functions</h3><h3 id="deleted-functions"><a href="#deleted-functions" class="headerlink" title="deleted functions"></a>deleted functions</h3><h3 id="range-based-for-loops"><a href="#range-based-for-loops" class="headerlink" title="range-based for loops"></a>range-based for loops</h3><h3 id="special-member-functions-for-move-semantics"><a href="#special-member-functions-for-move-semantics" class="headerlink" title="special member functions for move semantics"></a>special member functions for move semantics</h3><h3 id="converting-constructors"><a href="#converting-constructors" class="headerlink" title="converting constructors"></a>converting constructors</h3><h3 id="explicit-conversion-functions"><a href="#explicit-conversion-functions" class="headerlink" title="explicit conversion functions"></a>explicit conversion functions</h3><h3 id="inline-namespaces"><a href="#inline-namespaces" class="headerlink" title="inline-namespaces"></a>inline-namespaces</h3><h3 id="non-static-data-member-initializers"><a href="#non-static-data-member-initializers" class="headerlink" title="non-static data member initializers"></a>non-static data member initializers</h3><h3 id="right-angle-brackets"><a href="#right-angle-brackets" class="headerlink" title="right angle brackets"></a>right angle brackets</h3><h3 id="ref-qualified-member-functions"><a href="#ref-qualified-member-functions" class="headerlink" title="ref-qualified member functions"></a>ref-qualified member functions</h3><h3 id="trailing-return-types"><a href="#trailing-return-types" class="headerlink" title="trailing return types"></a>trailing return types</h3><h2 id="new-library-features"><a href="#new-library-features" class="headerlink" title="new library features"></a>new library features</h2><h3 id="std-move"><a href="#std-move" class="headerlink" title="std::move"></a>std::move</h3><h3 id="std-forward"><a href="#std-forward" class="headerlink" title="std::forward"></a>std::forward</h3><h3 id="std-thread"><a href="#std-thread" class="headerlink" title="std::thread"></a>std::thread</h3><h3 id="std-to-string"><a href="#std-to-string" class="headerlink" title="std::to_string"></a>std::to_string</h3><h3 id="type-traits"><a href="#type-traits" class="headerlink" title="type traits"></a>type traits</h3><h3 id="smart-pointers"><a href="#smart-pointers" class="headerlink" title="smart pointers"></a>smart pointers</h3><h3 id="std-chrono"><a href="#std-chrono" class="headerlink" title="std::chrono"></a>std::chrono</h3><h3 id="tuples"><a href="#tuples" class="headerlink" title="tuples"></a>tuples</h3><h3 id="std-tie"><a href="#std-tie" class="headerlink" title="std::tie"></a>std::tie</h3><h3 id="std-array"><a href="#std-array" class="headerlink" title="std::array"></a>std::array</h3><h3 id="unordered-containers"><a href="#unordered-containers" class="headerlink" title="unordered containers"></a>unordered containers</h3><h3 id="std-make-shared"><a href="#std-make-shared" class="headerlink" title="std::make_shared"></a>std::make_shared</h3><h3 id="memory-model"><a href="#memory-model" class="headerlink" title="memory model"></a>memory model</h3><h3 id="std-async"><a href="#std-async" class="headerlink" title="std::async"></a>std::async</h3><h3 id="std-begin-end"><a href="#std-begin-end" class="headerlink" title="std::begin/end"></a>std::begin/end</h3><h2 id="link"><a href="#link" class="headerlink" title="link"></a>link</h2><p><a href="https://en.cppreference.com/w/cpp" target="_blank" rel="noopener">工具书网站</a><br>Scott Meyers’ Effective Modern C++ - highly recommended book!</p>
 
       
 
@@ -206,7 +194,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">IPM</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
         		</li>
       		
 		</ul>
@@ -218,7 +206,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Algorithm//" class="article-tag-list-link color5">Algorithm</a>
+        			<a href="/categories/Language//" class="article-tag-list-link color4">Language</a>
         		</li>
       		
 		</ul>
@@ -273,7 +261,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/08/内点法IPM/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/11/c-11新特性/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -287,18 +275,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/09/12/Markdown公式/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Markdown公式
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/09/05/粒子群算法/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">粒子群优化算法</div>
+    <a href="/2019/12/08/leetcode题解/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">leetcode题解</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -325,7 +304,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#内点法简介"><span class="toc-number">1.</span> <span class="toc-text">内点法简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内点法算法流程"><span class="toc-number">2.</span> <span class="toc-text">内点法算法流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-线性规划问题一般形式"><span class="toc-number">2.1.</span> <span class="toc-text">1. 线性规划问题一般形式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-线性规划问题转换"><span class="toc-number">2.2.</span> <span class="toc-text">2. 线性规划问题转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-计算函数的梯度和Hessian矩阵"><span class="toc-number">2.3.</span> <span class="toc-text">3. 计算函数的梯度和Hessian矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-牛顿迭代法计算"><span class="toc-number">2.4.</span> <span class="toc-text">4. 牛顿迭代法计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-内点法例子"><span class="toc-number">2.5.</span> <span class="toc-text">5. 内点法例子</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内点法VS单纯形法"><span class="toc-number">3.</span> <span class="toc-text">内点法VS单纯形法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拟牛顿法"><span class="toc-number">4.</span> <span class="toc-text">拟牛顿法</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#new-language-features"><span class="toc-number">1.</span> <span class="toc-text">new language features:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#move-semantics"><span class="toc-number">1.1.</span> <span class="toc-text">move semantics</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#variadic-templates"><span class="toc-number">1.2.</span> <span class="toc-text">variadic templates</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rvalue-references"><span class="toc-number">1.3.</span> <span class="toc-text">rvalue references</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#forwarding-references"><span class="toc-number">1.4.</span> <span class="toc-text">forwarding references</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#initializer-lists"><span class="toc-number">1.5.</span> <span class="toc-text">initializer lists</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#static-assertions"><span class="toc-number">1.6.</span> <span class="toc-text">static assertions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#auto"><span class="toc-number">1.7.</span> <span class="toc-text">auto</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lambda-expressions"><span class="toc-number">1.8.</span> <span class="toc-text">lambda expressions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#decltype"><span class="toc-number">1.9.</span> <span class="toc-text">decltype</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#type-aliases"><span class="toc-number">1.10.</span> <span class="toc-text">type aliases</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nullptr"><span class="toc-number">1.11.</span> <span class="toc-text">nullptr</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#strongly-typed-enums"><span class="toc-number">1.12.</span> <span class="toc-text">strongly-typed enums</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#attributes"><span class="toc-number">1.13.</span> <span class="toc-text">attributes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#constexpr"><span class="toc-number">1.14.</span> <span class="toc-text">constexpr</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#delegating-constructors"><span class="toc-number">1.15.</span> <span class="toc-text">delegating constructors</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#user-defined-literals"><span class="toc-number">1.16.</span> <span class="toc-text">user-defined literals</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#explicit-virtual-overrides"><span class="toc-number">1.17.</span> <span class="toc-text">explicit virtual overrides</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#final-specifier"><span class="toc-number">1.18.</span> <span class="toc-text">final specifier</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#default-functions"><span class="toc-number">1.19.</span> <span class="toc-text">default functions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#deleted-functions"><span class="toc-number">1.20.</span> <span class="toc-text">deleted functions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#range-based-for-loops"><span class="toc-number">1.21.</span> <span class="toc-text">range-based for loops</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#special-member-functions-for-move-semantics"><span class="toc-number">1.22.</span> <span class="toc-text">special member functions for move semantics</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#converting-constructors"><span class="toc-number">1.23.</span> <span class="toc-text">converting constructors</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#explicit-conversion-functions"><span class="toc-number">1.24.</span> <span class="toc-text">explicit conversion functions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#inline-namespaces"><span class="toc-number">1.25.</span> <span class="toc-text">inline-namespaces</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#non-static-data-member-initializers"><span class="toc-number">1.26.</span> <span class="toc-text">non-static data member initializers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#right-angle-brackets"><span class="toc-number">1.27.</span> <span class="toc-text">right angle brackets</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ref-qualified-member-functions"><span class="toc-number">1.28.</span> <span class="toc-text">ref-qualified member functions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#trailing-return-types"><span class="toc-number">1.29.</span> <span class="toc-text">trailing return types</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#new-library-features"><span class="toc-number">2.</span> <span class="toc-text">new library features</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#std-move"><span class="toc-number">2.1.</span> <span class="toc-text">std::move</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#std-forward"><span class="toc-number">2.2.</span> <span class="toc-text">std::forward</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#std-thread"><span class="toc-number">2.3.</span> <span class="toc-text">std::thread</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#std-to-string"><span class="toc-number">2.4.</span> <span class="toc-text">std::to_string</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#type-traits"><span class="toc-number">2.5.</span> <span class="toc-text">type traits</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#smart-pointers"><span class="toc-number">2.6.</span> <span class="toc-text">smart pointers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#std-chrono"><span class="toc-number">2.7.</span> <span class="toc-text">std::chrono</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tuples"><span class="toc-number">2.8.</span> <span class="toc-text">tuples</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#std-tie"><span class="toc-number">2.9.</span> <span class="toc-text">std::tie</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#std-array"><span class="toc-number">2.10.</span> <span class="toc-text">std::array</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unordered-containers"><span class="toc-number">2.11.</span> <span class="toc-text">unordered containers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#std-make-shared"><span class="toc-number">2.12.</span> <span class="toc-text">std::make_shared</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#memory-model"><span class="toc-number">2.13.</span> <span class="toc-text">memory model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#std-async"><span class="toc-number">2.14.</span> <span class="toc-text">std::async</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#std-begin-end"><span class="toc-number">2.15.</span> <span class="toc-text">std::begin/end</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#link"><span class="toc-number">3.</span> <span class="toc-text">link</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -350,7 +329,7 @@
 <script src="https://www.wenjunjiang.win/js/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://yoursite.com/2019/09/08/内点法IPM/",
+  id: "http://yoursite.com/2019/12/11/c-11新特性/",
   owner: 'xoyolucas',
   repo: 'blog_gitment',
   oauth: {
