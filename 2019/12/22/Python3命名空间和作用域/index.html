@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>CMake常用命令 | xoyolucas&#39;s blog</title>
+  <title>Python3命名空间和作用域 | xoyolucas&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="常用命令COMMAND(args…)，多个参数用空白符分隔 1. cmake_minimum_required(VERSION 3.4.1)指定需要的最小的cmake版本，VERSION 3.4.1   2. add_library1add_library(&amp;lt;name&amp;gt; [STATIC | SHARED | MODULE] [EXCLUDE_FROM_ALL] source1 sour">
-<meta name="keywords" content="CMake">
+  <meta name="description" content="3种命名空间范围命名空间(Namespace)是从名称到对象的映射，大部分的命名空间都是通过 Python 字典来实现的。命名空间提供了在项目中避免名字冲突的一种方法。各个命名空间是独立的，没有任何关系的，所以一个命名空间中不能有重名，但不同的命名空间是可以重名而没有任何影响。一般有三种命名空间：内置名称（built-in names），Python语言内置的名称，比如函数名abs、char和异常">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CMake常用命令">
-<meta property="og:url" content="http://yoursite.com/2019/08/14/CMake常用命令/index.html">
+<meta property="og:title" content="Python3命名空间和作用域">
+<meta property="og:url" content="http://yoursite.com/2019/12/22/Python3命名空间和作用域/index.html">
 <meta property="og:site_name" content="xoyolucas&#39;s blog">
-<meta property="og:description" content="常用命令COMMAND(args…)，多个参数用空白符分隔 1. cmake_minimum_required(VERSION 3.4.1)指定需要的最小的cmake版本，VERSION 3.4.1   2. add_library1add_library(&amp;lt;name&amp;gt; [STATIC | SHARED | MODULE] [EXCLUDE_FROM_ALL] source1 sour">
+<meta property="og:description" content="3种命名空间范围命名空间(Namespace)是从名称到对象的映射，大部分的命名空间都是通过 Python 字典来实现的。命名空间提供了在项目中避免名字冲突的一种方法。各个命名空间是独立的，没有任何关系的，所以一个命名空间中不能有重名，但不同的命名空间是可以重名而没有任何影响。一般有三种命名空间：内置名称（built-in names），Python语言内置的名称，比如函数名abs、char和异常">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-23T16:16:17.267Z">
+<meta property="og:image" content="http://yoursite.com/2019/12/22/Python3命名空间和作用域/namespace.png">
+<meta property="og:image" content="http://yoursite.com/2019/12/22/Python3命名空间和作用域/variable_domain.png">
+<meta property="og:updated_time" content="2019-12-22T16:54:15.804Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CMake常用命令">
-<meta name="twitter:description" content="常用命令COMMAND(args…)，多个参数用空白符分隔 1. cmake_minimum_required(VERSION 3.4.1)指定需要的最小的cmake版本，VERSION 3.4.1   2. add_library1add_library(&amp;lt;name&amp;gt; [STATIC | SHARED | MODULE] [EXCLUDE_FROM_ALL] source1 sour">
+<meta name="twitter:title" content="Python3命名空间和作用域">
+<meta name="twitter:description" content="3种命名空间范围命名空间(Namespace)是从名称到对象的映射，大部分的命名空间都是通过 Python 字典来实现的。命名空间提供了在项目中避免名字冲突的一种方法。各个命名空间是独立的，没有任何关系的，所以一个命名空间中不能有重名，但不同的命名空间是可以重名而没有任何影响。一般有三种命名空间：内置名称（built-in names），Python语言内置的名称，比如函数名abs、char和异常">
+<meta name="twitter:image" content="http://yoursite.com/2019/12/22/Python3命名空间和作用域/namespace.png">
   
     <link rel="alternative" href="/atom.xml" title="xoyolucas&#39;s blog" type="application/atom+xml">
   
@@ -159,65 +161,34 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-CMake常用命令" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Python3命名空间和作用域" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      CMake常用命令
+      Python3命名空间和作用域
     </h1>
   
 
         
-        <a href="/2019/08/14/CMake常用命令/" class="archive-article-date">
-  	<time datetime="2019-08-13T17:30:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-14</time>
+        <a href="/2019/12/22/Python3命名空间和作用域/" class="archive-article-date">
+  	<time datetime="2019-12-22T13:21:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>COMMAND(args…)，多个参数用空白符分隔</p>
-<h3 id="1-cmake-minimum-required-VERSION-3-4-1"><a href="#1-cmake-minimum-required-VERSION-3-4-1" class="headerlink" title="1. cmake_minimum_required(VERSION 3.4.1)"></a>1. cmake_minimum_required(VERSION 3.4.1)</h3><p>指定需要的最小的cmake版本，VERSION 3.4.1  </p>
-<h3 id="2-add-library"><a href="#2-add-library" class="headerlink" title="2. add_library"></a>2. add_library</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">add_library</span>(&lt;name&gt; [STATIC | SHARED | MODULE] [EXCLUDE_FROM_ALL] source1 source2 ... sourceN)</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<ul>
-<li>添加一个名为<name>的库文件</name></li>
-<li>指定STATIC, SHARED, MODULE参数来指定要创建的库的类型, STATIC对应的静态库(.a)，SHARED对应共享动态库(.so)</li>
-<li>[EXCLUDE_FROM_ALL], 如果指定了这一属性，对应的一些属性会在目标被创建时被设置(指明此目录和子目录中所有的目标，是否应当从默认构建中排除, 子目录的IDE工程文件/Makefile将从顶级IDE工程文件/Makefile中排除)</li>
-<li>source1 source2 … sourceN用来指定源文件</li>
-</ul>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">add_library</span>(&lt;name&gt; [STATIC | SHARED | MODULE | UNKNOWN] IMPORTED)</span><br><span class="line"><span class="keyword">add_library</span>(<span class="keyword">test</span> SHARED IMPORTED)</span><br><span class="line"><span class="keyword">set_target_properties</span>(  <span class="keyword">test</span> <span class="comment">#指定目标库名称</span></span><br><span class="line">                        PROPERTIES IMPORTED_LOCATION <span class="comment">#指明要设置的参数</span></span><br><span class="line">                        libs/src/<span class="variable">$&#123;ANDROID_ABI&#125;</span>/libtest.so <span class="comment">#设定导入库的路径)</span></span><br></pre></td></tr></table></figure>
-<p>导入了一个已存在的<name>库文件，导入库一般配合set_target_properties使用，这个命令用来指定导入库的路径,</name></p>
-<h3 id="3-aux-source-directory"><a href="#3-aux-source-directory" class="headerlink" title="3. aux_source_directory"></a>3. aux_source_directory</h3><p>查找源文件并保存到相应的变量中:<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查找当前目录下所有源文件并保存至SRC_LIST变量中</span></span><br><span class="line"><span class="keyword">aux_source_directory</span>(. SRC_LIST)</span><br></pre></td></tr></table></figure></p>
-<h3 id="4-set"><a href="#4-set" class="headerlink" title="4. set"></a>4. set</h3><p>设置CMake变量<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置可执行文件的输出路径(EXCUTABLE_OUTPUT_PATH是全局变量)</span></span><br><span class="line"><span class="keyword">set</span>(EXECUTABLE_OUTPUT_PATH [output_path])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置库文件的输出路径(LIBRARY_OUTPUT_PATH是全局变量)</span></span><br><span class="line"><span class="keyword">set</span>(LIBRARY_OUTPUT_PATH [output_path])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置源文件集合(SOURCE_FILES是本地变量即自定义变量)</span></span><br><span class="line"><span class="keyword">set</span>(SOURCE_FILES main.cpp <span class="keyword">test</span>.cpp ...)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置C++编译参数(CMAKE_CXX_FLAGS是全局变量)</span></span><br><span class="line"><span class="keyword">set</span>(CMAKE_CXX_FLAGS <span class="string">"-Wall std=c++11"</span>)</span><br></pre></td></tr></table></figure></p>
-<h3 id="5-include-directories"><a href="#5-include-directories" class="headerlink" title="5. include_directories"></a>5. include_directories</h3><p>设置头文件位置<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 可以用相对或者绝对路径，也可以用自定义的变量值</span></span><br><span class="line"><span class="keyword">include_directories</span>(./<span class="keyword">include</span> <span class="variable">$&#123;MY_INCLUDE&#125;</span>)</span><br></pre></td></tr></table></figure></p>
-<h3 id="6-add-executable"><a href="#6-add-executable" class="headerlink" title="6. add_executable"></a>6. add_executable</h3><p>添加可执行文件<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">add_executable</span>(&lt;name&gt; <span class="variable">$&#123;SRC_LIST&#125;</span>)</span><br></pre></td></tr></table></figure></p>
-<h3 id="7-target-link-libraries"><a href="#7-target-link-libraries" class="headerlink" title="7. target_link_libraries"></a>7. target_link_libraries</h3><p>将若干库链接到目标库文件,将lib1, lib2, lib3链接到<name>上<br>NOTE: 链接的顺序应当符合gcc链接顺序规则，被链接的库放在依赖它的库的后面，即如果上面的命令中，lib1依赖于lib2, lib2又依赖于lib3，则在上面命令中必须严格按照lib1 lib2 lib3的顺序排列，否则会报错<br>也可以自定义链接选项, 比如针对lib1使用-WL选项,target_link_libraries(<name> lib1 -WL, lib2 lib3)<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">target_link_libraries</span>(&lt;name&gt; lib1 lib2 lib3)</span><br></pre></td></tr></table></figure></name></name></p>
-<h3 id="8-add-definitions"><a href="#8-add-definitions" class="headerlink" title="8. add_definitions"></a>8. add_definitions</h3><p>为当前路径以及子目录的源文件加入由-D引入得define flag<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">add_definitions</span>(-DFOO -DDEBUG ...)</span><br></pre></td></tr></table></figure></p>
-<h3 id="9-add-subdirectory"><a href="#9-add-subdirectory" class="headerlink" title="9. add_subdirectory"></a>9. add_subdirectory</h3><p>如果当前目录下还有子目录时可以使用add_subdirectory，子目录中也需要包含有CMakeLists.txt<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sub_dir指定包含CMakeLists.txt和源码文件的子目录位置</span></span><br><span class="line"><span class="comment"># binary_dir是输出路径， 一般可以不指定</span></span><br><span class="line">add_subdirecroty(sub_dir [binary_dir])</span><br></pre></td></tr></table></figure></p>
-<h3 id="10-file"><a href="#10-file" class="headerlink" title="10. file"></a>10. file</h3><p>文件操作命令<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将message写入filename文件中,会覆盖文件原有内容</span></span><br><span class="line"><span class="keyword">file</span>(WRITE filename <span class="string">"message"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将message写入filename文件中，会追加在文件末尾</span></span><br><span class="line"><span class="keyword">file</span>(APPEND filename <span class="string">"message"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从filename文件中读取内容并存储到var变量中，如果指定了numBytes和offset，</span></span><br><span class="line"><span class="comment"># 则从offset处开始最多读numBytes个字节，另外如果指定了HEX参数，则内容会以十六进制形式存储在var变量中</span></span><br><span class="line"><span class="keyword">file</span>(READ filename var [LIMIT numBytes] [OFFSET offset] [HEX])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重命名文件</span></span><br><span class="line"><span class="keyword">file</span>(RENAME &lt;oldname&gt; &lt;newname&gt;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除文件， 等于rm命令</span></span><br><span class="line"><span class="keyword">file</span>(<span class="keyword">REMOVE</span> [file1 ...])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 递归的执行删除文件命令, 等于rm -r</span></span><br><span class="line"><span class="keyword">file</span>(REMOVE_RECURSE [file1 ...])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 根据指定的url下载文件</span></span><br><span class="line"><span class="comment"># timeout超时时间; 下载的状态会保存到status中; 下载日志会被保存到log; sum指定所下载文件预期的MD5值,如果指定会自动进行比对，如果不一致，则返回一个错误; SHOW_PROGRESS，进度信息会以状态信息的形式被打印出来</span></span><br><span class="line"><span class="keyword">file</span>(DOWNLOAD url <span class="keyword">file</span> [TIMEOUT timeout] [STATUS status] [LOG log] [EXPECTED_MD5 sum] [SHOW_PROGRESS])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建目录</span></span><br><span class="line"><span class="keyword">file</span>(<span class="keyword">MAKE_DIRECTORY</span> [dir1 dir2 ...])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 会把path转换为以unix的/开头的cmake风格路径,保存在result中</span></span><br><span class="line"><span class="keyword">file</span>(TO_CMAKE_PATH path result)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 它会把cmake风格的路径转换为本地路径风格：windows下用"\"，而unix下用"/"</span></span><br><span class="line"><span class="keyword">file</span>(TO_NATIVE_PATH path result)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将会为所有匹配查询表达式的文件生成一个文件list，并将该list存储进变量variable里, 如果一个表达式指定了RELATIVE, 返回的结果将会是相对于给定路径的相对路径, 查询表达式例子: *.cxx, *.vt?</span></span><br><span class="line">NOTE: 按照官方文档的说法，不建议使用<span class="keyword">file</span>的GLOB指令来收集工程的源文件</span><br><span class="line"><span class="keyword">file</span>(GLOB variable [RELATIVE path] [globbing expressions]...)</span><br></pre></td></tr></table></figure></p>
-<h3 id="11-set-directory-properties"><a href="#11-set-directory-properties" class="headerlink" title="11. set_directory_properties"></a>11. set_directory_properties</h3><p>设置某个路径的一种属性<br>prop1 prop代表属性，取值为：</p>
-<ul>
-<li>INCLUDE_DIRECTORIES</li>
-<li>LINK_DIRECTORIES</li>
-<li>INCLUDE_REGULAR_EXPRESSION</li>
-<li>ADDITIONAL_MAKE_CLEAN_FILES<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set_directory_properties</span>(PROPERTIES prop1 value1 prop2 value2)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="12-set-property"><a href="#12-set-property" class="headerlink" title="12. set_property"></a>12. set_property</h3><p>在给定的作用域内设置一个命名的属性<br>第一个参数决定了属性可以影响的作用域,必须为以下值：</p>
-<ul>
-<li>GLOBAL 全局作作用域,不接受名字</li>
-<li>DIRECTORY 默认为当前路径，但是同样也可以用[dir]指定路径</li>
-<li>TARGET 目标作用，可以是0个或多个已有的目标</li>
-<li>SOURCE 源作用域， 可以是0个过多个源文件</li>
-<li>TEST 测试作用域, 可以是0个或多个已有的测试</li>
-<li>CACHE 必须指定0个或多个cache中已有的条目<br>PROPERTY参数是必须的<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set_property</span>(&lt;GLOBAL | </span><br><span class="line">            DIRECTORY [dir] | </span><br><span class="line">            <span class="keyword">TARGET</span> [<span class="keyword">target</span> ...] | </span><br><span class="line">            SOURCE [src1 ...] | </span><br><span class="line">            <span class="keyword">TEST</span> [test1 ...] | </span><br><span class="line">            CACHE [entry1 ...]&gt;</span><br><span class="line">             [APPEND] </span><br><span class="line">             PROPERTY &lt;name&gt; [value ...])</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<font size="10"><a href="https://gearyyoung.gitbooks.io/cmake-api/content/cmake/CMake%E8%AF%AD%E6%B3%95.html" target="_blank" rel="noopener">CMake参考手册</a></font>
+        <h2 id="3种命名空间范围"><a href="#3种命名空间范围" class="headerlink" title="3种命名空间范围"></a>3种命名空间范围</h2><p>命名空间(Namespace)是从名称到对象的映射，大部分的命名空间都是通过 Python 字典来实现的。<br>命名空间提供了在项目中避免名字冲突的一种方法。各个命名空间是独立的，没有任何关系的，所以一个命名空间中不能有重名，但不同的命名空间是可以重名而没有任何影响。<br>一般有三种命名空间：<br>内置名称（built-in names），Python语言内置的名称，比如函数名abs、char和异常名称BaseException、Exception等等。<br>全局名称（global names），模块中定义的名称，记录了模块的变量，包括函数、类、其它导入的模块、模块级的变量和常量。<br>局部名称（local names），函数中定义的名称，记录了函数的变量，包括函数的参数和局部定义的变量。（类中定义）<br>Python 的查找顺序为：局部的命名空间去 -&gt; 全局命名空间 -&gt; 内置命名空间。<br>命名空间的生命周期：命名空间的生命周期取决于对象的作用域，如果对象执行完成，则该命名空间的生命周期就结束。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># var1 是全局名称</span><br><span class="line">var1 = 5</span><br><span class="line">def some_func():</span><br><span class="line">    # var2 是局部名称</span><br><span class="line">    var2 = 6</span><br><span class="line">    def some_inner_func():</span><br><span class="line">        # var3 是内嵌的局部名称</span><br><span class="line">        var3 = 7</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2019/12/22/Python3命名空间和作用域/namespace.png" alt="3种命名空间"></p>
+<h2 id="4种作用域"><a href="#4种作用域" class="headerlink" title="4种作用域"></a>4种作用域</h2><p>在一个python程序中，直接访问一个变量，会从内到外依次访问所有的作用域直到找到，否则会报未定义的错误。程序的变量并不是在哪个位置都可以访问的，访问权限决定于这个变量是在哪里赋值的。变量的作用域决定了在哪一部分程序可以访问哪个特定的变量名称。<br><strong>Python的作用域一共有4种，分别是：</strong><br>L（Local）：最内层，包含局部变量，比如一个函数/方法内部。<br>E（Enclosing）：包含了非局部(non-local)也非全局(non-global)的变量。比如两个嵌套函数，一个函数（或类）A里面又包含了一个函数B，那么对于B中的名称来说A中的作用域就为 nonlocal。<br>G（Global）：当前脚本的最外层，比如当前模块的全局变量。<br>B（Built-in）： 包含了内建的变量/关键字等。最后被搜索<br>规则顺序： L –&gt; E –&gt; G –&gt; B。<br>在局部找不到，便会去局部外的局部找（例如闭包），再找不到就会去全局找，再者去内置中找。</p>
+<p>Python中只有模块（module），类（class）以及函数（def、lambda）才会引入新的作用域，其它的代码块（如 if/elif/else/、try/except、for/while等）是不会引入新的作用域的，也就是说这些语句内定义的变量，外部也可以访问<br><img src="/2019/12/22/Python3命名空间和作用域/variable_domain.png" alt="4种作用域范围"></p>
+<h3 id="全局变量和局部变量"><a href="#全局变量和局部变量" class="headerlink" title="全局变量和局部变量"></a>全局变量和局部变量</h3><p>定义在函数内部的变量拥有一个局部作用域，定义在函数外的拥有全局作用域。<br>局部变量只能在其被声明的函数内部访问，而全局变量可以在整个程序范围内访问。调用函数时，所有在函数内声明的变量名称都将被加入到作用域中。如下实例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">total = <span class="number">0</span> <span class="comment"># 这是一个全局变量</span></span><br><span class="line"><span class="comment"># 可写函数说明</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum</span><span class="params">( arg1, arg2 )</span>:</span></span><br><span class="line">    <span class="comment">#返回2个参数的和."</span></span><br><span class="line">    total = arg1 + arg2 <span class="comment"># total在这里是局部变量.</span></span><br><span class="line">    <span class="keyword">print</span> (<span class="string">"函数内是局部变量 : "</span>, total)</span><br><span class="line">    <span class="keyword">return</span> total</span><br><span class="line"></span><br><span class="line"><span class="comment">#调用sum函数</span></span><br><span class="line">sum( <span class="number">10</span>, <span class="number">20</span> )</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"函数外是全局变量 : "</span>, total)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以上实例输出结果：</span></span><br><span class="line"><span class="comment"># 函数内是局部变量 :  30</span></span><br><span class="line"><span class="comment"># 函数外是全局变量 :  0</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="global-和-nonlocal关键字"><a href="#global-和-nonlocal关键字" class="headerlink" title="global 和 nonlocal关键字"></a>global 和 nonlocal关键字</h3><p>当内部作用域想修改外部作用域的变量时，就要用到global和nonlocal关键字了。以下实例修改全局变量 num：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">num = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun1</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">global</span> num  <span class="comment"># 需要使用 global 关键字声明</span></span><br><span class="line">    print(num) </span><br><span class="line">    num = <span class="number">123</span></span><br><span class="line">    print(num)</span><br><span class="line">fun1()</span><br><span class="line">print(num)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以上实例输出结果：</span></span><br><span class="line"><span class="comment"># 1</span></span><br><span class="line"><span class="comment"># 123</span></span><br><span class="line"><span class="comment"># 123</span></span><br></pre></td></tr></table></figure></p>
+<p>如果要修改嵌套作用域（enclosing 作用域，外层非全局作用域）中的变量则需要 nonlocal 关键字了，如下实例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">outer</span><span class="params">()</span>:</span></span><br><span class="line">    num = <span class="number">10</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="keyword">nonlocal</span> num   <span class="comment"># nonlocal关键字声明</span></span><br><span class="line">        num = <span class="number">100</span></span><br><span class="line">        print(num)</span><br><span class="line">    inner()</span><br><span class="line">    print(num)</span><br><span class="line">outer()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以上实例输出结果：</span></span><br><span class="line"><span class="comment"># 100</span></span><br><span class="line"><span class="comment"># 100</span></span><br></pre></td></tr></table></figure></p>
+
       
 
       
@@ -225,29 +196,7 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CMake</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Language//" class="article-tag-list-link color4">Language</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
 
@@ -297,7 +246,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/14/CMake常用命令/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/22/Python3命名空间和作用域/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -311,18 +260,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/09/01/蚁群算法/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          蚁群优化算法
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/07/21/CMake/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">CMake介绍和基本语法</div>
+    <a href="/2019/12/11/c-11新特性/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">c++11新特性</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -349,7 +289,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#常用命令"><span class="toc-number">1.</span> <span class="toc-text">常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-cmake-minimum-required-VERSION-3-4-1"><span class="toc-number">1.1.</span> <span class="toc-text">1. cmake_minimum_required(VERSION 3.4.1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-add-library"><span class="toc-number">1.2.</span> <span class="toc-text">2. add_library</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-aux-source-directory"><span class="toc-number">1.3.</span> <span class="toc-text">3. aux_source_directory</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-set"><span class="toc-number">1.4.</span> <span class="toc-text">4. set</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-include-directories"><span class="toc-number">1.5.</span> <span class="toc-text">5. include_directories</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-add-executable"><span class="toc-number">1.6.</span> <span class="toc-text">6. add_executable</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-target-link-libraries"><span class="toc-number">1.7.</span> <span class="toc-text">7. target_link_libraries</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-add-definitions"><span class="toc-number">1.8.</span> <span class="toc-text">8. add_definitions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-add-subdirectory"><span class="toc-number">1.9.</span> <span class="toc-text">9. add_subdirectory</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-file"><span class="toc-number">1.10.</span> <span class="toc-text">10. file</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-set-directory-properties"><span class="toc-number">1.11.</span> <span class="toc-text">11. set_directory_properties</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-set-property"><span class="toc-number">1.12.</span> <span class="toc-text">12. set_property</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#3种命名空间范围"><span class="toc-number">1.</span> <span class="toc-text">3种命名空间范围</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4种作用域"><span class="toc-number">2.</span> <span class="toc-text">4种作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#全局变量和局部变量"><span class="toc-number">2.1.</span> <span class="toc-text">全局变量和局部变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#global-和-nonlocal关键字"><span class="toc-number">2.2.</span> <span class="toc-text">global 和 nonlocal关键字</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -374,7 +314,7 @@
 <script src="https://www.wenjunjiang.win/js/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://yoursite.com/2019/08/14/CMake常用命令/",
+  id: "http://yoursite.com/2019/12/22/Python3命名空间和作用域/",
   owner: 'xoyolucas',
   repo: 'blog_gitment',
   oauth: {

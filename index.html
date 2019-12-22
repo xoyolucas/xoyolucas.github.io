@@ -156,6 +156,75 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Python3命名空间和作用域" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/22/Python3命名空间和作用域/">Python3命名空间和作用域</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/22/Python3命名空间和作用域/" class="archive-article-date">
+  	<time datetime="2019-12-22T13:21:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="3种命名空间范围"><a href="#3种命名空间范围" class="headerlink" title="3种命名空间范围"></a>3种命名空间范围</h2><p>命名空间(Namespace)是从名称到对象的映射，大部分的命名空间都是通过 Python 字典来实现的。<br>命名空间提供了在项目中避免名字冲突的一种方法。各个命名空间是独立的，没有任何关系的，所以一个命名空间中不能有重名，但不同的命名空间是可以重名而没有任何影响。<br>一般有三种命名空间：<br>内置名称（built-in names），Python语言内置的名称，比如函数名abs、char和异常名称BaseException、Exception等等。<br>全局名称（global names），模块中定义的名称，记录了模块的变量，包括函数、类、其它导入的模块、模块级的变量和常量。<br>局部名称（local names），函数中定义的名称，记录了函数的变量，包括函数的参数和局部定义的变量。（类中定义）<br>Python 的查找顺序为：局部的命名空间去 -&gt; 全局命名空间 -&gt; 内置命名空间。<br>命名空间的生命周期：命名空间的生命周期取决于对象的作用域，如果对象执行完成，则该命名空间的生命周期就结束。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># var1 是全局名称</span><br><span class="line">var1 = 5</span><br><span class="line">def some_func():</span><br><span class="line">    # var2 是局部名称</span><br><span class="line">    var2 = 6</span><br><span class="line">    def some_inner_func():</span><br><span class="line">        # var3 是内嵌的局部名称</span><br><span class="line">        var3 = 7</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2019/12/22/Python3命名空间和作用域/namespace.png" alt="3种命名空间"></p>
+<h2 id="4种作用域"><a href="#4种作用域" class="headerlink" title="4种作用域"></a>4种作用域</h2><p>在一个python程序中，直接访问一个变量，会从内到外依次访问所有的作用域直到找到，否则会报未定义的错误。程序的变量并不是在哪个位置都可以访问的，访问权限决定于这个变量是在哪里赋值的。变量的作用域决定了在哪一部分程序可以访问哪个特定的变量名称。<br><strong>Python的作用域一共有4种，分别是：</strong><br>L（Local）：最内层，包含局部变量，比如一个函数/方法内部。<br>E（Enclosing）：包含了非局部(non-local)也非全局(non-global)的变量。比如两个嵌套函数，一个函数（或类）A里面又包含了一个函数B，那么对于B中的名称来说A中的作用域就为 nonlocal。<br>G（Global）：当前脚本的最外层，比如当前模块的全局变量。<br>B（Built-in）： 包含了内建的变量/关键字等。最后被搜索<br>规则顺序： L –&gt; E –&gt; G –&gt; B。<br>在局部找不到，便会去局部外的局部找（例如闭包），再找不到就会去全局找，再者去内置中找。</p>
+<p>Python中只有模块（module），类（class）以及函数（def、lambda）才会引入新的作用域，其它的代码块（如 if/elif/else/、try/except、for/while等）是不会引入新的作用域的，也就是说这些语句内定义的变量，外部也可以访问<br><img src="/2019/12/22/Python3命名空间和作用域/variable_domain.png" alt="4种作用域范围"></p>
+<h3 id="全局变量和局部变量"><a href="#全局变量和局部变量" class="headerlink" title="全局变量和局部变量"></a>全局变量和局部变量</h3><p>定义在函数内部的变量拥有一个局部作用域，定义在函数外的拥有全局作用域。<br>局部变量只能在其被声明的函数内部访问，而全局变量可以在整个程序范围内访问。调用函数时，所有在函数内声明的变量名称都将被加入到作用域中。如下实例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">total = <span class="number">0</span> <span class="comment"># 这是一个全局变量</span></span><br><span class="line"><span class="comment"># 可写函数说明</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum</span><span class="params">( arg1, arg2 )</span>:</span></span><br><span class="line">    <span class="comment">#返回2个参数的和."</span></span><br><span class="line">    total = arg1 + arg2 <span class="comment"># total在这里是局部变量.</span></span><br><span class="line">    <span class="keyword">print</span> (<span class="string">"函数内是局部变量 : "</span>, total)</span><br><span class="line">    <span class="keyword">return</span> total</span><br><span class="line"></span><br><span class="line"><span class="comment">#调用sum函数</span></span><br><span class="line">sum( <span class="number">10</span>, <span class="number">20</span> )</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"函数外是全局变量 : "</span>, total)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以上实例输出结果：</span></span><br><span class="line"><span class="comment"># 函数内是局部变量 :  30</span></span><br><span class="line"><span class="comment"># 函数外是全局变量 :  0</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="global-和-nonlocal关键字"><a href="#global-和-nonlocal关键字" class="headerlink" title="global 和 nonlocal关键字"></a>global 和 nonlocal关键字</h3><p>当内部作用域想修改外部作用域的变量时，就要用到global和nonlocal关键字了。以下实例修改全局变量 num：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">num = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun1</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">global</span> num  <span class="comment"># 需要使用 global 关键字声明</span></span><br><span class="line">    print(num) </span><br><span class="line">    num = <span class="number">123</span></span><br><span class="line">    print(num)</span><br><span class="line">fun1()</span><br><span class="line">print(num)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以上实例输出结果：</span></span><br><span class="line"><span class="comment"># 1</span></span><br><span class="line"><span class="comment"># 123</span></span><br><span class="line"><span class="comment"># 123</span></span><br></pre></td></tr></table></figure></p>
+<p>如果要修改嵌套作用域（enclosing 作用域，外层非全局作用域）中的变量则需要 nonlocal 关键字了，如下实例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">outer</span><span class="params">()</span>:</span></span><br><span class="line">    num = <span class="number">10</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="keyword">nonlocal</span> num   <span class="comment"># nonlocal关键字声明</span></span><br><span class="line">        num = <span class="number">100</span></span><br><span class="line">        print(num)</span><br><span class="line">    inner()</span><br><span class="line">    print(num)</span><br><span class="line">outer()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以上实例输出结果：</span></span><br><span class="line"><span class="comment"># 100</span></span><br><span class="line"><span class="comment"># 100</span></span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/22/Python3命名空间和作用域/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-c-11新特性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -176,8 +245,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="new-language-features"><a href="#new-language-features" class="headerlink" title="new language features:"></a>new language features:</h2><p>&nbsp;</p>
-<h3 id="move-semantics"><a href="#move-semantics" class="headerlink" title="move semantics"></a>move semantics</h3><p>&nbsp;</p>
+        <h2 id="new-language-features"><a href="#new-language-features" class="headerlink" title="new language features:"></a>new language features:</h2><h3 id="move-semantics"><a href="#move-semantics" class="headerlink" title="move semantics"></a>move semantics</h3><p>&nbsp;</p>
 <h3 id="variadic-templates"><a href="#variadic-templates" class="headerlink" title="variadic templates"></a>variadic templates</h3>
         
           <a class="article-more-a" href="/2019/12/11/c-11新特性/#more">more >></a>
@@ -952,94 +1020,6 @@
 
 
   
-    <article id="post-粒子群算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/05/粒子群算法/">粒子群优化算法</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/05/粒子群算法/" class="archive-article-date">
-  	<time datetime="2019-09-05T11:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="粒子群算法的概念"><a href="#粒子群算法的概念" class="headerlink" title="粒子群算法的概念"></a>粒子群算法的概念</h2><p>粒子群优化算法(PSO Particle swarm optimization)是一种进化计算技术(evolutionary computation),和蚁群算法，鱼群算法一样是一种群体智能的优化算法。算法的思想源于对鸟群觅食的行为研究，最早由Kennedy和Eberhart在1995年提出的。</p>
-<p>粒子群优化算法的基本思想：是通过群体中个体之间的协作和信息共享来寻找最优解。用粒子来模拟鸟类的个体，每个粒子可视为N维搜索空间中的一个搜索个体，粒子的当前位置即对应优化问题的一个候选解，粒子的飞行过程即为该个体的搜索过程。粒子的飞行速度可根据粒子历史最优位置和种群历史最优位置进行动态的调整。粒子具有两个属性：粒子和位置，速度代表移动的快慢，位置代表移动的方向。每个粒子单独搜寻的最优解叫做个体极值，粒子群中最优的个体极值作为当前全局最优解。不断迭代，更新速度和位置。最终得到满足终止条件的最优解。<br></p>
-        
-          <a class="article-more-a" href="/2019/09/05/粒子群算法/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PSO</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Algorithm//" class="article-tag-list-link color5">Algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/05/粒子群算法/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1158,18 +1138,6 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
@@ -1178,11 +1146,31 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">pandas</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">IPM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1199,14 +1187,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ACO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IPM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
               </li>
             
             <div class="clearfix"></div>
