@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="xoyolucas&#39;s blog">
 <meta property="og:description" content="智能指针简介&amp;emsp;&amp;emsp;指针可以说是C++的“万恶之源”，在没有智能指针之前，对堆内存的管理就是简单的new和delete。但是一个很大的问题就是容易忘了delete释放，即使是资深码农，也可能会在某一个地方忘记delete它，造成内存泄漏。很多时候我们new出来的对象生命周期多样，因而要很小时的确定delete释放的时机。当我们写一个new语句时，一般就会立即把delete语句直接也">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-04T17:26:54.834Z">
+<meta property="og:updated_time" content="2019-12-29T16:01:22.853Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++智能指针">
 <meta name="twitter:description" content="智能指针简介&amp;emsp;&amp;emsp;指针可以说是C++的“万恶之源”，在没有智能指针之前，对堆内存的管理就是简单的new和delete。但是一个很大的问题就是容易忘了delete释放，即使是资深码农，也可能会在某一个地方忘记delete它，造成内存泄漏。很多时候我们new出来的对象生命周期多样，因而要很小时的确定delete释放的时机。当我们写一个new语句时，一般就会立即把delete语句直接也">
@@ -211,8 +211,7 @@
 <p>father指向的堆对象shared计数为1,weak计数为1；son指向的堆对象shared计数为1,weak计数为1。<br>son智能指针退出栈，son指向的堆对象shared计数减为0，weak计数为1，释放son的堆对象，father指向的堆对象shared计数为1,weak计数减为0；father智能指针退出栈，father指向的堆对象shared计数减为0，weak计数为0。释放father的堆对象和father的计数区域；son指向的堆对象shared计数为0，weak计数减为0，释放son的计数区域。<br>当生命控制权没有互相掌握时，才能正确解决循环引用问题，而弱引用的使用可以使生命控制权互相掌握的情况消失。</p>
 <p><strong>weak_ptr没有重载 * 和 -&gt; ，所以并不能直接使用资源。但可以使用lock()获得一个可用的shared_ptr对象，如果对象释放后，lock()会失败，返回一个空的shared_ptr。</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">runGame</span><span class="params">()</span></span>&#123;</span><br><span class="line">　　<span class="built_in">std</span>::<span class="built_in">shared_ptr</span>&lt;Monster&gt; monster1(<span class="keyword">new</span> Monster());</span><br><span class="line">　　<span class="built_in">std</span>::weak_ptr&lt;Monster&gt; r_monster1 = monster1;</span><br><span class="line">　　r_monster1-&gt;doSomething();<span class="comment">//Error! weak_ptr没有重载* 和 -&gt; ，无法直接当指针用</span></span><br><span class="line">　　<span class="built_in">std</span>::<span class="built_in">shared_ptr</span>&lt;Monster&gt; s_monster1 = r_monster1.lock();<span class="comment">//OK!可以通过weak_ptr的lock方法获得shared_ptr。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>&nbsp;</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>1、不要使用std::auto_ptr<br>2、当你需要一个独占资源所有权（访问权+生命控制权）的指针，且不允许任何外界访问，请使用std::unique_ptr<br>3、当你需要一个共享资源所有权（访问权+生命控制权）的指针，请使用std::shared_ptr<br>当你需要一个能访问资源，但不控制其生命周期的指针，请使用std::weak_ptr</p>
-<p>一个shared_ptr和n个weak_ptr搭配使用而不是n个shared_ptr。因为一般模型中，最好总是被一个指针控制生命周期，然后可以被n个指针控制访问。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>1、不要使用std::auto_ptr<br>2、当你需要一个独占资源所有权（访问权+生命控制权）的指针，且不允许任何外界访问，请使用std::unique_ptr<br>3、当你需要一个共享资源所有权（访问权+生命控制权）的指针，请使用std::shared_ptr<br>4、当你需要一个能访问资源，但不控制其生命周期的指针，请使用std::weak_ptr<br>5、一个shared_ptr和n个weak_ptr搭配使用而不是n个shared_ptr。因为一般模型中，最好总是被一个指针控制生命周期，然后可以被n个指针控制访问。</p>
 
       
 
@@ -510,11 +509,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
