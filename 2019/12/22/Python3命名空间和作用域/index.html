@@ -18,7 +18,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/12/22/Python3命名空间和作用域/namespace.png">
 <meta property="og:image" content="http://yoursite.com/2019/12/22/Python3命名空间和作用域/variable_domain.png">
-<meta property="og:updated_time" content="2019-12-29T15:20:49.788Z">
+<meta property="og:updated_time" content="2020-01-01T09:13:08.562Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python3命名空间和作用域">
 <meta name="twitter:description" content="3种命名空间范围命名空间(Namespace)是从名称到对象的映射，大部分的命名空间都是通过Python字典来实现的,命名空间提供了在项目中避免名字冲突的一种方法。各个命名空间是独立的，没有任何关系的，所以一个命名空间中不能有重名，但不同的命名空间是可以重名而没有任何影响。一般有三种命名空间：内置名称（built-in names），Python语言内置的名称，比如函数名abs、char和异常名称">
@@ -182,7 +182,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="3种命名空间范围"><a href="#3种命名空间范围" class="headerlink" title="3种命名空间范围"></a>3种命名空间范围</h2><p>命名空间(Namespace)是从名称到对象的映射，大部分的命名空间都是通过Python字典来实现的,命名空间提供了在项目中避免名字冲突的一种方法。各个命名空间是独立的，没有任何关系的，所以一个命名空间中不能有重名，但不同的命名空间是可以重名而没有任何影响。<br>一般有三种命名空间：<br>内置名称（built-in names），Python语言内置的名称，比如函数名abs、char和异常名称BaseException、Exception等等。<br>全局名称（global names），模块中定义的名称，记录了模块的变量，包括函数、类、其它导入的模块、模块级的变量和常量。<br>局部名称（local names），函数中定义的名称，记录了函数的变量，包括函数的参数和局部定义的变量。（类中定义）<br><a id="more"></a><br>Python 的查找顺序为：局部的命名空间去 -&gt; 全局命名空间 -&gt; 内置命名空间。<br>命名空间的生命周期：命名空间的生命周期取决于对象的作用域，如果对象执行完成，则该命名空间的生命周期就结束。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># var1 是全局名称</span><br><span class="line">var1 = 5</span><br><span class="line">def some_func():</span><br><span class="line">    # var2 是局部名称</span><br><span class="line">    var2 = 6</span><br><span class="line">    def some_inner_func():</span><br><span class="line">        # var3 是内嵌的局部名称</span><br><span class="line">        var3 = 7</span><br></pre></td></tr></table></figure></p>
+        <h2 id="3种命名空间范围"><a href="#3种命名空间范围" class="headerlink" title="3种命名空间范围"></a>3种命名空间范围</h2><p>命名空间(Namespace)是从名称到对象的映射，大部分的命名空间都是通过Python字典来实现的,命名空间提供了在项目中避免名字冲突的一种方法。各个命名空间是独立的，没有任何关系的，所以一个命名空间中不能有重名，但不同的命名空间是可以重名而没有任何影响。<br>一般有三种命名空间：<br>内置名称（built-in names），Python语言内置的名称，比如函数名abs、char和异常名称BaseException、Exception等等。<br>全局名称（global names），模块中定义的名称，记录了模块的变量，包括函数、类、其它导入的模块、模块级的变量和常量。<br>局部名称（local names），函数中定义的名称，记录了函数的变量，包括函数的参数和局部定义的变量。（类中定义）<br><a id="more"></a><br>Python 的查找顺序为：局部的命名空间去 -&gt; 全局命名空间 -&gt; 内置命名空间。<br>命名空间的生命周期：命名空间的生命周期取决于对象的作用域，如果对象执行完成，则该命名空间的生命周期就结束。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># var1 是全局名称</span></span><br><span class="line">var1 = <span class="number">5</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">some_func</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># var2 是局部名称</span></span><br><span class="line">    var2 = <span class="number">6</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">some_inner_func</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="comment"># var3 是内嵌的局部名称</span></span><br><span class="line">        var3 = <span class="number">7</span></span><br></pre></td></tr></table></figure></p>
 <p><img src="/2019/12/22/Python3命名空间和作用域/namespace.png" width="50%"><br><!-- ![3种命名空间](namespace.png) --></p>
 <h2 id="4种作用域"><a href="#4种作用域" class="headerlink" title="4种作用域"></a>4种作用域</h2><p>在一个python程序中，直接访问一个变量，会从内到外依次访问所有的作用域直到找到，否则会报未定义的错误。程序的变量并不是在哪个位置都可以访问的，访问权限决定于这个变量是在哪里赋值的。变量的作用域决定了在哪一部分程序可以访问哪个特定的变量名称。<br><strong>Python的作用域一共有4种，分别是：</strong><br>L（Local）：最内层，包含局部变量，比如一个函数/方法内部。<br>E（Enclosing）：包含了非局部(non-local)也非全局(non-global)的变量。比如两个嵌套函数，一个函数（或类）A里面又包含了一个函数B，那么对于B中的名称来说A中的作用域就为 nonlocal。<br>G（Global）：当前脚本的最外层，比如当前模块的全局变量。<br>B（Built-in）： 包含了内建的变量/关键字等。最后被搜索<br>规则顺序： L –&gt; E –&gt; G –&gt; B。<br>在局部找不到，便会去局部外的局部找（例如闭包），再找不到就会去全局找，再者去内置中找。</p>
 <p>Python中只有模块（module），类（class）以及函数（def、lambda）才会引入新的作用域，其它的代码块（如 if/elif/else/、try/except、for/while等）是不会引入新的作用域的，也就是说这些语句内定义的变量，外部也可以访问<br><img src="/2019/12/22/Python3命名空间和作用域/variable_domain.png" alt="4种作用域范围"></p>
@@ -283,6 +283,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2020/01/05/动态规划/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          动态规划
+        
+      </div>
+    </a>
+  
   
     <a href="/2019/12/11/c-11新特性/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">c++11新特性</div>
@@ -357,7 +366,7 @@ gitment.render('gitment-ctn')
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 Lucas
+    		&copy; 2020 Lucas
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -473,11 +482,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -497,10 +506,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">BFS</a>
               </li>
              
@@ -509,7 +514,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PSO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
               </li>
              
               <li class="article-tag-list-item">

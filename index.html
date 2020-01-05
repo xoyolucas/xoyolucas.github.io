@@ -156,6 +156,95 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-动态规划" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/05/动态规划/">动态规划</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/05/动态规划/" class="archive-article-date">
+  	<time datetime="2020-01-05T10:29:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>动态规划方法通常用来求解最优化问题。动态规划与分治方法相似，都是通过组合子问题的解来求解原问题。分治方法将问题划分为互不相交的子问题，递归求解子问题，再将它们的解组合起来，求解原问题的解。动态规划应用于子问题重叠的情况，即不同的子问题具有公共的子子问题，对每个公共子子问题只求解一次，将其保存在一个表格，避免求解时重复计算。</p>
+<h3 id="动态规划原理"><a href="#动态规划原理" class="headerlink" title="动态规划原理"></a>动态规划原理</h3><h3 id="钢条切割"><a href="#钢条切割" class="headerlink" title="钢条切割"></a>钢条切割</h3><p>钢条切割问题满足最优子结构性质：问题的最优解由相关子问题的最优解组和而成，而这些子问题可以独立求解。</p>
+<ul>
+<li>递归方法：<br>将钢条从左边切割下长度为i的一段，只对右边剩下的长度n-i的一段继续进行切割(递归求解)，对左边一段则不再进行分割。得到公式$r_n = max_(1&lt;=i&lt;=n)(p_i + r_(n-i))$</li>
+</ul>
+<h3 id="矩阵链乘法"><a href="#矩阵链乘法" class="headerlink" title="矩阵链乘法"></a>矩阵链乘法</h3><h3 id="最长公共子序列"><a href="#最长公共子序列" class="headerlink" title="最长公共子序列"></a>最长公共子序列</h3><h3 id="最优二叉搜索树"><a href="#最优二叉搜索树" class="headerlink" title="最优二叉搜索树"></a>最优二叉搜索树</h3>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">dynamic programming</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Algorithm//" class="article-tag-list-link color5">Algorithm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/05/动态规划/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Python3命名空间和作用域" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -263,7 +352,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="new-language-features"><a href="#new-language-features" class="headerlink" title="new language features:"></a>new language features:</h2><h3 id="move-semantics"><a href="#move-semantics" class="headerlink" title="move semantics"></a>move semantics</h3><p>&nbsp;</p>
+        <h2 id="new-language-features"><a href="#new-language-features" class="headerlink" title="new language features:"></a>new language features:</h2><h3 id="move-semantics"><a href="#move-semantics" class="headerlink" title="move semantics"></a>move semantics</h3><p>Move semantics is mostly about performance optimization: the ability to move an object without the expensive overhead of copying. The difference between a copy and a move is that a copy leaves the source unchanged, and a move will leave the source either unchanged or radically different – depending on what the source is. For plain old data, a move is the same as a copy.<br>To move an object means to transfer ownership of some resource it manages to another object. You could think of this as changing pointers held by the source object to be moved, or now held, by the destination object; the resource remains in its location in memory. Such an inexpensive transfer of resources is extremely useful when the source is an rvalue, where the potentially dangerous side-effect of changing the source after the move is redundant since the source is a temporary object that won’t be accessible later.</p>
+<p>Moves also make it possible to transfer objects such as std::unique_ptrs, smart pointers that are designed to hold a pointer to a unique object, from one scope to another.<br>See the sections on: rvalue references, defining move special member functions, std::move, std::forward, forwarding references.</p>
+<p>移动语义主要是关于性能优化：移动对象而不需要昂贵的复制开销的能力。拷贝和移动的区别在于拷贝保持源代码不变，而移动将保持源代码不变或根本不同——这取决于源代码是什么。对于普通的旧数据，移动和复制是一样的。<br>移动一个对象意味着将它管理的某个资源的所有权转移到另一个对象。您可以将此视为更改由要移动的源对象或现在由目标对象保留的指针；资源仍保留在内存中的位置。当源是rvalue时，这种廉价的资源传输是非常有用的，在这种情况下，在移动后更改源的潜在危险副作用是多余的，因为源是一个临时对象，以后无法访问。<br>移动还可以将对象（如std：：unique_ptr）从一个作用域传输到另一个作用域，这些智能指针用于保存指向唯一对象的指针。<br>请参阅有关：rvalue引用、定义移动特殊成员函数、std：：move、std：：forward、转发引用的部分。</p>
+<p>&nbsp;</p>
 <h3 id="variadic-templates"><a href="#variadic-templates" class="headerlink" title="variadic templates"></a>variadic templates</h3>
         
           <a class="article-more-a" href="/2019/12/11/c-11新特性/#more">more >></a>
@@ -951,93 +1043,6 @@
 
 
   
-    <article id="post-内点法IPM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/08/内点法IPM/">内点法IPM</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/08/内点法IPM/" class="archive-article-date">
-  	<time datetime="2019-09-08T12:37:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="内点法简介"><a href="#内点法简介" class="headerlink" title="内点法简介"></a>内点法简介</h2><p><strong><em>内点法(Interior Point Method)</em></strong>是一种求解线性规划或非线性凸优化问题的算法。它是由John von Neumann发明的，他利用戈尔丹的线性齐次系统提出了这种新的求解线性规划的方法。后被Narendra Karmarkar于1984年推广应用到线性规划，即Karmarkar算法。<br>内点法属于约束优化算法，约束优化算法的基本思想是：<strong>通过引入效用函数的方法将约束优化问题转换成无约束问题</strong>，再利用优化迭代过程不断地更新效用函数，以使得算法收敛。相当于在可行域的边界筑起一道很高的“围墙”，当迭代点靠近边界时，目标函数徒然增大，以示惩罚，阻止迭代点穿越边界，这样就可以将最优解“挡”在可行域之内了。<br></p>
-        
-          <a class="article-more-a" href="/2019/09/08/内点法IPM/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">IPM</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Algorithm//" class="article-tag-list-link color5">Algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/08/内点法IPM/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1052,7 +1057,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 Lucas
+    		&copy; 2020 Lucas
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -1168,11 +1173,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1192,10 +1197,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">BFS</a>
               </li>
              
@@ -1204,7 +1205,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PSO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
               </li>
              
               <li class="article-tag-list-item">
