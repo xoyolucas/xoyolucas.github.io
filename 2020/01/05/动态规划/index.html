@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="xoyolucas&#39;s blog">
 <meta property="og:description" content="动态规划动态规划方法通常用来求解最优化问题。动态规划与分治方法相似，都是通过组合子问题的解来求解原问题。分治方法将问题划分为互不相交的子问题，递归求解子问题，再将它们的解组合起来，求解原问题的解。动态规划应用于子问题重叠的情况，即不同的子问题具有公共的子子问题，对每个公共子子问题只求解一次，将其保存在一个表格，避免求解时重复计算。 动态规划原理钢条切割钢条切割问题满足最优子结构性质：问题的最优解由">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-05T16:42:22.373Z">
+<meta property="og:updated_time" content="2020-01-12T12:16:54.489Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="动态规划">
 <meta name="twitter:description" content="动态规划动态规划方法通常用来求解最优化问题。动态规划与分治方法相似，都是通过组合子问题的解来求解原问题。分治方法将问题划分为互不相交的子问题，递归求解子问题，再将它们的解组合起来，求解原问题的解。动态规划应用于子问题重叠的情况，即不同的子问题具有公共的子子问题，对每个公共子子问题只求解一次，将其保存在一个表格，避免求解时重复计算。 动态规划原理钢条切割钢条切割问题满足最优子结构性质：问题的最优解由">
@@ -182,7 +182,7 @@
         <h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>动态规划方法通常用来求解最优化问题。动态规划与分治方法相似，都是通过组合子问题的解来求解原问题。分治方法将问题划分为互不相交的子问题，递归求解子问题，再将它们的解组合起来，求解原问题的解。动态规划应用于子问题重叠的情况，即不同的子问题具有公共的子子问题，对每个公共子子问题只求解一次，将其保存在一个表格，避免求解时重复计算。</p>
 <h3 id="动态规划原理"><a href="#动态规划原理" class="headerlink" title="动态规划原理"></a>动态规划原理</h3><h3 id="钢条切割"><a href="#钢条切割" class="headerlink" title="钢条切割"></a>钢条切割</h3><p>钢条切割问题满足最优子结构性质：问题的最优解由相关子问题的最优解组和而成，而这些子问题可以独立求解。</p>
 <ul>
-<li>递归方法：<br>将钢条从左边切割下长度为i的一段，只对右边剩下的长度n-i的一段继续进行切割(递归求解)，对左边一段则不再进行分割。得到公式$r_n = max_(1&lt;=i&lt;=n)(p_i + r_(n-i))$</li>
+<li>递归方法：<br>将钢条从左边切割下长度为i的一段，只对右边剩下的长度n-i的一段继续进行切割(递归求解)，对左边一段则不再进行分割。得到公式$r_n = max_{1&lt;=i&lt;=n}(p_i + r_{n-i})$</li>
 </ul>
 <h3 id="矩阵链乘法"><a href="#矩阵链乘法" class="headerlink" title="矩阵链乘法"></a>矩阵链乘法</h3><h3 id="最长公共子序列"><a href="#最长公共子序列" class="headerlink" title="最长公共子序列"></a>最长公共子序列</h3><h3 id="最优二叉搜索树"><a href="#最优二叉搜索树" class="headerlink" title="最优二叉搜索树"></a>最优二叉搜索树</h3>
       
@@ -277,6 +277,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/01/13/C-匿名函数/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          C++匿名函数
+        
+      </div>
+    </a>
   
   
     <a href="/2019/12/22/Python3命名空间和作用域/" id="article-nav-older" class="article-nav-link-wrap">
@@ -464,11 +473,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -476,11 +485,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -492,23 +509,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PSO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">BFS</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PSO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
               </li>
              
               <li class="article-tag-list-item">
