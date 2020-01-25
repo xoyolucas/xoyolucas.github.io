@@ -176,26 +176,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>动态规划方法通常用来求解最优化问题。动态规划与分治方法相似，都是通过组合子问题的解来求解原问题。分治方法将问题划分为互不相交的子问题，递归求解子问题，再将它们的解组合起来，求解原问题的解。动态规划应用于子问题重叠的情况，即不同的子问题具有公共的子子问题，对每个公共子子问题只求解一次，将其保存在一个表格，避免求解时重复计算。</p>
-<h3 id="动态规划原理"><a href="#动态规划原理" class="headerlink" title="动态规划原理"></a>动态规划原理</h3><h3 id="钢条切割"><a href="#钢条切割" class="headerlink" title="钢条切割"></a>钢条切割</h3><p>钢条切割问题满足最优子结构性质：问题的最优解由相关子问题的最优解组和而成，而这些子问题可以独立求解。</p>
-<ul>
-<li>递归方法：<br>将钢条从左边切割下长度为i的一段，只对右边剩下的长度n-i的一段继续进行切割(递归求解)，对左边一段则不再进行分割。得到公式$r_n = max_{1&lt;=i&lt;=n}(p_i + r_{n-i})$<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CUT-ROD(p,n)</span><br><span class="line">if n==0</span><br><span class="line"><span class="code">    return 0</span></span><br><span class="line">q=$-\infty$</span><br><span class="line">for i=0 to n</span><br><span class="line"><span class="code">    q=max(q,p[i]+CUT-ROD(p,n-i))</span></span><br><span class="line">return q</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>函数CUT-ROD以价格数组p[1..n]和整数n为输入，返回长度为n的钢条的最大收益。对于递归方法，但规模很大的时候，运行时间会变的很长，因为考察了所有可能的$2^{n-1}$种切割方案,存在很多次重复计算。如下图：</p>
-<ul>
-<li>动态规划方法<br>动态规划需要仔细安排求解顺序，对每个子问题只求解一次，并将结果保存起来，随后再次需要求解此子问题的解时，直接查找保存的结果。动态规划方法需要付出额外的内存空间来节省计算时间。如果子问题的数量时输入规模的多项式函数，那么动态规划方法的时间复杂度就是多项式的。</li>
-</ul>
-<ol>
-<li>带备忘的自顶向下法(top-down with memoiztion)<br>此方法仍按自然的递归形式编写过程，但过程种保存每个子问题的解。当需要用到子问题的解时首先检查是否已经保存此解，节省计算时间。<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">MEMOIZED-CUT-ROD(p,n)</span><br><span class="line">let r[0..n] be a new array</span><br><span class="line">for i = 0 to n</span><br><span class="line"><span class="code">    r[i]=$\infty$</span></span><br><span class="line">return MEMOIZED-CUT-ROD-AUX(p,n,r)</span><br><span class="line"></span><br><span class="line">MEMOIZED-CUT-ROD-AUX(p,n,r)</span><br><span class="line">if r[n]&gt;=0</span><br><span class="line"><span class="code">    return r[n]</span></span><br><span class="line">if n == 0</span><br><span class="line"><span class="code">    q=0</span></span><br><span class="line">else q=$-\infty$</span><br><span class="line"><span class="code">    for i = 1 to n</span></span><br><span class="line"><span class="code">        q=max(q,p[i]+MEMOIZED-CUT-ROD-AUX(p,n-i,r))</span></span><br><span class="line">r[n]=q</span><br><span class="line">return q</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>函数MEMOIZED-CUT-ROD-AUX是最初的CUT-ROD引入备忘机制，首先检查所需值是否已知，如果是则返回保存的值；若不是，计算所需值q，并存入r[n]中。</p>
-<ol start="2">
-<li>自底向上法(bottom-up method)<br>这种方法一般需要恰当定义子问题“规模”，使得任何子问题的求解都只依赖于“更小的”子问题的求解。因而我们可以将子问题按规模排序，由小到大的顺序进行求解。当求解某个子问题时，它所依赖的那些更小的子问题都已经求解完毕并已保存，每个子问题只需要求解一次。<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">BOTTOM-UP-CUT-ROD(p,n)</span><br><span class="line">let r[<span class="number">0</span>..n] be a new array</span><br><span class="line">r[<span class="number">0</span>]=<span class="number">0</span></span><br><span class="line">for j = <span class="number">1</span> to n</span><br><span class="line">    q=$-\infty$</span><br><span class="line">    for i = <span class="number">1</span> to j</span><br><span class="line">        q=max(q,p[i]+r[j-i])</span><br><span class="line">    r[j]=q</span><br><span class="line">reurn r[n]</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="矩阵链乘法"><a href="#矩阵链乘法" class="headerlink" title="矩阵链乘法"></a>矩阵链乘法</h3><h3 id="最长公共子序列"><a href="#最长公共子序列" class="headerlink" title="最长公共子序列"></a>最长公共子序列</h3><h3 id="最优二叉搜索树"><a href="#最优二叉搜索树" class="headerlink" title="最优二叉搜索树"></a>最优二叉搜索树</h3>
+        <h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>动态规划方法通常用来求解最优化问题。动态规划与分治方法相似，都是通过组合子问题的解来求解原问题。分治方法将问题划分为互不相交的子问题，递归求解子问题，再将它们的解组合起来，求解原问题的解。动态规划应用于子问题重叠的情况，即不同的子问题具有公共的子子问题，对每个公共子子问题只求解一次，将其保存在一个表格，避免求解时重复计算。<br></p>
+        
+          <a class="article-more-a" href="/2020/01/18/动态规划/#more">more >></a>
+        
       
 
       
@@ -1183,11 +1167,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1196,10 +1184,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1215,19 +1199,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DFS</a>
+                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1236,6 +1212,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ACO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">DFS</a>
               </li>
             
             <div class="clearfix"></div>
