@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>C++ new带括号和不带括号的区别 | xoyolucas&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="new带括号和不带括号的区别在new对象的时候有加上()，有不加()，比如：12CBase *base = new CDerived();CBase *base = new CDeviced; 加括号调用没有参数的构造函数，不加括号调用默认构造函数或唯一的构造函数。对于自定义类类型：如果该类没有定义构造函数(由编译器合成默认构造函数)也没有虚函数，那么class c = new class;将不调">
+  <meta name="description" content="new带括号和不带括号的区别在new对象的时候有加上()，有不加()，比如：12CBase *base = new CDerived();CBase *base = new CDeviced; 加括号调用没有参数的构造函数，不加括号调用默认构造函数或唯一的构造函数。">
 <meta name="keywords" content="C++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++ new带括号和不带括号的区别">
 <meta property="og:url" content="http://yoursite.com/2020/01/15/C-new带括号和不带括号的区别/index.html">
 <meta property="og:site_name" content="xoyolucas&#39;s blog">
-<meta property="og:description" content="new带括号和不带括号的区别在new对象的时候有加上()，有不加()，比如：12CBase *base = new CDerived();CBase *base = new CDeviced; 加括号调用没有参数的构造函数，不加括号调用默认构造函数或唯一的构造函数。对于自定义类类型：如果该类没有定义构造函数(由编译器合成默认构造函数)也没有虚函数，那么class c = new class;将不调">
+<meta property="og:description" content="new带括号和不带括号的区别在new对象的时候有加上()，有不加()，比如：12CBase *base = new CDerived();CBase *base = new CDeviced; 加括号调用没有参数的构造函数，不加括号调用默认构造函数或唯一的构造函数。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-18T09:09:14.185Z">
+<meta property="og:updated_time" content="2020-01-25T14:19:20.305Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++ new带括号和不带括号的区别">
-<meta name="twitter:description" content="new带括号和不带括号的区别在new对象的时候有加上()，有不加()，比如：12CBase *base = new CDerived();CBase *base = new CDeviced; 加括号调用没有参数的构造函数，不加括号调用默认构造函数或唯一的构造函数。对于自定义类类型：如果该类没有定义构造函数(由编译器合成默认构造函数)也没有虚函数，那么class c = new class;将不调">
+<meta name="twitter:description" content="new带括号和不带括号的区别在new对象的时候有加上()，有不加()，比如：12CBase *base = new CDerived();CBase *base = new CDeviced; 加括号调用没有参数的构造函数，不加括号调用默认构造函数或唯一的构造函数。">
   
     <link rel="alternative" href="/atom.xml" title="xoyolucas&#39;s blog" type="application/atom+xml">
   
@@ -180,7 +180,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="new带括号和不带括号的区别"><a href="#new带括号和不带括号的区别" class="headerlink" title="new带括号和不带括号的区别"></a>new带括号和不带括号的区别</h2><p>在new对象的时候有加上()，有不加()，比如：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CBase *base = <span class="keyword">new</span> CDerived();</span><br><span class="line">CBase *base = <span class="keyword">new</span> CDeviced;</span><br></pre></td></tr></table></figure></p>
-<p>加括号调用没有参数的构造函数，不加括号调用默认构造函数或唯一的构造函数。<br>对于自定义类类型：<br>如果该类没有定义构造函数(由编译器合成默认构造函数)也没有虚函数，那么class c = new class;将不调用合成的默认构造函数，而class c = new class();则会调用默认构造函数。<br>如果该类没有定义构造函数(由编译器合成默认构造函数)但有虚函数，那么class c = new class;和class c = new class();一样，都会调用默认构造函数。<br>如果该类定义了默认构造函数，那么class c = new class;和class c = new class();一样，都会调用默认构造函数。</p>
+<p>加括号调用没有参数的构造函数，不加括号调用默认构造函数或唯一的构造函数。<br><a id="more"></a><br>对于自定义类类型：<br>如果该类没有定义构造函数(由编译器合成默认构造函数)也没有虚函数，那么class c = new class;将不调用合成的默认构造函数，而class c = new class();则会调用默认构造函数。<br>如果该类没有定义构造函数(由编译器合成默认构造函数)但有虚函数，那么class c = new class;和class c = new class();一样，都会调用默认构造函数。<br>如果该类定义了默认构造函数，那么class c = new class;和class c = new class();一样，都会调用默认构造函数。</p>
 <p>对于内置类型：<br>int <em>a = new int;不会将申请到的int空间初始化，而int </em>a = new int();则会将申请到的int空间初始化为0。<br>以下两个语句的区别是：第一个动态申请的空间里面的值是随机值，第二个进行了初始化，里面的值为0：<br>int <em>p1 = new int[10];<br>int </em>p2 = new int<a href>10</a>;  </p>
 <p><strong>结论：别使用不带括号的new。</strong></p>
 <h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> a;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">A *a1=<span class="keyword">new</span> A;</span><br><span class="line">A *a2=<span class="keyword">new</span> A();</span><br><span class="line"></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;a1-&gt;a&lt;&lt;<span class="built_in">endl</span>; <span class="comment">//输出:-842150451</span></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;a2-&gt;a&lt;&lt;<span class="built_in">endl</span>; <span class="comment">//输出0</span></span><br><span class="line"></span><br><span class="line">A a3;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;a3.a&lt;&lt;<span class="built_in">endl</span>; <span class="comment">//运行异常，a没有初始化。</span></span><br><span class="line">如果加上一个<span class="keyword">virtual</span>，如<span class="keyword">virtual</span> ~A()&#123;&#125;,</span><br><span class="line">则</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;a1-&gt;a&lt;&lt;<span class="built_in">endl</span>; <span class="comment">//输出:-842150451</span></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;a2-&gt;a&lt;&lt;<span class="built_in">endl</span>; <span class="comment">//输出 -842150451</span></span><br></pre></td></tr></table></figure>
@@ -471,11 +471,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
+                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
+                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -503,15 +503,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PSO</a>
+                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -524,6 +520,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ACO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PSO</a>
               </li>
             
             <div class="clearfix"></div>
