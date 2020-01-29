@@ -176,42 +176,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="匿名函数lambda表达式"><a href="#匿名函数lambda表达式" class="headerlink" title="匿名函数lambda表达式"></a>匿名函数lambda表达式</h2><p>匿名函数的基本语法为: [捕获列表](参数列表)-&gt;返回类型{函数体}<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    [=]表示值传递方式捕捉所有父作用域的变量包, 括this</span></span><br><span class="line"><span class="comment">    [&amp;s]表示引用传递捕捉变量s</span></span><br><span class="line"><span class="comment">    [&amp;]表示引用传递方式捕捉所有父作用域的变量, 包括this</span></span><br><span class="line"><span class="comment">    [this]表示值传递方式捕捉当前的this指针</span></span><br><span class="line"><span class="comment">    可以连用如:[=,&amp;a,&amp;b]表示以引用传递的方式捕捉变量a和b，以值传递方式捕捉其它所有变量</span></span><br><span class="line"><span class="comment">    注意:捕捉列表不允许变量重复传递比如[&amp;,&amp;a]</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="comment">// 匿名函数 - -&gt;返回值类型 - lambda表达式</span></span><br><span class="line">    <span class="keyword">auto</span> fun = [](<span class="keyword">int</span> a)-&gt;<span class="keyword">int</span>&#123; <span class="comment">// 定义匿名函数 并引用</span></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;;</span><br><span class="line">    <span class="keyword">int</span> num = fun(<span class="number">10</span>);<span class="comment">// 调用 num==1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="捕获列表"><a href="#捕获列表" class="headerlink" title="捕获列表"></a>捕获列表</h3><p>试图在Lambda内使用外部变量是错误的，但有些时候我们需要使用外部变量，所以需要使用捕获列表。如下所示：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//会出错，c在匿名函数中没有定义</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> c = <span class="number">12</span>;</span><br><span class="line">    <span class="keyword">auto</span> Add = [](<span class="keyword">int</span> a, <span class="keyword">int</span> b)-&gt;<span class="keyword">int</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> c;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; Add(<span class="number">1</span>, <span class="number">2</span>) &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用捕获列表</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> c = <span class="number">12</span>;</span><br><span class="line">    <span class="keyword">auto</span> Add = [c](<span class="keyword">int</span> a, <span class="keyword">int</span> b)-&gt;<span class="keyword">int</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> c;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; Add(<span class="number">1</span>, <span class="number">2</span>) &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>捕获列表分值传递和引用传递，更改一下lambda表达式中代码块的内容，比如在上述代码中添加一句c = a;会无法编译通过了，因为你的c是按值传递的，所以要将捕获列表需要改成按引用传递。<br><strong>1. 如果捕获列表为[&amp;]，则表示所有的外部变量都按引用传递给lambda使用</strong><br><strong>2. 如果捕获列表为[=]，则表示所有的外部变量都按值传递给lambda使用</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&amp;c](<span class="keyword">int</span> a, <span class="keyword">int</span> b)-&gt;<span class="keyword">int</span>&#123;……&#125;；</span><br></pre></td></tr></table></figure></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">[]</th>
-<th style="text-align:center">空捕获列表，Lambda不能使用所在函数中的变量。</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">[names]</td>
-<td style="text-align:center">names是一个逗号分隔的名字列表，这些名字都是Lambda所在函数的局部变量。默认情况下，这些变量会被拷贝，然后按值传递，名字前面如果使用了&amp;，则按引用传递</td>
-</tr>
-<tr>
-<td style="text-align:center">[&amp;]</td>
-<td style="text-align:center">隐式捕获列表，Lambda体内使用的局部变量都按引用方式传递</td>
-</tr>
-<tr>
-<td style="text-align:center">[=]</td>
-<td style="text-align:center">隐式捕获列表，Lanbda体内使用的局部变量都按值传递</td>
-</tr>
-<tr>
-<td style="text-align:center">[&amp;,identifier_list]</td>
-<td style="text-align:center">identifier_list是一个逗号分隔的列表，包含0个或多个来自所在函数的变量，这些变量采用值捕获的方式，其他变量则被隐式捕获，采用引用方式传递，identifier_list中的名字前面不能使用&amp;。</td>
-</tr>
-<tr>
-<td style="text-align:center">[=,identifier_list]</td>
-<td style="text-align:center">identifier_list中的变量采用引用方式捕获，而被隐式捕获的变量都采用按值传递的方式捕获。identifier_list中的名字不能包含this，且这些名字面前必须使用&amp;。</td>
-</tr>
-</tbody>
-</table>
-<p>&nbsp;</p>
-<h3 id="lambda概要"><a href="#lambda概要" class="headerlink" title="lambda概要"></a>lambda概要</h3><p>一个Lambda表达式表示一个可调用的代码单元，我们可以将它理解为一个未命名的内联函数。和任何函数类似，一个Lambda表达式具有一个返回类型，一个参数列表和一个函数体，但和普通函数不一样的是Lambda表达式可能定义在函数内部。我们可以忽略Lambda表达式的参数列表和返回类型，但不可以忽略捕获列表和函数体。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这是正确的（忽略了参数列表和返回类型）</span></span><br><span class="line"><span class="comment">//为什么没有指定返回类型还可以返回整数值？</span></span><br><span class="line"><span class="comment">//因为你的函数体有return语句，它可以推断出来</span></span><br><span class="line"><span class="keyword">auto</span> f = []&#123; <span class="keyword">return</span> <span class="number">1</span> + <span class="number">2</span>; &#125;;</span><br></pre></td></tr></table></figure></p>
-
+        <h2 id="匿名函数基本语法"><a href="#匿名函数基本语法" class="headerlink" title="匿名函数基本语法"></a>匿名函数基本语法</h2><p>匿名函数的基本语法为: [捕获列表](参数列表)-&gt;返回类型{函数体}<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    [=]表示值传递方式捕捉所有父作用域的变量包, 括this</span></span><br><span class="line"><span class="comment">    [&amp;s]表示引用传递捕捉变量s</span></span><br><span class="line"><span class="comment">    [&amp;]表示引用传递方式捕捉所有父作用域的变量, 包括this</span></span><br><span class="line"><span class="comment">    [this]表示值传递方式捕捉当前的this指针</span></span><br><span class="line"><span class="comment">    可以连用如:[=,&amp;a,&amp;b]表示以引用传递的方式捕捉变量a和b，以值传递方式捕捉其它所有变量</span></span><br><span class="line"><span class="comment">    注意:捕捉列表不允许变量重复传递比如[&amp;,&amp;a]</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="comment">// 匿名函数 - -&gt;返回值类型 - lambda表达式</span></span><br><span class="line">    <span class="keyword">auto</span> fun = [](<span class="keyword">int</span> a)-&gt;<span class="keyword">int</span>&#123; <span class="comment">// 定义匿名函数 并引用</span></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;;</span><br><span class="line">    <span class="keyword">int</span> num = fun(<span class="number">10</span>);<span class="comment">// 调用 num==1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        
+          <a class="article-more-a" href="/2020/01/28/C-匿名函数/#more">more >></a>
+        
       
 
       
@@ -1207,10 +1175,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
@@ -1231,11 +1195,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
+                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
+                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1252,6 +1216,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
             
             <div class="clearfix"></div>
