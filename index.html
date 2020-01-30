@@ -176,7 +176,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="匿名函数基本语法"><a href="#匿名函数基本语法" class="headerlink" title="匿名函数基本语法"></a>匿名函数基本语法</h2><p>匿名函数的基本语法为: [捕获列表](参数列表)-&gt;返回类型{函数体}<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    [=]表示值传递方式捕捉所有父作用域的变量包, 括this</span></span><br><span class="line"><span class="comment">    [&amp;s]表示引用传递捕捉变量s</span></span><br><span class="line"><span class="comment">    [&amp;]表示引用传递方式捕捉所有父作用域的变量, 包括this</span></span><br><span class="line"><span class="comment">    [this]表示值传递方式捕捉当前的this指针</span></span><br><span class="line"><span class="comment">    可以连用如:[=,&amp;a,&amp;b]表示以引用传递的方式捕捉变量a和b，以值传递方式捕捉其它所有变量</span></span><br><span class="line"><span class="comment">    注意:捕捉列表不允许变量重复传递比如[&amp;,&amp;a]</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="comment">// 匿名函数 - -&gt;返回值类型 - lambda表达式</span></span><br><span class="line">    <span class="keyword">auto</span> fun = [](<span class="keyword">int</span> a)-&gt;<span class="keyword">int</span>&#123; <span class="comment">// 定义匿名函数 并引用</span></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;;</span><br><span class="line">    <span class="keyword">int</span> num = fun(<span class="number">10</span>);<span class="comment">// 调用 num==1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <h2 id="匿名函数基本语法"><a href="#匿名函数基本语法" class="headerlink" title="匿名函数基本语法"></a>匿名函数基本语法</h2><p>匿名函数的基本语法为: <strong>[捕获列表](参数列表)-&gt;返回类型{函数体}</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    [=]表示值传递方式捕捉所有父作用域的变量包, 括this</span></span><br><span class="line"><span class="comment">    [&amp;s]表示引用传递捕捉变量s</span></span><br><span class="line"><span class="comment">    [&amp;]表示引用传递方式捕捉所有父作用域的变量, 包括this</span></span><br><span class="line"><span class="comment">    [this]表示值传递方式捕捉当前的this指针</span></span><br><span class="line"><span class="comment">    可以连用如:[=,&amp;a,&amp;b]表示以引用传递的方式捕捉变量a和b，以值传递方式捕捉其它所有变量</span></span><br><span class="line"><span class="comment">    注意:捕捉列表不允许变量重复传递比如[&amp;,&amp;a]</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="comment">// 匿名函数 - -&gt;返回值类型 - lambda表达式</span></span><br><span class="line">    <span class="keyword">auto</span> fun = [](<span class="keyword">int</span> a)-&gt;<span class="keyword">int</span>&#123; <span class="comment">// 定义匿名函数 并引用</span></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;;</span><br><span class="line">    <span class="keyword">int</span> num = fun(<span class="number">10</span>);<span class="comment">// 调用 num==1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
         
           <a class="article-more-a" href="/2020/01/28/C-匿名函数/#more">more >></a>
         
@@ -1163,11 +1163,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
+                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
+                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1187,15 +1187,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">IPM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">pandas</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IPM</a>
               </li>
              
               <li class="article-tag-list-item">
