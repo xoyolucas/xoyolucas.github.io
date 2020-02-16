@@ -12,14 +12,17 @@
 <meta name="keywords" content="dynamic programming">
 <meta property="og:type" content="article">
 <meta property="og:title" content="动态规划">
-<meta property="og:url" content="http://yoursite.com/2020/01/18/动态规划/index.html">
+<meta property="og:url" content="http://yoursite.com/2020/02/16/动态规划/index.html">
 <meta property="og:site_name" content="xoyolucas&#39;s blog">
 <meta property="og:description" content="动态规划动态规划方法通常用来求解最优化问题。动态规划与分治方法相似，都是通过组合子问题的解来求解原问题。分治方法将问题划分为互不相交的子问题，递归求解子问题，再将它们的解组合起来，求解原问题的解。动态规划应用于子问题重叠的情况，即不同的子问题具有公共的子子问题，对每个公共子子问题只求解一次，将其保存在一个表格，避免求解时重复计算。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-02-15T17:13:12.156Z">
+<meta property="og:image" content="http://yoursite.com/2020/02/16/动态规划/table.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/16/动态规划/example.jiff">
+<meta property="og:updated_time" content="2020-02-16T15:33:56.318Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="动态规划">
 <meta name="twitter:description" content="动态规划动态规划方法通常用来求解最优化问题。动态规划与分治方法相似，都是通过组合子问题的解来求解原问题。分治方法将问题划分为互不相交的子问题，递归求解子问题，再将它们的解组合起来，求解原问题的解。动态规划应用于子问题重叠的情况，即不同的子问题具有公共的子子问题，对每个公共子子问题只求解一次，将其保存在一个表格，避免求解时重复计算。">
+<meta name="twitter:image" content="http://yoursite.com/2020/02/16/动态规划/table.png">
   
     <link rel="alternative" href="/atom.xml" title="xoyolucas&#39;s blog" type="application/atom+xml">
   
@@ -171,8 +174,8 @@
   
 
         
-        <a href="/2020/01/18/动态规划/" class="archive-article-date">
-  	<time datetime="2020-01-18T10:29:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-18</time>
+        <a href="/2020/02/16/动态规划/" class="archive-article-date">
+  	<time datetime="2020-02-16T10:29:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-16</time>
 </a>
         
       </header>
@@ -180,20 +183,37 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>动态规划方法通常用来求解最优化问题。动态规划与分治方法相似，都是通过组合子问题的解来求解原问题。分治方法将问题划分为互不相交的子问题，递归求解子问题，再将它们的解组合起来，求解原问题的解。动态规划应用于子问题重叠的情况，即不同的子问题具有公共的子子问题，对每个公共子子问题只求解一次，将其保存在一个表格，避免求解时重复计算。<br><a id="more"></a></p>
-<h3 id="动态规划原理"><a href="#动态规划原理" class="headerlink" title="动态规划原理"></a>动态规划原理</h3><p>由于动态规划解决的问题多数有重叠子问题这个特点，为减少重复计算，对每一个子问题只解一次，将其不同阶段的不同状态保存在一个二维数组中。<br>动态规划的本质，是对问题状态的定义和状态转移方程的定义。动态规划是通过拆分问题，定义问题状态和状态之间的关系，使得问题能够以递推（或者说分治）的方式去解决。</p>
+<h3 id="动态规划原理"><a href="#动态规划原理" class="headerlink" title="动态规划原理"></a>动态规划原理</h3><p>动态规划的本质，是对问题状态的定义和状态转移方程的定义。动态规划是通过拆分问题，定义问题状态和状态之间的关系，使得问题能够以递推（或者说分治）的方式去解决。适合应用动态规划方法求解的最优化问题应该具备两个要素：<strong>最优子结构</strong>和<strong>子问题重叠</strong>。</p>
+<ul>
+<li>最优子结构：一个问题的最优解包含其子问题的最优解</li>
+<li>子问题重叠：子问题空间足够“小”，即问题的递归算法会反复求解相同的子问题，而不是一直生成新的子问题。与之相对的，适合用分治方法求解的问题通常再递归的每一步都会生成新的子问题。</li>
+</ul>
 <h3 id="钢条切割"><a href="#钢条切割" class="headerlink" title="钢条切割"></a>钢条切割</h3><p>钢条切割问题满足最优子结构性质：问题的最优解由相关子问题的最优解组和而成，而这些子问题可以独立求解。</p>
 <ul>
-<li>递归方法：<br>将钢条从左边切割下长度为i的一段，只对右边剩下的长度n-i的一段继续进行切割(递归求解)，对左边一段则不再进行分割。得到公式$r_n = max_{1&lt;=i&lt;=n}(p_i + r_{n-i})$<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CUT-ROD(p,n)</span><br><span class="line"><span class="keyword">if</span> n==<span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">q=$-\infty$</span><br><span class="line"><span class="keyword">for</span> i=<span class="number">0</span> to n</span><br><span class="line">    q=max(q,p[i]+CUT-ROD(p,n-i))</span><br><span class="line"><span class="keyword">return</span> q</span><br></pre></td></tr></table></figure>
+<li>递归方法:<br>将钢条从左边切割下长度为i的一段，只对右边剩下的长度n-i的一段继续进行切割(递归求解)，对左边一段则不再进行分割。得到公式$r_n = max_{1&lt;=i&lt;=n}(p_i + r_{n-i})$<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">CUT-ROD(p, n)</span><br><span class="line"><span class="keyword">if</span> n==<span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">q=$-\infty$</span><br><span class="line"><span class="keyword">for</span> i=<span class="number">0</span> to n</span><br><span class="line"></span><br><span class="line">    q=max(q,p[i]+CUT-ROD(p,n-i))</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> q</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>函数CUT-ROD以价格数组p[1..n]和整数n为输入，返回长度为n的钢条的最大收益。对于递归方法，但规模很大的时候，运行时间会变的很长，因为考察了所有可能的$2^{n-1}$种切割方案,存在很多次重复计算。如下图：</p>
+<p>函数CUT-ROD以价格数组p[1..n]和整数n为输入，返回长度为n的钢条的最大收益。对于递归方法，但规模很大的时候，运行时间会变的很长，因为考察了所有可能的$2^{n-1}$种切割方案,存在很多次重复计算。如下图:</p>
 <ul>
-<li>动态规划方法<br>动态规划需要仔细安排求解顺序，对每个子问题只求解一次，并将结果保存起来，随后再次需要求解此子问题的解时，直接查找保存的结果。动态规划方法需要付出额外的内存空间来节省计算时间。如果子问题的数量时输入规模的多项式函数，那么动态规划方法的时间复杂度就是多项式的。<br><strong>1.带备忘的自顶向下法(top-down with memoiztion)</strong><br>此方法仍按自然的递归形式编写过程，但过程种保存每个子问题的解。当需要用到子问题的解时首先检查是否已经保存此解，节省计算时间。<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">MEMOIZED-CUT-ROD(p,n)</span><br><span class="line">let r[<span class="number">0.</span>.n] be a <span class="keyword">new</span> <span class="built_in">array</span></span><br><span class="line"><span class="keyword">for</span> i = <span class="number">0</span> to n</span><br><span class="line">    r[i]=$\infty$</span><br><span class="line"><span class="keyword">return</span> MEMOIZED-CUT-ROD-AUX(p,n,r)</span><br><span class="line"></span><br><span class="line">MEMOIZED-CUT-ROD-AUX(p,n,r)</span><br><span class="line"><span class="keyword">if</span> r[n]&gt;=<span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> r[n]</span><br><span class="line"><span class="keyword">if</span> n == <span class="number">0</span></span><br><span class="line">    q=<span class="number">0</span></span><br><span class="line"><span class="keyword">else</span> q=$-\infty$</span><br><span class="line">    <span class="keyword">for</span> i = <span class="number">1</span> to n</span><br><span class="line">        q=max(q,p[i]+MEMOIZED-CUT-ROD-AUX(p,n-i,r))</span><br><span class="line">r[n]=q</span><br><span class="line"><span class="keyword">return</span> q</span><br></pre></td></tr></table></figure>
+<li>动态规划方法<br>动态规划需要仔细安排求解顺序，对每个子问题只求解一次，并将结果保存起来，随后再次需要求解此子问题的解时，直接查找保存的结果。动态规划方法需要付出额外的内存空间来节省计算时间。如果子问题的数量时输入规模的多项式函数，那么动态规划方法的时间复杂度就是多项式的。</li>
+</ul>
+<p><strong>1.带备忘的自顶向下法(top-down with memoiztion)</strong><br>此方法仍按自然的递归形式编写过程，但过程种保存每个子问题的解。当需要用到子问题的解时首先检查是否已经保存此解，节省计算时间。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">MEMOIZED-CUT-ROD(p,n)</span><br><span class="line">let r[<span class="number">0.</span>.n] be a <span class="keyword">new</span> <span class="built_in">array</span></span><br><span class="line"><span class="keyword">for</span> i = <span class="number">0</span> to n</span><br><span class="line">    r[i]=$\infty$</span><br><span class="line"><span class="keyword">return</span> MEMOIZED-CUT-ROD-AUX(p,n,r)</span><br><span class="line"></span><br><span class="line">MEMOIZED-CUT-ROD-AUX(p,n,r)</span><br><span class="line"><span class="keyword">if</span> r[n]&gt;=<span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> r[n]</span><br><span class="line"><span class="keyword">if</span> n == <span class="number">0</span></span><br><span class="line">    q=<span class="number">0</span></span><br><span class="line"><span class="keyword">else</span> q=$-\infty$</span><br><span class="line">    <span class="keyword">for</span> i = <span class="number">1</span> to n</span><br><span class="line">        q=max(q,p[i]+MEMOIZED-CUT-ROD-AUX(p,n-i,r))</span><br><span class="line">r[n]=q</span><br><span class="line"><span class="keyword">return</span> q</span><br></pre></td></tr></table></figure></p>
+<p>函数MEMOIZED-CUT-ROD-AUX是最初的CUT-ROD引入备忘机制，首先检查所需值是否已知，如果是则返回保存的值；若不是，计算所需值q，并存入r[n]中。</p>
+<p><strong>2.自底向上法(bottom-up method)</strong><br>这种方法一般需要恰当定义子问题“规模”，使得任何子问题的求解都只依赖于“更小的”子问题的求解。因而我们可以将子问题按规模排序，由小到大的顺序进行求解。当求解某个子问题时，它所依赖的那些更小的子问题都已经求解完毕并已保存，每个子问题只需要求解一次。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">BOTTOM-UP-CUT-ROD(p, n)</span><br><span class="line">let r[<span class="number">0.</span>.n] be a <span class="keyword">new</span> <span class="built_in">array</span></span><br><span class="line">r[<span class="number">0</span>]=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> j = <span class="number">1</span> to n</span><br><span class="line"></span><br><span class="line">    q=$-\infty$</span><br><span class="line">    <span class="keyword">for</span> i = <span class="number">1</span> to j</span><br><span class="line">        q=max(q,p[i]+r[j-i])</span><br><span class="line">    r[j]=q</span><br><span class="line"></span><br><span class="line">reurn r[n]</span><br></pre></td></tr></table></figure></p>
+<h3 id="矩阵链乘法"><a href="#矩阵链乘法" class="headerlink" title="矩阵链乘法"></a>矩阵链乘法</h3><p><strong>问题描述:</strong> 给定n个矩阵的链$&lt;A_1, A_2, {\cdots}, A_n&gt;$，其中i=1, 2, …, n, 求一个完全“括号化方案”，使得计算乘积$A_1A_2{\cdots}A_n$所需的标量乘法次数最小。例如如果有矩阵链为$&lt;A_1, A_2, A_3, A_4&gt;$, 则共有5种完全括号化的矩阵乘积链：<br>$$(A_1(A_2(A_3A_4)))$$ $$(A_1((A_2A_3)A_4))$$ $$((A_1A_2)(A_3A_4))$$ $$((A_1(A_2A_3))A_4)$$ $$(((A_1A_2)A_3)A_4)$$<br>两个矩阵A和B只有相容(compatible)，即A的列数等于B的行数时，才能相乘。如果A是p×q的矩阵，B是q×r的矩阵，那么乘积C是p×r的矩阵。计算C所需要时间由第8行的标量乘法的次数决定的，即pqr。以矩阵链$&lt;A_1, A_2, A_3&gt;$为例，来说明不同的加括号方式会导致不同的计算代价。<br>假设三个矩阵的规模分别为10×100、100×5和5×50。如果按照$((A_1A_2)A_3)$的顺序计算，为计算$A_1A_2$(10×5)，需要做$10<em>100</em>5=5000$次标量乘法，再与$A_3$相乘又需要做$10<em>5</em>50=2500$次标量乘法，共需<strong>7500次标量乘法</strong>。<br>如果按照$(A_1(A_2A_3))$的顺序计算，为计算$A_2A_3(100×50)$，需$100<em>5</em>50=25000$次标量乘法，再与$A_1$相乘又需$10<em>100</em>50=50000$次标量乘法，共需<strong>75000次标量乘法</strong>。<em>因此第一种顺序计算要比第二种顺序计算快10倍。</em></p>
+<h4 id="动态规划应用"><a href="#动态规划应用" class="headerlink" title="动态规划应用"></a>动态规划应用</h4><ul>
+<li><strong>步骤1：最优括号化方案的结构特征</strong><br>动态规划的第一步是寻找最优子结构，然后就可以利用子结构从子问题的最优解构造出原问题的最优解。在矩阵链乘法问题中，假设$A_iA_{i+1}…A_j$的最优括号方案的分割点在$A_k$和$A_{k+1}$之间。那么，继续对子链$A_iA_{i+1}..A_k$进行括号化时，应该直接采用独立求解它时所得的最优方案。<br>为了构造一个矩阵链乘法问题实例的最优解，可以将问题划分为两个子问题($A_iA_{i+1}..A_k$和$A_{k+1}A_{k+2}..A_j$的最优括号化问题)，求出子问题实例的最优解，然后将子问题的最优解组合起来。<br>&nbsp;</li>
+<li><strong>步骤2：一个递归求解方案</strong><br>下面用子问题的最优解来递归地定义原问题最优解的代价。对于矩阵链乘法问题，将对所有1&lt;=i&lt;=j&lt;=n确定$A_iA_{i+1}…A_j$的最小代价括号化方案作为子问题。令m[i,j]表示计算矩阵$A_{i..j}$所需标量乘法次数的最小值。<br>我们可以递归定义m[i,j]: 对于i=j时的平凡问题，矩阵链只包含唯一的矩阵$A_{i..j}=A_i$，因此不需要做任何标量乘法运算。所以，对所有i=1,2,…,n，m[i,i]=0。若i&lt;j，假设$A_{i}A_{i+1}…A_{j}$的最优括号化方案的分割点在矩阵$A_k$和$A_{k+1}$之间，其中i&lt;=k&lt;j。那么，m[i,j]就等于计算$A_{i..k}$和$A_{k+1..j}$的代价加上两者相乘的代价的最小值。由于矩阵Ai的大小为$p_{i-1}*p_i$，所以$A_{i..k}$和$A_{k+1..j}$相乘的代价为$p_{i-1}p_{k}p_{j}$次标量乘法运算。因此，我们得到<br>$m[i,j]=m[i,k]+m[k+1,j]+p_{i-1}p_{k}p_{j}$<br>递归公式假定最优分割点k是已知的，但实际上是不知道。不过，k只有j-i种可能的取值，即k=i,i+1,…,j-1。由于最优分割点必在其中，我们只需检查所有可能情况，找到最优者即可。<br>因此，$A_iA_{i+1}…A_j$的最小代价括号化方案的递归求解公式变为：<br>①如果$i=j$, $m[i,j]=0$<br>②如果$i&lt;j$, $m[i,j]=min_{i&lt;=k&lt;j}{m[i,k]+m[k+1,j]+p_{i-1}p_{k}p_{j}}$<br>m[i,j]的值给出了子问题最优解的代价，但并未提供足够的信息来构造最优解。为此，用s[i,j]保存最优括号化方案的分割点位置k。<br>&nbsp;</li>
+<li><strong>步骤3：计算最优代价</strong><br>可以很容易地基于递归公式写出一个递归算法，但递归算法是指数时间的。注意到，需要求解的不同子问题的数目是相对较少的：每对满足1&lt;=i&lt;=j&lt;=n的i和j对应一个唯一的子问题，共有$n^2$。递归算法会在递归调用树的不同分支中多次遇到同一个子问题，具有子问题重叠的性质。<br>采用自底向上表格法代替递归算法来计算最优代价。假定矩阵$A_i$的规模为$p_{i-1}×p_i$(i=1,2,…,n)。它的输入是一个序列$p=&lt;p_0,p_1,…,p_n&gt;$，其长度为$p.length=n+1$。过程用一个辅助表m[1..n,1..n]来保存代价m[i,j]，用另一个辅助表$s[1..n-1,2..n]$记录最优值m[i,j]对应的分割点k。之后就可以利用表s构造最优解。<br>下图展示了对一个长度为6的矩阵链执行此算法的过程。由于定义m[i,j]仅在i&lt;=j时有意义，因此表m只使用主对角线之上的部分，图中的表是经过旋转的，主对角线已经旋转到水平方向，MATRIX_CHAIN_ORDER按自下而上、自左至右的顺序计算所有行。当计算表m[i,j]时，会用到乘积$p_{i-1}p_{k}p_{j}$(k=i,i+1,…j-1)，语句m[i,j]西南方向和东南方向上所有表项<br><img src="/2020/02/16/动态规划/table.png" alt="表项"><br>简单分析MATRIX_CHAIN_ORDER的嵌套循环结构，算法时间复杂度为$O(n^3)$。<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">MAXTRIX_CHAIN_ORDER(p)</span><br><span class="line">    n = length[p]<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span> i=<span class="number">1</span> to n</span><br><span class="line">        <span class="keyword">do</span> m[i][i] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> t = <span class="number">2</span> to n  <span class="comment">//t is the chain length</span></span><br><span class="line">        <span class="keyword">do</span> <span class="keyword">for</span> i=<span class="number">1</span> to n-t+<span class="number">1</span></span><br><span class="line">            j=i+t<span class="number">-1</span>;</span><br><span class="line">            m[i][j] = \infity;</span><br><span class="line">            <span class="keyword">for</span> k=i to j<span class="number">-1</span></span><br><span class="line">                q = m[i][k] + m[k+<span class="number">1</span>][i] + q(i<span class="number">-1</span>)q(k)q(j);</span><br><span class="line">                <span class="keyword">if</span> q &lt; m[i][j]</span><br><span class="line">                    m[i][j] = q;</span><br><span class="line">                    s[i][j] = k;</span><br><span class="line">    <span class="keyword">return</span> m <span class="keyword">and</span> s;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>函数MEMOIZED-CUT-ROD-AUX是最初的CUT-ROD引入备忘机制，首先检查所需值是否已知，如果是则返回保存的值；若不是，计算所需值q，并存入r[n]中。</p>
-<p><strong>2.自底向上法(bottom-up method)</strong><br>这种方法一般需要恰当定义子问题“规模”，使得任何子问题的求解都只依赖于“更小的”子问题的求解。因而我们可以将子问题按规模排序，由小到大的顺序进行求解。当求解某个子问题时，它所依赖的那些更小的子问题都已经求解完毕并已保存，每个子问题只需要求解一次。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">BOTTOM-UP-CUT-ROD(p,n)</span><br><span class="line">let r[<span class="number">0.</span>.n] be a <span class="keyword">new</span> <span class="built_in">array</span></span><br><span class="line">r[<span class="number">0</span>]=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> j = <span class="number">1</span> to n</span><br><span class="line">    q=$-\infty$</span><br><span class="line">    <span class="keyword">for</span> i = <span class="number">1</span> to j</span><br><span class="line">        q=max(q,p[i]+r[j-i])</span><br><span class="line">    r[j]=q</span><br><span class="line">reurn r[n]</span><br></pre></td></tr></table></figure></p>
-<h3 id="矩阵链乘法"><a href="#矩阵链乘法" class="headerlink" title="矩阵链乘法"></a>矩阵链乘法</h3><h3 id="最长公共子序列"><a href="#最长公共子序列" class="headerlink" title="最长公共子序列"></a>最长公共子序列</h3><h3 id="最优二叉搜索树"><a href="#最优二叉搜索树" class="headerlink" title="最优二叉搜索树"></a>最优二叉搜索树</h3>
+<p>&nbsp;</p>
+<ul>
+<li><strong>步骤4：构造最优解</strong><br>虽然步骤3求出了计算矩阵链乘积所需的最少标量乘法运算次数，但它并未直接指出如何进行这种最优代价的矩阵链乘法计算。表s[i,j]记录了一个k值，指出$A_{i}A_{i+1}…A_{j}$的最优括号化方案的分割点应在$A_k$和$A_{k+1}$之间。<br>因此，$A_{1..n}$的最优计算方案中最后一次矩阵乘法运算应该是以s[1,n]为分界的$A_{1..s[1,n]}*A_{s[1,n]+1..n}$。我们可以用相同的方法递归地求出更早的矩阵乘法的具体计算过程，因为s[1,s[1,n]]指出了计算$A_{1..s[1,n]}$时应进行的最后一次矩阵乘法运行；$s_{s[1,n]+1,n}$指出了计算$A_{s[1,n]+1..n}$时应进行的最后一次矩阵乘法运算。下面给出的递归过程可以输出&lt;A(i),A(i+1),…,A(j)&gt;的最优括号化方案。<br><img src="/2020/02/16/动态规划/example.jiff" alt="表项"><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PRINT_OPTIMAL_PARENS</span><span class="params">(<span class="keyword">int</span> s[][M],<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(i == j) <span class="built_in">cout</span>&lt;&lt;<span class="string">"A"</span>&lt;&lt;i;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;<span class="string">"("</span>;</span><br><span class="line">		PRINT_OPTIMAL_PARENS(s,i,s[i][j]);</span><br><span class="line">		PRINT_OPTIMAL_PARENS(s,s[i][j]+<span class="number">1</span>,j);</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;<span class="string">")"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INT_MAX=<span class="number">2147483647</span>;</span><br><span class="line"><span class="keyword">int</span> <span class="keyword">const</span> M=<span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MATRIX_CHAIN_ORDER</span><span class="params">(<span class="keyword">int</span> *p,<span class="keyword">int</span> Length,<span class="keyword">int</span> m[][M],<span class="keyword">int</span> s[][M])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> q,n=Length<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) m[i][i]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">2</span>;l&lt;=n;l++) 	<span class="comment">/* 矩阵链的长度 */</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n-l+<span class="number">1</span>;i++) </span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> j=i+l<span class="number">-1</span>;         <span class="comment">/* 等价于 l=j-i+1 */</span></span><br><span class="line">			m[i][j]=INT_MAX;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k=i;k&lt;=j<span class="number">-1</span>;k++)</span><br><span class="line">			&#123;</span><br><span class="line">				q=m[i][k]+m[k+<span class="number">1</span>][j]+p[i<span class="number">-1</span>]*p[k]*p[j];</span><br><span class="line">				<span class="keyword">if</span>(q&lt;m[i][j])</span><br><span class="line">				&#123;</span><br><span class="line">					m[i][j]=q;</span><br><span class="line">					s[i][j]=k;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PRINT_OPTIMAL_PARENS</span><span class="params">(<span class="keyword">int</span> s[][M],<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(i == j) <span class="built_in">cout</span>&lt;&lt;<span class="string">"A"</span>&lt;&lt;i;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;<span class="string">"("</span>;</span><br><span class="line">		PRINT_OPTIMAL_PARENS(s,i,s[i][j]);</span><br><span class="line">		PRINT_OPTIMAL_PARENS(s,s[i][j]+<span class="number">1</span>,j);</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;<span class="string">")"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">int</span> p[M]=&#123;<span class="number">30</span>,<span class="number">35</span>,<span class="number">15</span>,<span class="number">5</span>,<span class="number">10</span>,<span class="number">20</span>,<span class="number">25</span>&#125;;</span><br><span class="line">   <span class="keyword">int</span> m[M][M],s[M][M];</span><br><span class="line">   MATRIX_CHAIN_ORDER(p,M,m,s);</span><br><span class="line">   <span class="built_in">cout</span>&lt;&lt;<span class="string">"当n=6时最优解为: \n"</span>&lt;&lt;m[<span class="number">1</span>][<span class="number">6</span>];</span><br><span class="line">   <span class="built_in">cout</span>&lt;&lt;<span class="string">"\n括号化方案为：\n"</span>; </span><br><span class="line">   PRINT_OPTIMAL_PARENS(s,<span class="number">1</span>,<span class="number">6</span>);</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="最长公共子序列"><a href="#最长公共子序列" class="headerlink" title="最长公共子序列"></a>最长公共子序列</h3><h3 id="最优二叉搜索树"><a href="#最优二叉搜索树" class="headerlink" title="最优二叉搜索树"></a>最优二叉搜索树</h3>
       
 
       
@@ -273,7 +293,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/18/动态规划/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/16/动态规划/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -287,18 +307,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/01/28/C-匿名函数/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          C++匿名函数
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/01/15/C-new带括号和不带括号的区别/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">C++ new带括号和不带括号的区别</div>
+    <a href="/2020/02/09/算法导论/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">算法导论</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -325,7 +336,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#动态规划"><span class="toc-number">1.</span> <span class="toc-text">动态规划</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#动态规划原理"><span class="toc-number">1.1.</span> <span class="toc-text">动态规划原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#钢条切割"><span class="toc-number">1.2.</span> <span class="toc-text">钢条切割</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#矩阵链乘法"><span class="toc-number">1.3.</span> <span class="toc-text">矩阵链乘法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最长公共子序列"><span class="toc-number">1.4.</span> <span class="toc-text">最长公共子序列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最优二叉搜索树"><span class="toc-number">1.5.</span> <span class="toc-text">最优二叉搜索树</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#动态规划"><span class="toc-number">1.</span> <span class="toc-text">动态规划</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#动态规划原理"><span class="toc-number">1.1.</span> <span class="toc-text">动态规划原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#钢条切割"><span class="toc-number">1.2.</span> <span class="toc-text">钢条切割</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#矩阵链乘法"><span class="toc-number">1.3.</span> <span class="toc-text">矩阵链乘法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#动态规划应用"><span class="toc-number">1.3.1.</span> <span class="toc-text">动态规划应用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#完整代码"><span class="toc-number">1.3.2.</span> <span class="toc-text">完整代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最长公共子序列"><span class="toc-number">1.4.</span> <span class="toc-text">最长公共子序列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最优二叉搜索树"><span class="toc-number">1.5.</span> <span class="toc-text">最优二叉搜索树</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -350,7 +361,7 @@
 <script src="https://www.wenjunjiang.win/js/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://yoursite.com/2020/01/18/动态规划/",
+  id: "http://yoursite.com/2020/02/16/动态规划/",
   owner: 'xoyolucas',
   repo: 'blog_gitment',
   oauth: {
@@ -486,11 +497,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -502,19 +513,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pandas</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IPM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pandas</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">IPM</a>
               </li>
              
               <li class="article-tag-list-item">
