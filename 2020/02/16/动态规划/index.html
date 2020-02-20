@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/02/16/动态规划/cut.png">
 <meta property="og:image" content="http://yoursite.com/2020/02/16/动态规划/table.png">
 <meta property="og:image" content="http://yoursite.com/2020/02/16/动态规划/example.jfif">
-<meta property="og:updated_time" content="2020-02-20T16:03:35.225Z">
+<meta property="og:updated_time" content="2020-02-20T16:08:22.323Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="动态规划">
 <meta name="twitter:description" content="动态规划原理动态规划方法通常用来求解最优化问题。动态规划与分治方法相似，都是通过组合子问题的解来求解原问题。分治方法将问题划分为互不相交的子问题，递归求解子问题，再将它们的解组合起来，求解原问题的解。动态规划应用于子问题重叠的情况，即不同的子问题具有公共的子子问题，对每个公共子子问题只求解一次，将其保存在一个表格，避免求解时重复计算。动态规划的本质，是对问题状态的定义和状态转移方程的定义。动态规划">
@@ -202,7 +202,7 @@
 <p>函数MEMOIZED-CUT-ROD-AUX是最初的CUT-ROD引入备忘机制，首先检查所需值是否已知，如果是则返回保存的值；若不是，计算所需值q，并存入r[n]中。</p>
 <p><strong>2.自底向上法(bottom-up method)</strong><br>这种方法一般需要恰当定义子问题“规模”，使得任何子问题的求解都只依赖于“更小的”子问题的求解。因而我们可以将子问题按规模排序，由小到大的顺序进行求解。当求解某个子问题时，它所依赖的那些更小的子问题都已经求解完毕并已保存，每个子问题只需要求解一次。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">BOTTOM-UP-CUT-ROD(p, n)</span><br><span class="line">let r[<span class="number">0.</span>.n] be a <span class="keyword">new</span> <span class="built_in">array</span></span><br><span class="line">r[<span class="number">0</span>]=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> j = <span class="number">1</span> to n</span><br><span class="line"></span><br><span class="line">    q=-infty</span><br><span class="line">    <span class="keyword">for</span> i = <span class="number">1</span> to j</span><br><span class="line">        q=max(q,p[i]+r[j-i])</span><br><span class="line">    r[j]=q</span><br><span class="line"></span><br><span class="line">reurn r[n]</span><br></pre></td></tr></table></figure></p>
 <p>&nbsp;</p>
-<h3 id="矩阵链乘法"><a href="#矩阵链乘法" class="headerlink" title="矩阵链乘法"></a>矩阵链乘法</h3><p><strong>问题描述:</strong> 给定n个矩阵的链$&lt;A_1, A_2, {\cdots}, A_n&gt;$，其中$i=1, 2, …, n$ 求一个完全“括号化方案”，使得计算乘积$A_1A_2{\cdots}A_n$所需的标量乘法次数最小。例如如果有矩阵链为$&lt;A_1, A_2, A_3, A_4&gt;$, 则共有5种完全括号化的矩阵乘积链：<br>$$(A_1(A_2(A_3A_4)))$$ $$(A_1((A_2A_3)A_4))$$ $$((A_1A_2)(A_3A_4))$$ $$((A_1(A_2A_3))A_4)$$ $$(((A_1A_2)A_3)A_4)$$<br>两个矩阵A和B只有相容(compatible)，即A的列数等于B的行数时，才能相乘。如果A是$p*q$的矩阵，B是$q*r$的矩阵，那么乘积C是$p*r$的矩阵。计算C所需要时间由第8行的标量乘法的次数决定的，即$pqr$。以矩阵链$&lt;A_1, A_2, A_3&gt;$为例，来说明不同的加括号方式会导致不同的计算代价。<br>假设三个矩阵的规模分别为10×100、100×5和5×50。如果按照$((A_1A_2)A_3)$的顺序计算，为计算$A_1A_2$(10×5)，需要做$10*100*5=5000$次标量乘法，再与$A_3$相乘又需要做$10*5*50=2500$次标量乘法，共需<strong>7500次标量乘法</strong>。<br>如果按照$(A_1(A_2A_3))$的顺序计算，为计算$A_2A_3(100×50)$，需$100*5*50=25000$次标量乘法，再与$A_1$相乘又需$10*100*50=50000$次标量乘法，共需<strong>75000次标量乘法</strong>。<strong><em>因此第一种顺序计算要比第二种顺序计算快10倍。</em></strong></p>
+<h3 id="矩阵链乘法"><a href="#矩阵链乘法" class="headerlink" title="矩阵链乘法"></a>矩阵链乘法</h3><p><strong>问题描述:</strong> 给定n个矩阵的链$&lt;A_1, A_2, {\cdots}, A_n&gt;$，其中$i=1, 2, …, n$ 求一个完全“括号化方案”，使得计算乘积$A_1A_2{\cdots}A_n$所需的标量乘法次数最小。例如如果有矩阵链为$&lt;A_1, A_2, A_3, A_4&gt;$, 则共有5种完全括号化的矩阵乘积链：<br>$$(A_1(A_2(A_3A_4)))$$ $$(A_1((A_2A_3)A_4))$$ $$((A_1A_2)(A_3A_4))$$ $$((A_1(A_2A_3))A_4)$$ $$(((A_1A_2)A_3)A_4)$$<br>两个矩阵A和B只有相容(compatible)，即A的列数等于B的行数时，才能相乘。如果A是$p*q$的矩阵，B是$q*r$的矩阵，那么乘积C是$p*r$的矩阵。计算C所需要时间由第8行的标量乘法的次数决定的，即$pqr$。以矩阵链$&lt;A_1, A_2, A_3&gt;$为例，来说明不同的加括号方式会导致不同的计算代价。<br>假设三个矩阵的规模分别为$10*100,100*5,5*50$。如果按照$((A_1A_2)A_3)$的顺序计算，计算$A_1A_2$(10×5)，需要做$10*100*5=5000$次标量乘法，再与$A_3$相乘又需要做$10*5*50=2500$次标量乘法，共需<strong>7500次标量乘法</strong>。<br>如果按照$(A_1(A_2A_3))$的顺序计算，计算$A_2A_3(100×50)$，需$100*5*50=25000$次标量乘法，再与$A_1$相乘需$10*100*50=50000$次标量乘法，共需<strong>75000次标量乘法</strong>。<br><strong><em>因此第一种顺序计算要比第二种顺序计算快10倍。</em></strong></p>
 <p>&nbsp;</p>
 <h4 id="动态规划应用"><a href="#动态规划应用" class="headerlink" title="动态规划应用"></a>动态规划应用</h4><ul>
 <li><strong>步骤1：最优括号化方案的结构特征</strong><br>动态规划的第一步是寻找最优子结构，然后就可以利用子结构从子问题的最优解构造出原问题的最优解。在矩阵链乘法问题中，假设$A_iA_{i+1}…A_j$的最优括号方案的分割点在$A_k$和$A_{k+1}$之间。那么，继续对子链$A_iA_{i+1}..A_k$进行括号化时，应该直接采用独立求解它时所得的最优方案。<br>为了构造一个矩阵链乘法问题实例的最优解，可以将问题划分为两个子问题($A_iA_{i+1}..A_k$和$A_{k+1}A_{k+2}..A_j$的最优括号化问题)，求出子问题实例的最优解，然后将子问题的最优解组合起来。</li>
@@ -526,15 +526,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -550,11 +546,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
               </li>
              
               <li class="article-tag-list-item">
