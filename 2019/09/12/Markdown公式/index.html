@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="xoyolucas&#39;s blog">
 <meta property="og:description" content="插入公式行中公式和独立公式，行中公式放在文中与其它文字混编，独立公式单独成行。  行中公式：将公式插入到本行内 1$公式内容$，如：$x+y$  独行公式：将公式插入到新的一行内，并且居中 1$$公式内容$$，如：$$xyz$$">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-02-20T16:00:43.891Z">
+<meta property="og:updated_time" content="2020-02-21T15:36:47.259Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Markdown公式">
 <meta name="twitter:description" content="插入公式行中公式和独立公式，行中公式放在文中与其它文字混编，独立公式单独成行。  行中公式：将公式插入到本行内 1$公式内容$，如：$x+y$  独行公式：将公式插入到新的一行内，并且居中 1$$公式内容$$，如：$$xyz$$">
@@ -241,8 +241,8 @@
 </table>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">有时候要用 \left. 或 \right. 进行匹配而不显示本身。</span><br><span class="line">$ f(x,y,z) = 3y^2z \left( 3+\frac&#123;7x+5&#125;&#123;1+y^2&#125; \right) $</span><br></pre></td></tr></table></figure>
 <p>$ f(x,y,z) = 3y^2z \left( 3+\frac{7x+5}{1+y^2} \right) $</p>
-<h2 id="分数"><a href="#分数" class="headerlink" title="分数"></a>分数</h2><p>通常使用 \frac {分子} {分母} 命令产生一个分数，分数可嵌套。可直接输入 \frac ab 来快速生成一个。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">如果分式很复杂，可使用分子\over分母命令，此时分数仅有一层。</span><br><span class="line">$ \frac&#123;a-1&#125;&#123;b-1&#125; \quad + \quad &#123;a+1\over b+1&#125; $</span><br><span class="line">$ \left \frac&#123;\rm &#123;d&#125;u&#125;&#123;\rm &#123;d&#125;x&#125; \right |_&#123;x=0&#125; $</span><br></pre></td></tr></table></figure></p>
-<p>$ \frac{a-1}{b-1} \quad + \quad {a+1\over b+1} $<br>$ \left \frac{\rm d{u}}{\rm d{x}} \right|_{x=0} $ </p>
+<h2 id="分数"><a href="#分数" class="headerlink" title="分数"></a>分数</h2><p>通常使用 \frac {分子} {分母} 命令产生一个分数，分数可嵌套。可直接输入 \frac ab 来快速生成一个。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">如果分式很复杂，可使用分子\over分母命令，此时分数仅有一层。</span><br><span class="line">$ \frac&#123;a-1&#125;&#123;b-1&#125; \quad + \quad &#123;a+1\over b+1&#125; $</span><br><span class="line">$ \left. \frac&#123;\rm &#123;d&#125;u&#125;&#123;\rm &#123;d&#125;x&#125; \right. |_&#123;x=0&#125; $</span><br></pre></td></tr></table></figure></p>
+<p>$ \frac{a-1}{b-1} \quad + \quad {a+1\over b+1} $<br>$ \left. \frac{\rm d{u}}{\rm d{x}} \right.|_{x=0} $ </p>
 <h2 id="开方"><a href="#开方" class="headerlink" title="开方"></a>开方</h2><p>使用 \sqrt [根指数，省略时为2] {被开方数} 命令输入开方。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ \sqrt&#123;2&#125; \quad and \quad \sqrt[n]&#123;3&#125; $</span><br></pre></td></tr></table></figure></p>
 <p>$ \sqrt{2} \quad and \quad \sqrt[n]{3} $</p>
 <h2 id="公式中的省略号"><a href="#公式中的省略号" class="headerlink" title="公式中的省略号"></a>公式中的省略号</h2><p>数学公式中常见的两种省略号，\ldots表示与文本底线对齐的省略号，\cdots表示与文本中线对齐的省略号。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ f(x_1,x_2,\underbrace&#123;\ldots&#125;_&#123;\rm ldots&#125; ,x_n) = x_1^2 + x_2^2 + \underbrace&#123;\cdots&#125;_&#123;\rm cdots&#125; + x_n^2 $</span><br></pre></td></tr></table></figure></p>
@@ -440,9 +440,12 @@
 </tbody>
 </table>
 <h2 id="参考网站"><a href="#参考网站" class="headerlink" title="参考网站"></a>参考网站</h2><ul>
-<li>若找不到需要的符号，可使用\rm{Detexify^2}来画出想要的符号。Detexify网站<a href="http://detexify.kirelabs.org/classify.html" target="_blank" rel="noopener">http://detexify.kirelabs.org/classify.html</a></li>
+<li>若找不到需要的符号，可使用$\rm{Detexify^2}$来画出想要的符号。$Detexify^2$网站<a href="http://detexify.kirelabs.org/classify.html" target="_blank" rel="noopener">http://detexify.kirelabs.org/classify.html</a></li>
 <li><a href="http://latex.codecogs.com/eqneditor/editor.php" target="_blank" rel="noopener">Markdown中Latex风格公式在线输入：http://latex.codecogs.com/eqneditor/editor.php</a></li>
 <li><a href="https://www.jianshu.com/p/25f0139637b7" target="_blank" rel="noopener">https://www.jianshu.com/p/25f0139637b7</a></li>
+<li><a href="https://www.jianshu.com/p/a0aa94ef8ab2" target="_blank" rel="noopener">方程组</a></li>
+<li><a href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference" target="_blank" rel="noopener">https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference</a></li>
+<li><a href="https://blog.csdn.net/coco56/article/details/98477502" target="_blank" rel="noopener">Markdown KaTeX多个公式对齐</a></li>
 </ul>
 
       
@@ -737,11 +740,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -753,15 +760,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IPM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">IPM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -777,11 +780,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PSO</a>
+                <a href="javascript:void(0)" class="js-tag color4">ACO</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ACO</a>
+                <a href="javascript:void(0)" class="js-tag color4">PSO</a>
               </li>
             
             <div class="clearfix"></div>
