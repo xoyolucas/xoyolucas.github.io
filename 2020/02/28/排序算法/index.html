@@ -18,7 +18,8 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2020/02/28/排序算法/时间复杂度.png">
 <meta property="og:image" content="http://yoursite.com/2020/02/28/排序算法/排序算法时间复杂度.JPG">
-<meta property="og:updated_time" content="2020-02-29T16:12:26.884Z">
+<meta property="og:image" content="http://yoursite.com/2020/02/28/排序算法/堆.jpg">
+<meta property="og:updated_time" content="2020-02-29T18:05:48.219Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序算法">
 <meta name="twitter:description" content="当n较大，则应采用时间复杂度为$O(nlog2n)$的排序方法：快速排序、堆排序或归并排序。快速排序是目前基于比较的内部排序中被认为是最好的方法，当待排序的关键字是随机分布时，快速排序的平均时间最短。常见排序算法的总体对比：   堆排序堆是一个数组，它可以被看成一个近似的完全二叉树，树上的每一个节点对应数组中的一个元素。除了最底层外，该树是完全充满的，从左到右填充。树的根节点是A[1]，可以很容易">
@@ -185,7 +186,7 @@
         <p>当n较大，则应采用时间复杂度为$O(nlog2n)$的排序方法：快速排序、堆排序或归并排序。<br><strong><em>快速排序</em></strong>是目前基于比较的内部排序中被认为是最好的方法，当待排序的关键字是随机分布时，快速排序的平均时间最短。<br><strong>常见排序算法的总体对比：</strong></p>
 <center><img src="/2020/02/28/排序算法/时间复杂度.png" width="40%"><img src="/2020/02/28/排序算法/排序算法时间复杂度.JPG" width="50%"></center>
 
-<h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><p>堆是一个数组，它可以被看成一个近似的完全二叉树，树上的每一个节点对应数组中的一个元素。除了最底层外，该树是完全充满的，从左到右填充。树的根节点是A[1]，可以很容易计算得到它的父节点、左小孩和右小孩。PARENT(i) return[i/2];  LEFT(i) return 2i;  RIGHT(i) return 2i+1;<br>堆的高度是$\theta(lgn)$<br><strong>最大堆：</strong>除了根以外的所有节点i都要满足$A[PARENT(i)]&gt;=A[i]$<br><strong>最小堆：</strong>除了根以外的所有节点i都要满足$A[PARENT(i)]&lt;=A[i]$<br>在堆排序算法中，一般使用最大堆，最小堆用在构造优先队列。<br><a href="堆.jpg">堆</a></p>
+<h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><p>堆是一个数组，它可以被看成一个近似的完全二叉树，树上的每一个节点对应数组中的一个元素。除了最底层外，该树是完全充满的，从左到右填充。树的根节点是A[1]，可以很容易计算得到它的父节点、左小孩和右小孩。PARENT(i) return[i/2];  LEFT(i) return 2i;  RIGHT(i) return 2i+1;<br>堆的高度是$\theta(lgn)$<br><strong>最大堆：</strong>除了根以外的所有节点i都要满足$A[PARENT(i)]&gt;=A[i]$<br><strong>最小堆：</strong>除了根以外的所有节点i都要满足$A[PARENT(i)]&lt;=A[i]$<br>在堆排序算法中，一般使用最大堆，最小堆用在构造优先队列。<br><img src="/2020/02/28/排序算法/堆.jpg" alt="堆"></p>
 <ul>
 <li>MAX-HEAPIFY：其时间复杂度为$O(lgn)$，它是维护最大堆性质的关键</li>
 <li>BUILD-MAX-HEAP：具有线性时间复杂度，功能是从无序的输入数据数组中构造一个最大堆</li>
@@ -479,15 +480,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -499,19 +504,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">pandas</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">sort</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -519,15 +512,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PSO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ACO</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -536,6 +525,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">sort</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PSO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ACO</a>
               </li>
             
             <div class="clearfix"></div>
