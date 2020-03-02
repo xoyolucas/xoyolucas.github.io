@@ -21,7 +21,9 @@
 <meta property="og:image" content="http://yoursite.com/2020/02/28/排序算法/堆.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/02/28/排序算法/max-heapify.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/02/28/排序算法/build-max-heap.jpg">
-<meta property="og:updated_time" content="2020-03-02T17:00:42.673Z">
+<meta property="og:image" content="http://yoursite.com/2020/02/28/排序算法/heapsort1.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/28/排序算法/heapsort2.png">
+<meta property="og:updated_time" content="2020-03-02T17:12:51.933Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序算法">
 <meta name="twitter:description" content="常见的八大排序算法：插入排序，希尔排序，选择排序，冒泡排序，归并排序，堆排序，快速排序。排序算法的评价指标：  时间复杂度：即从序列的初始状态到经过排序算法的变换移位等操作变到最终排序好的结果状态的过程所花费的时间度量。 空间复杂度：就是从序列的初始状态经过排序移位变换的过程一直到最终的状态所花费的空间开销。 使用场景：排序算法有很多，不同种类的排序算法适合不同种类的情景，可能有时候需要节省空间对">
@@ -207,7 +209,9 @@
 <p><ceter><img src="/2020/02/28/排序算法/max-heapify.jpg" alt="MAX-HEAPFITY"></ceter></p>
 <h3 id="建堆"><a href="#建堆" class="headerlink" title="建堆"></a>建堆</h3><p>自底向上的方法调用过程MAX-HEAPIFY把一个数组转换为最大堆。每个叶节点可以看成只包含一个元素的堆。过程BUILD-MAX-HEAP对树中的其他节点都调用一次MAX-HEAPIFY，时间复杂度为$O(n)$。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BUILD-MAX-HEAP(A)：</span><br><span class="line">    A.heap_size = A.length</span><br><span class="line">    <span class="keyword">for</span> i = [A.length/<span class="number">2</span>] to <span class="number">1</span> <span class="comment">//对各个"根节点"</span></span><br><span class="line">        MAX-HEAPIFY(A,i)</span><br></pre></td></tr></table></figure></p>
 <p>可以在线性时间内，把一个无序数组构造成一个最大堆。<br><img src="/2020/02/28/排序算法/build-max-heap.jpg" alt="BUILD-MAX-HEAP"></p>
-<h3 id="堆排序算法"><a href="#堆排序算法" class="headerlink" title="堆排序算法"></a>堆排序算法</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">HEAPSORT(A):</span><br><span class="line">    BUILD-MAX-HEAP(A)</span><br><span class="line">    <span class="keyword">for</span> i=A.length to <span class="number">2</span></span><br><span class="line">        exchange A[<span class="number">1</span>] with A[i]</span><br><span class="line">        A.size=A.size<span class="number">-1</span></span><br><span class="line">        MAX-HEAPIFY(A,<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="堆排序算法"><a href="#堆排序算法" class="headerlink" title="堆排序算法"></a>堆排序算法</h3><p>堆排序算法利用BUILD-MAX-HEAP将输入数组A[1..n]建成最大堆。因为数组中的最大元素在根节点A[1]中，通过将它与A[n]进行互换，此时A[n]为最大值，在正确位置，在堆中去掉节点n。剩余节点中，根节点的孩子节点依旧是最大堆，但新的根节点可能违背最大堆性质，调用MAX-HEAPIFY(A,1)，刷新最大堆，满足其性质。堆排序算法不断重复此过程。HEAPSORT的时间复杂度为$O(nlgn)$。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">HEAPSORT(A):</span><br><span class="line">    BUILD-MAX-HEAP(A)</span><br><span class="line">    <span class="keyword">for</span> i=A.length to <span class="number">2</span></span><br><span class="line">        exchange A[<span class="number">1</span>] with A[i]</span><br><span class="line">        A.size=A.size<span class="number">-1</span></span><br><span class="line">        MAX-HEAPIFY(A,<span class="number">1</span>)</span><br></pre></td></tr></table></figure></p>
+<p><ceter><img src="/2020/02/28/排序算法/heapsort1.png" width="40%"></ceter></p>
+<p><ceter><img src="/2020/02/28/排序算法/heapsort2.png" width="40%"></ceter></p>
 <h3 id="优先队列"><a href="#优先队列" class="headerlink" title="优先队列"></a>优先队列</h3><p>最大优先队列和最小优先队列</p>
 <p>&nbsp;</p>
 <h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>快速排序的性能一般会优于堆排序</p>
@@ -490,11 +494,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
+                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
+                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -510,6 +514,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ns-3</a>
               </li>
              
@@ -518,15 +526,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">pandas</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">IPM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -539,14 +551,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">sort</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IPM</a>
               </li>
              
               <li class="article-tag-list-item">
