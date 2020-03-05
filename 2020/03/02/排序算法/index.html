@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/03/02/排序算法/counting-sort.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/03/02/排序算法/radix-sort.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/03/02/排序算法/bucket-sort.jpg">
-<meta property="og:updated_time" content="2020-03-05T16:42:30.949Z">
+<meta property="og:updated_time" content="2020-03-05T16:46:16.752Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序算法">
 <meta name="twitter:description" content="常见的八大排序算法：插入排序，希尔排序，选择排序，冒泡排序，归并排序，堆排序，快速排序。排序算法的评价指标：  时间复杂度： 即从序列的初始状态到经过排序算法的变换移位等操作变到最终排序好的结果状态的过程所花费的时间度量。 空间复杂度： 就是从序列的初始状态经过排序移位变换的过程一直到最终的状态所花费的空间开销。 使用场景： 排序算法有很多，不同种类的排序算法适合不同种类的情景，可能有时候需要节省">
@@ -247,7 +247,8 @@
 <center><img src="/2020/03/02/排序算法/qucik_sort.jpg" width="80%"></center>
 
 <h3 id="快速排序的随机化版本"><a href="#快速排序的随机化版本" class="headerlink" title="快速排序的随机化版本"></a>快速排序的随机化版本</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">RANDOMIZED-PARTITION(A,p,r)</span><br><span class="line">    i=RANDOM(p,r)</span><br><span class="line">    exchange A[r] with A[i]</span><br><span class="line">    <span class="keyword">return</span> PARTITION(A,p,r)</span><br><span class="line"></span><br><span class="line">RANDOMIZED-QUICKSORT(A,p,r)</span><br><span class="line">    <span class="keyword">if</span> p&lt;r</span><br><span class="line">        q=RANDOMIZED-PARTITION(A,p,r)</span><br><span class="line">        RANDOMIZED-QUICKSORT(A,p,q<span class="number">-1</span>)</span><br><span class="line">        RANDOMIZED-QUICKSORT(A,q+<span class="number">1</span>,r)</span><br></pre></td></tr></table></figure>
-<h3 id="快速排序性能分析"><a href="#快速排序性能分析" class="headerlink" title="快速排序性能分析"></a>快速排序性能分析</h3><p>&nbsp;</p>
+<h3 id="快速排序性能分析"><a href="#快速排序性能分析" class="headerlink" title="快速排序性能分析"></a>快速排序性能分析</h3><p>最坏情况划分，最坏时间复杂度$\Theta(n^2)$<br>最好情况划分，最好时间复杂度$\Theta(nlogn)$<br>平衡的划分，平均时间复杂度$\Theta(nlogn)$</p>
+<p>&nbsp;</p>
 <h2 id="线性时间排序及下界"><a href="#线性时间排序及下界" class="headerlink" title="线性时间排序及下界"></a>线性时间排序及下界</h2><p>在最坏情况下，任何比较排序算法都需要做$\Omega(nlgn)$次比较。<br>堆排序和归并排序都是渐进最优的比较排序算法，运行时间上界为$O(nlgn)$。</p>
 <h3 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h3><p>计数排序假设n个输入元素中的每一个都是在0到k区间内的一个整数，其中k为某个整数。但$k=O(n)$时，排序的运行时间为$\Theta(n)$<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">COUNTING-SORT(A,B,k)</span><br><span class="line">    let C[<span class="number">0.</span>.k] be a <span class="keyword">new</span> <span class="built_in">array</span></span><br><span class="line">    <span class="keyword">for</span> i = <span class="number">0</span> to k</span><br><span class="line">        C[i]=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> j = <span class="number">1</span> to A.length</span><br><span class="line">        C[A[j]]=C[A[j]]+<span class="number">1</span></span><br><span class="line">    <span class="comment">//C[i] now contains the number of elements equal to i</span></span><br><span class="line">    <span class="keyword">for</span> i = <span class="number">1</span> to k</span><br><span class="line">        C[i]=C[i]+C[i<span class="number">-1</span>]</span><br><span class="line">    <span class="comment">// C[i] now contains the number of elements less than or equal to i</span></span><br><span class="line">    <span class="keyword">for</span> j = A.length downto <span class="number">1</span></span><br><span class="line">        B[C[A[j]]]=A[j]</span><br><span class="line">        C[A[j]]C[A[j]]<span class="number">-1</span></span><br></pre></td></tr></table></figure></p>
 <center><img src="/2020/03/02/排序算法/counting-sort.jpg" width="80%"></center>
@@ -536,11 +537,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
+                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
+                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -560,15 +561,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pandas</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ns-3</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">仿真工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pandas</a>
               </li>
              
               <li class="article-tag-list-item">
