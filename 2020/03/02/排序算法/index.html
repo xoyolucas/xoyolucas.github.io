@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/03/02/排序算法/counting-sort.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/03/02/排序算法/radix-sort.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/03/02/排序算法/bucket-sort.jpg">
-<meta property="og:updated_time" content="2020-03-05T16:01:24.152Z">
+<meta property="og:updated_time" content="2020-03-05T16:42:30.949Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序算法">
 <meta name="twitter:description" content="常见的八大排序算法：插入排序，希尔排序，选择排序，冒泡排序，归并排序，堆排序，快速排序。排序算法的评价指标：  时间复杂度： 即从序列的初始状态到经过排序算法的变换移位等操作变到最终排序好的结果状态的过程所花费的时间度量。 空间复杂度： 就是从序列的初始状态经过排序移位变换的过程一直到最终的状态所花费的空间开销。 使用场景： 排序算法有很多，不同种类的排序算法适合不同种类的情景，可能有时候需要节省">
@@ -243,6 +243,7 @@
 <li><strong>合并：</strong> 因为子数组都是原址排序的，所以不需要合并操作，数组A[p..r]进行有序的。<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">QUICKSORT(A,p,r)</span><br><span class="line">    <span class="keyword">if</span> p&lt;r</span><br><span class="line">        q=PARTITION(A,p,r)</span><br><span class="line">        QUICKSORT(A,p,q<span class="number">-1</span>)</span><br><span class="line">        QUICKSORT(A,q+<span class="number">1</span>,r)</span><br><span class="line"></span><br><span class="line">PARTITION(A,p,r)</span><br><span class="line">    x=A[r]</span><br><span class="line">    i=p<span class="number">-1</span></span><br><span class="line">    <span class="keyword">for</span> j=p to r<span class="number">-1</span></span><br><span class="line">        <span class="keyword">if</span> A[j]&lt;=x</span><br><span class="line">            i=i+<span class="number">1</span></span><br><span class="line">            exchange A[i] with A[j]</span><br><span class="line">    exchange A[i+<span class="number">1</span>] with A[r]</span><br><span class="line">    <span class="keyword">return</span> i+<span class="number">1</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<p>下图展示了PARTITION的数据上的一次操作过程，先选择一个x=A[r]作为主元，根据它来划分数组。最后主元左边的子数组都小于等于主元，主元右边的子数组都大于主元。</p>
 <center><img src="/2020/03/02/排序算法/qucik_sort.jpg" width="80%"></center>
 
 <h3 id="快速排序的随机化版本"><a href="#快速排序的随机化版本" class="headerlink" title="快速排序的随机化版本"></a>快速排序的随机化版本</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">RANDOMIZED-PARTITION(A,p,r)</span><br><span class="line">    i=RANDOM(p,r)</span><br><span class="line">    exchange A[r] with A[i]</span><br><span class="line">    <span class="keyword">return</span> PARTITION(A,p,r)</span><br><span class="line"></span><br><span class="line">RANDOMIZED-QUICKSORT(A,p,r)</span><br><span class="line">    <span class="keyword">if</span> p&lt;r</span><br><span class="line">        q=RANDOMIZED-PARTITION(A,p,r)</span><br><span class="line">        RANDOMIZED-QUICKSORT(A,p,q<span class="number">-1</span>)</span><br><span class="line">        RANDOMIZED-QUICKSORT(A,q+<span class="number">1</span>,r)</span><br></pre></td></tr></table></figure>
@@ -543,11 +544,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -579,15 +580,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">BFS</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
               </li>
              
               <li class="article-tag-list-item">
