@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/03/02/排序算法/counting-sort.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/03/02/排序算法/radix-sort.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/03/02/排序算法/bucket-sort.jpg">
-<meta property="og:updated_time" content="2020-03-07T12:27:09.343Z">
+<meta property="og:updated_time" content="2020-03-07T12:51:10.209Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序算法">
 <meta name="twitter:description" content="常见的八大排序算法：插入排序，希尔排序，选择排序，冒泡排序，归并排序，堆排序，快速排序。排序算法的评价指标：  时间复杂度： 即从序列的初始状态到经过排序算法的变换移位等操作变到最终排序好的结果状态的过程所花费的时间度量。 空间复杂度： 就是从序列的初始状态经过排序移位变换的过程一直到最终的状态所花费的空间开销。 使用场景： 排序算法有很多，不同种类的排序算法适合不同种类的情景，可能有时候需要节省">
@@ -259,17 +259,17 @@
 <h3 id="快速排序的随机化版本"><a href="#快速排序的随机化版本" class="headerlink" title="快速排序的随机化版本"></a>快速排序的随机化版本</h3><p>快速排序的平均时间复杂度假设输入数据的所有排列是等概率的，但实际使用过程中这个假设未必成立。因而可以选择随机化版本的快速排序作为大数据输入情况下的排序算法。<br><strong>随机抽样</strong>：与始终采用A[r]作为主元的方法不同，随机抽样是从子数组A[p..r]中随机选择一个元素作为主元。将A[r]与从A[p..r]中随机选出的一个元素交换，因为主元元素是随机选取，因而对数组的划分是比较均衡的。<br><strong>伪代码如下：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">PARTITION(A,p,r)</span><br><span class="line">    x=A[r]</span><br><span class="line">    i=p<span class="number">-1</span></span><br><span class="line">    <span class="keyword">for</span> j=p to r<span class="number">-1</span></span><br><span class="line">        <span class="keyword">if</span> A[j]&lt;=x</span><br><span class="line">            i=i+<span class="number">1</span></span><br><span class="line">            exchange A[i] with A[j]</span><br><span class="line">    exchange A[i+<span class="number">1</span>] with A[r]</span><br><span class="line">    <span class="keyword">return</span> i+<span class="number">1</span></span><br><span class="line"></span><br><span class="line">RANDOMIZED-PARTITION(A,p,r)</span><br><span class="line">    i=RANDOM(p,r)</span><br><span class="line">    exchange A[r] with A[i]</span><br><span class="line">    <span class="keyword">return</span> PARTITION(A,p,r)</span><br><span class="line"></span><br><span class="line">RANDOMIZED-QUICKSORT(A,p,r)</span><br><span class="line">    <span class="keyword">if</span> p&lt;r</span><br><span class="line">        q=RANDOMIZED-PARTITION(A,p,r)</span><br><span class="line">        RANDOMIZED-QUICKSORT(A,p,q<span class="number">-1</span>)</span><br><span class="line">        RANDOMIZED-QUICKSORT(A,q+<span class="number">1</span>,r)</span><br></pre></td></tr></table></figure></p>
 <p>&nbsp;</p>
 <h2 id="线性时间排序及下界"><a href="#线性时间排序及下界" class="headerlink" title="线性时间排序及下界"></a>线性时间排序及下界</h2><p>在最坏情况下，任何比较排序算法(在排序算法中，各个元素的次序依赖于它们之间的比较)都需要做$\Omega(nlgn)$次比较。<br><strong>堆排序</strong>和<strong>归并排序</strong>都是渐进最优的比较排序算法，运行时间上界为$O(nlgn)$。<br><strong>计数排序</strong>、<strong>基数排序</strong>和<strong>桶排序</strong>是线性时间复杂度，但这些算法是用运算而不是比较来确定排序的，基于一定的假设条件下可用。</p>
-<h3 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h3><p>计数排序假设n个输入元素中的每一个都是在0到k区间内的一个整数，其中k为某个整数。但$k=O(n)$时，排序的运行时间为$\Theta(n)$。计数排序的基本思想是对每一个输入元素x，确定小于x的元素的个数。利用这一信息，就可以直接把x放在它输出数组的位置上了。<br>假设输入一个数组A[1..n]，A.length=n，B[1..n]存放排序的输出，C[0..k]提供临时存储空间。将数组C的值全部置为0，第3-4行for循环遍历每一个输入元素。如果输入元素的值为i，就将C[i]的值加1。在第6行循环结束后，C[i]中保存的就是等于i的元素的个数。第8-9行通过累加计算，确定对于每个i=0,1,…,k，有多少个输入元素小于或等于i。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">COUNTING-SORT(A,B,k)</span><br><span class="line">    let C[<span class="number">0.</span>.k] be a <span class="keyword">new</span> <span class="built_in">array</span></span><br><span class="line">    <span class="keyword">for</span> i = <span class="number">0</span> to k</span><br><span class="line">        C[i]=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> j = <span class="number">1</span> to A.length</span><br><span class="line">        C[A[j]]=C[A[j]]+<span class="number">1</span></span><br><span class="line">    <span class="comment">//C[i] now contains the number of elements equal to i</span></span><br><span class="line">    <span class="keyword">for</span> i = <span class="number">1</span> to k</span><br><span class="line">        C[i]=C[i]+C[i<span class="number">-1</span>]</span><br><span class="line">    <span class="comment">// C[i] now contains the number of elements less than or equal to i</span></span><br><span class="line">    <span class="keyword">for</span> j = A.length downto <span class="number">1</span></span><br><span class="line">        B[C[A[j]]]=A[j]</span><br><span class="line">        C[A[j]]C[A[j]]<span class="number">-1</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h3><p>计数排序假设n个输入元素中的每一个都是在0到k区间内的一个整数，其中k为某个整数。但$k=O(n)$时，排序的运行时间为$\Theta(n)$。计数排序的基本思想是对每一个输入元素x，确定小于x的元素的个数。利用这一信息，就可以直接把x放在它输出数组的位置上了。<br>假设输入一个数组A[1..n]，A.length=n，B[1..n]存放排序的输出，C[0..k]提供临时存储空间。<br>首先将数组C的值全部置为0，第3-4行for循环遍历每一个输入元素。如果输入元素的值为i，就将C[i]的值加1。在第6行循环结束后，C[i]中保存的就是等于i的元素的个数。第8-9行通过累加计算，确定对于每个i=0,1,…,k，有多少个输入元素小于或等于i。第11-12行for循环部分，把每个元素的A[j]放到输出数组B中的正确位置上，每将一个值A[j]放入数组B以后，都要将C[A[j]]的值减1。这样，当遇到下一个值为A[j]的输入元素时，该元素直接被放到输出数组中A[j]的前一个位置上。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">COUNTING-SORT(A,B,k)</span><br><span class="line">    let C[<span class="number">0.</span>.k] be a <span class="keyword">new</span> <span class="built_in">array</span></span><br><span class="line">    <span class="keyword">for</span> i = <span class="number">0</span> to</span><br><span class="line">        C[i]=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> j = <span class="number">1</span> to A.length</span><br><span class="line">        C[A[j]]=C[A[j]]+<span class="number">1</span></span><br><span class="line">    <span class="comment">//C[i] now contains the number of elements equal to i</span></span><br><span class="line">    <span class="keyword">for</span> i = <span class="number">1</span> to k</span><br><span class="line">        C[i]=C[i]+C[i<span class="number">-1</span>]</span><br><span class="line">    <span class="comment">// C[i] now contains the number of elements less than or equal to i</span></span><br><span class="line">    <span class="keyword">for</span> j = A.length downto <span class="number">1</span></span><br><span class="line">        B[C[A[j]]]=A[j]</span><br><span class="line">        C[A[j]]C[A[j]]<span class="number">-1</span></span><br></pre></td></tr></table></figure></p>
 <center><img src="/2020/03/02/排序算法/counting-sort.jpg" width="80%"></center>
 
-<h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3><p>基数排序(radix sort)是一种用在卡片排序机上的算法</p>
+<h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3><p>基数排序(radix sort)是一种用在卡片排序机上的算法。非比较型整数排序算法，其原理是将整数按位数切割成不同的数字，然后按每个位数分别比较。由于整数也可以表达字符串（比如名字或日期）和特定格式的浮点数，所以基数排序也不是只能使用于整数。</p>
 <center><img src="/2020/03/02/排序算法/radix-sort.jpg" width="40%"></center>
 
 <h3 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h3><p>桶排序(bucket sort)假设输入数据服从均匀分布，平均情况下它的时间复杂度为$O(n)$。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">BUCKET-SORT(A)</span><br><span class="line">    n=A.length</span><br><span class="line">    let B[<span class="number">0.</span>.n<span class="number">-1</span>] be a <span class="keyword">new</span> <span class="built_in">array</span></span><br><span class="line">    <span class="keyword">for</span> i=<span class="number">0</span> to n<span class="number">-1</span></span><br><span class="line">        make B[i] an empty <span class="built_in">list</span></span><br><span class="line">    <span class="keyword">for</span> i=<span class="number">1</span> to n</span><br><span class="line">        insert A[i] into <span class="built_in">list</span> B[[nA[i]]]</span><br><span class="line">    <span class="keyword">for</span> i=<span class="number">0</span> to n<span class="number">-1</span></span><br><span class="line">        sort <span class="built_in">list</span> B[i] with insertion sort</span><br><span class="line">    concatenate the <span class="built_in">list</span> B[<span class="number">0</span>],B[<span class="number">1</span>],...,B[n<span class="number">-1</span>] together in order</span><br></pre></td></tr></table></figure></p>
 <center><img src="/2020/03/02/排序算法/bucket-sort.jpg" width="40%"></center>
 
 <p>&nbsp;</p>
-<h2 id="参考网站"><a href="#参考网站" class="headerlink" title="参考网站"></a>参考网站</h2><p><a href="https://blog.csdn.net/hguisu/article/details/7776068" target="_blank" rel="noopener">八大排序算法</a></p>
+<h2 id="参考网站"><a href="#参考网站" class="headerlink" title="参考网站"></a>参考网站</h2><p><a href="https://blog.csdn.net/hguisu/article/details/7776068" target="_blank" rel="noopener">八大排序算法</a><br><a href="https://www.runoob.com/w3cnote/counting-sort.html" target="_blank" rel="noopener">计数排序</a><br><a href="https://www.runoob.com/w3cnote/radix-sort.html" target="_blank" rel="noopener">基数排序</a><br><a href="https://www.runoob.com/w3cnote/bucket-sort.html" target="_blank" rel="noopener">桶排序</a></p>
 
       
 
@@ -546,27 +546,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pandas</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -574,7 +554,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IPM</a>
+                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -586,11 +578,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pandas</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">IPM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
+                <a href="javascript:void(0)" class="js-tag color5">sort</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -602,7 +602,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">sort</a>
+                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
               </li>
              
               <li class="article-tag-list-item">
