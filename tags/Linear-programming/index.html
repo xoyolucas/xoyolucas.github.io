@@ -6,20 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>CMake常用命令 | xoyolucas&#39;s blog</title>
+  <title>Tag: Linear programming | xoyolucas&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="常用命令COMMAND(args…)，多个参数用空白符分隔 1. cmake_minimum_required(VERSION 3.4.1)指定需要的最小的cmake版本，VERSION 3.4.1   2. add_library1add_library(&amp;lt;name&amp;gt; [STATIC | SHARED | MODULE] [EXCLUDE_FROM_ALL] source1 sour">
-<meta name="keywords" content="CMake">
-<meta property="og:type" content="article">
-<meta property="og:title" content="CMake常用命令">
-<meta property="og:url" content="http://yoursite.com/2019/08/14/CMake常用命令/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="xoyolucas&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/tags/Linear-programming/index.html">
 <meta property="og:site_name" content="xoyolucas&#39;s blog">
-<meta property="og:description" content="常用命令COMMAND(args…)，多个参数用空白符分隔 1. cmake_minimum_required(VERSION 3.4.1)指定需要的最小的cmake版本，VERSION 3.4.1   2. add_library1add_library(&amp;lt;name&amp;gt; [STATIC | SHARED | MODULE] [EXCLUDE_FROM_ALL] source1 sour">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-23T16:16:17.267Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CMake常用命令">
-<meta name="twitter:description" content="常用命令COMMAND(args…)，多个参数用空白符分隔 1. cmake_minimum_required(VERSION 3.4.1)指定需要的最小的cmake版本，VERSION 3.4.1   2. add_library1add_library(&amp;lt;name&amp;gt; [STATIC | SHARED | MODULE] [EXCLUDE_FROM_ALL] source1 sour">
+<meta name="twitter:title" content="xoyolucas&#39;s blog">
   
     <link rel="alternative" href="/atom.xml" title="xoyolucas&#39;s blog" type="application/atom+xml">
   
@@ -159,232 +154,71 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-CMake常用命令" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      CMake常用命令
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/03/08/线性规划/" class="archive-article-date">
+  	<time datetime="2020-03-08T15:11:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-08</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/03/08/线性规划/">线性规划</a>
     </h1>
   
 
-        
-        <a href="/2019/08/14/CMake常用命令/" class="archive-article-date">
-  	<time datetime="2019-08-13T17:30:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>COMMAND(args…)，多个参数用空白符分隔</p>
-<h3 id="1-cmake-minimum-required-VERSION-3-4-1"><a href="#1-cmake-minimum-required-VERSION-3-4-1" class="headerlink" title="1. cmake_minimum_required(VERSION 3.4.1)"></a>1. cmake_minimum_required(VERSION 3.4.1)</h3><p>指定需要的最小的cmake版本，VERSION 3.4.1  </p>
-<h3 id="2-add-library"><a href="#2-add-library" class="headerlink" title="2. add_library"></a>2. add_library</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">add_library</span>(&lt;name&gt; [STATIC | SHARED | MODULE] [EXCLUDE_FROM_ALL] source1 source2 ... sourceN)</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<ul>
-<li>添加一个名为<name>的库文件</name></li>
-<li>指定STATIC, SHARED, MODULE参数来指定要创建的库的类型, STATIC对应的静态库(.a)，SHARED对应共享动态库(.so)</li>
-<li>[EXCLUDE_FROM_ALL], 如果指定了这一属性，对应的一些属性会在目标被创建时被设置(指明此目录和子目录中所有的目标，是否应当从默认构建中排除, 子目录的IDE工程文件/Makefile将从顶级IDE工程文件/Makefile中排除)</li>
-<li>source1 source2 … sourceN用来指定源文件</li>
-</ul>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">add_library</span>(&lt;name&gt; [STATIC | SHARED | MODULE | UNKNOWN] IMPORTED)</span><br><span class="line"><span class="keyword">add_library</span>(<span class="keyword">test</span> SHARED IMPORTED)</span><br><span class="line"><span class="keyword">set_target_properties</span>(  <span class="keyword">test</span> <span class="comment">#指定目标库名称</span></span><br><span class="line">                        PROPERTIES IMPORTED_LOCATION <span class="comment">#指明要设置的参数</span></span><br><span class="line">                        libs/src/<span class="variable">$&#123;ANDROID_ABI&#125;</span>/libtest.so <span class="comment">#设定导入库的路径)</span></span><br></pre></td></tr></table></figure>
-<p>导入了一个已存在的<name>库文件，导入库一般配合set_target_properties使用，这个命令用来指定导入库的路径,</name></p>
-<h3 id="3-aux-source-directory"><a href="#3-aux-source-directory" class="headerlink" title="3. aux_source_directory"></a>3. aux_source_directory</h3><p>查找源文件并保存到相应的变量中:<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查找当前目录下所有源文件并保存至SRC_LIST变量中</span></span><br><span class="line"><span class="keyword">aux_source_directory</span>(. SRC_LIST)</span><br></pre></td></tr></table></figure></p>
-<h3 id="4-set"><a href="#4-set" class="headerlink" title="4. set"></a>4. set</h3><p>设置CMake变量<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置可执行文件的输出路径(EXCUTABLE_OUTPUT_PATH是全局变量)</span></span><br><span class="line"><span class="keyword">set</span>(EXECUTABLE_OUTPUT_PATH [output_path])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置库文件的输出路径(LIBRARY_OUTPUT_PATH是全局变量)</span></span><br><span class="line"><span class="keyword">set</span>(LIBRARY_OUTPUT_PATH [output_path])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置源文件集合(SOURCE_FILES是本地变量即自定义变量)</span></span><br><span class="line"><span class="keyword">set</span>(SOURCE_FILES main.cpp <span class="keyword">test</span>.cpp ...)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置C++编译参数(CMAKE_CXX_FLAGS是全局变量)</span></span><br><span class="line"><span class="keyword">set</span>(CMAKE_CXX_FLAGS <span class="string">"-Wall std=c++11"</span>)</span><br></pre></td></tr></table></figure></p>
-<h3 id="5-include-directories"><a href="#5-include-directories" class="headerlink" title="5. include_directories"></a>5. include_directories</h3><p>设置头文件位置<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 可以用相对或者绝对路径，也可以用自定义的变量值</span></span><br><span class="line"><span class="keyword">include_directories</span>(./<span class="keyword">include</span> <span class="variable">$&#123;MY_INCLUDE&#125;</span>)</span><br></pre></td></tr></table></figure></p>
-<h3 id="6-add-executable"><a href="#6-add-executable" class="headerlink" title="6. add_executable"></a>6. add_executable</h3><p>添加可执行文件<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">add_executable</span>(&lt;name&gt; <span class="variable">$&#123;SRC_LIST&#125;</span>)</span><br></pre></td></tr></table></figure></p>
-<h3 id="7-target-link-libraries"><a href="#7-target-link-libraries" class="headerlink" title="7. target_link_libraries"></a>7. target_link_libraries</h3><p>将若干库链接到目标库文件,将lib1, lib2, lib3链接到<name>上<br>NOTE: 链接的顺序应当符合gcc链接顺序规则，被链接的库放在依赖它的库的后面，即如果上面的命令中，lib1依赖于lib2, lib2又依赖于lib3，则在上面命令中必须严格按照lib1 lib2 lib3的顺序排列，否则会报错<br>也可以自定义链接选项, 比如针对lib1使用-WL选项,target_link_libraries(<name> lib1 -WL, lib2 lib3)<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">target_link_libraries</span>(&lt;name&gt; lib1 lib2 lib3)</span><br></pre></td></tr></table></figure></name></name></p>
-<h3 id="8-add-definitions"><a href="#8-add-definitions" class="headerlink" title="8. add_definitions"></a>8. add_definitions</h3><p>为当前路径以及子目录的源文件加入由-D引入得define flag<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">add_definitions</span>(-DFOO -DDEBUG ...)</span><br></pre></td></tr></table></figure></p>
-<h3 id="9-add-subdirectory"><a href="#9-add-subdirectory" class="headerlink" title="9. add_subdirectory"></a>9. add_subdirectory</h3><p>如果当前目录下还有子目录时可以使用add_subdirectory，子目录中也需要包含有CMakeLists.txt<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sub_dir指定包含CMakeLists.txt和源码文件的子目录位置</span></span><br><span class="line"><span class="comment"># binary_dir是输出路径， 一般可以不指定</span></span><br><span class="line">add_subdirecroty(sub_dir [binary_dir])</span><br></pre></td></tr></table></figure></p>
-<h3 id="10-file"><a href="#10-file" class="headerlink" title="10. file"></a>10. file</h3><p>文件操作命令<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将message写入filename文件中,会覆盖文件原有内容</span></span><br><span class="line"><span class="keyword">file</span>(WRITE filename <span class="string">"message"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将message写入filename文件中，会追加在文件末尾</span></span><br><span class="line"><span class="keyword">file</span>(APPEND filename <span class="string">"message"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从filename文件中读取内容并存储到var变量中，如果指定了numBytes和offset，</span></span><br><span class="line"><span class="comment"># 则从offset处开始最多读numBytes个字节，另外如果指定了HEX参数，则内容会以十六进制形式存储在var变量中</span></span><br><span class="line"><span class="keyword">file</span>(READ filename var [LIMIT numBytes] [OFFSET offset] [HEX])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重命名文件</span></span><br><span class="line"><span class="keyword">file</span>(RENAME &lt;oldname&gt; &lt;newname&gt;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除文件， 等于rm命令</span></span><br><span class="line"><span class="keyword">file</span>(<span class="keyword">REMOVE</span> [file1 ...])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 递归的执行删除文件命令, 等于rm -r</span></span><br><span class="line"><span class="keyword">file</span>(REMOVE_RECURSE [file1 ...])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 根据指定的url下载文件</span></span><br><span class="line"><span class="comment"># timeout超时时间; 下载的状态会保存到status中; 下载日志会被保存到log; sum指定所下载文件预期的MD5值,如果指定会自动进行比对，如果不一致，则返回一个错误; SHOW_PROGRESS，进度信息会以状态信息的形式被打印出来</span></span><br><span class="line"><span class="keyword">file</span>(DOWNLOAD url <span class="keyword">file</span> [TIMEOUT timeout] [STATUS status] [LOG log] [EXPECTED_MD5 sum] [SHOW_PROGRESS])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建目录</span></span><br><span class="line"><span class="keyword">file</span>(<span class="keyword">MAKE_DIRECTORY</span> [dir1 dir2 ...])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 会把path转换为以unix的/开头的cmake风格路径,保存在result中</span></span><br><span class="line"><span class="keyword">file</span>(TO_CMAKE_PATH path result)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 它会把cmake风格的路径转换为本地路径风格：windows下用"\"，而unix下用"/"</span></span><br><span class="line"><span class="keyword">file</span>(TO_NATIVE_PATH path result)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将会为所有匹配查询表达式的文件生成一个文件list，并将该list存储进变量variable里, 如果一个表达式指定了RELATIVE, 返回的结果将会是相对于给定路径的相对路径, 查询表达式例子: *.cxx, *.vt?</span></span><br><span class="line">NOTE: 按照官方文档的说法，不建议使用<span class="keyword">file</span>的GLOB指令来收集工程的源文件</span><br><span class="line"><span class="keyword">file</span>(GLOB variable [RELATIVE path] [globbing expressions]...)</span><br></pre></td></tr></table></figure></p>
-<h3 id="11-set-directory-properties"><a href="#11-set-directory-properties" class="headerlink" title="11. set_directory_properties"></a>11. set_directory_properties</h3><p>设置某个路径的一种属性<br>prop1 prop代表属性，取值为：</p>
-<ul>
-<li>INCLUDE_DIRECTORIES</li>
-<li>LINK_DIRECTORIES</li>
-<li>INCLUDE_REGULAR_EXPRESSION</li>
-<li>ADDITIONAL_MAKE_CLEAN_FILES<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set_directory_properties</span>(PROPERTIES prop1 value1 prop2 value2)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="12-set-property"><a href="#12-set-property" class="headerlink" title="12. set_property"></a>12. set_property</h3><p>在给定的作用域内设置一个命名的属性<br>第一个参数决定了属性可以影响的作用域,必须为以下值：</p>
-<ul>
-<li>GLOBAL 全局作作用域,不接受名字</li>
-<li>DIRECTORY 默认为当前路径，但是同样也可以用[dir]指定路径</li>
-<li>TARGET 目标作用，可以是0个或多个已有的目标</li>
-<li>SOURCE 源作用域， 可以是0个过多个源文件</li>
-<li>TEST 测试作用域, 可以是0个或多个已有的测试</li>
-<li>CACHE 必须指定0个或多个cache中已有的条目<br>PROPERTY参数是必须的<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set_property</span>(&lt;GLOBAL | </span><br><span class="line">            DIRECTORY [dir] | </span><br><span class="line">            <span class="keyword">TARGET</span> [<span class="keyword">target</span> ...] | </span><br><span class="line">            SOURCE [src1 ...] | </span><br><span class="line">            <span class="keyword">TEST</span> [test1 ...] | </span><br><span class="line">            CACHE [entry1 ...]&gt;</span><br><span class="line">             [APPEND] </span><br><span class="line">             PROPERTY &lt;name&gt; [value ...])</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<font size="10"><a href="https://gearyyoung.gitbooks.io/cmake-api/content/cmake/CMake%E8%AF%AD%E6%B3%95.html" target="_blank" rel="noopener">CMake参考手册</a></font>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CMake</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Linear programming</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Language//" class="article-tag-list-link color4">Language</a>
+        			<a href="/categories/Algorithm//" class="article-tag-list-link color5">Algorithm</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/14/CMake常用命令/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/09/01/蚁群算法/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          蚁群优化算法
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/07/21/CMake/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">CMake介绍和基本语法</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#常用命令"><span class="toc-number">1.</span> <span class="toc-text">常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-cmake-minimum-required-VERSION-3-4-1"><span class="toc-number">1.1.</span> <span class="toc-text">1. cmake_minimum_required(VERSION 3.4.1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-add-library"><span class="toc-number">1.2.</span> <span class="toc-text">2. add_library</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-aux-source-directory"><span class="toc-number">1.3.</span> <span class="toc-text">3. aux_source_directory</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-set"><span class="toc-number">1.4.</span> <span class="toc-text">4. set</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-include-directories"><span class="toc-number">1.5.</span> <span class="toc-text">5. include_directories</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-add-executable"><span class="toc-number">1.6.</span> <span class="toc-text">6. add_executable</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-target-link-libraries"><span class="toc-number">1.7.</span> <span class="toc-text">7. target_link_libraries</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-add-definitions"><span class="toc-number">1.8.</span> <span class="toc-text">8. add_definitions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-add-subdirectory"><span class="toc-number">1.9.</span> <span class="toc-text">9. add_subdirectory</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-file"><span class="toc-number">1.10.</span> <span class="toc-text">10. file</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-set-directory-properties"><span class="toc-number">1.11.</span> <span class="toc-text">11. set_directory_properties</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-set-property"><span class="toc-number">1.12.</span> <span class="toc-text">12. set_property</span></a></li></ol></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
-  <div id="gitment-ctn"></div> 
-<link rel="stylesheet" href="https://www.wenjunjiang.win/css/gitment.css">
-<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
-<script>
-var gitment = new Gitment({
-  id: "http://yoursite.com/2019/08/14/CMake常用命令/",
-  owner: 'xoyolucas',
-  repo: 'blog_gitment',
-  oauth: {
-    client_id: '2636b6dc4277d28ba25a',
-    client_secret: '44deab42854b59e88df97698a3d883d5f2c02194',
-  },
-})
-gitment.render('gitment-ctn')
-</script>
-  
+    
 
 
           </div>
@@ -407,9 +241,9 @@ gitment.render('gitment-ctn')
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
