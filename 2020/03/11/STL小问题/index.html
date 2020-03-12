@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>STL小问题 | xoyolucas&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="push_back和emplace_back">
+  <meta name="description" content="push_back和emplace_back在引入右值引用，转移构造函数，转移复制运算符之前，通常使用push_back()向容器中加入一个右值元素（临时对象）的时候，首先会调用构造函数构造这个临时对象，然后需要调用拷贝构造函数将这个临时对象放入容器中。原来的临时变量释放。这样造成的问题是临时变量申请的资源就浪费。引入了右值引用，转移构造函数（请看这里）后，push_back()右值时就会调用构造">
 <meta name="keywords" content="C++,STL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="STL小问题">
 <meta property="og:url" content="http://yoursite.com/2020/03/11/STL小问题/index.html">
 <meta property="og:site_name" content="xoyolucas&#39;s blog">
-<meta property="og:description" content="push_back和emplace_back">
+<meta property="og:description" content="push_back和emplace_back在引入右值引用，转移构造函数，转移复制运算符之前，通常使用push_back()向容器中加入一个右值元素（临时对象）的时候，首先会调用构造函数构造这个临时对象，然后需要调用拷贝构造函数将这个临时对象放入容器中。原来的临时变量释放。这样造成的问题是临时变量申请的资源就浪费。引入了右值引用，转移构造函数（请看这里）后，push_back()右值时就会调用构造">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-03-12T14:25:41.033Z">
+<meta property="og:updated_time" content="2020-03-12T16:12:12.369Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="STL小问题">
-<meta name="twitter:description" content="push_back和emplace_back">
+<meta name="twitter:description" content="push_back和emplace_back在引入右值引用，转移构造函数，转移复制运算符之前，通常使用push_back()向容器中加入一个右值元素（临时对象）的时候，首先会调用构造函数构造这个临时对象，然后需要调用拷贝构造函数将这个临时对象放入容器中。原来的临时变量释放。这样造成的问题是临时变量申请的资源就浪费。引入了右值引用，转移构造函数（请看这里）后，push_back()右值时就会调用构造">
   
     <link rel="alternative" href="/atom.xml" title="xoyolucas&#39;s blog" type="application/atom+xml">
   
@@ -179,8 +179,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="push-back和emplace-back"><a href="#push-back和emplace-back" class="headerlink" title="push_back和emplace_back"></a>push_back和emplace_back</h2><a id="more"></a>
-<h2 id="set和unordered-set"><a href="#set和unordered-set" class="headerlink" title="set和unordered_set"></a>set和unordered_set</h2>
+        <h3 id="push-back和emplace-back"><a href="#push-back和emplace-back" class="headerlink" title="push_back和emplace_back"></a>push_back和emplace_back</h3><p>在引入右值引用，转移构造函数，转移复制运算符之前，通常使用push_back()向容器中加入一个右值元素（临时对象）的时候，首先会调用构造函数构造这个临时对象，然后需要调用拷贝构造函数将这个临时对象放入容器中。原来的临时变量释放。这样造成的问题是临时变量申请的资源就浪费。<br>引入了右值引用，转移构造函数（请看这里）后，push_back()右值时就会调用构造函数和转移构造函数。<br>在这上面有进一步优化的空间就是使用emplace_back<br><a id="more"></a></p>
+<p>&nbsp;</p>
+<h3 id="set和unordered-set"><a href="#set和unordered-set" class="headerlink" title="set和unordered_set"></a>set和unordered_set</h3><p>&nbsp;</p>
+<h3 id="参考书籍"><a href="#参考书籍" class="headerlink" title="参考书籍"></a>参考书籍</h3><p>Effective STL 50条有效使用STL的经验</p>
+
       
 
       
@@ -316,7 +319,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#push-back和emplace-back"><span class="toc-number">1.</span> <span class="toc-text">push_back和emplace_back</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#set和unordered-set"><span class="toc-number">2.</span> <span class="toc-text">set和unordered_set</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#push-back和emplace-back"><span class="toc-number">1.</span> <span class="toc-text">push_back和emplace_back</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#set和unordered-set"><span class="toc-number">2.</span> <span class="toc-text">set和unordered_set</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考书籍"><span class="toc-number">3.</span> <span class="toc-text">参考书籍</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -469,19 +472,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -505,7 +508,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pandas</a>
+                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -513,11 +516,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">sort</a>
+                <a href="javascript:void(0)" class="js-tag color2">pandas</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -538,6 +537,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">route</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">sort</a>
               </li>
              
               <li class="article-tag-list-item">
