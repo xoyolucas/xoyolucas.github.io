@@ -156,6 +156,100 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-最大流算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/12/最大流算法/">最大流算法</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/12/最大流算法/" class="archive-article-date">
+  	<time datetime="2020-03-12T14:26:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>求一个容量网络的最大流，这里介绍四种算法：<strong>EK算法</strong>、<strong>SAP算法</strong>、<strong>DINIC算法</strong>、<strong>HLPP算法</strong>。这四种算法中，前三种基于增广路，最后一种基于预流推进。</p>
+<h3 id="Ford-Fulkerson算法"><a href="#Ford-Fulkerson算法" class="headerlink" title="Ford-Fulkerson算法"></a>Ford-Fulkerson算法</h3><p>先来简单提一下Ford-Fulkerson算法。<br>在上一节中证明了，如果一个可行流中没有增广路，那么此时这个可行流的流量就是最大流，因此Ford-Fulkerson算法就是在一个可行流中不断地遍历寻找增广路，如果有增广路，那么就在这个增广路上做调整（前向弧流量增加，后向弧流量减少）来消除增广路，当在整个可行流中再也没法找到一条增广路时，就得到了最大流。这一思想非常简单，也很好理解，但问题的关键是：如何在一个可行流中高效地寻找增广路？Ford-Fulkerson用的是一种标号法，但是那种方式的时间复杂度可能会依赖于网络流中各边的容量，在最坏的情况下复杂度是O(Ef)(E为边数，f为所有边流量的最大值)，例如下图中，如果在查找增广路时先选择A-&gt;B-&gt;C-&gt;D，再选择A-&gt;C-&gt;B-&gt;D，再走A-&gt;B-&gt;C-&gt;D……如此就需要走2000次，而实际上直接走A-&gt;B-&gt;D，A-&gt;C-&gt;D两次就完成了。而Furd-Fulkerson算法确实有可能会如前一种的方式进行，因此就不具体介绍了。<br>EK、SAP、DINIC算法都基于这样的消除增广路的思想，但它们给出了更好的查找增广路的方式，下面来分别来看这三种算法。</p>
+<p>&nbsp;</p>
+<h3 id="EK算法"><a href="#EK算法" class="headerlink" title="EK算法"></a>EK算法</h3><p>&nbsp;</p>
+<h3 id="SAP算法"><a href="#SAP算法" class="headerlink" title="SAP算法"></a>SAP算法</h3><p>&nbsp;</p>
+<h3 id="DINIC算法"><a href="#DINIC算法" class="headerlink" title="DINIC算法"></a>DINIC算法</h3><p>&nbsp;</p>
+<h3 id="HLPP算法"><a href="#HLPP算法" class="headerlink" title="HLPP算法"></a>HLPP算法</h3>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">maximum flow problem</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">route</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Algorithm//" class="article-tag-list-link color5">Algorithm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/12/最大流算法/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-STL小问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -176,7 +270,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="push-back和emplace-back"><a href="#push-back和emplace-back" class="headerlink" title="push_back和emplace_back"></a>push_back和emplace_back</h2><h2 id="set和unordered-set"><a href="#set和unordered-set" class="headerlink" title="set和unordered_set"></a>set和unordered_set</h2>
+        <h2 id="push-back和emplace-back"><a href="#push-back和emplace-back" class="headerlink" title="push_back和emplace_back"></a>push_back和emplace_back</h2>
+        
+          <a class="article-more-a" href="/2020/03/11/STL小问题/#more">more >></a>
+        
       
 
       
@@ -265,11 +362,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>&nbsp;</p>
-<h3 id="标准型和松弛型"><a href="#标准型和松弛型" class="headerlink" title="标准型和松弛型"></a>标准型和松弛型</h3><p>&nbsp;</p>
-<h3 id="将问题表达为线性规划"><a href="#将问题表达为线性规划" class="headerlink" title="将问题表达为线性规划"></a>将问题表达为线性规划</h3><p>&nbsp;</p>
-<h3 id="单纯形算法"><a href="#单纯形算法" class="headerlink" title="单纯形算法"></a>单纯形算法</h3><p>&nbsp;</p>
-<h3 id="对偶性"><a href="#对偶性" class="headerlink" title="对偶性"></a>对偶性</h3><p>&nbsp;</p>
-<h3 id="初始基本可行解"><a href="#初始基本可行解" class="headerlink" title="初始基本可行解"></a>初始基本可行解</h3>
+<h3 id="标准型和松弛型"><a href="#标准型和松弛型" class="headerlink" title="标准型和松弛型"></a>标准型和松弛型</h3>
+        
+          <a class="article-more-a" href="/2020/03/09/线性规划/#more">more >></a>
+        
       
 
       
@@ -943,93 +1039,6 @@
 
 
   
-    <article id="post-c-11新特性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/11/c-11新特性/">c++11新特性</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/11/c-11新特性/" class="archive-article-date">
-  	<time datetime="2019-12-10T16:10:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="new-language-features"><a href="#new-language-features" class="headerlink" title="new language features:"></a>new language features:</h2><h3 id="move-semantics"><a href="#move-semantics" class="headerlink" title="move semantics"></a>move semantics</h3><p>Move semantics is mostly about performance optimization: the ability to move an object without the expensive overhead of copying. The difference between a copy and a move is that a copy leaves the source unchanged, and a move will leave the source either unchanged or radically different – depending on what the source is. For plain old data, a move is the same as a copy.<br>To move an object means to transfer ownership of some resource it manages to another object. You could think of this as changing pointers held by the source object to be moved, or now held, by the destination object; the resource remains in its location in memory. Such an inexpensive transfer of resources is extremely useful when the source is an rvalue, where the potentially dangerous side-effect of changing the source after the move is redundant since the source is a temporary object that won’t be accessible later.<br></p>
-        
-          <a class="article-more-a" href="/2019/12/11/c-11新特性/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Language//" class="article-tag-list-link color4">Language</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/11/c-11新特性/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1160,15 +1169,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1176,7 +1185,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1188,11 +1197,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pandas</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">IPM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pandas</a>
+                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">sort</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1208,11 +1225,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
+                <a href="javascript:void(0)" class="js-tag color1">maximum flow problem</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">sort</a>
+                <a href="javascript:void(0)" class="js-tag color1">route</a>
               </li>
              
               <li class="article-tag-list-item">
