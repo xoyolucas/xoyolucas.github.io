@@ -156,6 +156,97 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-STL小问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/13/STL小问题/">STL问题</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/13/STL小问题/" class="archive-article-date">
+  	<time datetime="2020-03-13T14:08:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="push-back和emplace-back"><a href="#push-back和emplace-back" class="headerlink" title="push_back和emplace_back"></a>push_back和emplace_back</h3><p>c++中会经常对STL的各种容器进行插入操作，比如vector,map,set等。在引入右值引用，转移构造函数，转移复制运算符之前，通常使用push_back()向容器中加入一个右值元素（临时对象）的时候。<strong>首先会调用构造函数构造这个临时对象，然后需要调用拷贝构造函数将这个临时对象放入容器中，原来的临时变量释放。</strong>这样造成的问题是临时变量申请的资源就浪费。引入了右值引用，转移构造函数后，push_back()右值时就会调用构造函数和转移构造函数。但是emplace_back()函数向容器中中加入临时对象，临时对象原地构造，没有赋值或移动的操作。<br></p>
+        
+          <a class="article-more-a" href="/2020/03/13/STL小问题/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">STL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Language//" class="article-tag-list-link color4">Language</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/13/STL小问题/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-最大流算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -221,97 +312,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/03/12/最大流算法/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-STL小问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/11/STL小问题/">STL问题</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/11/STL小问题/" class="archive-article-date">
-  	<time datetime="2020-03-11T14:08:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="push-back和emplace-back"><a href="#push-back和emplace-back" class="headerlink" title="push_back和emplace_back"></a>push_back和emplace_back</h3><p>c++中会经常对STL的各种容器进行插入操作，比如vector,map,set等。在引入右值引用，转移构造函数，转移复制运算符之前，通常使用push_back()向容器中加入一个右值元素（临时对象）的时候。<strong>首先会调用构造函数构造这个临时对象，然后需要调用拷贝构造函数将这个临时对象放入容器中，原来的临时变量释放。</strong>这样造成的问题是临时变量申请的资源就浪费。引入了右值引用，转移构造函数后，push_back()右值时就会调用构造函数和转移构造函数。但是emplace_back()函数向容器中中加入临时对象，临时对象原地构造，没有赋值或移动的操作。<br></p>
-        
-          <a class="article-more-a" href="/2020/03/11/STL小问题/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">STL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Language//" class="article-tag-list-link color4">Language</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/11/STL小问题/">展开全文 >></a>
         </p>
       
 
@@ -1197,15 +1197,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IPM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">pandas</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">IPM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1221,15 +1221,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">sort</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">maximum flow problem</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">route</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">sort</a>
               </li>
              
               <li class="article-tag-list-item">
