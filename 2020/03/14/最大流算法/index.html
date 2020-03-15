@@ -8,18 +8,20 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>最大流算法 | xoyolucas&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="求一个容量网络的最大流，这里介绍四种算法：EK算法、SAP算法、DINIC算法、HLPP算法。这四种算法中，前三种基于增广路，最后一种基于预流推进。">
+  <meta name="description" content="求一个容量网络的最大流，可以用最经典的Ford-Fulkerson算法，再介绍四种改进算法：EK算法、SAP算法、DINIC算法、HLPP算法。这四种算法中，前三种基于增广路，最后一种基于预流推进。">
 <meta name="keywords" content="maximum flow problem,route">
 <meta property="og:type" content="article">
 <meta property="og:title" content="最大流算法">
 <meta property="og:url" content="http://yoursite.com/2020/03/14/最大流算法/index.html">
 <meta property="og:site_name" content="xoyolucas&#39;s blog">
-<meta property="og:description" content="求一个容量网络的最大流，这里介绍四种算法：EK算法、SAP算法、DINIC算法、HLPP算法。这四种算法中，前三种基于增广路，最后一种基于预流推进。">
+<meta property="og:description" content="求一个容量网络的最大流，可以用最经典的Ford-Fulkerson算法，再介绍四种改进算法：EK算法、SAP算法、DINIC算法、HLPP算法。这四种算法中，前三种基于增广路，最后一种基于预流推进。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-03-14T18:04:14.914Z">
+<meta property="og:image" content="http://yoursite.com/2020/03/14/最大流算法/可行流1.jpg">
+<meta property="og:updated_time" content="2020-03-15T17:40:34.122Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最大流算法">
-<meta name="twitter:description" content="求一个容量网络的最大流，这里介绍四种算法：EK算法、SAP算法、DINIC算法、HLPP算法。这四种算法中，前三种基于增广路，最后一种基于预流推进。">
+<meta name="twitter:description" content="求一个容量网络的最大流，可以用最经典的Ford-Fulkerson算法，再介绍四种改进算法：EK算法、SAP算法、DINIC算法、HLPP算法。这四种算法中，前三种基于增广路，最后一种基于预流推进。">
+<meta name="twitter:image" content="http://yoursite.com/2020/03/14/最大流算法/可行流1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="xoyolucas&#39;s blog" type="application/atom+xml">
   
@@ -179,9 +181,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>求一个容量网络的最大流，这里介绍四种算法：<strong>EK算法</strong>、<strong>SAP算法</strong>、<strong>DINIC算法</strong>、<strong>HLPP算法</strong>。这四种算法中，前三种基于增广路，最后一种基于预流推进。</p>
+        <p>求一个容量网络的最大流，可以用<strong>最经典的Ford-Fulkerson算法</strong>，再介绍四种改进算法：<strong>EK算法</strong>、<strong>SAP算法</strong>、<strong>DINIC算法</strong>、<strong>HLPP算法</strong>。这四种算法中，前三种基于增广路，最后一种基于预流推进。</p>
 <a id="more"></a>
-<h3 id="Ford-Fulkerson算法"><a href="#Ford-Fulkerson算法" class="headerlink" title="Ford-Fulkerson算法"></a>Ford-Fulkerson算法</h3><p>先来简单提一下Ford-Fulkerson算法。<br>在上一节中证明了，如果一个可行流中没有增广路，那么此时这个可行流的流量就是最大流，因此Ford-Fulkerson算法就是在一个可行流中不断地遍历寻找增广路，如果有增广路，那么就在这个增广路上做调整（前向弧流量增加，后向弧流量减少）来消除增广路，当在整个可行流中再也没法找到一条增广路时，就得到了最大流。这一思想非常简单，也很好理解，但问题的关键是：如何在一个可行流中高效地寻找增广路？Ford-Fulkerson用的是一种标号法，但是那种方式的时间复杂度可能会依赖于网络流中各边的容量，在最坏的情况下复杂度是O(Ef)(E为边数，f为所有边流量的最大值)，例如下图中，如果在查找增广路时先选择A-&gt;B-&gt;C-&gt;D，再选择A-&gt;C-&gt;B-&gt;D，再走A-&gt;B-&gt;C-&gt;D……如此就需要走2000次，而实际上直接走A-&gt;B-&gt;D，A-&gt;C-&gt;D两次就完成了。而Furd-Fulkerson算法确实有可能会如前一种的方式进行，因此就不具体介绍了。<br>EK、SAP、DINIC算法都基于这样的消除增广路的思想，但它们给出了更好的查找增广路的方式，下面来分别来看这三种算法。</p>
+<h3 id="Ford-Fulkerson算法"><a href="#Ford-Fulkerson算法" class="headerlink" title="Ford-Fulkerson算法"></a>Ford-Fulkerson算法</h3><p>先来简单提一下Ford-Fulkerson算法。<br>如果一个可行流中没有增广路，那么此时这个可行流的流量就是最大流，因此Ford-Fulkerson算法就是在一个可行流中不断地遍历寻找增广路，如果有增广路，那么就在这个增广路上做调整（前向弧流量增加，后向弧流量减少）来消除增广路。当在整个可行流中再也没法找到一条增广路时，就得到了最大流。这一思想非常简单，也很好理解，但问题的关键是：如何在一个可行流中高效地寻找增广路？</p>
+<p>首先这个算法有个重要的工具：残存网络。残存网络其实就是具有残存容量的图。算法导论上有个普遍公式来定义残存容量：<br>1.如果这两点连线原来就是原图的边，那么它的残存容量等于运载上限-运输流量。<br>2.如果这两点的反向连线是原图的边，那么它的残存容量等于那条边的运输流量。<br>3.其他情况是0，当做没连通。</p>
+<p><center>&lt;img src=”最大流算法/残存容量.png&gt;&lt;\center&gt;</center></p>
+<p>参考网站：[Ford-Fulkerson算法(<a href="https://blog.csdn.net/sinat_41613352/article/details/84481115" target="_blank" rel="noopener">https://blog.csdn.net/sinat_41613352/article/details/84481115</a>)</p>
+<p>Ford-Fulkerson用的是一种标号法，但是那种方式的时间复杂度可能会依赖于网络流中各边的容量，在最坏的情况下复杂度是O(Ef)(E为边数，f为所有边流量的最大值)，例如下图中，如果在查找增广路时先选择A-&gt;B-&gt;C-&gt;D，再选择A-&gt;C-&gt;B-&gt;D，再走A-&gt;B-&gt;C-&gt;D……如此就需要走2000次，而实际上直接走A-&gt;B-&gt;D，A-&gt;C-&gt;D两次就完成了。而Furd-Fulkerson算法确实有可能会如前一种的方式进行。</p>
+<p><center><img src="/2020/03/14/最大流算法/可行流1.jpg">&lt;\center&gt;</center></p>
+<p><strong>EK、SAP、DINIC算法都基于消除增广路的思想</strong>，但它们给出了更好的查找增广路的方式。<br><a href="https://blog.csdn.net/yjr3426619/article/details/82808303" target="_blank" rel="noopener">求解最大流的四种算法介绍</a></p>
 <p>&nbsp;</p>
 <h3 id="EK算法"><a href="#EK算法" class="headerlink" title="EK算法"></a>EK算法</h3><p>&nbsp;</p>
 <h3 id="SAP算法"><a href="#SAP算法" class="headerlink" title="SAP算法"></a>SAP算法</h3><p>&nbsp;</p>
@@ -466,11 +474,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
+                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
+                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -486,11 +494,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -506,22 +514,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IPM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">maximum flow problem</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">route</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
               </li>
              
@@ -534,6 +526,22 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">IPM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">maximum flow problem</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">route</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">sort</a>
               </li>
              
@@ -542,11 +550,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ACO</a>
+                <a href="javascript:void(0)" class="js-tag color4">PSO</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PSO</a>
+                <a href="javascript:void(0)" class="js-tag color4">ACO</a>
               </li>
             
             <div class="clearfix"></div>
