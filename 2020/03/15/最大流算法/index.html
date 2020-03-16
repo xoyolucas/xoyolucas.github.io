@@ -21,7 +21,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/03/15/最大流算法/Ford-Fulkerson算法.png">
 <meta property="og:image" content="http://yoursite.com/2020/03/15/最大流算法/Ford-Fulkerson算法2.png">
 <meta property="og:image" content="http://yoursite.com/2020/03/15/最大流算法/可行流1.jpg">
-<meta property="og:updated_time" content="2020-03-16T16:55:01.244Z">
+<meta property="og:updated_time" content="2020-03-16T16:57:35.444Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最大流算法">
 <meta name="twitter:description" content="最大流问题(maximum flow problem)，一种组合最优化问题，就是要讨论如何充分利用传输网络的能力，使得运输的流量最大，以取得最好的效果。求一个容量网络的最大流，可以用最经典的Ford-Fulkerson方法，另外介绍四种改进最大流算法：EK算法、SAP算法、DINIC算法、HLPP算法。这四种算法中，前三种基于增广路，最后一种基于预流推进。">
@@ -188,11 +188,11 @@
         <p>最大流问题(maximum flow problem)，一种组合最优化问题，就是要讨论如何充分利用传输网络的能力，使得运输的流量最大，以取得最好的效果。求一个容量网络的最大流，可以用<strong>最经典的Ford-Fulkerson方法</strong>，另外介绍四种改进最大流算法：<strong>EK算法</strong>、<strong>SAP算法</strong>、<strong>DINIC算法</strong>、<strong>HLPP算法</strong>。这四种算法中，前三种基于增广路，最后一种基于预流推进。<br><a id="more"></a></p>
 <h3 id="Ford-Fulkerson算法"><a href="#Ford-Fulkerson算法" class="headerlink" title="Ford-Fulkerson算法"></a>Ford-Fulkerson算法</h3><p>如果一个可行流中没有增广路，那么此时这个可行流的流量就是最大流，因此Ford-Fulkerson算法就是在一个可行流中不断地遍历寻找增广路，如果有增广路，那么就在这个增广路上做调整（前向弧流量增加，后向弧流量减少）来消除增广路。当在整个可行流中再也没法找到一条增广路时，就得到了最大流。这一思想非常简单，也很好理解，但问题的关键是：如何在一个可行流中高效地寻找增广路？</p>
 <p>首先这个算法有个重要的工具：残存网络。残存网络其实就是具有残存容量的图。算法导论上有个普遍公式来定义残存容量：</p>
-<p><center><img src="/2020/03/15/最大流算法/残存容量.png">&lt;\center&gt;<br>1.如果这两点连线原来就是原图的边，那么它的残存容量等于运载上限-运输流量。<br>2.如果这两点的反向连线是原图的边，那么它的残存容量等于那条边的运输流量。<br>3.其他情况是0，当做没连通。</center></p>
-<p><center><img src="/2020/03/15/最大流算法/残存网络.png">&lt;\center&gt;<br>左边是原图，右边是残存网络。<br>我们先来看源头s和它右上角的结点a（就是10/20相连的那两点），为什么转换成残存网络中形成了一个10和10的圈？<br>我们回到不直观的公式定义，cf(s,a)应该是等于20-10的，因为(s,a)是原图的边。那么cf(a,s)是多少呢，因为这个的反向连线在原图里是(s,a)是边，所以cf(a,s) = f(s,a) = 10<br>那么直观来说怎么生成残存网络呢，原图的每条边都需要拆解，比如考虑那条5/15的从b指向t的边，我们画在残存网络中就是生成一条15-5容量的边，从b指向t，然后生成一个5的边，从t指向b。（不用为b是哪个点感到困惑，其实就是例子中t左上角的那个点）如果发现容量为0的边，就不用画在残存网络里了。</center></p>
+<p><center><img src="/2020/03/15/最大流算法/残存容量.png"></center><br>1.如果这两点连线原来就是原图的边，那么它的残存容量等于运载上限-运输流量。<br>2.如果这两点的反向连线是原图的边，那么它的残存容量等于那条边的运输流量。<br>3.其他情况是0，当做没连通。</p>
+<p><center><img src="/2020/03/15/最大流算法/残存网络.png"></center><br>左边是原图，右边是残存网络。<br>我们先来看源头s和它右上角的结点a（就是10/20相连的那两点），为什么转换成残存网络中形成了一个10和10的圈？<br>我们回到不直观的公式定义，cf(s,a)应该是等于20-10的，因为(s,a)是原图的边。那么cf(a,s)是多少呢，因为这个的反向连线在原图里是(s,a)是边，所以cf(a,s) = f(s,a) = 10<br>那么直观来说怎么生成残存网络呢，原图的每条边都需要拆解，比如考虑那条5/15的从b指向t的边，我们画在残存网络中就是生成一条15-5容量的边，从b指向t，然后生成一个5的边，从t指向b。（不用为b是哪个点感到困惑，其实就是例子中t左上角的那个点）如果发现容量为0的边，就不用画在残存网络里了。</p>
 <p>从0流量出发（此时残存网络就是原图），找到增广路径（注意增广路径一定是在残存网络里找），接着把流更新，直到残存网络中没有增广路径（就是没有路径从s到t啦）为止。下面我们还是看例子：</p>
-<p><center><img src="/2020/03/15/最大流算法/Ford-Fulkerson算法.png">&lt;\center&gt;<br>在示例中，左边是残存网络，右边是更新后的原图。一开始(a)的残存网络就是原图，我们找了条增广路径（粗线），找到了最小的cf，就是4，然后把4引入了原图的流更新。<br>从(a)更新后的原图，我们可以画出它的残存网络，于是我们来到了(b)，还是老步骤，找增广路径，找最小的cf，以它来更新原图（从(a)的右图到(b)的右图）。强烈推荐从c往后自己将这个过程找完，花几分钟找完你就记住了Ford-Fulkerson算法。答案如下，增广路径选取不同，过程可能不一样，但是最大流都是一样的，就是23：</center></p>
-<p><center><img src="/2020/03/15/最大流算法/Ford-Fulkerson算法2.png">&lt;\center&gt;<br>在(f)中，我们再也无法找到增广路径，所以算法结束，得到最大流。采用Ford-Fulkerson算法，从0流量开始，生成残存网络，找到增广路径，从增广路径中找到最小的残存容量F，用F来更新原图，得到新的原图后，循环上述过程直到残存网络中找不到增广路径。此时的原图中，就有了我们想求的最大流。</center></p>
+<p><center><img src="/2020/03/15/最大流算法/Ford-Fulkerson算法.png"></center><br>在示例中，左边是残存网络，右边是更新后的原图。一开始(a)的残存网络就是原图，我们找了条增广路径（粗线），找到了最小的cf，就是4，然后把4引入了原图的流更新。<br>从(a)更新后的原图，我们可以画出它的残存网络，于是我们来到了(b)，还是老步骤，找增广路径，找最小的cf，以它来更新原图（从(a)的右图到(b)的右图）。强烈推荐从c往后自己将这个过程找完，花几分钟找完你就记住了Ford-Fulkerson算法。答案如下，增广路径选取不同，过程可能不一样，但是最大流都是一样的，就是23：</p>
+<p><center><img src="/2020/03/15/最大流算法/Ford-Fulkerson算法2.png"></center><br>在(f)中，我们再也无法找到增广路径，所以算法结束，得到最大流。采用Ford-Fulkerson算法，从0流量开始，生成残存网络，找到增广路径，从增广路径中找到最小的残存容量F，用F来更新原图，得到新的原图后，循环上述过程直到残存网络中找不到增广路径。此时的原图中，就有了我们想求的最大流。</p>
 <p>参考网站：<a href="https://blog.csdn.net/sinat_41613352/article/details/84481115" target="_blank" rel="noopener">Ford-Fulkerson算法</a></p>
 <p>Ford-Fulkerson用的是一种标号法，但是那种方式的时间复杂度可能会依赖于网络流中各边的容量，在最坏的情况下复杂度是O(Ef)(E为边数，f为所有边流量的最大值)，例如下图中，如果在查找增广路时先选择A-&gt;B-&gt;C-&gt;D，再选择A-&gt;C-&gt;B-&gt;D，再走A-&gt;B-&gt;C-&gt;D……如此就需要走2000次，而实际上直接走A-&gt;B-&gt;D，A-&gt;C-&gt;D两次就完成了。而Furd-Fulkerson算法确实有可能会如前一种的方式进行。</p>
 <p><center><img src="/2020/03/15/最大流算法/可行流1.jpg">&lt;\center&gt;</center></p>
@@ -498,11 +498,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">STL</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color4">STL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -526,11 +526,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
+                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
+                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -558,11 +558,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Linear programming</a>
+                <a href="javascript:void(0)" class="js-tag color4">ACO</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ACO</a>
+                <a href="javascript:void(0)" class="js-tag color4">Linear programming</a>
               </li>
             
             <div class="clearfix"></div>
