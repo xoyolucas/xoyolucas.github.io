@@ -6,15 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>xoyolucas&#39;s blog</title>
+  <title>最大流算法 | xoyolucas&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="xoyolucas&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+  <meta name="description" content="最大流问题(maximum flow problem)，一种组合最优化问题，就是要讨论如何充分利用传输网络的能力，使得运输的流量最大，以取得最好的效果。求一个容量网络的最大流，可以用最经典的Ford-Fulkerson方法，另外介绍四种改进最大流算法：EK算法、SAP算法、DINIC算法、HLPP算法。这四种算法中，前三种基于增广路，最后一种基于预流推进。">
+<meta name="keywords" content="maximum flow problem,route">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最大流算法">
+<meta property="og:url" content="http://yoursite.com/2020/03/15/最大流算法/index.html">
 <meta property="og:site_name" content="xoyolucas&#39;s blog">
+<meta property="og:description" content="最大流问题(maximum flow problem)，一种组合最优化问题，就是要讨论如何充分利用传输网络的能力，使得运输的流量最大，以取得最好的效果。求一个容量网络的最大流，可以用最经典的Ford-Fulkerson方法，另外介绍四种改进最大流算法：EK算法、SAP算法、DINIC算法、HLPP算法。这四种算法中，前三种基于增广路，最后一种基于预流推进。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2020/03/15/最大流算法/残存容量.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/15/最大流算法/残存网络.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/15/最大流算法/Ford-Fulkerson算法.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/15/最大流算法/Ford-Fulkerson算法2.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/15/最大流算法/可行流1.jpg">
+<meta property="og:updated_time" content="2020-03-16T16:55:01.244Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="xoyolucas&#39;s blog">
+<meta name="twitter:title" content="最大流算法">
+<meta name="twitter:description" content="最大流问题(maximum flow problem)，一种组合最优化问题，就是要讨论如何充分利用传输网络的能力，使得运输的流量最大，以取得最好的效果。求一个容量网络的最大流，可以用最经典的Ford-Fulkerson方法，另外介绍四种改进最大流算法：EK算法、SAP算法、DINIC算法、HLPP算法。这四种算法中，前三种基于增广路，最后一种基于预流推进。">
+<meta name="twitter:image" content="http://yoursite.com/2020/03/15/最大流算法/残存容量.png">
   
     <link rel="alternative" href="/atom.xml" title="xoyolucas&#39;s blog" type="application/atom+xml">
   
@@ -154,32 +165,44 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-c-11新特性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-最大流算法" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/11/c-11新特性/">c++11新特性</a>
+    <h1 class="article-title" itemprop="name">
+      最大流算法
     </h1>
   
 
         
-        <a href="/2019/12/11/c-11新特性/" class="archive-article-date">
-  	<time datetime="2019-12-10T16:10:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-11</time>
+        <a href="/2020/03/15/最大流算法/" class="archive-article-date">
+  	<time datetime="2020-03-15T11:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-15</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="new-language-features"><a href="#new-language-features" class="headerlink" title="new language features:"></a>new language features:</h2><h3 id="move-semantics"><a href="#move-semantics" class="headerlink" title="move semantics"></a>move semantics</h3><p>Move semantics is mostly about performance optimization: the ability to move an object without the expensive overhead of copying. The difference between a copy and a move is that a copy leaves the source unchanged, and a move will leave the source either unchanged or radically different – depending on what the source is. For plain old data, a move is the same as a copy.<br>To move an object means to transfer ownership of some resource it manages to another object. You could think of this as changing pointers held by the source object to be moved, or now held, by the destination object; the resource remains in its location in memory. Such an inexpensive transfer of resources is extremely useful when the source is an rvalue, where the potentially dangerous side-effect of changing the source after the move is redundant since the source is a temporary object that won’t be accessible later.<br></p>
-        
-          <a class="article-more-a" href="/2019/12/11/c-11新特性/#more">more >></a>
-        
+        <p>最大流问题(maximum flow problem)，一种组合最优化问题，就是要讨论如何充分利用传输网络的能力，使得运输的流量最大，以取得最好的效果。求一个容量网络的最大流，可以用<strong>最经典的Ford-Fulkerson方法</strong>，另外介绍四种改进最大流算法：<strong>EK算法</strong>、<strong>SAP算法</strong>、<strong>DINIC算法</strong>、<strong>HLPP算法</strong>。这四种算法中，前三种基于增广路，最后一种基于预流推进。<br><a id="more"></a></p>
+<h3 id="Ford-Fulkerson算法"><a href="#Ford-Fulkerson算法" class="headerlink" title="Ford-Fulkerson算法"></a>Ford-Fulkerson算法</h3><p>如果一个可行流中没有增广路，那么此时这个可行流的流量就是最大流，因此Ford-Fulkerson算法就是在一个可行流中不断地遍历寻找增广路，如果有增广路，那么就在这个增广路上做调整（前向弧流量增加，后向弧流量减少）来消除增广路。当在整个可行流中再也没法找到一条增广路时，就得到了最大流。这一思想非常简单，也很好理解，但问题的关键是：如何在一个可行流中高效地寻找增广路？</p>
+<p>首先这个算法有个重要的工具：残存网络。残存网络其实就是具有残存容量的图。算法导论上有个普遍公式来定义残存容量：</p>
+<p><center><img src="/2020/03/15/最大流算法/残存容量.png">&lt;\center&gt;<br>1.如果这两点连线原来就是原图的边，那么它的残存容量等于运载上限-运输流量。<br>2.如果这两点的反向连线是原图的边，那么它的残存容量等于那条边的运输流量。<br>3.其他情况是0，当做没连通。</center></p>
+<p><center><img src="/2020/03/15/最大流算法/残存网络.png">&lt;\center&gt;<br>左边是原图，右边是残存网络。<br>我们先来看源头s和它右上角的结点a（就是10/20相连的那两点），为什么转换成残存网络中形成了一个10和10的圈？<br>我们回到不直观的公式定义，cf(s,a)应该是等于20-10的，因为(s,a)是原图的边。那么cf(a,s)是多少呢，因为这个的反向连线在原图里是(s,a)是边，所以cf(a,s) = f(s,a) = 10<br>那么直观来说怎么生成残存网络呢，原图的每条边都需要拆解，比如考虑那条5/15的从b指向t的边，我们画在残存网络中就是生成一条15-5容量的边，从b指向t，然后生成一个5的边，从t指向b。（不用为b是哪个点感到困惑，其实就是例子中t左上角的那个点）如果发现容量为0的边，就不用画在残存网络里了。</center></p>
+<p>从0流量出发（此时残存网络就是原图），找到增广路径（注意增广路径一定是在残存网络里找），接着把流更新，直到残存网络中没有增广路径（就是没有路径从s到t啦）为止。下面我们还是看例子：</p>
+<p><center><img src="/2020/03/15/最大流算法/Ford-Fulkerson算法.png">&lt;\center&gt;<br>在示例中，左边是残存网络，右边是更新后的原图。一开始(a)的残存网络就是原图，我们找了条增广路径（粗线），找到了最小的cf，就是4，然后把4引入了原图的流更新。<br>从(a)更新后的原图，我们可以画出它的残存网络，于是我们来到了(b)，还是老步骤，找增广路径，找最小的cf，以它来更新原图（从(a)的右图到(b)的右图）。强烈推荐从c往后自己将这个过程找完，花几分钟找完你就记住了Ford-Fulkerson算法。答案如下，增广路径选取不同，过程可能不一样，但是最大流都是一样的，就是23：</center></p>
+<p><center><img src="/2020/03/15/最大流算法/Ford-Fulkerson算法2.png">&lt;\center&gt;<br>在(f)中，我们再也无法找到增广路径，所以算法结束，得到最大流。采用Ford-Fulkerson算法，从0流量开始，生成残存网络，找到增广路径，从增广路径中找到最小的残存容量F，用F来更新原图，得到新的原图后，循环上述过程直到残存网络中找不到增广路径。此时的原图中，就有了我们想求的最大流。</center></p>
+<p>参考网站：<a href="https://blog.csdn.net/sinat_41613352/article/details/84481115" target="_blank" rel="noopener">Ford-Fulkerson算法</a></p>
+<p>Ford-Fulkerson用的是一种标号法，但是那种方式的时间复杂度可能会依赖于网络流中各边的容量，在最坏的情况下复杂度是O(Ef)(E为边数，f为所有边流量的最大值)，例如下图中，如果在查找增广路时先选择A-&gt;B-&gt;C-&gt;D，再选择A-&gt;C-&gt;B-&gt;D，再走A-&gt;B-&gt;C-&gt;D……如此就需要走2000次，而实际上直接走A-&gt;B-&gt;D，A-&gt;C-&gt;D两次就完成了。而Furd-Fulkerson算法确实有可能会如前一种的方式进行。</p>
+<p><center><img src="/2020/03/15/最大流算法/可行流1.jpg">&lt;\center&gt;</center></p>
+<p><strong>EK、SAP、DINIC算法都基于消除增广路的思想</strong>，但它们给出了更好的查找增广路的方式。<br><a href="https://blog.csdn.net/yjr3426619/article/details/82808303" target="_blank" rel="noopener">求解最大流的四种算法介绍</a></p>
+<p>&nbsp;</p>
+<h3 id="EK算法"><a href="#EK算法" class="headerlink" title="EK算法"></a>EK算法</h3><p>Edmonds-Karp算法，算法时间复杂度$O(VE^2))$</p>
+<p>&nbsp;</p>
+<h3 id="SAP算法"><a href="#SAP算法" class="headerlink" title="SAP算法"></a>SAP算法</h3><p>&nbsp;</p>
+<h3 id="DINIC算法"><a href="#DINIC算法" class="headerlink" title="DINIC算法"></a>DINIC算法</h3><p>&nbsp;</p>
+<h3 id="HLPP算法"><a href="#HLPP算法" class="headerlink" title="HLPP算法"></a>HLPP算法</h3>
       
 
       
@@ -192,375 +215,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Language//" class="article-tag-list-link color4">Language</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/11/c-11新特性/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-leetcode题解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/08/leetcode题解/">leetcode题解</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/08/leetcode题解/" class="archive-article-date">
-  	<time datetime="2019-12-08T15:38:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="leetcode"><a href="#leetcode" class="headerlink" title="leetcode"></a>leetcode</h2><p><a href="https://leetcode-cn.com/problemset/all/" target="_blank" rel="noopener">leetcode地址</a></p>
-<h3 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h3><p><a href="https://github.com/xoyolucas/My-solutions-for-Leetcode" target="_blank" rel="noopener">leetcode题解</a></p>
-<h3 id="剑指offer"><a href="#剑指offer" class="headerlink" title="剑指offer"></a>剑指offer</h3><p><a href="https://leetcode-cn.com/problemset/lcof/" target="_blank" rel="noopener">剑指offer题库</a></p>
-<h3 id="程序员面试金典"><a href="#程序员面试金典" class="headerlink" title="程序员面试金典"></a>程序员面试金典</h3><p><a href="https://leetcode-cn.com/problemset/lcci/" target="_blank" rel="noopener">程序员面试金典</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">maximum flow problem</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/leetcode//" class="article-tag-list-link color4">leetcode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/08/leetcode题解/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-pandas使用总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/05/pandas使用总结/">pandas使用总结</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/05/pandas使用总结/" class="archive-article-date">
-  	<time datetime="2019-12-04T17:31:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="获取DataFrame中的某一个元素"><a href="#获取DataFrame中的某一个元素" class="headerlink" title="获取DataFrame中的某一个元素"></a>获取DataFrame中的某一个元素</h2><p>使用<strong>at</strong>比使用<strong>iloc</strong>和<strong>loc</strong>速度要快很多。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>df = pd.DataFrame([[<span class="number">0</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">0</span>, <span class="number">4</span>, <span class="number">1</span>], [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>]],</span><br><span class="line"><span class="meta">... </span>                  index=[<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], columns=[<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>df</span><br><span class="line">    A   B   C</span><br><span class="line"><span class="number">4</span>   <span class="number">0</span>   <span class="number">2</span>   <span class="number">3</span></span><br><span class="line"><span class="number">5</span>   <span class="number">0</span>   <span class="number">4</span>   <span class="number">1</span></span><br><span class="line"><span class="number">6</span>  <span class="number">10</span>  <span class="number">20</span>  <span class="number">30</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>df.at[<span class="number">4</span>, <span class="string">'B'</span>]</span><br><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure></p>
-        
-          <a class="article-more-a" href="/2019/12/05/pandas使用总结/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">pandas</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Language//" class="article-tag-list-link color4">Language</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/05/pandas使用总结/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-C-智能指针" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/07/C-智能指针/">C++智能指针</a>
-    </h1>
-  
-
-        
-        <a href="/2019/11/07/C-智能指针/" class="archive-article-date">
-  	<time datetime="2019-11-06T17:27:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="智能指针简介"><a href="#智能指针简介" class="headerlink" title="智能指针简介"></a>智能指针简介</h2><p>&emsp;&emsp;指针可以说是C++的“万恶之源”，在没有智能指针之前，对堆内存的管理就是简单的new和delete。但是一个很大的问题就是容易忘了delete释放，即使是资深码农，也可能会在某一个地方忘记delete它，造成内存泄漏。很多时候我们new出来的对象生命周期多样，因而要很小时的确定delete释放的时机。当我们写一个new语句时，一般就会立即把delete语句直接也写了，但是我们不能避免程序还未执行到delete时就跳转了或者在函数中没有执行到最后的delete语句就返回了，如果我们不在每一个可能跳转或者返回的语句前释放资源，就会造成内存泄露。在实际工程中，我们往往希望把精力放在应用和算法的实现上，而不是在语言的细枝末节如：内存的释放。<br></p>
-        
-          <a class="article-more-a" href="/2019/11/07/C-智能指针/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Smart pointer</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Language//" class="article-tag-list-link color4">Language</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/07/C-智能指针/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-广度优先搜索和深度优先搜索" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/05/广度优先搜索和深度优先搜索/">广度优先搜索和深度优先搜索</a>
-    </h1>
-  
-
-        
-        <a href="/2019/11/05/广度优先搜索和深度优先搜索/" class="archive-article-date">
-  	<time datetime="2019-11-04T16:08:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="图的表示"><a href="#图的表示" class="headerlink" title="图的表示"></a>图的表示</h2><p>邻接链表，可扩展性强，鲁棒性高，但无法快速判断link(u,v)是否为图中的一条边。<br>邻接矩阵，表示方法简单，可快速判断link(u,v)是否存在，但空间需求稍大。</p>
-<ul>
-<li>稀疏图：邻接链表,空间复杂度：$\Theta(V+E)$;</li>
-<li>稠密图：邻接矩阵,空间复杂度：$\Theta(V^2)$<br>&nbsp;</li></ul>
-        
-          <a class="article-more-a" href="/2019/11/05/广度优先搜索和深度优先搜索/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">BFS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DFS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">route</a>
         		</li>
       		
 		</ul>
@@ -580,16 +239,75 @@
 
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/05/广度优先搜索和深度优先搜索/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/15/最大流算法/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/03/12/STL小问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">STL问题</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -604,447 +322,48 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-C-14新特性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/03/C-14新特性/">C++14新特性</a>
-    </h1>
-  
-
-        
-        <a href="/2019/11/03/C-14新特性/" class="archive-article-date">
-  	<time datetime="2019-11-03T10:00:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Language//" class="article-tag-list-link color4">Language</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/03/C-14新特性/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Ford-Fulkerson算法"><span class="toc-number">1.</span> <span class="toc-text">Ford-Fulkerson算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EK算法"><span class="toc-number">2.</span> <span class="toc-text">EK算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SAP算法"><span class="toc-number">3.</span> <span class="toc-text">SAP算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DINIC算法"><span class="toc-number">4.</span> <span class="toc-text">DINIC算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HLPP算法"><span class="toc-number">5.</span> <span class="toc-text">HLPP算法</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-Hexo中gitment的配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/21/Hexo中gitment的配置/">Hexo中Gitment的配置</a>
-    </h1>
-  
-
-        
-        <a href="/2019/10/21/Hexo中gitment的配置/" class="archive-article-date">
-  	<time datetime="2019-10-20T16:27:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="注册OAuth-Application"><a href="#注册OAuth-Application" class="headerlink" title="注册OAuth Application"></a>注册OAuth Application</h2><p>先注册一个新的<a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">OAuth Application</a>。其他内容可以随意填写，但要确保填入正确的 callback URL(博客的域名，如Hexo博客部署到Github, 域名”<a href="http://xoyolucas.github.io&quot;)，" target="_blank" rel="noopener">http://xoyolucas.github.io&quot;)，</a> 注册成功后生成client_id及client_secret。<br></p>
-        
-          <a class="article-more-a" href="/2019/10/21/Hexo中gitment的配置/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/21/Hexo中gitment的配置/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Markdown公式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/12/Markdown公式/">Markdown公式</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/12/Markdown公式/" class="archive-article-date">
-  	<time datetime="2019-09-12T14:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="插入公式"><a href="#插入公式" class="headerlink" title="插入公式"></a>插入公式</h2><p>行中公式和独立公式，行中公式放在文中与其它文字混编，独立公式单独成行。</p>
-<ul>
-<li><p>行中公式：将公式插入到本行内</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$公式内容$，如：$x+y$</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>独行公式：将公式插入到新的一行内，并且居中</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$公式内容$$，如：$$xyz$$</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-        
-          <a class="article-more-a" href="/2019/09/12/Markdown公式/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Markdown</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Language//" class="article-tag-list-link color4">Language</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/12/Markdown公式/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-内点法IPM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/08/内点法IPM/">内点法IPM</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/08/内点法IPM/" class="archive-article-date">
-  	<time datetime="2019-09-08T12:37:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="内点法简介"><a href="#内点法简介" class="headerlink" title="内点法简介"></a>内点法简介</h2><p><strong><em>内点法(Interior Point Method)</em></strong>是一种求解线性规划或非线性凸优化问题的算法。它是由John von Neumann发明的，他利用戈尔丹的线性齐次系统提出了这种新的求解线性规划的方法。后被Narendra Karmarkar于1984年推广应用到线性规划，即Karmarkar算法。<br>内点法属于约束优化算法，约束优化算法的基本思想是：<strong>通过引入效用函数的方法将约束优化问题转换成无约束问题</strong>，再利用优化迭代过程不断地更新效用函数，以使得算法收敛。相当于在可行域的边界筑起一道很高的“围墙”，当迭代点靠近边界时，目标函数徒然增大，以示惩罚，阻止迭代点穿越边界，这样就可以将最优解“挡”在可行域之内了。<br></p>
-        
-          <a class="article-more-a" href="/2019/09/08/内点法IPM/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">IPM</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Algorithm//" class="article-tag-list-link color5">Algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/08/内点法IPM/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-粒子群算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/05/粒子群算法/">粒子群优化算法</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/05/粒子群算法/" class="archive-article-date">
-  	<time datetime="2019-09-05T11:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="粒子群算法的概念"><a href="#粒子群算法的概念" class="headerlink" title="粒子群算法的概念"></a>粒子群算法的概念</h2><p>粒子群优化算法(PSO Particle swarm optimization)是一种进化计算技术(evolutionary computation),和蚁群算法，鱼群算法一样是一种群体智能的优化算法。算法的思想源于对鸟群觅食的行为研究，最早由Kennedy和Eberhart在1995年提出的。</p>
-<p>粒子群优化算法的基本思想：是通过群体中个体之间的协作和信息共享来寻找最优解。用粒子来模拟鸟类的个体，每个粒子可视为N维搜索空间中的一个搜索个体，粒子的当前位置即对应优化问题的一个候选解，粒子的飞行过程即为该个体的搜索过程。粒子的飞行速度可根据粒子历史最优位置和种群历史最优位置进行动态的调整。粒子具有两个属性：粒子和位置，速度代表移动的快慢，位置代表移动的方向。每个粒子单独搜寻的最优解叫做个体极值，粒子群中最优的个体极值作为当前全局最优解。不断迭代，更新速度和位置。最终得到满足终止条件的最优解。<br></p>
-        
-          <a class="article-more-a" href="/2019/09/05/粒子群算法/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PSO</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Algorithm//" class="article-tag-list-link color5">Algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/05/粒子群算法/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://www.wenjunjiang.win/css/gitment.css">
+<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://yoursite.com/2020/03/15/最大流算法/",
+  owner: 'xoyolucas',
+  repo: 'blog_gitment',
+  oauth: {
+    client_id: '2636b6dc4277d28ba25a',
+    client_secret: '44deab42854b59e88df97698a3d883d5f2c02194',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -1067,8 +386,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
