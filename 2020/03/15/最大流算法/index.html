@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>最大流算法 | xoyolucas&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最大流问题(maximum flow problem)，一种组合最优化问题，就是要讨论如何充分利用传输网络的能力，使得运输的流量最大，以取得最好的效果。求一个容量网络的最大流，可以用最经典的Ford-Fulkerson方法，另外介绍四种改进最大流算法：EK算法、SAP算法、DINIC算法、HLPP算法。这四种算法中，前三种基于增广路，最后一种基于预流推进。">
+  <meta name="description" content="最大流问题(maximum flow problem)，是一种组合最优化问题，就是要讨论如何充分利用传输网络的能力，使得运输的流量最大，以取得最好的效果。在不违反任何容量限制的前提下，计算从源节点运送物料到目的地的最大速率。求一个容量网络的最大流，可以用最经典的Ford-Fulkerson方法，另外介绍四种改进最大流算法：EK算法、SAP算法、DINIC算法、HLPP算法。这四种算法中，前三种基于">
 <meta name="keywords" content="maximum flow problem,route">
 <meta property="og:type" content="article">
 <meta property="og:title" content="最大流算法">
 <meta property="og:url" content="http://yoursite.com/2020/03/15/最大流算法/index.html">
 <meta property="og:site_name" content="xoyolucas&#39;s blog">
-<meta property="og:description" content="最大流问题(maximum flow problem)，一种组合最优化问题，就是要讨论如何充分利用传输网络的能力，使得运输的流量最大，以取得最好的效果。求一个容量网络的最大流，可以用最经典的Ford-Fulkerson方法，另外介绍四种改进最大流算法：EK算法、SAP算法、DINIC算法、HLPP算法。这四种算法中，前三种基于增广路，最后一种基于预流推进。">
+<meta property="og:description" content="最大流问题(maximum flow problem)，是一种组合最优化问题，就是要讨论如何充分利用传输网络的能力，使得运输的流量最大，以取得最好的效果。在不违反任何容量限制的前提下，计算从源节点运送物料到目的地的最大速率。求一个容量网络的最大流，可以用最经典的Ford-Fulkerson方法，另外介绍四种改进最大流算法：EK算法、SAP算法、DINIC算法、HLPP算法。这四种算法中，前三种基于">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2020/03/15/最大流算法/残存容量.png">
 <meta property="og:image" content="http://yoursite.com/2020/03/15/最大流算法/残存网络.png">
@@ -22,10 +22,10 @@
 <meta property="og:image" content="http://yoursite.com/2020/03/15/最大流算法/Ford-Fulkerson算法.png">
 <meta property="og:image" content="http://yoursite.com/2020/03/15/最大流算法/Ford-Fulkerson算法2.png">
 <meta property="og:image" content="http://yoursite.com/2020/03/15/最大流算法/可行流1.jpg">
-<meta property="og:updated_time" content="2020-03-17T16:38:22.876Z">
+<meta property="og:updated_time" content="2020-03-21T11:20:49.530Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最大流算法">
-<meta name="twitter:description" content="最大流问题(maximum flow problem)，一种组合最优化问题，就是要讨论如何充分利用传输网络的能力，使得运输的流量最大，以取得最好的效果。求一个容量网络的最大流，可以用最经典的Ford-Fulkerson方法，另外介绍四种改进最大流算法：EK算法、SAP算法、DINIC算法、HLPP算法。这四种算法中，前三种基于增广路，最后一种基于预流推进。">
+<meta name="twitter:description" content="最大流问题(maximum flow problem)，是一种组合最优化问题，就是要讨论如何充分利用传输网络的能力，使得运输的流量最大，以取得最好的效果。在不违反任何容量限制的前提下，计算从源节点运送物料到目的地的最大速率。求一个容量网络的最大流，可以用最经典的Ford-Fulkerson方法，另外介绍四种改进最大流算法：EK算法、SAP算法、DINIC算法、HLPP算法。这四种算法中，前三种基于">
 <meta name="twitter:image" content="http://yoursite.com/2020/03/15/最大流算法/残存容量.png">
   
     <link rel="alternative" href="/atom.xml" title="xoyolucas&#39;s blog" type="application/atom+xml">
@@ -186,7 +186,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最大流问题(maximum flow problem)，一种组合最优化问题，就是要讨论如何充分利用传输网络的能力，使得运输的流量最大，以取得最好的效果。求一个容量网络的最大流，可以用<strong>最经典的Ford-Fulkerson方法</strong>，另外介绍四种改进最大流算法：<strong>EK算法</strong>、<strong>SAP算法</strong>、<strong>DINIC算法</strong>、<strong>HLPP算法</strong>。这四种算法中，前三种基于增广路，最后一种基于预流推进。<br><a id="more"></a></p>
+        <p>最大流问题(maximum flow problem)，是一种组合最优化问题，就是要讨论如何充分利用传输网络的能力，使得运输的流量最大，以取得最好的效果。在不违反任何容量限制的前提下，计算从源节点运送物料到目的地的最大速率。求一个容量网络的最大流，可以用<strong>最经典的Ford-Fulkerson方法</strong>，另外介绍四种改进最大流算法：<strong>EK算法</strong>、<strong>SAP算法</strong>、<strong>DINIC算法</strong>、<strong>HLPP算法</strong>。这四种算法中，前三种基于增广路，最后一种基于预流推进。<br><a id="more"></a></p>
 <h2 id="Ford-Fulkerson算法"><a href="#Ford-Fulkerson算法" class="headerlink" title="Ford-Fulkerson算法"></a>Ford-Fulkerson算法</h2><p>如果一个可行流中没有增广路，那么此时这个可行流的流量就是最大流，因此Ford-Fulkerson算法就是在一个可行流中不断地遍历寻找增广路，如果有增广路，那么就在这个增广路上做调整（前向弧流量增加，后向弧流量减少）来消除增广路。当在整个可行流中再也没法找到一条增广路时，就得到了最大流。这一思想非常简单，也很好理解，但问题的关键是：如何<strong>在一个可行流中高效地寻找增广路</strong></p>
 <h3 id="残存网络"><a href="#残存网络" class="headerlink" title="残存网络"></a>残存网络</h3><p>Ford-Fulkerson算法有个重要的工具：<strong>残存网络</strong>，残存网络其实就是具有残存容量的图。算法导论上有个普遍公式来定义残存容量：</p>
 <center><img src="/2020/03/15/最大流算法/残存容量.png"></center>
@@ -224,7 +224,9 @@
 <p>&nbsp;</p>
 <h3 id="SAP算法"><a href="#SAP算法" class="headerlink" title="SAP算法"></a>SAP算法</h3><p>&nbsp;</p>
 <h3 id="DINIC算法"><a href="#DINIC算法" class="headerlink" title="DINIC算法"></a>DINIC算法</h3><p>&nbsp;</p>
-<h3 id="HLPP算法"><a href="#HLPP算法" class="headerlink" title="HLPP算法"></a>HLPP算法</h3>
+<h3 id="HLPP算法"><a href="#HLPP算法" class="headerlink" title="HLPP算法"></a>HLPP算法</h3><p>&nbsp;</p>
+<h3 id="最大二分匹配"><a href="#最大二分匹配" class="headerlink" title="最大二分匹配"></a>最大二分匹配</h3><p>&nbsp;</p>
+<h3 id="推送-重贴标签算法"><a href="#推送-重贴标签算法" class="headerlink" title="推送-重贴标签算法"></a>推送-重贴标签算法</h3>
       
 
       
@@ -322,6 +324,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2020/03/20/线性规划/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          线性规划
+        
+      </div>
+    </a>
+  
   
     <a href="/2020/03/12/STL小问题/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">STL问题</div>
@@ -351,7 +362,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Ford-Fulkerson算法"><span class="toc-number">1.</span> <span class="toc-text">Ford-Fulkerson算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#残存网络"><span class="toc-number">1.1.</span> <span class="toc-text">残存网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算法流程"><span class="toc-number">1.2.</span> <span class="toc-text">算法流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题"><span class="toc-number">1.3.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EK算法"><span class="toc-number">1.4.</span> <span class="toc-text">EK算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SAP算法"><span class="toc-number">1.5.</span> <span class="toc-text">SAP算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DINIC算法"><span class="toc-number">1.6.</span> <span class="toc-text">DINIC算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HLPP算法"><span class="toc-number">1.7.</span> <span class="toc-text">HLPP算法</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Ford-Fulkerson算法"><span class="toc-number">1.</span> <span class="toc-text">Ford-Fulkerson算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#残存网络"><span class="toc-number">1.1.</span> <span class="toc-text">残存网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算法流程"><span class="toc-number">1.2.</span> <span class="toc-text">算法流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题"><span class="toc-number">1.3.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EK算法"><span class="toc-number">1.4.</span> <span class="toc-text">EK算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SAP算法"><span class="toc-number">1.5.</span> <span class="toc-text">SAP算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DINIC算法"><span class="toc-number">1.6.</span> <span class="toc-text">DINIC算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HLPP算法"><span class="toc-number">1.7.</span> <span class="toc-text">HLPP算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最大二分匹配"><span class="toc-number">1.8.</span> <span class="toc-text">最大二分匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#推送-重贴标签算法"><span class="toc-number">1.9.</span> <span class="toc-text">推送-重贴标签算法</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -508,11 +519,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -544,23 +555,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">IPM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DFS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -572,11 +575,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Linear programming</a>
+                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ACO</a>
+                <a href="javascript:void(0)" class="js-tag color4">DFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">sort</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Linear programming</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -584,7 +595,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">sort</a>
+                <a href="javascript:void(0)" class="js-tag color4">ACO</a>
               </li>
             
             <div class="clearfix"></div>

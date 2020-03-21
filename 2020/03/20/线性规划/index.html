@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Category: Tools | xoyolucas&#39;s blog</title>
+  <title>线性规划 | xoyolucas&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="xoyolucas&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/categories/Tools/index.html">
+  <meta name="description" content="&amp;nbsp; 标准型和松弛型">
+<meta name="keywords" content="Linear programming">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线性规划">
+<meta property="og:url" content="http://yoursite.com/2020/03/20/线性规划/index.html">
 <meta property="og:site_name" content="xoyolucas&#39;s blog">
+<meta property="og:description" content="&amp;nbsp; 标准型和松弛型">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-03-21T11:21:23.846Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="xoyolucas&#39;s blog">
+<meta name="twitter:title" content="线性规划">
+<meta name="twitter:description" content="&amp;nbsp; 标准型和松弛型">
   
     <link rel="alternative" href="/atom.xml" title="xoyolucas&#39;s blog" type="application/atom+xml">
   
@@ -154,75 +159,191 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-线性规划" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/26/ns-3学习和使用/" class="archive-article-date">
-  	<time datetime="2020-02-26T13:34:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-26</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/26/ns-3学习和使用/">ns-3仿真工具学习和使用</a>
+    <h1 class="article-title" itemprop="name">
+      线性规划
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/03/20/线性规划/" class="archive-article-date">
+  	<time datetime="2020-03-20T13:05:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&nbsp;</p>
+<h3 id="标准型和松弛型"><a href="#标准型和松弛型" class="headerlink" title="标准型和松弛型"></a>标准型和松弛型</h3><a id="more"></a>
+<p>&nbsp;</p>
+<h3 id="将问题表达为线性规划"><a href="#将问题表达为线性规划" class="headerlink" title="将问题表达为线性规划"></a>将问题表达为线性规划</h3><p>&nbsp;</p>
+<h3 id="单纯形算法"><a href="#单纯形算法" class="headerlink" title="单纯形算法"></a>单纯形算法</h3><p>&nbsp;</p>
+<h3 id="对偶性"><a href="#对偶性" class="headerlink" title="对偶性"></a>对偶性</h3><p>&nbsp;</p>
+<h3 id="初始基本可行解"><a href="#初始基本可行解" class="headerlink" title="初始基本可行解"></a>初始基本可行解</h3>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">ns-3</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">仿真工具</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Linear programming</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Tools//" class="article-tag-list-link color1">Tools</a>
+        			<a href="/categories/Algorithm//" class="article-tag-list-link color5">Algorithm</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/20/线性规划/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/03/15/最大流算法/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">最大流算法</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#标准型和松弛型"><span class="toc-number">1.</span> <span class="toc-text">标准型和松弛型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#将问题表达为线性规划"><span class="toc-number">2.</span> <span class="toc-text">将问题表达为线性规划</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单纯形算法"><span class="toc-number">3.</span> <span class="toc-text">单纯形算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对偶性"><span class="toc-number">4.</span> <span class="toc-text">对偶性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#初始基本可行解"><span class="toc-number">5.</span> <span class="toc-text">初始基本可行解</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://www.wenjunjiang.win/css/gitment.css">
+<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://yoursite.com/2020/03/20/线性规划/",
+  owner: 'xoyolucas',
+  repo: 'blog_gitment',
+  oauth: {
+    client_id: '2636b6dc4277d28ba25a',
+    client_secret: '44deab42854b59e88df97698a3d883d5f2c02194',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -245,10 +366,10 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
-		isCategory: true,
+		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
 		root: "/",
