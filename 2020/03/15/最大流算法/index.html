@@ -24,7 +24,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/03/15/最大流算法/可行流1.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/03/15/最大流算法/EK算法.png">
 <meta property="og:image" content="http://yoursite.com/2020/03/15/最大流算法/Dinic算法.png">
-<meta property="og:updated_time" content="2020-03-22T14:54:26.283Z">
+<meta property="og:updated_time" content="2020-03-22T16:25:33.835Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最大流算法">
 <meta name="twitter:description" content="最大流问题(maximum flow problem)，是一种组合最优化问题，就是要讨论如何充分利用传输网络的能力，使得运输的流量最大，以取得最好的效果。在不违反任何容量限制的前提下，计算从源节点运送物料到目的地的最大速率。求一个容量网络的最大流，可以用最经典的Ford-Fulkerson方法，另外介绍四种改进最大流算法：EK算法、SAP算法、DINIC算法、HLPP算法。这四种算法中，前三种基于">
@@ -230,11 +230,12 @@
 <h3 id="DINIC算法"><a href="#DINIC算法" class="headerlink" title="DINIC算法"></a>DINIC算法</h3><p>Dinic算法步骤：<br>1.将源点的层次设为1，其余层次初始化为0。<br>2.沿着非饱和前向弧和非零流后向弧构造层次网络，如果发现汇点不在层次网络中则算法终止。<br>3.在层次网络中，沿着相邻层搜索所有的增广路，并做相应的流量调整，回退到1。</p>
 <center><img src="/2020/03/15/最大流算法/Dinic算法.png"></center>
 
-<p>Dinic算法的复杂度分析：<br>层次网络中，汇点的层次就代表着源点到汇点的最短距离，在每次构建层次网络时，汇点的层次必然会比上一次至少多1，因为在每次的dfs中，所有的最短路径都被找了出来，并且经过流量调整后当前所有的最短路径均被阻塞，因此在下一次构建层次网络时，没有办法再找到这么短的路径了，也就是说源点到汇点的最短距离至少增加1，也就是汇点的层次至少加1。而层次的上界显然为顶点的个数，因此最外层的while循环至多遍历$O(V)$次。内层的bfs需要$O(E)$的时间，dfs为找所有的增广路，由对EK算法的分析不难得出，找到所有的增广路不会超过$O(VE)$的时间，因此Dinic算法的复杂度上界为$O(V^2E)$，这个性能要优于EK算法，而且Dinic算法的实现也很简便，我认为是解题的首选算法。</p>
+<p>Dinic算法的复杂度分析：<br>层次网络中，汇点的层次就代表着源点到汇点的最短距离，在每次构建层次网络时，汇点的层次必然会比上一次至少多1，因为在每次的dfs中，所有的最短路径都被找了出来，并且经过流量调整后当前所有的最短路径均被阻塞，因此在下一次构建层次网络时，没有办法再找到这么短的路径了，也就是说源点到汇点的最短距离至少增加1，也就是汇点的层次至少加1。而层次的上界显然为顶点的个数，因此最外层的while循环至多遍历$O(V)$次。内层的bfs需要$O(E)$的时间，dfs为找所有的增广路，由对EK算法的分析不难得出，找到所有的增广路不会超过$O(VE)$的时间，<strong>Dinic算法的复杂度上界为$O(V^2E)$</strong>，这个性能要优于EK算法，而且Dinic算法的实现也很简便。</p>
 <p>&nbsp;</p>
-<h3 id="SAP算法"><a href="#SAP算法" class="headerlink" title="SAP算法"></a>SAP算法</h3><p>Sap算法是对Dinic算法一个小的优化，在Dinic算法中，每次都要进行一次bfs来更新层次网络，这未免有些过于浪费，因为有些点的层次实际上是不需要更新的。Sap算法就采取一边找增广路，一边更新层次网络的策略。<br>注意在Sap算法中源点的层次应该是最高的，一定要有Gap优化，不然这个算法的性能就不尽如人意了。Sap算法的复杂度上界和Dinic一样也是$O(V^2E)$.</p>
+<h3 id="SAP算法"><a href="#SAP算法" class="headerlink" title="SAP算法"></a>SAP算法</h3><p>Sap算法是对Dinic算法一个小的优化，在Dinic算法中，每次都要进行一次bfs来更新层次网络，这未免有些过于浪费，因为有些点的层次实际上是不需要更新的。Sap算法就采取一边找增广路，一边更新层次网络的策略。<br>注意在Sap算法中源点的层次应该是最高的，一定要有Gap优化，不然这个算法的性能就不尽如人意了。<strong>Sap算法的复杂度上界和Dinic一样也是$O(V^2E)$</strong>。</p>
 <p>&nbsp;</p>
-<h3 id="HLPP算法"><a href="#HLPP算法" class="headerlink" title="HLPP算法"></a>HLPP算法</h3><p>&nbsp;</p>
+<h3 id="HLPP算法"><a href="#HLPP算法" class="headerlink" title="HLPP算法"></a>HLPP算法</h3><p>HLPP算法即最高标号预流推进算法，与前面三种算法不同的是，它并不采取找增广路的思想，而是不断地在可行流中找到那些仍旧有盈余的节点，将其盈余的流量推到周围可接纳流量的节点中，具体什么意思呢？对于一个最大流而言，除了源点和汇点以外所有的其他节点都应该满足流入的总流量等于流出的总流量，如果首先让源点的流量都尽可能都流到其相邻的节点中，这个时候相邻的节点就有了盈余，即它流入的流量比流出的流量多，所以要想办法将这些流量流出去。这种想法其实很自然，如果不知道最大流求解的任何一种算法，要手算最大流的时候，采取的策略肯定会是这样，将能流的先流出去，遇到容量不足的边就将流量减少，直到所有流量都流到了汇点。<br>但是这样做肯定会遇到一个问题，会不会有流量从一个节点流出去然后又流回到这个节点？如果这个节点是源点的话这么做是没问题的，因为有的时候通过某些节点是到达不了汇点的，这个时候要将流量流回到源点，但是其他情况就可能会造成循环流动，因此需要用到层次网络，只在相邻层次间流动。<br>注意所有的推进都是从高层次节点推到低层次节点中，源点的层次始终为节点总数。<br>可以看到这里采用了一个优先级队列，每次都优先取出层次较高的节点做推进，因为层次较低的节点是有可能接受到层次高节点流出的流量的，如果先推层次低的节点的流量，之后它有可能又接受到了高层次节点的流量，那么又要对其作推进处理，而如果每次都先将高层次节点取出，就可以将所有的高层次的节点的流量都先推入对应的低层次的节点中，在低层次的节点中先累积流量，最后再一起推进，提升效率。<strong>HLPP算法的复杂度为$O(V^2 \sqrt{E})$</strong>。</p>
+<p>&nbsp;</p>
 <h3 id="最大二分匹配"><a href="#最大二分匹配" class="headerlink" title="最大二分匹配"></a>最大二分匹配</h3><p>&nbsp;</p>
 <h3 id="推送-重贴标签算法"><a href="#推送-重贴标签算法" class="headerlink" title="推送-重贴标签算法"></a>推送-重贴标签算法</h3>
       
@@ -541,11 +542,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">STL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">STL</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pandas</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -557,18 +570,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pandas</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">IPM</a>
               </li>
              
@@ -577,15 +578,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">BFS</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
               </li>
              
               <li class="article-tag-list-item">
