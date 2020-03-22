@@ -16,10 +16,16 @@
 <meta property="og:site_name" content="xoyolucas&#39;s blog">
 <meta property="og:description" content="在给定有限的资源和竞争约束情况下，有很多问题可以描述为最大化或最小化某个目标。如果可以把目标描述为某些变量的一个线性函数，而且将资源的约束指定为这些变量的等式或不等式，那么可以得到一个线性规划问题(linear-programming problem)。使用规范形式描述线性规划，一般有标准和松弛，非正式地，标准型中的线性规划是满足线性不等式约束的一个线性函数的最大化；松弛型的线性规划是满足线性等式">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-03-22T08:20:06.574Z">
+<meta property="og:image" content="http://yoursite.com/2020/03/20/线性规划/标准型.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/20/线性规划/标准型方程.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/03/20/线性规划/松弛型方程.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/03/20/线性规划/矩阵方程1.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/03/20/线性规划/矩阵方程2.jpg">
+<meta property="og:updated_time" content="2020-03-22T10:12:23.049Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性规划">
 <meta name="twitter:description" content="在给定有限的资源和竞争约束情况下，有很多问题可以描述为最大化或最小化某个目标。如果可以把目标描述为某些变量的一个线性函数，而且将资源的约束指定为这些变量的等式或不等式，那么可以得到一个线性规划问题(linear-programming problem)。使用规范形式描述线性规划，一般有标准和松弛，非正式地，标准型中的线性规划是满足线性不等式约束的一个线性函数的最大化；松弛型的线性规划是满足线性等式">
+<meta name="twitter:image" content="http://yoursite.com/2020/03/20/线性规划/标准型.png">
   
     <link rel="alternative" href="/atom.xml" title="xoyolucas&#39;s blog" type="application/atom+xml">
   
@@ -185,11 +191,27 @@
 <li><strong>可行域</strong>：所有可行解的集合，构成的可行区域</li>
 <li><strong>目标值</strong>：可行解对应的目标函数值</li>
 </ul>
-<p>线性规划的最优解出现在可行区域的一个顶点上。如果有n个变量，每个约束定义了n维空间中的一个半空间，将这些半空间的交集形成的可行区域称为<strong>单纯形</strong>。目标函数是一个超平面，因为具有<strong>凸性</strong>，最优解在单纯形的一个顶点上取得。<strong>单纯形算法</strong>以一个线性规划作为输入，输出一个最优解。从单纯形的某个顶点开始，执行顺序迭代。在每次迭代中，沿着单纯形的一条边从当前顶点移动到一个目标值不小于当前顶点的相邻顶点。当达到一个局部的最大值，即存在一个顶点，所有相邻顶点的目标值都小于该顶点的目标值，单纯形算法终止。<strong>因为可行域是凸的，目标函数是线性的，所以该局部最优实际上就是全局最优</strong>。<br><a id="more"></a></p>
+<p>线性规划的最优解出现在可行区域的一个顶点上。如果有n个变量，每个约束定义了n维空间中的一个半空间，将这些半空间的交集形成的可行区域称为<strong>单纯形</strong>。目标函数是一个超平面，因为具有<strong>凸性</strong>，最优解在单纯形的一个顶点上取得。<strong>单纯形算法</strong>以一个线性规划作为输入，输出一个最优解。从单纯形的某个顶点开始，执行顺序迭代。在每次迭代中，沿着单纯形的一条边从当前顶点移动到一个目标值不小于当前顶点的相邻顶点。当达到一个局部的最大值，即存在一个顶点，所有相邻顶点的目标值都小于该顶点的目标值，单纯形算法终止。<strong>因为可行域是凸的，目标函数是线性的，所以该局部最优实际上就是全局最优</strong>。如果一个线性规划有一些可行解但没有有限的最优目标值，则称此线性规划是<strong>无界</strong>的。<br><a id="more"></a></p>
 <p>单纯形算法被精心设计实现时，在实际中通常能够快速地解决一般的线性规划问题。然而对于一些被刻意设计的输入，单纯形算法可能会需要指数时间。线性规划的第一个多项式时间算法是<strong>椭球算法</strong>，但在实际运行缓慢。第二类多项式时间的算法称为<strong>内点法</strong>。与单纯形法相比，<strong>内点法在可行域的内部移动，中间阶段的解尽管是可行的，但未必是单纯形的顶点，最终的解是一个顶点</strong>，对于大规模的输入，内点法的性能可与单纯形法相当，有时甚至会更快。当前商用软件，单纯形算法的实现更加成熟稳定。</p>
 <p>如果在线性规划中加入额外的要求，所有的变量都取整数值，那么就得到一个<strong>整数线性规划</strong>。仅找出此问题的一个可行解就是NP难的，而目前没有已知的多项式时间算法能够解任意一个NP难的问题。</p>
 <p>&nbsp;</p>
 <h3 id="标准型和松弛型"><a href="#标准型和松弛型" class="headerlink" title="标准型和松弛型"></a>标准型和松弛型</h3><p><strong>标准型</strong>：所有的约束都是不等式<br><strong>松弛型</strong>：所有的约束都是等式(要求变量非负的约束除外)</p>
+<center><img src="/2020/03/20/线性规划/标准型.png" width="70%"></center>
+
+<p><strong>线性规划转换为标准型</strong>，已知线性函数满足若干线性约束，要求最小化或最大化它，总是可以将这个线性规划转换成标准型。一个线性规划可能由于如下4个原因之一而不是标准型：</p>
+<ol>
+<li>目标函数可能是最小化，而不是最大化</li>
+<li>可能有变量不具有非负约束</li>
+<li>可能有等式约束，即有一个等号而不是小于等于号</li>
+<li>可能有不等式约束，但不是小于等于号，而是一个大于等于号</li>
+</ol>
+<p>对于原因1，只需要将目标函数取负即可，将最小化问题转换为最大化问题；<br>对于原因2，假设变量$x_i$不具有非负约束，那么将$x_j$用$x_i^1-x_i^2$代替，并增加非负约束$x_i^1 \geq 0, x_i^2 \geq 0$；<br>对于原因3，假设一个线性规划有一个等式约束$f(x_1,x_2,…,x_n)=b_n$，可以转换成一对不等式约束$f(x_1,x_2,…,x_n) \geq b_n$和$f(x_1,x_2,…,x_n) \leq b_n$;<br>对于原因4，通过将大于等于约束乘上-1，转换成小于等于约束；  </p>
+<p><strong>线性规划转换松弛型</strong>，为了利用单纯形算法高效地求解线性规划，更喜欢将其表示成某些约束是等式约束的形式。对于不等式约束，通过引入<strong>松弛变量s</strong>，使不等式变成等式约束，通常使用$x_{n+1}$表示与第i个不等式相关的松弛变量。</p>
+<center><img src="/2020/03/20/线性规划/标准型方程.jpg" width="50%"><img src="/2020/03/20/线性规划/松弛型方程.jpg" width="50%"></center>
+
+<p>由左边的标准型转化为右边的松弛型，每个等式约束右边都有相同的变量集合，且这些变量集合也是出现在目标函数中仅有的变量。等式左边的变量称为<strong>基本变量</strong>，等式右边的变量为<strong>非基本变量</strong>。</p>
+<center><img src="/2020/03/20/线性规划/矩阵方程1.jpg" width="50%"><img src="/2020/03/20/线性规划/矩阵方程2.jpg" width="50%"></center>
+
 <p>&nbsp;</p>
 <h3 id="将问题表达为线性规划"><a href="#将问题表达为线性规划" class="headerlink" title="将问题表达为线性规划"></a>将问题表达为线性规划</h3><p>&nbsp;</p>
 <h3 id="单纯形算法"><a href="#单纯形算法" class="headerlink" title="单纯形算法"></a>单纯形算法</h3><p>&nbsp;</p>
@@ -470,11 +492,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
+                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
+                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -514,11 +536,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
+                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
+                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -530,15 +552,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">sort</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">maximum flow problem</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">route</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">sort</a>
               </li>
              
               <li class="article-tag-list-item">
