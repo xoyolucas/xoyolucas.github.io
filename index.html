@@ -176,9 +176,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在给定有限的资源和竞争约束情况下，有很多问题可以描述为最大化或最小化某个目标。如果可以把目标描述为某些变量的一个线性函数，而且将资源的约束指定为这些变量的等式或不等式，那么可以得到一个<strong>线性规划问题(linear-programming problem)</strong>。</p>
-<p>&nbsp;</p>
-<h3 id="标准型和松弛型"><a href="#标准型和松弛型" class="headerlink" title="标准型和松弛型"></a>标准型和松弛型</h3>
+        <p>在给定有限的资源和竞争约束情况下，有很多问题可以描述为最大化或最小化某个目标。如果可以把目标描述为某些变量的一个线性函数，而且将资源的约束指定为这些变量的等式或不等式，那么可以得到一个<strong>线性规划问题(linear-programming problem)</strong>。使用规范形式描述线性规划，一般有<strong>标准</strong>和<strong>松弛</strong>，非正式地，标准型中的线性规划是满足<strong>线性不等式约束</strong>的一个线性函数的最大化；松弛型的线性规划是满足<strong>线性等式约束</strong>的线性函数的最大化。</p>
+<ul>
+<li><strong>可行解</strong>：满足约束的变量取值</li>
+<li><strong>可行域</strong>：所有可行解的集合，构成的可行区域</li>
+<li><strong>目标值</strong>：可行解对应的目标函数值</li>
+</ul>
+<p>线性规划的最优解出现在可行区域的一个顶点上。如果有n个变量，每个约束定义了n维空间中的一个半空间，将这些半空间的交集形成的可行区域称为<strong>单纯形</strong>。目标函数是一个超平面，因为具有<strong>凸性</strong>，最优解在单纯形的一个顶点上取得。<strong>单纯形算法</strong>以一个线性规划作为输入，输出一个最优解。从单纯形的某个顶点开始，执行顺序迭代。在每次迭代中，沿着单纯形的一条边从当前顶点移动到一个目标值不小于当前顶点的相邻顶点。当达到一个局部的最大值，即存在一个顶点，所有相邻顶点的目标值都小于该顶点的目标值，单纯形算法终止。<strong>因为可行域是凸的，目标函数是线性的，所以该局部最优实际上就是全局最优</strong>。<br></p>
         
           <a class="article-more-a" href="/2020/03/20/线性规划/#more">more >></a>
         
@@ -1159,11 +1163,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
+                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
+                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1203,11 +1207,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
+                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
+                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1219,10 +1223,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">sort</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">maximum flow problem</a>
               </li>
              
@@ -1231,15 +1231,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">sort</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PSO</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ACO</a>
+                <a href="javascript:void(0)" class="js-tag color4">Linear programming</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Linear programming</a>
+                <a href="javascript:void(0)" class="js-tag color4">ACO</a>
               </li>
             
             <div class="clearfix"></div>
