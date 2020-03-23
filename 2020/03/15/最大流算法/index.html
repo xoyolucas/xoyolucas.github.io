@@ -24,7 +24,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/03/15/最大流算法/可行流1.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/03/15/最大流算法/EK算法.png">
 <meta property="og:image" content="http://yoursite.com/2020/03/15/最大流算法/Dinic算法.png">
-<meta property="og:updated_time" content="2020-03-23T15:08:20.212Z">
+<meta property="og:updated_time" content="2020-03-23T16:13:34.017Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最大流算法">
 <meta name="twitter:description" content="最大流问题(maximum flow problem)，是一种组合最优化问题，就是要讨论如何充分利用传输网络的能力，使得运输的流量最大，以取得最好的效果。在不违反任何容量限制的前提下，计算从源节点运送物料到目的地的最大速率。求一个容量网络的最大流，可以用最经典的Ford-Fulkerson方法，另外介绍四种改进最大流算法：EK算法、SAP算法、DINIC算法、HLPP算法。这四种算法中，前三种基于">
@@ -235,7 +235,7 @@
 </ol>
 <center><img src="/2020/03/15/最大流算法/Dinic算法.png" width="70%"></center>
 
-<p><strong>Dinic算法的复杂度分析:</strong><br>层次网络中，汇点的层次就代表着源点到汇点的最短距离，在每次构建层次网络时，汇点的层次必然会比上一次至少多1，因为在每次的dfs中，所有的最短路径都被找了出来，并且经过流量调整后当前所有的最短路径均被阻塞，因此在下一次构建层次网络时，没有办法再找到这么短的路径了，也就是说源点到汇点的最短距离至少增加1，也就是汇点的层次至少加1。而层次的上界显然为顶点的个数，因此最外层的while循环至多遍历$O(V)$次。内层的bfs需要$O(E)$的时间，dfs为找所有的增广路，由对EK算法的分析不难得出，找到所有的增广路不会超过$O(VE)$的时间，<strong>Dinic算法的复杂度上界为$O(V^2E)$</strong>，这个性能要优于EK算法，而且Dinic算法的实现也很简便。</p>
+<p><strong>Dinic算法的复杂度分析:</strong><br>层次网络中，汇点的层次就代表着源点到汇点的最短距离，在每次构建层次网络时，汇点的层次必然会比上一次至少多1。因为在每次的dfs中，所有的最短路径都被找了出来，并且经过流量调整后当前所有的最短路径均被阻塞。因此在下一次构建层次网络时，没有办法再找到这么短的路径了。也就是说源点到汇点的最短距离至少增加1，也就是汇点的层次至少加1。而层次的上界显然为顶点的个数，因此最外层的while循环至多遍历$O(V)$次。内层的bfs需要$O(E)$的时间，dfs为找所有的增广路，由对EK算法的分析不难得出，找到所有的增广路不会超过$O(VE)$的时间，<strong>Dinic算法的复杂度上界为$O(V^2E)$</strong>，这个性能要优于EK算法，而且Dinic算法的实现也很简便。</p>
 <p>&nbsp;</p>
 <h3 id="SAP算法"><a href="#SAP算法" class="headerlink" title="SAP算法"></a>SAP算法</h3><p>Sap算法是对Dinic算法一个小的优化，在Dinic算法中，每次都要进行一次bfs来更新层次网络，这未免有些过于浪费，因为有些点的层次实际上是不需要更新的。Sap算法就采取一边找增广路，一边更新层次网络的策略。<br>注意在Sap算法中源点的层次应该是最高的，一定要有Gap优化，不然这个算法的性能就不尽如人意了。<strong>Sap算法的复杂度上界和Dinic一样也是$O(V^2E)$</strong>。</p>
 <p>&nbsp;</p>
@@ -531,11 +531,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
+                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
+                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -547,11 +547,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">STL</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color4">STL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -579,11 +579,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
+                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
+                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
               </li>
              
               <li class="article-tag-list-item">
