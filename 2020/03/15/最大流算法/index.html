@@ -24,7 +24,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/03/15/最大流算法/可行流1.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/03/15/最大流算法/EK算法.png">
 <meta property="og:image" content="http://yoursite.com/2020/03/15/最大流算法/Dinic算法.png">
-<meta property="og:updated_time" content="2020-03-23T16:13:34.017Z">
+<meta property="og:updated_time" content="2020-03-24T15:35:01.064Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最大流算法">
 <meta name="twitter:description" content="最大流问题(maximum flow problem)，是一种组合最优化问题，就是要讨论如何充分利用传输网络的能力，使得运输的流量最大，以取得最好的效果。在不违反任何容量限制的前提下，计算从源节点运送物料到目的地的最大速率。求一个容量网络的最大流，可以用最经典的Ford-Fulkerson方法，另外介绍四种改进最大流算法：EK算法、SAP算法、DINIC算法、HLPP算法。这四种算法中，前三种基于">
@@ -214,18 +214,17 @@
 <p>在示例中，左边是残存网络，右边是更新后的原图。一开始(a)的残存网络就是原图，我们找了条增广路径（粗线），找到了最小的$c_f$，就是4，然后把4引入了原图的流更新。<br>从(a)更新后的原图，我们可以画出它的残存网络，于是我们来到了(b)，找增广路径，找最小的$c_f$，以它来更新原图（从(a)的右图到(b)的右图）。继续迭代寻找增广路径。如下，增广路径选取不同，过程可能不一样，但是最大流都是一样的，就是23。</p>
 <center><img src="/2020/03/15/最大流算法/Ford-Fulkerson算法2.png"></center>
 
-<p>在(f)中，<strong>再也无法找到增广路径，所以算法结束，得到最大流</strong>。<br>采用Ford-Fulkerson算法，从0流量开始，生成残存网络，找到增广路径，从增广路径中找到最小的残存容量F，用F来更新原图，得到新的原图后，循环上述过程直到残存网络中找不到增广路径。此时的原图中，就有了我们想求的最大流。</p>
-<p>参考网站：<a href="https://blog.csdn.net/sinat_41613352/article/details/84481115" target="_blank" rel="noopener">Ford-Fulkerson算法</a></p>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>Ford-Fulkerson用的是一种标号法，但是那种方式的时间复杂度可能会依赖于网络流中各边的容量，在最坏的情况下复杂度是O(Ef)(E为边数，f为所有边流量的最大值)，例如下图中，如果在查找增广路时先选择A-&gt;B-&gt;C-&gt;D，再选择A-&gt;C-&gt;B-&gt;D，再走A-&gt;B-&gt;C-&gt;D……如此就需要走2000次，而实际上直接走A-&gt;B-&gt;D，A-&gt;C-&gt;D两次就完成了。而Furd-Fulkerson算法确实有可能会如前一种的方式进行。</p>
+<p>在(f)中，<strong>再也无法找到增广路径，所以算法结束，得到最大流</strong>。<br>采用Ford-Fulkerson算法，从0流量开始，生成残存网络，找到增广路径，从增广路径中找到最小的残存容量F，用F来更新原图，得到新的原图后，循环上述过程直到残存网络中找不到增广路径。此时的原图中，就有了我们想求的最大流。<br>参考网站：<a href="https://blog.csdn.net/sinat_41613352/article/details/84481115" target="_blank" rel="noopener">Ford-Fulkerson算法</a></p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>Ford-Fulkerson用的是一种标号法，但是那种方式的时间复杂度可能会依赖于网络流中各边的容量，在最坏的情况下复杂度是$O(Ef)$(E为边数，f为所有边流量的最大值)。如下图，如果在查找增广路时先选择A-&gt;B-&gt;C-&gt;D，再选择A-&gt;C-&gt;B-&gt;D，再走A-&gt;B-&gt;C-&gt;D……如此就需要走2000次，而实际上直接走A-&gt;B-&gt;D，A-&gt;C-&gt;D两次就完成了，而Furd-Fulkerson算法确实有可能会如前一种的方式进行。</p>
 <center><img src="/2020/03/15/最大流算法/可行流1.jpg"></center>
 
 <p>因而，寻求更加高效的算法，如<strong>EK、DINIC、SAP算法都基于消除增广路的思想</strong>，但它们给出了更好的查增广路的方式；<strong>HLPP算法</strong>，基于<strong>预流推进</strong>的思想。<br><a href="https://blog.csdn.net/yjr3426619/article/details/82808303" target="_blank" rel="noopener">求解最大流的四种算法介绍</a></p>
 <p>&nbsp;</p>
 <h3 id="EK算法"><a href="#EK算法" class="headerlink" title="EK算法"></a>EK算法</h3><p>Edmonds-Karp算法，使用的是暴力搜索。在每次搜索增广路时，采用BFS策略，将所有的从源点到汇点的路径都找出来。</p>
-<center><img src="/2020/03/15/最大流算法/EK算法.png" width="70%"></center>
+<center><img src="/2020/03/15/最大流算法/EK算法.png" width="60%"></center>
 
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//capacity：容量</span></span><br><span class="line"><span class="comment">//flow：流量</span></span><br><span class="line"><span class="comment">//parent：记录在一条增广路中每个节点的前一个节点</span></span><br><span class="line"><span class="comment">//alpha：记录在增广路中当每个节点所能调整的流量的最大值</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">EK</span><span class="params">(<span class="keyword">int</span> m)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//初始化操作</span></span><br><span class="line">	<span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++)	parent[i] = alpha[i] = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; vertexQueue;</span><br><span class="line">	<span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">memset</span>(alpha, <span class="number">0</span>, <span class="keyword">sizeof</span>(alpha));</span><br><span class="line">		alpha[<span class="number">1</span>] = INF;</span><br><span class="line">		vertexQueue.push(<span class="number">1</span>);</span><br><span class="line">		<span class="comment">//BFS过程</span></span><br><span class="line">		<span class="keyword">while</span> (!vertexQueue.empty())</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> vtop = vertexQueue.front();</span><br><span class="line">			vertexQueue.pop();</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ;  i &lt;= m ; i ++ )</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="comment">//如果目标节点还未在增广路中出现并且可以调整流量</span></span><br><span class="line">				<span class="keyword">if</span> (!alpha[i] &amp;&amp; flow[vtop][i] &lt; capacity[vtop][i])</span><br><span class="line">				&#123;</span><br><span class="line">					parent[i] = vtop;</span><br><span class="line">					alpha[i] = min(capacity[vtop][i] - flow[vtop][i], alpha[vtop]);</span><br><span class="line">					vertexQueue.push(i);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//汇点可调整流量为0，说明没有增广路了，算法结束</span></span><br><span class="line">		<span class="keyword">if</span> (alpha[m] == <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">return</span> result;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//汇点可调整流量不为0，那么找到了增广路，增广路上所有节点做流量调整</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = m; i != <span class="number">1</span>; i = parent[i])</span><br><span class="line">		&#123;</span><br><span class="line">			flow[parent[i]][i] += alpha[m];<span class="comment">//前向弧流量增加</span></span><br><span class="line">			flow[i][parent[i]] -= alpha[m];<span class="comment">//后向弧流量减少</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//由于一开始流量都为0，调整多少能量就代表整个可行流的流量增加了多少</span></span><br><span class="line">		result += alpha[m];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">原文链接：https:<span class="comment">//blog.csdn.net/yjr3426619/article/details/82808303</span></span><br></pre></td></tr></table></figure>
-<p>算法时间复杂度$O(VE^2))$，证明可参考《算法导论》。EK算法的代码实现简单，当整个图是稀疏图的时候，EK算法一种简便可行的方法，但是如果图的边数非常多，这个算法的性能就不那么优秀。EK算法在每次找到增广路后，就从源点开始重新BFS遍历查找，这一过程中有很多的遍历是浪费的。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//capacity：容量</span></span><br><span class="line"><span class="comment">//flow：流量</span></span><br><span class="line"><span class="comment">//parent：记录在一条增广路中每个节点的前一个节点</span></span><br><span class="line"><span class="comment">//alpha：记录在增广路中当每个节点所能调整的流量的最大值</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">EK</span><span class="params">(<span class="keyword">int</span> m)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//初始化操作</span></span><br><span class="line">    <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">        parent[i] = alpha[i] = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; vertexQueue;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">memset</span>(alpha, <span class="number">0</span>, <span class="keyword">sizeof</span>(alpha));</span><br><span class="line">        alpha[<span class="number">1</span>] = INF;</span><br><span class="line">        vertexQueue.push(<span class="number">1</span>);</span><br><span class="line">        <span class="comment">//BFS过程</span></span><br><span class="line">        <span class="keyword">while</span> (!vertexQueue.empty())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> vtop = vertexQueue.front();</span><br><span class="line">            vertexQueue.pop();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">//如果目标节点还未在增广路中出现并且可以调整流量</span></span><br><span class="line">                <span class="keyword">if</span> (!alpha[i] &amp;&amp; flow[vtop][i] &lt; capacity[vtop][i])</span><br><span class="line">                &#123;</span><br><span class="line">                    parent[i] = vtop;</span><br><span class="line">                    alpha[i] = min(capacity[vtop][i] - flow[vtop][i], alpha[vtop]);</span><br><span class="line">                    vertexQueue.push(i);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//汇点可调整流量为0，说明没有增广路了，算法结束</span></span><br><span class="line">        <span class="keyword">if</span> (alpha[m] == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//汇点可调整流量不为0，那么找到了增广路，增广路上所有节点做流量调整</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = m; i != <span class="number">1</span>; i = parent[i])</span><br><span class="line">        &#123;</span><br><span class="line">            flow[parent[i]][i] += alpha[m]; <span class="comment">//前向弧流量增加</span></span><br><span class="line">            flow[i][parent[i]] -= alpha[m]; <span class="comment">//后向弧流量减少</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//由于一开始流量都为0，调整多少能量就代表整个可行流的流量增加了多少</span></span><br><span class="line">        result += alpha[m];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">原文链接：https:<span class="comment">//blog.csdn.net/yjr3426619/article/details/82808303</span></span><br></pre></td></tr></table></figure>
+<p>算法时间复杂度$O(VE^2)$，证明可参考《算法导论》。EK算法的代码实现简单，当拓扑为稀疏图的时，EK算法是一种简便可行的方法，但如果图的边数非常多，这个算法的性能就不那么优秀。EK算法在每次找到增广路后，就从源点开始重新BFS遍历查找，这一过程中有很多的遍历是浪费的。</p>
 <p>&nbsp;</p>
 <h3 id="DINIC算法"><a href="#DINIC算法" class="headerlink" title="DINIC算法"></a>DINIC算法</h3><p><strong>Dinic算法步骤：</strong></p>
 <ol>
@@ -531,11 +530,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
+                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
+                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -543,11 +542,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -563,15 +562,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pandas</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ns-3</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">仿真工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pandas</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -607,11 +606,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PSO</a>
+                <a href="javascript:void(0)" class="js-tag color4">Linear programming</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Linear programming</a>
+                <a href="javascript:void(0)" class="js-tag color4">PSO</a>
               </li>
              
               <li class="article-tag-list-item">
