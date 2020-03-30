@@ -22,7 +22,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/03/20/线性规划/矩阵方程1.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/03/20/线性规划/矩阵方程2.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/03/20/线性规划/多商品流问题.png">
-<meta property="og:updated_time" content="2020-03-27T13:03:53.821Z">
+<meta property="og:updated_time" content="2020-03-30T15:58:53.269Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性规划">
 <meta name="twitter:description" content="在给定有限的资源和竞争约束情况下，有很多问题可以描述为最大化或最小化某个目标。如果可以把目标描述为某些变量的一个线性函数，而且将资源的约束指定为这些变量的等式或不等式，那么可以得到一个线性规划问题(linear-programming problem)。使用规范形式描述线性规划，一般有标准和松弛，非正式地，标准型中的线性规划是满足线性不等式约束的一个线性函数的最大化；松弛型的线性规划是满足线性等式">
@@ -221,7 +221,9 @@
 <h3 id="单纯形算法"><a href="#单纯形算法" class="headerlink" title="单纯形算法"></a>单纯形算法</h3><p>单纯形算法在最坏情况下不是多项式的，但实际中此算法通常相当快速。</p>
 <p>&nbsp;</p>
 <h3 id="对偶性"><a href="#对偶性" class="headerlink" title="对偶性"></a>对偶性</h3><p>&nbsp;</p>
-<h3 id="初始基本可行解"><a href="#初始基本可行解" class="headerlink" title="初始基本可行解"></a>初始基本可行解</h3>
+<h3 id="初始基本可行解"><a href="#初始基本可行解" class="headerlink" title="初始基本可行解"></a>初始基本可行解</h3><p>&nbsp;</p>
+<h3 id="LP求解器"><a href="#LP求解器" class="headerlink" title="LP求解器"></a>LP求解器</h3><p>商业软件：CPLEX, Gurobi, FICO Xpress<br>开源整数规划求解器：SCIP, GLPK、LP_Solve, COIN-OR(CLP,CBC),<br>华人求解器：中科院的CMIP, 上海财大|杉数科技主导的Leaves优化求解器, 杉数科技的Cardinal<br><a href="https://zhuanlan.zhihu.com/p/40579450" target="_blank" rel="noopener">LP求解器</a></p>
+
       
 
       
@@ -344,7 +346,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#标准型和松弛型"><span class="toc-number">1.</span> <span class="toc-text">标准型和松弛型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#将问题表达为线性规划"><span class="toc-number">2.</span> <span class="toc-text">将问题表达为线性规划</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单纯形算法"><span class="toc-number">3.</span> <span class="toc-text">单纯形算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对偶性"><span class="toc-number">4.</span> <span class="toc-text">对偶性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#初始基本可行解"><span class="toc-number">5.</span> <span class="toc-text">初始基本可行解</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#标准型和松弛型"><span class="toc-number">1.</span> <span class="toc-text">标准型和松弛型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#将问题表达为线性规划"><span class="toc-number">2.</span> <span class="toc-text">将问题表达为线性规划</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单纯形算法"><span class="toc-number">3.</span> <span class="toc-text">单纯形算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对偶性"><span class="toc-number">4.</span> <span class="toc-text">对偶性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#初始基本可行解"><span class="toc-number">5.</span> <span class="toc-text">初始基本可行解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LP求解器"><span class="toc-number">6.</span> <span class="toc-text">LP求解器</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -529,6 +531,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pandas</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ns-3</a>
               </li>
              
@@ -537,15 +543,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pandas</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">IPM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -573,11 +575,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Linear programming</a>
+                <a href="javascript:void(0)" class="js-tag color4">PSO</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PSO</a>
+                <a href="javascript:void(0)" class="js-tag color4">Linear programming</a>
               </li>
              
               <li class="article-tag-list-item">
