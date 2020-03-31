@@ -22,7 +22,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/03/20/线性规划/矩阵方程1.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/03/20/线性规划/矩阵方程2.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/03/20/线性规划/多商品流问题.png">
-<meta property="og:updated_time" content="2020-03-31T15:46:52.068Z">
+<meta property="og:updated_time" content="2020-03-31T17:29:01.400Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性规划">
 <meta name="twitter:description" content="在给定有限的资源和竞争约束情况下，有很多问题可以描述为最大化或最小化某个目标。如果可以把目标描述为某些变量的一个线性函数，而且将资源的约束指定为这些变量的等式或不等式，那么可以得到一个线性规划问题(linear-programming problem)。使用规范形式描述线性规划，一般有标准和松弛，非正式地，标准型中的线性规划是满足线性不等式约束的一个线性函数的最大化；松弛型的线性规划是满足线性等式">
@@ -192,7 +192,7 @@
 <li><strong>可行域</strong>：所有可行解的集合，构成的可行区域</li>
 <li><strong>目标值</strong>：可行解对应的目标函数值</li>
 </ul>
-<p>线性规划的最优解出现在可行区域的一个顶点上。如果有n个变量，每个约束定义了n维空间中的一个半空间，将这些半空间的交集形成的可行区域称为<strong>单纯形</strong>。目标函数是一个超平面，因为具有<strong>凸性</strong>，最优解在单纯形的一个顶点上取得。<strong>单纯形算法</strong>以一个线性规划作为输入，输出一个最优解。从单纯形的某个顶点开始，执行顺序迭代。在每次迭代中，沿着单纯形的一条边从当前顶点移动到一个目标值不小于当前顶点的相邻顶点。当达到一个局部的最大值，即存在一个顶点，所有相邻顶点的目标值都小于该顶点的目标值，单纯形算法终止。<strong>因为可行域是凸的，目标函数是线性的，所以该局部最优实际上就是全局最优</strong>。如果一个线性规划有一些可行解但没有有限的最优目标值，则称此线性规划是<strong>无界</strong>的。<br><a id="more"></a></p>
+<p>线性规划的最优解出现在可行区域的一个顶点上。如果有n个变量，每个约束定义了n维空间中的一个半空间，将这些半空间的交集形成的<strong>可行区域称为单纯形</strong>。目标函数是一个超平面，因为具有<strong>凸性</strong>，最优解在单纯形的一个顶点上取得。<strong>单纯形算法</strong>以一个线性规划作为输入，输出一个最优解。从单纯形的某个顶点开始，执行顺序迭代。在每次迭代中，沿着单纯形的一条边从当前顶点移动到一个目标值不小于当前顶点的相邻顶点。当达到一个局部的最大值，即存在一个顶点，所有相邻顶点的目标值都小于该顶点的目标值，单纯形算法终止。<strong>因为可行域是凸的，目标函数是线性的，所以该局部最优实际上就是全局最优</strong>。如果一个线性规划有一些可行解但没有有限的最优目标值，则称此线性规划是<strong>无界的</strong>。<br><a id="more"></a></p>
 <p>单纯形算法被精心设计实现时，在实际中通常能够快速地解决一般的线性规划问题。然而对于一些被刻意设计的输入，单纯形算法可能会需要指数时间。线性规划的第一个多项式时间算法是<strong>椭球算法</strong>，但在实际运行缓慢。第二类多项式时间的算法称为<strong>内点法</strong>。与单纯形法相比，<strong>内点法在可行域的内部移动，中间阶段的解尽管是可行的，但未必是单纯形的顶点，最终的解是一个顶点</strong>，对于大规模的输入，内点法的性能可与单纯形法相当，有时甚至会更快。当前商用软件，单纯形算法的实现更加成熟稳定。</p>
 <p>如果在线性规划中加入额外的要求，所有的变量都取整数值，那么就得到一个<strong>整数线性规划</strong>。仅找出此问题的一个可行解就是NP难的，而目前没有已知的多项式时间算法能够解任意一个NP难的问题。</p>
 <p>&nbsp;</p>
@@ -221,7 +221,8 @@
 <h3 id="单纯形算法"><a href="#单纯形算法" class="headerlink" title="单纯形算法"></a>单纯形算法</h3><p>单纯形算法在最坏情况下不是多项式的，但实际中此算法通常相当快速。</p>
 <p>&nbsp;</p>
 <h3 id="对偶性"><a href="#对偶性" class="headerlink" title="对偶性"></a>对偶性</h3><p>&nbsp;</p>
-<h3 id="初始基本可行解"><a href="#初始基本可行解" class="headerlink" title="初始基本可行解"></a>初始基本可行解</h3><p>&nbsp;</p>
+<h3 id="初始基本可行解"><a href="#初始基本可行解" class="headerlink" title="初始基本可行解"></a>初始基本可行解</h3><p>单纯形算法需要从一个<strong>初始可行解</strong>开始搜索迭代</p>
+<p>&nbsp;</p>
 <h3 id="LP求解器"><a href="#LP求解器" class="headerlink" title="LP求解器"></a>LP求解器</h3><p>求解整数规划模型的基本算法便是分支定界法，只需将以上整数规划模型的系数矩阵输入到优化求解器中，它就能够给我们快速求出最优解或可行解（除了分支定界法还集成了各种花式启发式和割平面算法）。<br><a href="https://zhuanlan.zhihu.com/p/40579450" target="_blank" rel="noopener">LP求解器介绍</a></p>
 <h4 id="商业整数规划求解器"><a href="#商业整数规划求解器" class="headerlink" title="商业整数规划求解器"></a>商业整数规划求解器</h4><ol>
 <li><p>IBM ILOG Cplex</p>
@@ -560,11 +561,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color4">STL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">STL</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -592,11 +593,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
+                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
+                <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -612,15 +613,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PSO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">maximum flow problem</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">route</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PSO</a>
               </li>
              
               <li class="article-tag-list-item">
