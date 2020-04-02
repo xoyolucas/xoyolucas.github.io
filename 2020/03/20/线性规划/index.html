@@ -22,7 +22,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/03/20/线性规划/矩阵方程1.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/03/20/线性规划/矩阵方程2.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/03/20/线性规划/多商品流问题.png">
-<meta property="og:updated_time" content="2020-03-31T17:29:01.400Z">
+<meta property="og:updated_time" content="2020-04-02T15:46:00.031Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性规划">
 <meta name="twitter:description" content="在给定有限的资源和竞争约束情况下，有很多问题可以描述为最大化或最小化某个目标。如果可以把目标描述为某些变量的一个线性函数，而且将资源的约束指定为这些变量的等式或不等式，那么可以得到一个线性规划问题(linear-programming problem)。使用规范形式描述线性规划，一般有标准和松弛，非正式地，标准型中的线性规划是满足线性不等式约束的一个线性函数的最大化；松弛型的线性规划是满足线性等式">
@@ -224,7 +224,7 @@
 <h3 id="初始基本可行解"><a href="#初始基本可行解" class="headerlink" title="初始基本可行解"></a>初始基本可行解</h3><p>单纯形算法需要从一个<strong>初始可行解</strong>开始搜索迭代</p>
 <p>&nbsp;</p>
 <h3 id="LP求解器"><a href="#LP求解器" class="headerlink" title="LP求解器"></a>LP求解器</h3><p>求解整数规划模型的基本算法便是分支定界法，只需将以上整数规划模型的系数矩阵输入到优化求解器中，它就能够给我们快速求出最优解或可行解（除了分支定界法还集成了各种花式启发式和割平面算法）。<br><a href="https://zhuanlan.zhihu.com/p/40579450" target="_blank" rel="noopener">LP求解器介绍</a></p>
-<h4 id="商业整数规划求解器"><a href="#商业整数规划求解器" class="headerlink" title="商业整数规划求解器"></a>商业整数规划求解器</h4><ol>
+<h4 id="商业整数规划求解器"><a href="#商业整数规划求解器" class="headerlink" title="商业整数规划求解器"></a>商业整数规划求解器</h4><ul>
 <li><p>IBM ILOG Cplex</p>
 <ul>
 <li>网址：<a href="https://www.ibm.com/products/ilog-cplex-optimization-studio" target="_blank" rel="noopener">IBM ILOG CPLEX Optimization Studio</a></li>
@@ -248,8 +248,8 @@
 <li>特点：速度Top3，支持鲁棒优化</li>
 </ul>
 </li>
-</ol>
-<h4 id="开源整数规划求解器"><a href="#开源整数规划求解器" class="headerlink" title="开源整数规划求解器"></a>开源整数规划求解器</h4><ol>
+</ul>
+<h4 id="开源整数规划求解器"><a href="#开源整数规划求解器" class="headerlink" title="开源整数规划求解器"></a>开源整数规划求解器</h4><ul>
 <li><p>SCIP</p>
 <ul>
 <li>网址：<a href="https://scip.zib.de/" target="_blank" rel="noopener">SCIP</a></li>
@@ -259,11 +259,13 @@
 <li>特点：支持Branch&amp;Price</li>
 </ul>
 </li>
-<li><p><a href="https://projects.coin-or.org/Cbc" target="_blank" rel="noopener">COIN-OR旗下的CBC和SYMPHONY</a><br> 它成立于17th International Symposium on Mathematical Programming (ISMP) conference in Atlanta in the summer of 2000，是一个公益组织，维护着市面上几乎所有的开源优化求解器，并且使得它们之间的交互变得可能。<a href="https://www.coin-or.org/about-the-foundation/" target="_blank" rel="noopener">COIN-OR官网</a></p>
+<li><p><a href="https://projects.coin-or.org/Cbc" target="_blank" rel="noopener">COIN-OR旗下的CBC和SYMPHONY</a><br>  它成立于17th International Symposium on Mathematical Programming (ISMP) conference in Atlanta in the summer of 2000，是一个公益组织，维护着市面上几乎所有的开源优化求解器，并且使得它们之间的交互变得可能。<a href="https://www.coin-or.org/about-the-foundation/" target="_blank" rel="noopener">COIN-OR官网</a></p>
 </li>
-<li><a href="http://lpsolve.sourceforge.net/5.5/" target="_blank" rel="noopener">LP_Solve</a></li>
-<li><a href="https://www.osc.edu/book/export/html/3422" target="_blank" rel="noopener">GLPK</a></li>
-</ol>
+<li><p><a href="http://lpsolve.sourceforge.net/5.5/" target="_blank" rel="noopener">LP_Solve</a></p>
+</li>
+<li><p><a href="https://www.osc.edu/book/export/html/3422" target="_blank" rel="noopener">GLPK</a></p>
+</li>
+</ul>
 <h4 id="华人求解器："><a href="#华人求解器：" class="headerlink" title="华人求解器："></a>华人求解器：</h4><ul>
 <li>中科院的CMIP</li>
 <li>上海财大|杉数科技主导的Leaves优化求解器</li>
@@ -545,10 +547,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">CMake</a>
               </li>
              
@@ -557,15 +555,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">STL</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color4">STL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -585,19 +587,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pandas</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">IPM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
+                <a href="javascript:void(0)" class="js-tag color2">pandas</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">单纯形法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -613,15 +615,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PSO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">maximum flow problem</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">route</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PSO</a>
               </li>
              
               <li class="article-tag-list-item">
