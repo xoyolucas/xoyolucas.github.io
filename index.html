@@ -176,7 +176,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>JNI是<strong>Java Native Interface(Java本地接口)</strong>的缩写，通过使用Java本地接口书写程序，可以确保代码在不同的平台上方便移植。从Java1.1开始，JNI标准成为java平台的一部分，它允许Java代码和其他语言写的代码进行交互。JNI一开始是为了本地已编译语言，尤其是C和C++而设计的，但是这并不妨碍使用其他编程语言，只要调用约定受支持就可以了。</p>
+<p>步骤：</p>
+<ol>
+<li>编写带有native声明的方法的java类</li>
+<li>使用javac命令编译所编写的java类</li>
+<li>然后使用javah + java类名生成扩展名为h的头文件</li>
+<li>使用C/C++实现本地方法</li>
+<li>将C/C++编写的文件生成动态连接库</li>
+</ol>
+
       
 
       
@@ -1164,11 +1173,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
+                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
+                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1200,10 +1209,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pandas</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
@@ -1216,11 +1221,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IPM</a>
+                <a href="javascript:void(0)" class="js-tag color2">pandas</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
+                <a href="javascript:void(0)" class="js-tag color4">IPM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1232,7 +1237,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">sort</a>
+                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1241,6 +1246,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">route</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">sort</a>
               </li>
              
               <li class="article-tag-list-item">
