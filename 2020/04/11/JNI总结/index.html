@@ -8,20 +8,20 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>JNI总结 | xoyolucas&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="JNI是Java Native Interface(Java本地接口)的缩写，通过使用Java本地接口书写程序，可以确保代码在不同的平台上方便移植。从Java1.1开始，JNI标准成为java平台的一部分，它允许Java代码和其他语言写的代码进行交互。JNI一开始是为了本地已编译语言，尤其是C和C++而设计的，但是这并不妨碍使用其他编程语言，只要调用约定受支持就可以了。 步骤：  编写带有nati">
+  <meta name="description" content="JNI是Java Native Interface(Java本地接口)的缩写，通过使用Java本地接口书写程序，可以确保代码在不同的平台上方便移植。从Java1.1开始，JNI标准成为java平台的一部分，它允许Java代码和其他语言写的代码进行交互。JNI一开始是为了本地已编译语言，尤其是C和C++而设计的，但是这并不妨碍使用其他编程语言，只要调用约定受支持就可以了。 简介有时，有必要使用本地（">
 <meta name="keywords" content="Java,JNI">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JNI总结">
 <meta property="og:url" content="http://yoursite.com/2020/04/11/JNI总结/index.html">
 <meta property="og:site_name" content="xoyolucas&#39;s blog">
-<meta property="og:description" content="JNI是Java Native Interface(Java本地接口)的缩写，通过使用Java本地接口书写程序，可以确保代码在不同的平台上方便移植。从Java1.1开始，JNI标准成为java平台的一部分，它允许Java代码和其他语言写的代码进行交互。JNI一开始是为了本地已编译语言，尤其是C和C++而设计的，但是这并不妨碍使用其他编程语言，只要调用约定受支持就可以了。 步骤：  编写带有nati">
+<meta property="og:description" content="JNI是Java Native Interface(Java本地接口)的缩写，通过使用Java本地接口书写程序，可以确保代码在不同的平台上方便移植。从Java1.1开始，JNI标准成为java平台的一部分，它允许Java代码和其他语言写的代码进行交互。JNI一开始是为了本地已编译语言，尤其是C和C++而设计的，但是这并不妨碍使用其他编程语言，只要调用约定受支持就可以了。 简介有时，有必要使用本地（">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2020/04/11/JNI总结/Java和JNI基本类型对照表.png">
 <meta property="og:image" content="http://yoursite.com/2020/04/11/JNI总结/Java与JNI引用类型对照表.png">
-<meta property="og:updated_time" content="2020-04-17T15:52:08.815Z">
+<meta property="og:updated_time" content="2020-04-18T14:03:28.802Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JNI总结">
-<meta name="twitter:description" content="JNI是Java Native Interface(Java本地接口)的缩写，通过使用Java本地接口书写程序，可以确保代码在不同的平台上方便移植。从Java1.1开始，JNI标准成为java平台的一部分，它允许Java代码和其他语言写的代码进行交互。JNI一开始是为了本地已编译语言，尤其是C和C++而设计的，但是这并不妨碍使用其他编程语言，只要调用约定受支持就可以了。 步骤：  编写带有nati">
+<meta name="twitter:description" content="JNI是Java Native Interface(Java本地接口)的缩写，通过使用Java本地接口书写程序，可以确保代码在不同的平台上方便移植。从Java1.1开始，JNI标准成为java平台的一部分，它允许Java代码和其他语言写的代码进行交互。JNI一开始是为了本地已编译语言，尤其是C和C++而设计的，但是这并不妨碍使用其他编程语言，只要调用约定受支持就可以了。 简介有时，有必要使用本地（">
 <meta name="twitter:image" content="http://yoursite.com/2020/04/11/JNI总结/Java和JNI基本类型对照表.png">
   
     <link rel="alternative" href="/atom.xml" title="xoyolucas&#39;s blog" type="application/atom+xml">
@@ -183,6 +183,12 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>JNI是<strong>Java Native Interface(Java本地接口)</strong>的缩写，通过使用Java本地接口书写程序，可以确保代码在不同的平台上方便移植。从Java1.1开始，JNI标准成为java平台的一部分，它允许Java代码和其他语言写的代码进行交互。JNI一开始是为了本地已编译语言，尤其是C和C++而设计的，但是这并不妨碍使用其他编程语言，只要调用约定受支持就可以了。</p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>有时，有必要使用本地（非Java）代码（例如C/C++）来克服Java中的内存管理和性能约束。Java通过Java本地接口（JNI）支持本地代码。<br>JNI较为困难，因为它涉及两种语言和编译运行。<br>首先要熟悉：</p>
+<ol>
+<li>Java</li>
+<li>C/C++和GCC编译器（请阅读”<a href="https://www3.ntu.edu.sg/home/ehchua/programming/cpp/gcc_make.html" target="_blank" rel="noopener">GCC和Make</a>“）。<br>对于Windows）</li>
+<li>Cygwin或MinGW（请阅读”<a href="https://www3.ntu.edu.sg/home/ehchua/programming/howto/Cygwin_HowTo.html" target="_blank" rel="noopener">如何设置Cygwin和MinGW</a>“）。</li>
+</ol>
 <p>步骤：</p>
 <ol>
 <li>编写带有native声明的方法的java类</li>
@@ -194,10 +200,10 @@
 <li>java类中加载dll，然后调用声明的native方法，java类中加载dll:System.loadLibrary(“NativeCode”);</li>
 </ol>
 <a id="more"></a>
-<h2 id="数据类型与描述符"><a href="#数据类型与描述符" class="headerlink" title="数据类型与描述符"></a>数据类型与描述符</h2><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>JNI定义的数据类型起到了衔接C/C++ 与JAVA的作用。 C/C++ 与JAVA属于两种不同的语言，运行在不同的平台上，也就是说C/C++ 是没有办法识别JAVA中的类型的，比如C/C++ 的整型int与Java整形int无法直接互换直接使用的。那么JNI内部再定义一套数据类型映射C/C++与JAVA之间的数据类型。<br>JAVA Native方法的String类型在JNI变成jstring类型，而C/C++ 也无法识别jstring，需要通过env提供的函数指针转换成C/C++ 可使用数据类型char。可见JNI定义的数据类型是C/C++ 与JAVA的衔接媒介。 再来看看JNI数据类型与JAVA数据类型的映射关系表：</p>
+<h3 id="数据类型与描述符"><a href="#数据类型与描述符" class="headerlink" title="数据类型与描述符"></a>数据类型与描述符</h3><h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><p>JNI定义的数据类型起到了衔接C/C++ 与JAVA的作用。 C/C++ 与JAVA属于两种不同的语言，运行在不同的平台上，也就是说C/C++ 是没有办法识别JAVA中的类型的，比如C/C++ 的整型int与Java整形int无法直接互换直接使用的。那么JNI内部再定义一套数据类型映射C/C++与JAVA之间的数据类型。<br>JAVA Native方法的String类型在JNI变成jstring类型，而C/C++ 也无法识别jstring，需要通过env提供的函数指针转换成C/C++ 可使用数据类型char。可见JNI定义的数据类型是C/C++ 与JAVA的衔接媒介。 再来看看JNI数据类型与JAVA数据类型的映射关系表：</p>
 <center><img src="/2020/04/11/JNI总结/Java和JNI基本类型对照表.png" width="70%"></center><br><center><img src="/2020/04/11/JNI总结/Java与JNI引用类型对照表.png" width="70%"></center>
 
-<h2 id="注册方式"><a href="#注册方式" class="headerlink" title="注册方式"></a>注册方式</h2><h3 id="静态注册"><a href="#静态注册" class="headerlink" title="静态注册"></a>静态注册</h3><h3 id="动态注册"><a href="#动态注册" class="headerlink" title="动态注册"></a>动态注册</h3><h2 id="参考网站"><a href="#参考网站" class="headerlink" title="参考网站"></a>参考网站</h2><p><a href="https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaNativeInterface.html" target="_blank" rel="noopener">Java Programming Tutorial Java Native Interface (JNI)</a><br><a href="https://blog.csdn.net/shensky711/article/details/52806794" target="_blank" rel="noopener">JNI教程与技术手册</a><br><a href="https://blog.csdn.net/weiwei9363/article/details/97886291" target="_blank" rel="noopener">JNI 简明教程</a></p>
+<h3 id="参考网站"><a href="#参考网站" class="headerlink" title="参考网站"></a>参考网站</h3><p><a href="https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaNativeInterface.html" target="_blank" rel="noopener">Java Programming Tutorial Java Native Interface (JNI)</a><br><a href="https://blog.csdn.net/shensky711/article/details/52806794" target="_blank" rel="noopener">JNI教程与技术手册</a><br><a href="https://blog.csdn.net/weiwei9363/article/details/97886291" target="_blank" rel="noopener">JNI 简明教程</a></p>
 
       
 
@@ -334,7 +340,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据类型与描述符"><span class="toc-number">1.</span> <span class="toc-text">数据类型与描述符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据类型"><span class="toc-number">1.1.</span> <span class="toc-text">数据类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注册方式"><span class="toc-number">2.</span> <span class="toc-text">注册方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#静态注册"><span class="toc-number">2.1.</span> <span class="toc-text">静态注册</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动态注册"><span class="toc-number">2.2.</span> <span class="toc-text">动态注册</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考网站"><span class="toc-number">3.</span> <span class="toc-text">参考网站</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据类型与描述符"><span class="toc-number">2.</span> <span class="toc-text">数据类型与描述符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据类型"><span class="toc-number">2.1.</span> <span class="toc-text">数据类型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考网站"><span class="toc-number">3.</span> <span class="toc-text">参考网站</span></a></li></ol>
                     </div>
                 </span>
             </div>
