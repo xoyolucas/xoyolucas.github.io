@@ -18,7 +18,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2020/04/11/JNI总结/Java和JNI基本类型对照表.png">
 <meta property="og:image" content="http://yoursite.com/2020/04/11/JNI总结/Java与JNI引用类型对照表.png">
-<meta property="og:updated_time" content="2020-04-19T16:06:26.000Z">
+<meta property="og:updated_time" content="2020-04-22T14:07:20.084Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JNI总结">
 <meta name="twitter:description" content="JNI是Java Native Interface(Java本地接口)的缩写，通过使用Java本地接口书写程序，可以确保代码在不同的平台上方便移植。从Java1.1开始，JNI标准成为java平台的一部分，它允许Java代码和其他语言写的代码进行交互。JNI一开始是为了本地已编译语言，尤其是C和C++而设计的，但是这并不妨碍使用其他编程语言，只要调用约定受支持就可以了。 简介有时，有必要使用本地（">
@@ -183,7 +183,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>JNI是<strong>Java Native Interface(Java本地接口)</strong>的缩写，通过使用Java本地接口书写程序，可以确保代码在不同的平台上方便移植。从Java1.1开始，JNI标准成为java平台的一部分，它允许Java代码和其他语言写的代码进行交互。JNI一开始是为了本地已编译语言，尤其是C和C++而设计的，但是这并不妨碍使用其他编程语言，只要调用约定受支持就可以了。</p>
-<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>有时，有必要使用本地（非Java）代码（例如C/C++）来克服Java中的内存管理和性能约束。Java通过Java本地接口（JNI）支持本地代码。<br>JNI较为困难，因为它涉及两种语言和编译运行。<br>首先要熟悉：</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>有时，有必要使用本地（非Java）代码（例如C/C++）来克服Java中的内存管理和性能约束。Java通过Java本地接口（JNI）支持本地代码。<br>JNI较为困难，因为它涉及两种语言和编译运行。<br>首先要熟悉：</p>
 <ol>
 <li>Java</li>
 <li>C/C++和GCC编译器（请阅读”<a href="https://www3.ntu.edu.sg/home/ehchua/programming/cpp/gcc_make.html" target="_blank" rel="noopener">GCC和Make</a>“）。</li>
@@ -205,7 +205,7 @@
 
 
 
-<h3 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h3><h4 id="使用C的JNI"><a href="#使用C的JNI" class="headerlink" title="使用C的JNI"></a>使用C的JNI</h4><p><strong>步骤1：编写使用C代码的Java类的HelloJNI.java</strong></p>
+<h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><h3 id="使用C的JNI"><a href="#使用C的JNI" class="headerlink" title="使用C的JNI"></a>使用C的JNI</h3><p><strong>步骤1：编写使用C代码的Java类的HelloJNI.java</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloJNI</span> </span>&#123;  <span class="comment">// Save as HelloJNI.java</span></span><br><span class="line">   <span class="keyword">static</span> &#123;</span><br><span class="line">      System.loadLibrary(<span class="string">"hello"</span>); <span class="comment">// Load native library hello.dll (Windows) or libhello.so (Unixes)</span></span><br><span class="line">                                   <span class="comment">//  at runtime</span></span><br><span class="line">                                   <span class="comment">// This library contains a native method called sayHello()</span></span><br><span class="line">   &#125;</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// Declare an instance native method sayHello() which receives no parameter and returns void</span></span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">sayHello</span><span class="params">()</span></span>;</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// Test Driver</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">new</span> HelloJNI().sayHello();  <span class="comment">// Create an instance and invoke the native method</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在类加载时，<em>静态初始化</em>调用<code>System.loadLibrary()</code>加载本地库<code>hello</code>（其中包含本地方法<code>sayHello()</code>），映射到<code>hello.dll</code>(Windows)，或<code>libhello.so</code>(Unix/Mac OS X)。这个库应包含在Java的库路径（保存在<em>Java系统变量</em> <code>java.library.path</code>）。可以通过VM参数<code>-Djava.library.path=*/path/to/lib*</code>引入库到Java的库路径。若程序在运行时找不到库，将抛出<code>UnsatisfiedLinkError</code>错误。</p>
 <p>接下来，我们通过关键字<code>native</code>声明<code>sayHello()</code>函数为本地方法，表示该函数是用另一种语言实现的。本地方法不包含主体。<code>sayHello()</code>应通过本地库中找到。该<code>main()</code>方法分配一个实例<code>HelloJNI</code>并调用本地方法<code>sayHello()</code>。</p>
@@ -214,7 +214,13 @@
 <p>通过<code>-h dir</code>选项生成C/C++头文件并将其放置在指定的目录中（在上面的示例中，’.’对应当前目录）</p>
 <p>检查头文件<code>HelloJNI.h</code>：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* DO NOT EDIT THIS FILE - it is machine generated */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;jni.h&gt;</span></span></span><br><span class="line"><span class="comment">/* Header for class HelloJNI */</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _Included_HelloJNI</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _Included_HelloJNI</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> &#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Class:     HelloJNI</span></span><br><span class="line"><span class="comment"> * Method:    sayHello</span></span><br><span class="line"><span class="comment"> * Signature: ()V</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">JNIEXPORT <span class="keyword">void</span> JNICALL <span class="title">Java_HelloJNI_sayHello</span><span class="params">(JNIEnv *, jobject)</span></span>;</span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
-<h3 id="参考网站"><a href="#参考网站" class="headerlink" title="参考网站"></a>参考网站</h3><p><a href="https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaNativeInterface.html" target="_blank" rel="noopener">Java Programming Tutorial Java Native Interface (JNI)</a><br><a href="https://blog.csdn.net/shensky711/article/details/52806794" target="_blank" rel="noopener">JNI教程与技术手册</a><br><a href="https://blog.csdn.net/weiwei9363/article/details/97886291" target="_blank" rel="noopener">JNI 简明教程</a></p>
+<h3 id="JNI-with-C"><a href="#JNI-with-C" class="headerlink" title="JNI with C++"></a>JNI with C++</h3><h3 id="JNI-with-C-C-混合"><a href="#JNI-with-C-C-混合" class="headerlink" title="JNI with C/C++ 混合"></a>JNI with C/C++ 混合</h3><p>&nbsp;</p>
+<h2 id="JNI-基础知识"><a href="#JNI-基础知识" class="headerlink" title="JNI 基础知识"></a>JNI 基础知识</h2><p>&nbsp;</p>
+<h2 id="在Java和本地程序之间传递参数和结果"><a href="#在Java和本地程序之间传递参数和结果" class="headerlink" title="在Java和本地程序之间传递参数和结果"></a>在Java和本地程序之间传递参数和结果</h2><p>&nbsp;</p>
+<h2 id="访问Java对象变量和回调Java方法"><a href="#访问Java对象变量和回调Java方法" class="headerlink" title="访问Java对象变量和回调Java方法"></a>访问Java对象变量和回调Java方法</h2><p>&nbsp;</p>
+<h2 id="创建对象和对象数组"><a href="#创建对象和对象数组" class="headerlink" title="创建对象和对象数组"></a>创建对象和对象数组</h2><p>&nbsp;</p>
+<h2 id="本地和全局引用"><a href="#本地和全局引用" class="headerlink" title="本地和全局引用"></a>本地和全局引用</h2><p>&nbsp;</p>
+<h2 id="参考网站"><a href="#参考网站" class="headerlink" title="参考网站"></a>参考网站</h2><p><a href="https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaNativeInterface.html" target="_blank" rel="noopener">Java Programming Tutorial Java Native Interface (JNI)</a><br><a href="https://blog.csdn.net/shensky711/article/details/52806794" target="_blank" rel="noopener">JNI教程与技术手册</a><br><a href="https://blog.csdn.net/weiwei9363/article/details/97886291" target="_blank" rel="noopener">JNI 简明教程</a></p>
 
       
 
@@ -351,7 +357,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据类型与描述符"><span class="toc-number">2.</span> <span class="toc-text">数据类型与描述符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据类型"><span class="toc-number">2.1.</span> <span class="toc-text">数据类型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#入门"><span class="toc-number">3.</span> <span class="toc-text">入门</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#使用C的JNI"><span class="toc-number">3.1.</span> <span class="toc-text">使用C的JNI</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#步骤2：编译Java程序HelloJNI-java并生成C-C-头文件HelloJNI-h"><span class="toc-number">3.1.1.</span> <span class="toc-text">步骤2：编译Java程序HelloJNI.java并生成C/C++头文件HelloJNI.h</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考网站"><span class="toc-number">4.</span> <span class="toc-text">参考网站</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据类型与描述符"><span class="toc-number">1.1.</span> <span class="toc-text">数据类型与描述符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据类型"><span class="toc-number">1.1.1.</span> <span class="toc-text">数据类型</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#入门"><span class="toc-number">2.</span> <span class="toc-text">入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用C的JNI"><span class="toc-number">2.1.</span> <span class="toc-text">使用C的JNI</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#步骤2：编译Java程序HelloJNI-java并生成C-C-头文件HelloJNI-h"><span class="toc-number">2.1.0.1.</span> <span class="toc-text">步骤2：编译Java程序HelloJNI.java并生成C/C++头文件HelloJNI.h</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JNI-with-C"><span class="toc-number">2.2.</span> <span class="toc-text">JNI with C++</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JNI-with-C-C-混合"><span class="toc-number">2.3.</span> <span class="toc-text">JNI with C/C++ 混合</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#JNI-基础知识"><span class="toc-number">3.</span> <span class="toc-text">JNI 基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在Java和本地程序之间传递参数和结果"><span class="toc-number">4.</span> <span class="toc-text">在Java和本地程序之间传递参数和结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#访问Java对象变量和回调Java方法"><span class="toc-number">5.</span> <span class="toc-text">访问Java对象变量和回调Java方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建对象和对象数组"><span class="toc-number">6.</span> <span class="toc-text">创建对象和对象数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#本地和全局引用"><span class="toc-number">7.</span> <span class="toc-text">本地和全局引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考网站"><span class="toc-number">8.</span> <span class="toc-text">参考网站</span></a></li>
                     </div>
                 </span>
             </div>
@@ -528,11 +534,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">STL</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color4">STL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -544,15 +550,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pandas</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ns-3</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">仿真工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pandas</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -584,11 +590,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PSO</a>
+                <a href="javascript:void(0)" class="js-tag color4">Linear programming</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Linear programming</a>
+                <a href="javascript:void(0)" class="js-tag color4">PSO</a>
               </li>
              
               <li class="article-tag-list-item">
