@@ -18,7 +18,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2020/04/11/JNI总结/Java和JNI基本类型对照表.png">
 <meta property="og:image" content="http://yoursite.com/2020/04/11/JNI总结/Java与JNI引用类型对照表.png">
-<meta property="og:updated_time" content="2020-04-24T16:33:55.577Z">
+<meta property="og:updated_time" content="2020-04-24T16:43:03.564Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JNI总结">
 <meta name="twitter:description" content="JNI是Java Native Interface(Java本地接口)的缩写，通过使用Java本地接口书写程序，可以确保代码在不同的平台上方便移植。从Java1.1开始，JNI标准成为java平台的一部分，它允许Java代码和其他语言写的代码进行交互。JNI一开始是为了本地已编译语言，尤其是C和C++而设计的，但是这并不妨碍使用其他编程语言，只要调用约定受支持就可以了。 简介有时，有必要使用本地（">
@@ -244,7 +244,12 @@
 <p><strong>步骤5：运行Java程序</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; java HelloJNI</span><br><span class="line"></span><br><span class="line">// 如果出现UnsatisfiedLinkError错误，原因是VM标准路径下找不到这个库。Java library path中<span class="string">"hello.dll"</span> (Windows),<span class="string">"libHello.so"</span> (Unixes),<span class="string">"libhello.dylib"</span> (Mac OS X)。如下命令，指定本地库地址，其中<span class="string">'.'</span>表示当前文件夹。</span><br><span class="line"></span><br><span class="line">&gt; java -Djava.library.path=. HelloJNI</span><br></pre></td></tr></table></figure>
 <p>&nbsp;</p>
-<h3 id="JNI-with-C"><a href="#JNI-with-C" class="headerlink" title="JNI with C++"></a>JNI with C++</h3><p>使用C++程序HelloJNI.cpp代替C程序</p>
+<h3 id="JNI-with-C"><a href="#JNI-with-C" class="headerlink" title="JNI with C++"></a>JNI with C++</h3><p>使用C++程序HelloJNI.cpp代替C程序，步骤与之前类似。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Save as "HelloJNI.cpp"</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;jni.h&gt;       // JNI header provided by JDK</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;    // C++ standard IO header</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"HelloJNI.h"</span>  <span class="comment">// Generated</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Implementation of the native method sayHello()</span></span><br><span class="line"><span class="function">JNIEXPORT <span class="keyword">void</span> JNICALL <span class="title">Java_HelloJNI_sayHello</span><span class="params">(JNIEnv *env, jobject thisObj)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"Hello World from C++!"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">   <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>(Windows) 64-bit JDK，使用<code>mingw64-x86-gcc-g++</code> 编译，同样也可以直接配置IDE生成dll库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; x86_64-w64-mingw32-g++ -I<span class="string">"%JAVA_HOME%\include"</span> -I<span class="string">"%JAVA_HOME%\include\win32"</span> -shared -o hello.dll HelloJNI.cpp</span><br></pre></td></tr></table></figure>
+<p>(Ubuntu) 64-bit JDK</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ g++ -fPIC -I<span class="string">"<span class="variable">$JAVA_HOME</span>/include"</span> -I<span class="string">"<span class="variable">$JAVA_HOME</span>/include/linux"</span> -shared -o libhello.so HelloJNI.cpp</span><br></pre></td></tr></table></figure>
 <p>&nbsp;</p>
 <h3 id="JNI-with-C-C-混合"><a href="#JNI-with-C-C-混合" class="headerlink" title="JNI with C/C++ 混合"></a>JNI with C/C++ 混合</h3><p><strong>步骤1：编写Java类HelloJNICpp.java运行本地程序</strong></p>
 <p><strong>步骤2：编译Java程序并生成C/C++头文件HelloJNICpp.h</strong></p>
@@ -558,15 +563,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JNI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -578,19 +583,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ns-3</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">仿真工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ns-3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">仿真工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -626,15 +631,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Linear programming</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PSO</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ACO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Linear programming</a>
               </li>
             
             <div class="clearfix"></div>
