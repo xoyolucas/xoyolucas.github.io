@@ -18,7 +18,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2020/04/11/JNI总结/Java和JNI基本类型对照表.png">
 <meta property="og:image" content="http://yoursite.com/2020/04/11/JNI总结/Java与JNI引用类型对照表.png">
-<meta property="og:updated_time" content="2020-04-24T16:31:57.195Z">
+<meta property="og:updated_time" content="2020-04-24T16:33:55.577Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JNI总结">
 <meta name="twitter:description" content="JNI是Java Native Interface(Java本地接口)的缩写，通过使用Java本地接口书写程序，可以确保代码在不同的平台上方便移植。从Java1.1开始，JNI标准成为java平台的一部分，它允许Java代码和其他语言写的代码进行交互。JNI一开始是为了本地已编译语言，尤其是C和C++而设计的，但是这并不妨碍使用其他编程语言，只要调用约定受支持就可以了。 简介有时，有必要使用本地（">
@@ -241,7 +241,6 @@
 <li>Run the Java Program:</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ java -Djava.library.path=. HelloJNI</span><br></pre></td></tr></table></figure>
-<p>&nbsp;</p>
 <p><strong>步骤5：运行Java程序</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; java HelloJNI</span><br><span class="line"></span><br><span class="line">// 如果出现UnsatisfiedLinkError错误，原因是VM标准路径下找不到这个库。Java library path中<span class="string">"hello.dll"</span> (Windows),<span class="string">"libHello.so"</span> (Unixes),<span class="string">"libhello.dylib"</span> (Mac OS X)。如下命令，指定本地库地址，其中<span class="string">'.'</span>表示当前文件夹。</span><br><span class="line"></span><br><span class="line">&gt; java -Djava.library.path=. HelloJNI</span><br></pre></td></tr></table></figure>
 <p>&nbsp;</p>
@@ -547,19 +546,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -571,6 +566,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
@@ -579,19 +578,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ns-3</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">仿真工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -631,11 +630,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Linear programming</a>
+                <a href="javascript:void(0)" class="js-tag color4">ACO</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ACO</a>
+                <a href="javascript:void(0)" class="js-tag color4">Linear programming</a>
               </li>
             
             <div class="clearfix"></div>
