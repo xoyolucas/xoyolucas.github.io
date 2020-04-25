@@ -18,7 +18,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2020/04/11/JNI总结/Java和JNI基本类型对照表.png">
 <meta property="og:image" content="http://yoursite.com/2020/04/11/JNI总结/Java与JNI引用类型对照表.png">
-<meta property="og:updated_time" content="2020-04-25T11:10:55.375Z">
+<meta property="og:updated_time" content="2020-04-25T13:57:00.473Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JNI总结">
 <meta name="twitter:description" content="JNI是Java Native Interface(Java本地接口)的缩写，通过使用Java本地接口书写程序，可以确保代码在不同的平台上方便移植。从Java1.1开始，JNI标准成为java平台的一部分，它允许Java代码和其他语言写的代码进行交互。JNI一开始是为了本地已编译语言，尤其是C和C++而设计的，但是这并不妨碍使用其他编程语言，只要调用约定受支持就可以了。 简介有时，有必要使用本地（">
@@ -293,7 +293,25 @@
 </ol>
 <p>在JNI编程最麻烦和具有挑战性的任务是JNI类型（如<code>jstring</code>，<code>jobject</code>，<code>jintArray</code>，<code>jobjectArray</code>）和本地类型（<code>string</code>，<code>int[]</code>）之间的转换。JNI Environment提供了很大接口帮助执行许多转换的功能。</p>
 <p>&nbsp;</p>
-<h2 id="在Java和本地程序之间传递参数和结果"><a href="#在Java和本地程序之间传递参数和结果" class="headerlink" title="在Java和本地程序之间传递参数和结果"></a>在Java和本地程序之间传递参数和结果</h2><p>&nbsp;</p>
+<h2 id="在Java和本地程序之间传递参数和结果"><a href="#在Java和本地程序之间传递参数和结果" class="headerlink" title="在Java和本地程序之间传递参数和结果"></a>在Java和本地程序之间传递参数和结果</h2><p><strong>传递基本类型：</strong><br>传递Java基本类型比较简单。甲<code>jxxx</code>类型已经在本地系统中定义，即<code>jint</code>，<code>jbyte</code>，<code>jshort</code>，<code>jlong</code>，<code>jfloat</code>，<code>jdouble</code>，<code>jchar</code>和<code>jboolean</code>分别对应Java的<code>int</code>，<code>byte</code>，<code>short</code>，<code>long</code>，<code>float</code>，<code>double</code>，<code>char</code>和<code>boolean</code>基本类型。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestJNIPrimitive</span> </span>&#123;</span><br><span class="line">   <span class="keyword">static</span> &#123;</span><br><span class="line">      System.loadLibrary(<span class="string">"myjni"</span>); <span class="comment">// myjni.dll (Windows) or libmyjni.so (Unixes)</span></span><br><span class="line">   &#125;</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// Declare a native method average() that receives two ints and return a double containing the average</span></span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">native</span> <span class="keyword">double</span> <span class="title">average</span><span class="params">(<span class="keyword">int</span> n1, <span class="keyword">int</span> n2)</span></span>;</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// Test Driver</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">      System.out.println(<span class="string">"In Java, the average is "</span> + <span class="keyword">new</span> TestJNIPrimitive().average(<span class="number">3</span>, <span class="number">2</span>));</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个JNI程序加载了myjni.dll（windows）库或者libmyjni.so（类UNIX）库。并且声明了一个native方法，这个函数接受两个int类型的参数，并且返回一个double类型的返回值，这个值是两个int型数的平均值。mian方法调用了average函数。<br>下面，我们将上面的java代码编译成TestJNIPrimitive.class，进而生成C/C++头文件TestJNIPrimitive.h：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javac -h . TestJNIPrimitive.java</span><br></pre></td></tr></table></figure>
+<p>实现C++实现本地程序</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;jni.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"TestJNIPrimitive.h"</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"> </span><br><span class="line">JNIEXPORT jdouble JNICALL Java_TestJNIPrimitive_average</span><br><span class="line">          (JNIEnv *env, jobject obj, jint n1, jint n2) &#123;</span><br><span class="line">   jdouble result;</span><br><span class="line">   <span class="built_in">cout</span> &lt;&lt; <span class="string">"In C++, the numbers are "</span> &lt;&lt; n1 &lt;&lt; <span class="string">" and "</span> &lt;&lt; n2 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">   result = ((jdouble)n1 + n2) / <span class="number">2.0</span>;</span><br><span class="line">   <span class="comment">// jint is mapped to int, jdouble is mapped to double</span></span><br><span class="line">   <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译C++程序，或者使用IDE编译生成动态链接库dll</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; g++ -I<span class="string">"%JAVA_HOME%\include"</span> -I<span class="string">"%JAVA_HOME%\include\win32"</span> -shared -o myjni.dll TestJNIPrimitive.cpp</span><br><span class="line">or</span><br><span class="line">&gt; g++ -Wl,--add-stdcall-alias -I<span class="string">"%JAVA_HOME%\include"</span> -I<span class="string">"%JAVA_HOME%\include\win32"</span> -shared -o myjni.dll TestJNIPrimitive.cpp</span><br></pre></td></tr></table></figure>
+<p>运行java程序</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -Djava.library.path=. TestJNIPrimitive</span><br></pre></td></tr></table></figure>
+<p><strong>传递字符串：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestJNIString</span> </span>&#123;</span><br><span class="line">   <span class="keyword">static</span> &#123;</span><br><span class="line">      System.loadLibrary(<span class="string">"myjni"</span>); <span class="comment">// myjni.dll (Windows) or libmyjni.so (Unixes)</span></span><br><span class="line">   &#125;</span><br><span class="line">   <span class="comment">// Native method that receives a Java String and return a Java String</span></span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">native</span> String <span class="title">sayHello</span><span class="params">(String msg)</span></span>;</span><br><span class="line"> </span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">      String result = <span class="keyword">new</span> TestJNIString().sayHello(<span class="string">"Hello from Java"</span>);</span><br><span class="line">      System.out.println(<span class="string">"In Java, the returned string is: "</span> + result);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的代码声明了一个native函数sayHello，这个函数接受一个java的String，然后返回一个Java String，main方法调用了sayHello函数。然后，编译上面的代码，并且生成C/C++的头文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; javac -h . TestJNIString.java</span><br></pre></td></tr></table></figure>
+<p>请注意，C++字符串函数与C的语法不同。在C ++中，可以使用<code>env-&gt;</code>代替<code>(env*)-&gt;</code>。此外，在C ++函数中不需要参数<code>JNIEnv*</code>。C ++的<code>string</code>类比C字符串（char数组）更加易用。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;jni.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"TestJNIString.h"</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"> </span><br><span class="line"><span class="function">JNIEXPORT jstring JNICALL <span class="title">Java_TestJNIString_sayHello</span><span class="params">(JNIEnv *env, jobject thisObj, jstring inJNIStr)</span> </span>&#123;</span><br><span class="line">   <span class="comment">// Step 1: Convert the JNI String (jstring) into C-String (char*)</span></span><br><span class="line">   <span class="keyword">const</span> <span class="keyword">char</span> *inCStr = env-&gt;GetStringUTFChars(inJNIStr, <span class="literal">NULL</span>);</span><br><span class="line">   <span class="keyword">if</span> (<span class="literal">NULL</span> == inCStr) <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// Step 2: Perform its intended operations</span></span><br><span class="line">   <span class="built_in">cout</span> &lt;&lt; <span class="string">"In C++, the received string is: "</span> &lt;&lt; inCStr &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">   env-&gt;ReleaseStringUTFChars(inJNIStr, inCStr);  <span class="comment">// release resources</span></span><br><span class="line"> </span><br><span class="line">   <span class="comment">// Prompt user for a C++ string</span></span><br><span class="line">   <span class="built_in">string</span> outCppStr;</span><br><span class="line">   <span class="built_in">cout</span> &lt;&lt; <span class="string">"Enter a String: "</span>;</span><br><span class="line">   <span class="built_in">cin</span> &gt;&gt; outCppStr;</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// Step 3: Convert the C++ string to C-string, then to JNI String (jstring) and return</span></span><br><span class="line">   <span class="keyword">return</span> env-&gt;NewStringUTF(outCppStr.c_str());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用g++编译上面的代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; g++ -I<span class="string">"&lt;JAVA_HOME&gt;\include"</span> -I<span class="string">"&lt;JAVA_HOME&gt;\include\win32"</span> -shared -o myjni.dll TestJNIString.cpp</span><br><span class="line">// or</span><br><span class="line">&gt; g++ -Wl,--add-stdcall-alias -I<span class="string">"&lt;JAVA_HOME&gt;\include"</span> -I<span class="string">"&lt;JAVA_HOME&gt;\include\win32"</span> -shared -o myjni.dll TestJNIString.cpp</span><br></pre></td></tr></table></figure>
+<p>&nbsp;</p>
 <h2 id="访问Java对象变量和回调Java方法"><a href="#访问Java对象变量和回调Java方法" class="headerlink" title="访问Java对象变量和回调Java方法"></a>访问Java对象变量和回调Java方法</h2><p>&nbsp;</p>
 <h2 id="创建对象和对象数组"><a href="#创建对象和对象数组" class="headerlink" title="创建对象和对象数组"></a>创建对象和对象数组</h2><p>&nbsp;</p>
 <h2 id="本地和全局引用"><a href="#本地和全局引用" class="headerlink" title="本地和全局引用"></a>本地和全局引用</h2><p>&nbsp;</p>
@@ -587,15 +605,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -604,10 +626,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JNI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -627,15 +645,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pandas</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ns-3</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">仿真工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pandas</a>
               </li>
              
               <li class="article-tag-list-item">
