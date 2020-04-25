@@ -18,7 +18,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2020/04/11/JNI总结/Java和JNI基本类型对照表.png">
 <meta property="og:image" content="http://yoursite.com/2020/04/11/JNI总结/Java与JNI引用类型对照表.png">
-<meta property="og:updated_time" content="2020-04-25T13:57:00.473Z">
+<meta property="og:updated_time" content="2020-04-25T13:59:27.375Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JNI总结">
 <meta name="twitter:description" content="JNI是Java Native Interface(Java本地接口)的缩写，通过使用Java本地接口书写程序，可以确保代码在不同的平台上方便移植。从Java1.1开始，JNI标准成为java平台的一部分，它允许Java代码和其他语言写的代码进行交互。JNI一开始是为了本地已编译语言，尤其是C和C++而设计的，但是这并不妨碍使用其他编程语言，只要调用约定受支持就可以了。 简介有时，有必要使用本地（">
@@ -311,6 +311,8 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;jni.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"TestJNIString.h"</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"> </span><br><span class="line"><span class="function">JNIEXPORT jstring JNICALL <span class="title">Java_TestJNIString_sayHello</span><span class="params">(JNIEnv *env, jobject thisObj, jstring inJNIStr)</span> </span>&#123;</span><br><span class="line">   <span class="comment">// Step 1: Convert the JNI String (jstring) into C-String (char*)</span></span><br><span class="line">   <span class="keyword">const</span> <span class="keyword">char</span> *inCStr = env-&gt;GetStringUTFChars(inJNIStr, <span class="literal">NULL</span>);</span><br><span class="line">   <span class="keyword">if</span> (<span class="literal">NULL</span> == inCStr) <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// Step 2: Perform its intended operations</span></span><br><span class="line">   <span class="built_in">cout</span> &lt;&lt; <span class="string">"In C++, the received string is: "</span> &lt;&lt; inCStr &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">   env-&gt;ReleaseStringUTFChars(inJNIStr, inCStr);  <span class="comment">// release resources</span></span><br><span class="line"> </span><br><span class="line">   <span class="comment">// Prompt user for a C++ string</span></span><br><span class="line">   <span class="built_in">string</span> outCppStr;</span><br><span class="line">   <span class="built_in">cout</span> &lt;&lt; <span class="string">"Enter a String: "</span>;</span><br><span class="line">   <span class="built_in">cin</span> &gt;&gt; outCppStr;</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// Step 3: Convert the C++ string to C-string, then to JNI String (jstring) and return</span></span><br><span class="line">   <span class="keyword">return</span> env-&gt;NewStringUTF(outCppStr.c_str());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>使用g++编译上面的代码：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; g++ -I<span class="string">"&lt;JAVA_HOME&gt;\include"</span> -I<span class="string">"&lt;JAVA_HOME&gt;\include\win32"</span> -shared -o myjni.dll TestJNIString.cpp</span><br><span class="line">// or</span><br><span class="line">&gt; g++ -Wl,--add-stdcall-alias -I<span class="string">"&lt;JAVA_HOME&gt;\include"</span> -I<span class="string">"&lt;JAVA_HOME&gt;\include\win32"</span> -shared -o myjni.dll TestJNIString.cpp</span><br></pre></td></tr></table></figure>
+<p>运行java程序</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; java TestJNIString</span><br><span class="line">In C++, the received string is: Hello from Java</span><br><span class="line">Enter a String: <span class="built_in">test</span></span><br><span class="line">In Java, the returned string is: <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
 <p>&nbsp;</p>
 <h2 id="访问Java对象变量和回调Java方法"><a href="#访问Java对象变量和回调Java方法" class="headerlink" title="访问Java对象变量和回调Java方法"></a>访问Java对象变量和回调Java方法</h2><p>&nbsp;</p>
 <h2 id="创建对象和对象数组"><a href="#创建对象和对象数组" class="headerlink" title="创建对象和对象数组"></a>创建对象和对象数组</h2><p>&nbsp;</p>
@@ -605,19 +607,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">CMake</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -629,11 +627,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">STL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -661,10 +663,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">BFS</a>
               </li>
              
@@ -673,15 +671,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">sort</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">maximum flow problem</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">route</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">sort</a>
               </li>
              
               <li class="article-tag-list-item">
