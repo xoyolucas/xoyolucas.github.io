@@ -18,7 +18,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2020/04/11/JNI总结/Java和JNI基本类型对照表.png">
 <meta property="og:image" content="http://yoursite.com/2020/04/11/JNI总结/Java与JNI引用类型对照表.png">
-<meta property="og:updated_time" content="2020-04-25T13:59:27.375Z">
+<meta property="og:updated_time" content="2020-04-25T17:30:11.063Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JNI总结">
 <meta name="twitter:description" content="JNI是Java Native Interface(Java本地接口)的缩写，通过使用Java本地接口书写程序，可以确保代码在不同的平台上方便移植。从Java1.1开始，JNI标准成为java平台的一部分，它允许Java代码和其他语言写的代码进行交互。JNI一开始是为了本地已编译语言，尤其是C和C++而设计的，但是这并不妨碍使用其他编程语言，只要调用约定受支持就可以了。 简介有时，有必要使用本地（">
@@ -313,6 +313,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; g++ -I<span class="string">"&lt;JAVA_HOME&gt;\include"</span> -I<span class="string">"&lt;JAVA_HOME&gt;\include\win32"</span> -shared -o myjni.dll TestJNIString.cpp</span><br><span class="line">// or</span><br><span class="line">&gt; g++ -Wl,--add-stdcall-alias -I<span class="string">"&lt;JAVA_HOME&gt;\include"</span> -I<span class="string">"&lt;JAVA_HOME&gt;\include\win32"</span> -shared -o myjni.dll TestJNIString.cpp</span><br></pre></td></tr></table></figure>
 <p>运行java程序</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; java TestJNIString</span><br><span class="line">In C++, the received string is: Hello from Java</span><br><span class="line">Enter a String: <span class="built_in">test</span></span><br><span class="line">In Java, the returned string is: <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<p><strong>传递数组：</strong></p>
 <p>&nbsp;</p>
 <h2 id="访问Java对象变量和回调Java方法"><a href="#访问Java对象变量和回调Java方法" class="headerlink" title="访问Java对象变量和回调Java方法"></a>访问Java对象变量和回调Java方法</h2><p>&nbsp;</p>
 <h2 id="创建对象和对象数组"><a href="#创建对象和对象数组" class="headerlink" title="创建对象和对象数组"></a>创建对象和对象数组</h2><p>&nbsp;</p>
@@ -607,11 +608,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
+                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
+                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -631,10 +632,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">STL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
@@ -644,6 +641,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">STL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -663,15 +664,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">BFS</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
               </li>
              
               <li class="article-tag-list-item">
