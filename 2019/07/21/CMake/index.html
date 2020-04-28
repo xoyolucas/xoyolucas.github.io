@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="xoyolucas&#39;s blog">
 <meta property="og:description" content="CMake简介过去的Make工具，例如GNU Make，QT的qmake，微软的MS nmake，BSD Make（pmake），Makepp等等，遵循着不同的规范和标准，所执行的 Makefile 格式也千差万别。CMake是一个跨平台的、开源的构建工具。CMake是makefile的上层工具，目的是为了产生可移植的makefile，并简化自己动手写makefile时的巨大工作量。目前很多开源的">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-13T10:03:39.152Z">
+<meta property="og:updated_time" content="2020-04-28T14:53:46.658Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CMake介绍和基本语法">
 <meta name="twitter:description" content="CMake简介过去的Make工具，例如GNU Make，QT的qmake，微软的MS nmake，BSD Make（pmake），Makepp等等，遵循着不同的规范和标准，所执行的 Makefile 格式也千差万别。CMake是一个跨平台的、开源的构建工具。CMake是makefile的上层工具，目的是为了产生可移植的makefile，并简化自己动手写makefile时的巨大工作量。目前很多开源的">
@@ -201,12 +201,7 @@
 <h3 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h3><p>foreach也支持break(),continue()命令操作。<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">foreach</span>(循环变量 参数<span class="number">1</span> 参数<span class="number">2</span> ...)</span><br><span class="line">  <span class="comment"># 要执行的命令块</span></span><br><span class="line">  COMMAND1(ARGS ...)</span><br><span class="line">  COMMAND2(ARGS ...)</span><br><span class="line"><span class="keyword">endforeach</span>(循环变量)</span><br><span class="line"><span class="comment">#或</span></span><br><span class="line"><span class="comment">#循环的范围从start ～stop ，循环增量为step，start\stop\step可省略</span></span><br><span class="line"><span class="keyword">foreach</span>(循环变量 RANGE [start] [stop] [step])</span><br><span class="line">  <span class="comment"># 要执行的命令块</span></span><br><span class="line">  COMMAND1(ARGS ...)</span><br><span class="line">  COMMAND2(ARGS ...)</span><br><span class="line"><span class="keyword">endforeach</span>(循环变量)</span><br><span class="line"><span class="comment">#或</span></span><br><span class="line"><span class="keyword">foreach</span>(loop_var IN [LISTS [list1 [...]]]</span><br><span class="line">                    [ITEMS [item1 [...]]])</span><br><span class="line"><span class="keyword">set</span>(list_var <span class="string">"1;2;3;4"</span>)</span><br><span class="line"><span class="keyword">foreach</span>(x IN LISTS list_var)</span><br><span class="line">  <span class="keyword">message</span>(<span class="string">"  $&#123;x&#125;"</span>)</span><br><span class="line"><span class="keyword">endforeach</span>(x)</span><br></pre></td></tr></table></figure></p>
 <h3 id="自定义命令"><a href="#自定义命令" class="headerlink" title="自定义命令"></a>自定义命令</h3><p>命令可以带字符串参数，但没有返回值。命令名是大小写不敏感的，所以SET和set表示同一个命令，但是命令带的参数名是大小写敏感的ARG和arg是两个不同的参数。<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#自定义函数命令格式：</span></span><br><span class="line"><span class="keyword">function</span>(&lt;name&gt; [arg1 [arg2 [arg3 ...]]])</span><br><span class="line"><span class="comment"># 自定义命令块</span></span><br><span class="line">  COMMAND1(ARGS ...)</span><br><span class="line">  COMMAND2(ARGS ...)</span><br><span class="line"><span class="keyword">endfunction</span>(&lt;name&gt;)</span><br></pre></td></tr></table></figure></p>
 <p>自定义了一个函数名为name，参数为arg1, arg2, arg3, …的函数命令。参数之间用空格进行分隔，如果某一参数里面包含空格最好用双引号把该参数包起来（引号内的所有字符串只当作一个参数）。如果不指定参数列表，则函数可以接受任意的参数，ARGC内置变量表明传入参数的个数，ARGV0, ARGV1, ARGV2, …内置变量可以获得对应传入的参数，ARGV内置变量可以获得整个参数列表。<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>(foo x y z)</span><br><span class="line">  <span class="keyword">message</span>(<span class="string">"Calling function 'foo':"</span>)</span><br><span class="line">  <span class="keyword">message</span>(<span class="string">"  x = $&#123;x&#125;"</span>)</span><br><span class="line">  <span class="keyword">message</span>(<span class="string">"  y = $&#123;y&#125;"</span>)</span><br><span class="line">  <span class="keyword">message</span>(<span class="string">"  z = $&#123;z&#125;"</span>)</span><br><span class="line">  <span class="keyword">message</span>(<span class="string">"ARGC = $&#123;ARGC&#125; arg1 = $&#123;ARGV0&#125; arg2 = $&#123;ARGV1&#125; arg3 = $&#123;ARGV2&#125; all args = $&#123;ARGV&#125;"</span>)</span><br><span class="line"><span class="keyword">endfunction</span>(foo)</span><br><span class="line"><span class="comment">#调用</span></span><br><span class="line">foo(<span class="string">"1"</span> <span class="string">"2"</span> <span class="string">"3"</span>)</span><br></pre></td></tr></table></figure></p>
-<h3 id="自定义宏命令"><a href="#自定义宏命令" class="headerlink" title="自定义宏命令"></a>自定义宏命令</h3><p>宏和函数的基本上是一样的，只是说函数命令有自己的作用域，宏命令的作用域和调用者的作用域一样。</p>
-<pre><code class="cmake"><span class="keyword">macro</span>(&lt;name&gt; [arg1 [arg2 [arg3 ...]]])
-  COMMAND1(ARGS ...)
-  COMMAND2(ARGS ...)
-<span class="keyword">endmacro</span>(&lt;name&gt;)
-</code></pre>
+<h3 id="自定义宏命令"><a href="#自定义宏命令" class="headerlink" title="自定义宏命令"></a>自定义宏命令</h3><p>宏和函数的基本上是一样的，只是说函数命令有自己的作用域，宏命令的作用域和调用者的作用域一样。<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">macro</span>(&lt;name&gt; [arg1 [arg2 [arg3 ...]]])</span><br><span class="line">  COMMAND1(ARGS ...)</span><br><span class="line">  COMMAND2(ARGS ...)</span><br><span class="line"><span class="keyword">endmacro</span>(&lt;name&gt;)</span><br></pre></td></tr></table></figure></p>
 <p>&emsp;</p>
 <h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><ul>
 <li>Cmake三种作用域：全局层，目录层，函数层。</li>
@@ -509,15 +504,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">CMake</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -529,15 +528,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+                <a href="javascript:void(0)" class="js-tag color4">STL</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">STL</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -18,7 +18,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2020/04/11/JNI总结/Java和JNI基本类型对照表.png">
 <meta property="og:image" content="http://yoursite.com/2020/04/11/JNI总结/Java与JNI引用类型对照表.png">
-<meta property="og:updated_time" content="2020-04-27T14:32:11.585Z">
+<meta property="og:updated_time" content="2020-04-28T14:53:49.090Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JNI总结">
 <meta name="twitter:description" content="JNI是Java Native Interface(Java本地接口)的缩写，通过使用Java本地接口书写程序，可以确保代码在不同的平台上方便移植。从Java1.1开始，JNI标准成为java平台的一部分，它允许Java代码和其他语言写的代码进行交互。JNI一开始是为了本地已编译语言，尤其是C和C++而设计的，但是这并不妨碍使用其他编程语言，只要调用约定受支持就可以了。 简介有时，有必要使用本地（">
@@ -184,7 +184,7 @@
       
         <p>JNI是<strong>Java Native Interface(Java本地接口)</strong>的缩写，通过使用Java本地接口书写程序，可以确保代码在不同的平台上方便移植。从Java1.1开始，JNI标准成为java平台的一部分，它允许Java代码和其他语言写的代码进行交互。JNI一开始是为了本地已编译语言，尤其是C和C++而设计的，但是这并不妨碍使用其他编程语言，只要调用约定受支持就可以了。</p>
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>有时，有必要使用本地（非Java）代码（例如C/C++）来克服Java中的内存管理和性能约束。Java通过Java本地接口（JNI）支持本地代码。<br>JNI较为困难，因为它涉及两种语言和编译运行。<br>首先要熟悉：<br>1、Java<br>2、C/C++和GCC编译器（请阅读”<a href="https://www3.ntu.edu.sg/home/ehchua/programming/cpp/gcc_make.html" target="_blank" rel="noopener">GCC和Make</a>“）。<br>3、(对于Windows)Cygwin或MinGW（请阅读”<a href="https://www3.ntu.edu.sg/home/ehchua/programming/howto/Cygwin_HowTo.html" target="_blank" rel="noopener">如何设置Cygwin和MinGW</a>“）。</p>
-<p><strong>步骤：</strong><br>1、编写带有native声明的方法的java类<br>2、使用javac命令编译所编写的java类<br>3、然后使用javah + java类名生成扩展名为h的头文件<br>4、使用C/C++实现本地方法<br>5、将C/C++编写的文件生成动态连接库<br>6、将dll文件加入到环境变量path路径下。<br>7、java类中加载dll，然后调用声明的native方法，java类中加载dll:System.loadLibrary(“NativeCode”);</p>
+<h3 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a><strong>基本步骤</strong></h3><p>1、编写带有native声明的方法的java类<br>2、使用javac命令编译所编写的java类<br>3、然后使用javah + java类名生成扩展名为h的头文件<br>4、使用C/C++实现本地方法<br>5、将C/C++编写的文件生成动态连接库<br>6、将dll文件加入到环境变量path路径下。<br>7、java类中加载dll，然后调用声明的native方法，java类中加载dll:System.loadLibrary(“NativeCode”);</p>
 <a id="more"></a>
 <p>&nbsp;</p>
 <h2 id="数据类型与描述符"><a href="#数据类型与描述符" class="headerlink" title="数据类型与描述符"></a>数据类型与描述符</h2><p><strong>数据类型：</strong>JNI定义的数据类型起到了衔接C/C++ 与JAVA的作用。 C/C++ 与JAVA属于两种不同的语言，运行在不同的平台上，也就是说C/C++ 是没有办法识别JAVA中的类型的，比如C/C++ 的整型int与Java整形int无法直接互换直接使用的。那么JNI内部再定义一套数据类型映射C/C++与JAVA之间的数据类型。<br>JAVA Native方法的String类型在JNI变成jstring类型，而C/C++ 也无法识别jstring，需要通过env提供的函数指针转换成C/C++ 可使用数据类型char。可见JNI定义的数据类型是C/C++ 与JAVA的衔接媒介。 再来看看JNI数据类型与JAVA数据类型的映射关系表：</p>
@@ -262,7 +262,7 @@
 </ol>
 <p>在JNI编程最麻烦和具有挑战性的任务是JNI类型（如<code>jstring</code>，<code>jobject</code>，<code>jintArray</code>，<code>jobjectArray</code>）和本地类型（<code>string</code>，<code>int[]</code>）之间的转换。JNI Environment提供了很大接口帮助执行许多转换的功能。</p>
 <p>&nbsp;</p>
-<h2 id="在Java和本地程序之间传递参数和结果"><a href="#在Java和本地程序之间传递参数和结果" class="headerlink" title="在Java和本地程序之间传递参数和结果"></a>在Java和本地程序之间传递参数和结果</h2><h3 id="传递基本类型"><a href="#传递基本类型" class="headerlink" title="传递基本类型"></a><strong>传递基本类型</strong></h3><p>传递Java基本类型比较简单。甲<code>jxxx</code>类型已经在本地系统中定义，即<code>jint</code>，<code>jbyte</code>，<code>jshort</code>，<code>jlong</code>，<code>jfloat</code>，<code>jdouble</code>，<code>jchar</code>和<code>jboolean</code>分别对应Java的<code>int</code>，<code>byte</code>，<code>short</code>，<code>long</code>，<code>float</code>，<code>double</code>，<code>char</code>和<code>boolean</code>基本类型。</p>
+<h2 id="在Java和本地程序之间传递参数和结果"><a href="#在Java和本地程序之间传递参数和结果" class="headerlink" title="在Java和本地程序之间传递参数和结果"></a>在Java和本地程序之间传递参数和结果</h2><h3 id="传递基本类型"><a href="#传递基本类型" class="headerlink" title="传递基本类型"></a><strong>传递基本类型</strong></h3><p>传递Java基本类型比较简单，<code>jxxx</code>类型已经在本地系统中定义，即<code>jint</code>，<code>jbyte</code>，<code>jshort</code>，<code>jlong</code>，<code>jfloat</code>，<code>jdouble</code>，<code>jchar</code>和<code>jboolean</code>分别对应Java的<code>int</code>，<code>byte</code>，<code>short</code>，<code>long</code>，<code>float</code>，<code>double</code>，<code>char</code>和<code>boolean</code>基本类型。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestJNIPrimitive</span> </span>&#123;</span><br><span class="line">   <span class="keyword">static</span> &#123;</span><br><span class="line">      System.loadLibrary(<span class="string">"myjni"</span>); <span class="comment">// myjni.dll (Windows) or libmyjni.so (Unixes)</span></span><br><span class="line">   &#125;</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// Declare a native method average() that receives two ints and return a double containing the average</span></span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">native</span> <span class="keyword">double</span> <span class="title">average</span><span class="params">(<span class="keyword">int</span> n1, <span class="keyword">int</span> n2)</span></span>;</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// Test Driver</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">      System.out.println(<span class="string">"In Java, the average is "</span> + <span class="keyword">new</span> TestJNIPrimitive().average(<span class="number">3</span>, <span class="number">2</span>));</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这个JNI程序加载了myjni.dll（windows）库或者libmyjni.so（类UNIX）库。并且声明了一个native方法，这个函数接受两个int类型的参数，并且返回一个double类型的返回值，这个值是两个int型数的平均值。mian方法调用了average函数。<br>下面，我们将上面的java代码编译成TestJNIPrimitive.class，进而生成C/C++头文件TestJNIPrimitive.h：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javac -h . TestJNIPrimitive.java</span><br></pre></td></tr></table></figure>
@@ -434,7 +434,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据类型与描述符"><span class="toc-number">2.</span> <span class="toc-text">数据类型与描述符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#入门"><span class="toc-number">3.</span> <span class="toc-text">入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JNI-with-C"><span class="toc-number">3.1.</span> <span class="toc-text">JNI with C</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JNI-with-C-1"><span class="toc-number">3.2.</span> <span class="toc-text">JNI with C++</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JNI-with-C-C-Mixture"><span class="toc-number">3.3.</span> <span class="toc-text">JNI with C/C++  Mixture</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JNI-基础知识"><span class="toc-number">4.</span> <span class="toc-text">JNI 基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在Java和本地程序之间传递参数和结果"><span class="toc-number">5.</span> <span class="toc-text">在Java和本地程序之间传递参数和结果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#传递基本类型"><span class="toc-number">5.1.</span> <span class="toc-text">传递基本类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#传递字符串"><span class="toc-number">5.2.</span> <span class="toc-text">传递字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#传递数组"><span class="toc-number">5.3.</span> <span class="toc-text">传递数组</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#访问Java对象变量和回调Java方法"><span class="toc-number">6.</span> <span class="toc-text">访问Java对象变量和回调Java方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建对象和对象数组"><span class="toc-number">7.</span> <span class="toc-text">创建对象和对象数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#本地和全局引用"><span class="toc-number">8.</span> <span class="toc-text">本地和全局引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考网站"><span class="toc-number">9.</span> <span class="toc-text">参考网站</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本步骤"><span class="toc-number">1.1.</span> <span class="toc-text">基本步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据类型与描述符"><span class="toc-number">2.</span> <span class="toc-text">数据类型与描述符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#入门"><span class="toc-number">3.</span> <span class="toc-text">入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JNI-with-C"><span class="toc-number">3.1.</span> <span class="toc-text">JNI with C</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JNI-with-C-1"><span class="toc-number">3.2.</span> <span class="toc-text">JNI with C++</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JNI-with-C-C-Mixture"><span class="toc-number">3.3.</span> <span class="toc-text">JNI with C/C++  Mixture</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JNI-基础知识"><span class="toc-number">4.</span> <span class="toc-text">JNI 基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在Java和本地程序之间传递参数和结果"><span class="toc-number">5.</span> <span class="toc-text">在Java和本地程序之间传递参数和结果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#传递基本类型"><span class="toc-number">5.1.</span> <span class="toc-text">传递基本类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#传递字符串"><span class="toc-number">5.2.</span> <span class="toc-text">传递字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#传递数组"><span class="toc-number">5.3.</span> <span class="toc-text">传递数组</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#访问Java对象变量和回调Java方法"><span class="toc-number">6.</span> <span class="toc-text">访问Java对象变量和回调Java方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建对象和对象数组"><span class="toc-number">7.</span> <span class="toc-text">创建对象和对象数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#本地和全局引用"><span class="toc-number">8.</span> <span class="toc-text">本地和全局引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考网站"><span class="toc-number">9.</span> <span class="toc-text">参考网站</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -587,15 +587,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">CMake</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -607,15 +611,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+                <a href="javascript:void(0)" class="js-tag color4">STL</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">STL</a>
               </li>
              
               <li class="article-tag-list-item">
