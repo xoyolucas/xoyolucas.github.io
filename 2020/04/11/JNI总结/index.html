@@ -18,7 +18,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2020/04/11/JNI总结/Java和JNI基本类型对照表.png">
 <meta property="og:image" content="http://yoursite.com/2020/04/11/JNI总结/Java与JNI引用类型对照表.png">
-<meta property="og:updated_time" content="2020-05-01T11:28:06.441Z">
+<meta property="og:updated_time" content="2020-05-01T16:50:13.071Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JNI总结">
 <meta name="twitter:description" content="JNI是Java Native Interface(Java本地接口)的缩写，通过使用Java本地接口书写程序，可以确保代码在不同的平台上方便移植。从Java1.1开始，JNI标准成为java平台的一部分，它允许Java代码和其他语言写的代码进行交互。JNI一开始是为了本地已编译语言，尤其是C和C++而设计的，但是这并不妨碍使用其他编程语言，只要调用约定受支持就可以了。 简介有时，有必要使用本地（">
@@ -331,10 +331,14 @@
 <p>不像基本数据类型的array那样可以批量处理，对于object array，需要使用<code>Get|SetObjectArrayElement()</code>函数来处理每一个元素。JNI提供了创建对象array（jobjectArray）的函数如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">jobjectArray <span class="title">NewObjectArray</span><span class="params">(JNIEnv *env, jsize length, jclass elementClass, jobject initialElement)</span></span>;</span><br><span class="line">   <span class="comment">// Constructs a new array holding objects in class elementClass.</span></span><br><span class="line">   <span class="comment">// All elements are initially set to initialElement.</span></span><br><span class="line"> </span><br><span class="line"><span class="function">jobject <span class="title">GetObjectArrayElement</span><span class="params">(JNIEnv *env, jobjectArray <span class="built_in">array</span>, jsize index)</span></span>;</span><br><span class="line">   <span class="comment">// Returns an element of an Object array.</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SetObjectArrayElement</span><span class="params">(JNIEnv *env, jobjectArray <span class="built_in">array</span>, jsize index, jobject value)</span></span>;</span><br><span class="line">   <span class="comment">// Sets an element of an Object array.</span></span><br></pre></td></tr></table></figure>
 <p>&nbsp;</p>
-<h2 id="本地和全局引用"><a href="#本地和全局引用" class="headerlink" title="本地和全局引用"></a>本地和全局引用</h2><p>&nbsp;</p>
-<h2 id="参考网站"><a href="#参考网站" class="headerlink" title="参考网站"></a>参考网站</h2><p><a href="https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaNativeInterface.html" target="_blank" rel="noopener">Java Programming Tutorial Java Native Interface (JNI)</a><br><a href="https://blog.csdn.net/Baniel01/article/details/53783490" target="_blank" rel="noopener">Java Native Interface(JNI)从零开始详细教程</a><br><a href="https://blog.csdn.net/shensky711/article/details/52806794" target="_blank" rel="noopener">JNI教程与技术手册</a><br><a href="https://blog.csdn.net/weiwei9363/article/details/97886291" target="_blank" rel="noopener">JNI 简明教程</a></p>
-<p><a href="https://docs.oracle.com/javase/7/docs/technotes/guides/jni/index.html" target="_blank" rel="noopener">Java Native Interface Specification</a></p>
-<p><a href></a></p>
+<h2 id="本地和全局引用"><a href="#本地和全局引用" class="headerlink" title="本地和全局引用"></a>本地和全局引用</h2><p>使用引用是编写高效程序的关键。比如，在本地代码中使用<code>FindClass()</code>, <code>GetMethodID()</code>, <code>GetFieldID()</code>来获取一个<code>jclass</code>，<code>jmethodID</code>和<code>jfieldID</code>。其实这些变量应该只是在第一次的时候获取，之后直接使用就可以了，而不用每次都去获取一遍，这样可以提高程序执行效率。<br>JNI将本地代码中的对象引用分为了两种类型，本地和全局引用：<br>1、本地引用是在本地代码中创建的，并且当函数退出或者返回的时候就被free了。它的有效范围只是这个native函数的内部。可以调用<code>DeleteLocalRef()</code>来显式地将某个本地引用作废，这样可以让垃圾回收时能够将这部分回收。作为参数传递到本地函数中的对象引用是本地引用，所有的从JNI函数返回的java对象（jobject）都是本地引用。<br>2、全局引用会保留直到程序员调用<code>DeleteGlobalRef()</code>手动free掉他们，也可以使用<code>NewGlobalRef()</code>函数从本地引用创建一个全局引用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestJNIReference</span> </span>&#123;</span><br><span class="line">   <span class="keyword">static</span> &#123;</span><br><span class="line">      System.loadLibrary(<span class="string">"myjni"</span>); <span class="comment">// myjni.dll (Windows) or libmyjni.so (Unixes)</span></span><br><span class="line">   &#125;</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// A native method that returns a java.lang.Integer with the given int.</span></span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">native</span> Integer <span class="title">getIntegerObject</span><span class="params">(<span class="keyword">int</span> number)</span></span>;</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// Another native method that also returns a java.lang.Integer with the given int.</span></span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">native</span> Integer <span class="title">anotherGetIntegerObject</span><span class="params">(<span class="keyword">int</span> number)</span></span>;</span><br><span class="line"> </span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">      TestJNIReference test = <span class="keyword">new</span> TestJNIReference();</span><br><span class="line">      System.out.println(test.getIntegerObject(<span class="number">1</span>));</span><br><span class="line">      System.out.println(test.getIntegerObject(<span class="number">2</span>));</span><br><span class="line">      System.out.println(test.anotherGetIntegerObject(<span class="number">11</span>));</span><br><span class="line">      System.out.println(test.anotherGetIntegerObject(<span class="number">12</span>));</span><br><span class="line">      System.out.println(test.getIntegerObject(<span class="number">3</span>));</span><br><span class="line">      System.out.println(test.anotherGetIntegerObject(<span class="number">13</span>));</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的JNI程序声明了两个native函数，两个都创建并且返回<code>java.lang.Integer</code>对象。在C代码实现中，需要获得<code>java.lang.Integer</code>的类引用，然后从中找到构造器的<code>method ID</code>，然后调用构造器。然而，我们希望，将获得的class引用和Method ID缓存起来，这样下次在使用的时候就不用再次去获取了。<br>下面是C代码，我们希望这样可以OK（然而事实是不行！）：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;jni.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"TestJNIReference.h"</span></span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// Global Reference to the Java class "java.lang.Integer"</span></span><br><span class="line"><span class="keyword">static</span> jclass classInteger;</span><br><span class="line"><span class="keyword">static</span> jmethodID midIntegerInit;</span><br><span class="line"> </span><br><span class="line"><span class="function">jobject <span class="title">getInteger</span><span class="params">(JNIEnv *env, jobject thisObj, jint number)</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// Get a class reference for java.lang.Integer if missing</span></span><br><span class="line">   <span class="keyword">if</span> (<span class="literal">NULL</span> == classInteger) &#123;</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">"Find java.lang.Integer\n"</span>);</span><br><span class="line">      classInteger = (*env)-&gt;FindClass(env, <span class="string">"java/lang/Integer"</span>);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (<span class="literal">NULL</span> == classInteger) <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// Get the Method ID of the Integer's constructor if missing</span></span><br><span class="line">   <span class="keyword">if</span> (<span class="literal">NULL</span> == midIntegerInit) &#123;</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">"Get Method ID for java.lang.Integer's constructor\n"</span>);</span><br><span class="line">      midIntegerInit = (*env)-&gt;GetMethodID(env, classInteger, <span class="string">"&lt;init&gt;"</span>, <span class="string">"(I)V"</span>);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (<span class="literal">NULL</span> == midIntegerInit) <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// Call back constructor to allocate a new instance, with an int argument</span></span><br><span class="line">   jobject newObj = (*env)-&gt;NewObject(env, classInteger, midIntegerInit, number);</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"In C, constructed java.lang.Integer with number %d\n"</span>, number);</span><br><span class="line">   <span class="keyword">return</span> newObj;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">JNIEXPORT jobject JNICALL Java_TestJNIReference_getIntegerObject</span><br><span class="line">          (JNIEnv *env, jobject thisObj, jint number) &#123;</span><br><span class="line">   <span class="keyword">return</span> getInteger(env, thisObj, number);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">JNIEXPORT jobject JNICALL Java_TestJNIReference_anotherGetIntegerObject</span><br><span class="line">          (JNIEnv *env, jobject thisObj, jint number) &#123;</span><br><span class="line">   <span class="keyword">return</span> getInteger(env, thisObj, number);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在上面的程序中，调用<code>FindClass()</code>获得了<code>java.lang.Integer</code>类引用，然后把它保存在一个全局静态的变量中。然而，在第二次调用中这个引用却无效了（并不是NULL）。这是因为<code>FindClass()</code>返回的是本地类引用，一旦当<code>getInteger</code>函数返回的时候，这个局部引用就失效了。<br>为了解决这个问题，需要<strong>从局部引用中创建一个全局引用，然后再赋值给全局static变量</strong>。需要注意的是，<code>jmethodID</code>和<code>jfieldID</code>并不是<code>jobject</code>，因此它们不能创建一个全局引用。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Get a class reference for java.lang.Integer if missing</span></span><br><span class="line"><span class="keyword">if</span> (<span class="literal">NULL</span> == classInteger) &#123;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"Find java.lang.Integer\n"</span>);</span><br><span class="line">   <span class="comment">// FindClass returns a local reference</span></span><br><span class="line">   jclass classIntegerLocal = (*env)-&gt;FindClass(env, <span class="string">"java/lang/Integer"</span>);</span><br><span class="line">   <span class="comment">// Create a global reference from the local reference</span></span><br><span class="line">   classInteger = (*env)-&gt;NewGlobalRef(env, classIntegerLocal);</span><br><span class="line">   <span class="comment">// No longer need the local reference, free it!</span></span><br><span class="line">   (*env)-&gt;DeleteLocalRef(env, classIntegerLocal);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&nbsp;</p>
+<h2 id="参考网站"><a href="#参考网站" class="headerlink" title="参考网站"></a>参考网站</h2><p><a href="https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaNativeInterface.html" target="_blank" rel="noopener">Java Programming Tutorial Java Native Interface (JNI)</a><br><a href="https://blog.csdn.net/Baniel01/article/details/53783490" target="_blank" rel="noopener">Java Native Interface(JNI)从零开始详细教程</a><br><a href="https://blog.csdn.net/shensky711/article/details/52806794" target="_blank" rel="noopener">JNI教程与技术手册</a><br><a href="https://blog.csdn.net/weiwei9363/article/details/97886291" target="_blank" rel="noopener">JNI 简明教程</a><br><a href="https://docs.oracle.com/javase/7/docs/technotes/guides/jni/index.html" target="_blank" rel="noopener">Java Native Interface Specification</a></p>
 
       
 
@@ -632,10 +636,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
@@ -645,6 +645,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -672,10 +676,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">pandas</a>
               </li>
              
@@ -684,15 +684,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">BFS</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">sort</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -713,6 +713,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ACO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">sort</a>
               </li>
             
             <div class="clearfix"></div>
