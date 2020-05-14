@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="xoyolucas&#39;s blog">
 <meta property="og:description" content="push_back和emplace_backc++中会经常对STL的各种容器进行插入操作，比如vector,map,set等。在引入右值引用，转移构造函数，转移复制运算符之前，通常使用push_back()向容器中加入一个右值元素（临时对象）的时候。首先会调用构造函数构造这个临时对象，然后需要调用拷贝构造函数将这个临时对象放入容器中，原来的临时变量释放。这样造成的问题是临时变量申请的资源就浪费。引">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-05-14T14:34:30.790Z">
+<meta property="og:updated_time" content="2020-05-14T14:44:06.630Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="STL问题">
 <meta name="twitter:description" content="push_back和emplace_backc++中会经常对STL的各种容器进行插入操作，比如vector,map,set等。在引入右值引用，转移构造函数，转移复制运算符之前，通常使用push_back()向容器中加入一个右值元素（临时对象）的时候。首先会调用构造函数构造这个临时对象，然后需要调用拷贝构造函数将这个临时对象放入容器中，原来的临时变量释放。这样造成的问题是临时变量申请的资源就浪费。引">
@@ -184,9 +184,12 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">\\ 输出</span><br><span class="line">emplace_back:</span><br><span class="line">I am being constructed.</span><br><span class="line"></span><br><span class="line">push_back:</span><br><span class="line">I am being constructed.</span><br><span class="line">I am being moved.</span><br><span class="line"></span><br><span class="line">Contents:</span><br><span class="line">Nelson Mandela was elected president of South Africa in <span class="number">1994.</span></span><br></pre></td></tr></table></figure>
 <p>不能使用emplace_back的情况，emplace_back造成的引用失效，可以参考链接<a href="https://blog.csdn.net/wangshubo1989/article/details/50358044" target="_blank" rel="noopener">emplace_back造成的引用失效</a></p>
 <p>&nbsp;</p>
-<h3 id="reserve、resize和assign的区别"><a href="#reserve、resize和assign的区别" class="headerlink" title="reserve、resize和assign的区别"></a>reserve、resize和assign的区别</h3><p>reserve申请capacity</p>
-<p>resize改变size</p>
+<h3 id="reserve、resize和assign的区别"><a href="#reserve、resize和assign的区别" class="headerlink" title="reserve、resize和assign的区别"></a>reserve、resize和assign的区别</h3><p>reserve申请capacity，不改变容器的size，使用push_back、emplace_back向容器中加入元素。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">reserve</span> <span class="params">(size_type n)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>resize改变size，若原容器</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">resize</span> <span class="params">(size_type n)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">resize</span> <span class="params">(size_type n, <span class="keyword">const</span> value_type&amp; val)</span></span>;</span><br></pre></td></tr></table></figure>
 <p>assign赋值</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">range (<span class="number">1</span>)	</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">InputIterator</span>&gt;</span></span><br><span class="line"><span class="class">  <span class="title">void</span> <span class="title">assign</span> (<span class="title">InputIterator</span> <span class="title">first</span>, <span class="title">InputIterator</span> <span class="title">last</span>);</span></span><br><span class="line">fill (<span class="number">2</span>)	</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">assign</span> <span class="params">(size_type n, <span class="keyword">const</span> value_type&amp; val)</span></span>;</span><br><span class="line"><span class="function">initializer <span class="title">list</span> <span class="params">(<span class="number">3</span>)</span>	</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">assign</span> <span class="params">(<span class="built_in">initializer_list</span>&lt;value_type&gt; il)</span></span>;</span><br></pre></td></tr></table></figure>
 <p>&nbsp;</p>
 <h3 id="set和unordered-set"><a href="#set和unordered-set" class="headerlink" title="set和unordered_set"></a>set和unordered_set</h3><p>c++ std中set与unordered_set区别和map与unordered_map区别类似：</p>
 <ol>
@@ -509,15 +512,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JNI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -565,15 +568,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">sort</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">maximum flow problem</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">route</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">sort</a>
               </li>
              
               <li class="article-tag-list-item">
