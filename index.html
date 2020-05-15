@@ -178,23 +178,25 @@
       
         <h2 id="目录树结构"><a href="#目录树结构" class="headerlink" title="目录树结构"></a>目录树结构</h2><p><strong><em>linux下一切皆为文件，以文件的形式管理</em></strong></p>
 <ul>
-<li><strong>/</strong> 根目录设备</li>
-<li><strong>/bin</strong> 重要执行文件</li>
-<li><strong>/etc</strong>  配置文件</li>
-<li><strong>/boot</strong> 启动Linux使用的一些核心文件，包括一些连接文件和镜像文件</li>
-<li><strong>/dev</strong> 设备文件</li>
-<li><strong>/sbin</strong> 重要的系统执行文件</li>
-<li><strong>/root</strong> 管理员的主文件夹</li>
-<li><strong>/home</strong> 存放普通用户的文件夹</li>
-<li><strong>/mnt</strong> 暂时挂载某些格外的设备</li>
-<li><strong>/lib</strong> 函数库</li>
-<li><strong>/usr</strong> 存放用户的应用程序和文件</li>
-<li><strong>/tmp</strong> 临时文件</li>
-<li><strong>/media</strong> 设备，如U盘，光驱，识别设备挂载在该目录</li>
-<li><strong>/opt</strong> 安装包放在该目录</li>
-<li><strong>/var</strong> 存放不断扩充的东西，如各类日志文件</li>
-</ul>
-<center><img src="/2020/05/11/Linux目录结构/Linux_dir.png"></center>
+<li><p><strong>/</strong>  根目录设备</p>
+</li>
+<li><p><strong>/bin</strong>  重要执行文件，bin是Binary的缩写, 这个目录存放着最经常使用的命令。</p>
+</li>
+<li><p><strong>/boot</strong>  启动Linux使用的一些核心文件，包括一些连接文件和镜像文件。</p>
+</li>
+<li><p><strong>/dev</strong>  设备文件，dev是Device(设备)的缩写, 该目录下存放的是Linux的外部设备，在Linux中访问设备的方式和访问文件的方式是相同的。</p>
+</li>
+<li><p><strong>/etc</strong>   配置文件，这个目录用来存放所有的系统管理所需要的配置文件和子目录。</p>
+</li>
+<li><p><strong>/home</strong>  存放普通用户的文件夹，用户的主目录，在Linux中，每个用户都有一个自己的目录，一般该目录名是以用户的账号命名的。</p>
+</li>
+<li><p><strong>/lib</strong>  函数库，这个目录里存放着系统最基本的动态连接共享库，其作用类似于Windows里的DLL文件。几乎所有的应用程序都需要用到这些共享库。</p>
+</li>
+<li><p><strong>/lost+found</strong>   这个目录一般情况下是空的，当系统非法关机后，这里就存放了一些文件。</p>
+</li>
+<li><p><strong>/media</strong>  设备，linux 系统会自动识别一些设备，例如U盘、光驱等等，当识别后，linux会把识别的设备挂载到这个目录下。</p>
+</li>
+<li><p><strong>/mnt</strong>  暂时挂载某些格外的设备，系统提供该目录是为了让用户临时挂载别的文件系统的，我们可以将光驱挂载在/mnt/上，然后进入该目录就可以查看光驱里的内容了。</p></li></ul>
         
           <a class="article-more-a" href="/2020/05/11/Linux目录结构/#more">more >></a>
         
@@ -1207,19 +1209,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">STL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1231,11 +1225,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pandas</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">IPM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pandas</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1247,7 +1253,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
+                <a href="javascript:void(0)" class="js-tag color5">sort</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1256,10 +1262,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">route</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">sort</a>
               </li>
              
               <li class="article-tag-list-item">
