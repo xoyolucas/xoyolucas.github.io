@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="xoyolucas&#39;s blog">
 <meta property="og:description" content="push_back和emplace_backc++中会经常对STL的各种容器进行插入操作，比如vector,map,set等。在引入右值引用，转移构造函数，转移复制运算符之前，通常使用push_back()向容器中加入一个右值元素（临时对象）的时候。首先会调用构造函数构造这个临时对象，然后需要调用拷贝构造函数将这个临时对象放入容器中，原来的临时变量释放。这样造成的问题是临时变量申请的资源就浪费。引">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-05-16T15:11:03.297Z">
+<meta property="og:updated_time" content="2020-05-17T04:22:39.725Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="STL问题">
 <meta name="twitter:description" content="push_back和emplace_backc++中会经常对STL的各种容器进行插入操作，比如vector,map,set等。在引入右值引用，转移构造函数，转移复制运算符之前，通常使用push_back()向容器中加入一个右值元素（临时对象）的时候。首先会调用构造函数构造这个临时对象，然后需要调用拷贝构造函数将这个临时对象放入容器中，原来的临时变量释放。这样造成的问题是临时变量申请的资源就浪费。引">
@@ -190,8 +190,7 @@
 <p>resize改变容器的size，使其包含n个元素。<strong>如果n小于当前容器的大小，则将内容缩减为它的前n个元素，删除其他元素(并销毁它们)。如果n大于当前容器的大小，则通过在末尾插入尽可能多的元素来扩展内容，以达到n的大小。如果指定val，则将新元素初始化为val的副本，否则，它们是值初始化的。</strong>如果n也大于当前容器容量，则会自动重新分配分配的存储空间。注意，这个函数通过插入或删除容器中的元素来更改容器的实际内容。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">resize</span> <span class="params">(size_type n)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">resize</span> <span class="params">(size_type n, <span class="keyword">const</span> value_type&amp; val)</span></span>;</span><br></pre></td></tr></table></figure>
 <p>&nbsp;</p>
-<p>assign用于初始化赋值，在range版本(1)中，新内容是由first和last之间的每个元素按照相同的顺序构造的元素。在fill版本(2)中，新内容是n个元素，每个元素初始化为val的一个副本。在初始化列表版本(3)中，新内容是作为初始化列表传递的值的副本，顺序相同。</p>
-<p>如果发生重新分配，则使用内部分配器(通过其特性)来分配和释放存储。它还用于销毁所有现有元素，并构造新的元素。在调用之前容器中保存的任何元素都将被销毁，并由新构造的元素替换(不进行元素赋值)。当且仅当新向量大小超过当前向量容量时，这将导致分配的存储空间的自动重新分配。</p>
+<p>assign用于初始化赋值，在range版本(1)中，新内容是由first和last之间的每个元素按照相同的顺序构造的元素。在fill版本(2)中，新内容是n个元素，每个元素初始化为val的一个副本。在初始化列表版本(3)中，新内容是作为初始化列表传递的值的副本，顺序相同。<br>如果发生重新分配，则使用内部分配器(通过其特性)来分配和释放存储。它还用于销毁所有现有元素，并构造新的元素。在调用之前容器中保存的任何元素都将被销毁，并由新构造的元素替换(不进行元素赋值)。当且仅当新向量大小超过当前向量容量时，这将导致分配的存储空间的自动重新分配。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//range (1)	</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">InputIterator</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">void</span> <span class="title">assign</span> (<span class="title">InputIterator</span> <span class="title">first</span>, <span class="title">InputIterator</span> <span class="title">last</span>);</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//fill (2)	</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">assign</span> <span class="params">(size_type n, <span class="keyword">const</span> value_type&amp; val)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//initializer list (3)	</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">assign</span> <span class="params">(<span class="built_in">initializer_list</span>&lt;value_type&gt; il)</span></span>;</span><br></pre></td></tr></table></figure>
 <p>&nbsp;</p>
 <h3 id="set和unordered-set"><a href="#set和unordered-set" class="headerlink" title="set和unordered_set"></a>set和unordered_set</h3><p>c++ std中set与unordered_set区别和map与unordered_map区别类似：</p>
@@ -503,15 +502,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
+                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -539,10 +534,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pandas</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
@@ -552,6 +543,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">仿真工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pandas</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -571,15 +570,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">sort</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">maximum flow problem</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">route</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">sort</a>
               </li>
              
               <li class="article-tag-list-item">
