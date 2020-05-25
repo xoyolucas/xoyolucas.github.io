@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>C++实用函数 | xoyolucas&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="algorithm库algorithm库中提供的函数，可结合匿名函数使用  std::all_of std::any_of std::binary_search std::copy std::copy_backward std::copy_if">
+  <meta name="description" content="algorithm库algorithm库中提供的函数，可结合匿名函数使用  std::all_of 算法会返回 true，前提是序列中的所有元素都可以使谓词返回 true。  std::any_of 算法会返回 true，前提是序列中的任意一个元素都可以使谓词返回 true。  std::binary_search  std::copy  std::copy_backward  std::copy">
 <meta name="keywords" content="C++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++实用函数">
 <meta property="og:url" content="http://yoursite.com/2020/05/08/C-实用函数/index.html">
 <meta property="og:site_name" content="xoyolucas&#39;s blog">
-<meta property="og:description" content="algorithm库algorithm库中提供的函数，可结合匿名函数使用  std::all_of std::any_of std::binary_search std::copy std::copy_backward std::copy_if">
+<meta property="og:description" content="algorithm库algorithm库中提供的函数，可结合匿名函数使用  std::all_of 算法会返回 true，前提是序列中的所有元素都可以使谓词返回 true。  std::any_of 算法会返回 true，前提是序列中的任意一个元素都可以使谓词返回 true。  std::binary_search  std::copy  std::copy_backward  std::copy">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-05-17T13:29:50.166Z">
+<meta property="og:updated_time" content="2020-05-25T15:58:37.567Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++实用函数">
-<meta name="twitter:description" content="algorithm库algorithm库中提供的函数，可结合匿名函数使用  std::all_of std::any_of std::binary_search std::copy std::copy_backward std::copy_if">
+<meta name="twitter:description" content="algorithm库algorithm库中提供的函数，可结合匿名函数使用  std::all_of 算法会返回 true，前提是序列中的所有元素都可以使谓词返回 true。  std::any_of 算法会返回 true，前提是序列中的任意一个元素都可以使谓词返回 true。  std::binary_search  std::copy  std::copy_backward  std::copy">
   
     <link rel="alternative" href="/atom.xml" title="xoyolucas&#39;s blog" type="application/atom+xml">
   
@@ -181,93 +181,180 @@
       
         <h2 id="algorithm库"><a href="#algorithm库" class="headerlink" title="algorithm库"></a>algorithm库</h2><p><strong>algorithm库中提供的函数，可结合匿名函数使用</strong></p>
 <ul>
-<li>std::all_of</li>
-<li>std::any_of</li>
-<li>std::binary_search</li>
-<li>std::copy</li>
-<li>std::copy_backward</li>
-<li>std::copy_if</li>
+<li><p>std::all_of</p>
+<p>算法会返回 true，前提是序列中的所有元素都可以使谓词返回 true。</p>
+</li>
+<li><p>std::any_of</p>
+<p>算法会返回 true，前提是序列中的任意一个元素都可以使谓词返回 true。</p>
+</li>
+<li><p>std::binary_search</p>
+</li>
+<li><p>std::copy</p>
+</li>
+<li><p>std::copy_backward</p>
+</li>
+<li><p>std::copy_if</p>
+</li>
 </ul>
 <a id="more"></a>
 <ul>
-<li>std::copy_n</li>
-<li>std::count</li>
-<li>std::count_if</li>
-<li>std::equal</li>
-<li>std::equal_range</li>
-<li>std::fill</li>
-<li>std::fill_n</li>
-<li>std::find</li>
-<li>std::find_end</li>
-<li>std::find_first_of</li>
-<li>std::find_if</li>
-<li>std::find_if_not</li>
-<li>std::for_each</li>
-<li>std::generate</li>
-<li>std::generate_n</li>
-<li>std::includes</li>
-<li>std::inplace_merge</li>
-<li>std::is_heap</li>
-<li>std::is_heap_until</li>
-<li>std::is_partitioned</li>
-<li>std::is_permutation</li>
-<li>std::is_sorted</li>
-<li>std::is_sorted_until</li>
-<li>std::iter_swap</li>
-<li>std::lexicographical_compare</li>
-<li>std::lower_bound</li>
-<li>std::make_heap</li>
-<li>std::max</li>
-<li>std::max_element</li>
-<li>std::merge</li>
-<li>std::min</li>
-<li>std::minmax</li>
-<li>std::minmax_element</li>
-<li>std::min_element</li>
-<li>std::mismatch</li>
-<li>std::move</li>
-<li>std::move_backward</li>
-<li>std::next_permutation</li>
-<li>std::none_of</li>
-<li>std::nth_element</li>
-<li>std::partial_sort</li>
-<li>std::partial_sort_copy</li>
-<li>std::partition</li>
-<li>std::partition_copy</li>
-<li>std::partition_point</li>
-<li>std::pop_heap</li>
-<li>std::prev_permutation</li>
-<li>std::push_heap</li>
-<li>std::random_shuffle</li>
-<li>std::remove</li>
-<li>std::remove_copy</li>
-<li>std::remove_copy_if</li>
-<li>std::remove_if</li>
-<li>std::replace</li>
-<li>std::replace_copy</li>
-<li>std::replace_copy_if</li>
-<li>std::replace_if</li>
-<li>std::reverse</li>
-<li>std::reverse_copy</li>
-<li>std::rotate</li>
-<li>std::rotate_copy</li>
-<li>std::search</li>
-<li>std::search_n</li>
-<li>std::set_difference</li>
-<li>std::set_intersection</li>
-<li>std::set_symmetric_difference</li>
-<li>std::set_union</li>
-<li>std::shuffle</li>
-<li>std::sort</li>
-<li>std::sort_heap</li>
-<li>std::stable_partition</li>
-<li>std::stable_sort</li>
-<li>std::swap</li>
-<li>std::swap_ranges</li>
-<li>std::transform</li>
-<li>std::unique</li>
-<li>std::unique_copy</li>
-<li>std::upper_bound</li>
+<li><p>std::copy_n</p>
+</li>
+<li><p>std::count</p>
+</li>
+<li><p>std::count_if</p>
+</li>
+<li><p>std::equal</p>
+</li>
+<li><p>std::equal_range</p>
+</li>
+<li><p>std::fill</p>
+</li>
+<li><p>std::fill_n</p>
+</li>
+<li><p>std::find</p>
+</li>
+<li><p>std::find_end</p>
+</li>
+<li><p>std::find_first_of</p>
+</li>
+<li><p>std::find_if</p>
+</li>
+<li><p>std::find_if_not</p>
+</li>
+<li><p>std::for_each</p>
+</li>
+<li><p>std::generate</p>
+</li>
+<li><p>std::generate_n</p>
+</li>
+<li><p>std::includes</p>
+</li>
+<li><p>std::inplace_merge</p>
+</li>
+<li><p>std::is_heap</p>
+</li>
+<li><p>std::is_heap_until</p>
+</li>
+<li><p>std::is_partitioned</p>
+</li>
+<li><p>std::is_permutation</p>
+</li>
+<li><p>std::is_sorted</p>
+</li>
+<li><p>std::is_sorted_until</p>
+</li>
+<li><p>std::iter_swap</p>
+</li>
+<li><p>std::lexicographical_compare</p>
+</li>
+<li><p>std::lower_bound</p>
+</li>
+<li><p>std::make_heap</p>
+</li>
+<li><p>std::max</p>
+</li>
+<li><p>std::max_element</p>
+</li>
+<li><p>std::merge</p>
+</li>
+<li><p>std::min</p>
+</li>
+<li><p>std::minmax</p>
+</li>
+<li><p>std::minmax_element</p>
+</li>
+<li><p>std::min_element</p>
+</li>
+<li><p>std::mismatch</p>
+</li>
+<li><p>std::move</p>
+</li>
+<li><p>std::move_backward</p>
+</li>
+<li><p>std::next_permutation</p>
+</li>
+<li><p>std::none_of</p>
+<p>算法会返回 true，前提是序列中没有元素可以使谓词返回 true。</p>
+</li>
+<li><p>std::nth_element</p>
+</li>
+<li><p>std::partial_sort</p>
+</li>
+<li><p>std::partial_sort_copy</p>
+</li>
+<li><p>std::partition</p>
+</li>
+<li><p>std::partition_copy</p>
+</li>
+<li><p>std::partition_point</p>
+</li>
+<li><p>std::pop_heap</p>
+</li>
+<li><p>std::prev_permutation</p>
+</li>
+<li><p>std::push_heap</p>
+</li>
+<li><p>std::random_shuffle</p>
+</li>
+<li><p>std::remove</p>
+</li>
+<li><p>std::remove_copy</p>
+</li>
+<li><p>std::remove_copy_if</p>
+</li>
+<li><p>std::remove_if</p>
+</li>
+<li><p>std::replace</p>
+</li>
+<li><p>std::replace_copy</p>
+</li>
+<li><p>std::replace_copy_if</p>
+</li>
+<li><p>std::replace_if</p>
+</li>
+<li><p>std::reverse</p>
+</li>
+<li><p>std::reverse_copy</p>
+</li>
+<li><p>std::rotate</p>
+</li>
+<li><p>std::rotate_copy</p>
+</li>
+<li><p>std::search</p>
+</li>
+<li><p>std::search_n</p>
+</li>
+<li><p>std::set_difference</p>
+</li>
+<li><p>std::set_intersection</p>
+</li>
+<li><p>std::set_symmetric_difference</p>
+</li>
+<li><p>std::set_union</p>
+</li>
+<li><p>std::shuffle</p>
+</li>
+<li><p>std::sort</p>
+</li>
+<li><p>std::sort_heap</p>
+</li>
+<li><p>std::stable_partition</p>
+</li>
+<li><p>std::stable_sort</p>
+</li>
+<li><p>std::swap</p>
+</li>
+<li><p>std::swap_ranges</p>
+</li>
+<li><p>std::transform</p>
+</li>
+<li><p>std::unique</p>
+</li>
+<li><p>std::unique_copy</p>
+</li>
+<li><p>std::upper_bound</p>
+</li>
 </ul>
 <h3 id="numeric库"><a href="#numeric库" class="headerlink" title="numeric库"></a>numeric库</h3><ul>
 <li><p>std::accumulate</p>
@@ -571,19 +658,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -595,11 +674,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">STL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -643,10 +730,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PSO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">maximum flow problem</a>
               </li>
              
@@ -655,11 +738,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ACO</a>
+                <a href="javascript:void(0)" class="js-tag color4">PSO</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Linear programming</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ACO</a>
               </li>
             
             <div class="clearfix"></div>
