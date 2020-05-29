@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="xoyolucas&#39;s blog">
 <meta property="og:description" content="algorithm库algorithm库中提供的函数，可结合匿名函数使用  std::all_of算法会返回 true，前提是序列中的所有元素都可以使谓词返回 true。  std::any_of算法会返回 true，前提是序列中的任意一个元素都可以使谓词返回 true。  std::binary_search  std::copy  std::copy_backward  std::copy_i">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-05-28T17:19:13.690Z">
+<meta property="og:updated_time" content="2020-05-29T15:36:03.235Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++实用函数">
 <meta name="twitter:description" content="algorithm库algorithm库中提供的函数，可结合匿名函数使用  std::all_of算法会返回 true，前提是序列中的所有元素都可以使谓词返回 true。  std::any_of算法会返回 true，前提是序列中的任意一个元素都可以使谓词返回 true。  std::binary_search  std::copy  std::copy_backward  std::copy_i">
@@ -210,8 +210,7 @@
 </li>
 <li><p>std::fill_n</p>
 </li>
-<li><p>std::find</p>
-</li>
+<li><h4 id="std-find"><a href="#std-find" class="headerlink" title="std::find"></a>std::find</h4></li>
 <li><p>std::find_end</p>
 </li>
 <li><p>std::find_first_of</p>
@@ -220,8 +219,7 @@
 </li>
 <li><p>std::find_if_not</p>
 </li>
-<li><p>std::for_each</p>
-</li>
+<li><h4 id="std-for-each"><a href="#std-for-each" class="headerlink" title="std::for_each"></a>std::for_each</h4></li>
 <li><p>std::generate</p>
 </li>
 <li><p>std::generate_n</p>
@@ -252,8 +250,7 @@
 </li>
 <li><p>std::max</p>
 </li>
-<li><p>std::max_element</p>
-</li>
+<li><h4 id="std-max-element"><a href="#std-max-element" class="headerlink" title="std::max_element"></a>std::max_element</h4></li>
 <li><p>std::merge</p>
 </li>
 <li><p>std::min</p>
@@ -262,8 +259,7 @@
 </li>
 <li><p>std::minmax_element</p>
 </li>
-<li><p>std::min_element</p>
-</li>
+<li><h4 id="std-min-element"><a href="#std-min-element" class="headerlink" title="std::min_element"></a>std::min_element</h4></li>
 <li><p>std::mismatch</p>
 </li>
 <li><p>std::move</p>
@@ -332,8 +328,7 @@
 </li>
 <li><p>std::shuffle</p>
 </li>
-<li><p>std::sort</p>
-</li>
+<li><h4 id="std-sort"><a href="#std-sort" class="headerlink" title="std::sort"></a>std::sort</h4></li>
 <li><p>std::sort_heap</p>
 </li>
 <li><p>std::stable_partition</p>
@@ -344,8 +339,7 @@
 </li>
 <li><p>std::swap_ranges</p>
 </li>
-<li><p>std::transform</p>
-</li>
+<li><h4 id="std-transform"><a href="#std-transform" class="headerlink" title="std::transform"></a>std::transform</h4></li>
 <li><p>std::unique</p>
 </li>
 <li><p>std::unique_copy</p>
@@ -499,7 +493,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#algorithm库"><span class="toc-number">1.</span> <span class="toc-text">algorithm库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#std-all-of"><span class="toc-number">1.1.</span> <span class="toc-text">std::all_of</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#std-any-of"><span class="toc-number">1.2.</span> <span class="toc-text">std::any_of</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#std-none-of"><span class="toc-number">1.3.</span> <span class="toc-text">std::none_of</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#numeric库"><span class="toc-number">2.</span> <span class="toc-text">numeric库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#std-accumulate"><span class="toc-number">2.1.</span> <span class="toc-text">std::accumulate</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#std-inner-product"><span class="toc-number">2.2.</span> <span class="toc-text">std::inner_product</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#std-iota"><span class="toc-number">2.3.</span> <span class="toc-text">std::iota</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考链接"><span class="toc-number">3.</span> <span class="toc-text">参考链接</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#algorithm库"><span class="toc-number">1.</span> <span class="toc-text">algorithm库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#std-all-of"><span class="toc-number">1.1.</span> <span class="toc-text">std::all_of</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#std-any-of"><span class="toc-number">1.2.</span> <span class="toc-text">std::any_of</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#std-find"><span class="toc-number">1.3.</span> <span class="toc-text">std::find</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#std-for-each"><span class="toc-number">1.4.</span> <span class="toc-text">std::for_each</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#std-max-element"><span class="toc-number">1.5.</span> <span class="toc-text">std::max_element</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#std-min-element"><span class="toc-number">1.6.</span> <span class="toc-text">std::min_element</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#std-none-of"><span class="toc-number">1.7.</span> <span class="toc-text">std::none_of</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#std-sort"><span class="toc-number">1.8.</span> <span class="toc-text">std::sort</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#std-transform"><span class="toc-number">1.9.</span> <span class="toc-text">std::transform</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#numeric库"><span class="toc-number">2.</span> <span class="toc-text">numeric库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#std-accumulate"><span class="toc-number">2.1.</span> <span class="toc-text">std::accumulate</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#std-inner-product"><span class="toc-number">2.2.</span> <span class="toc-text">std::inner_product</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#std-iota"><span class="toc-number">2.3.</span> <span class="toc-text">std::iota</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考链接"><span class="toc-number">3.</span> <span class="toc-text">参考链接</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -652,19 +646,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">CMake</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">comand</a>
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -673,6 +663,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JNI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">comand</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -724,6 +718,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">sort</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">maximum flow problem</a>
               </li>
              
@@ -732,15 +730,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">sort</a>
+                <a href="javascript:void(0)" class="js-tag color4">Linear programming</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PSO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Linear programming</a>
               </li>
              
               <li class="article-tag-list-item">
