@@ -16,7 +16,7 @@
 <meta property="og:description" content="目录树结构linux下一切皆为文件，以文件的形式管理，使用ls查看当前目录下的文件和文件夹。  /  根目录设备  /bin  重要执行文件，bin是Binary的缩写, 这个目录存放着最经常使用的命令；  /boot  启动Linux使用的一些核心文件，包括一些连接文件和镜像文件；  /dev  设备文件，dev是Device(设备)的缩写, 该目录下存放的是Linux的外部设备，在Linux中">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2020/05/11/Linux目录结构/Linux_dir.png">
-<meta property="og:updated_time" content="2020-06-02T14:58:21.249Z">
+<meta property="og:updated_time" content="2020-06-02T17:21:46.451Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux目录结构">
 <meta name="twitter:description" content="目录树结构linux下一切皆为文件，以文件的形式管理，使用ls查看当前目录下的文件和文件夹。  /  根目录设备  /bin  重要执行文件，bin是Binary的缩写, 这个目录存放着最经常使用的命令；  /boot  启动Linux使用的一些核心文件，包括一些连接文件和镜像文件；  /dev  设备文件，dev是Device(设备)的缩写, 该目录下存放的是Linux的外部设备，在Linux中">
@@ -329,33 +329,28 @@
 <li>tail 只看尾巴几行</li>
 </ul>
 <p>你可以使用 <em>man [命令]</em>来查看各个命令的使用文档，如 ：man cp。</p>
-<h4 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h4><p>由第一行开始显示文件内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat [-AbEnTv]</span><br></pre></td></tr></table></figure>
+<h4 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 由第一行开始显示文件内容</span></span><br><span class="line">cat [-AbEnTv]</span><br></pre></td></tr></table></figure>
 <p>选项与参数：</p>
 <ul>
-<li>-A ：相当於 -vET 的整合选项，可列出一些特殊字符而不是空白而已；</li>
+<li>-A ：相当于-vET 的整合选项，可列出一些特殊字符而不是空白而已；</li>
 <li>-b ：列出行号，仅针对非空白行做行号显示，空白行不标行号！</li>
 <li>-E ：将结尾的断行字节 $ 显示出来；</li>
 <li>-n ：列印出行号，连同空白行也会有行号，与 -b 的选项不同；</li>
 <li>-T ：将 [tab] 按键以 ^I 显示出来；</li>
 <li>-v ：列出一些看不出来的特殊字符</li>
 </ul>
-<p>检看 /etc/issue 这个文件的内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@www ~]# cat /etc/issue</span><br><span class="line">CentOS release 6.4 (Final)</span><br><span class="line">Kernel \r on an \m</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看/etc/issue这个文件的内容：</span></span><br><span class="line">[root@www ~]<span class="comment"># cat /etc/issue</span></span><br><span class="line">CentOS release 6.4 (Final)</span><br><span class="line">Kernel \r on an \m</span><br></pre></td></tr></table></figure>
 <h4 id="tac"><a href="#tac" class="headerlink" title="tac"></a>tac</h4><p>tac与cat命令刚好相反，文件内容从最后一行开始显示，可以看出 tac 是 cat 的倒着写！如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@www ~]# tac /etc/issue</span><br><span class="line"></span><br><span class="line">Kernel \r on an \m</span><br><span class="line">CentOS release 6.4 (Final)</span><br></pre></td></tr></table></figure>
-<h4 id="nl"><a href="#nl" class="headerlink" title="nl"></a>nl</h4><p>显示行号</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nl [-bnw] 文件</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@www ~]<span class="comment"># tac /etc/issue</span></span><br><span class="line"></span><br><span class="line">Kernel \r on an \m</span><br><span class="line">CentOS release 6.4 (Final)</span><br></pre></td></tr></table></figure>
+<h4 id="nl"><a href="#nl" class="headerlink" title="nl"></a>nl</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 显示行号</span></span><br><span class="line">nl [-bnw] 文件</span><br></pre></td></tr></table></figure>
 <p>选项与参数：</p>
 <ul>
 <li>-b ：指定行号指定的方式，主要有两种：<br>-b a ：表示不论是否为空行，也同样列出行号(类似 cat -n)；<br>-b t ：如果有空行，空的那一行不要列出行号(默认值)；</li>
 <li>-n ：列出行号表示的方法，主要有三种：<br>-n ln ：行号在荧幕的最左方显示；<br>-n rn ：行号在自己栏位的最右方显示，且不加 0 ；<br>-n rz ：行号在自己栏位的最右方显示，且加 0 ；</li>
 <li>-w ：行号栏位的占用的位数。</li>
 </ul>
-<p>实例一：用 nl 列出 /etc/issue 的内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@www ~]# nl /etc/issue</span><br><span class="line">     1  CentOS release 6.4 (Final)</span><br><span class="line">     2  Kernel \r on an \m</span><br></pre></td></tr></table></figure>
-<h4 id="more"><a href="#more" class="headerlink" title="more"></a>more</h4><p>一页一页翻动</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@www ~]# more /etc/man_db.config </span><br><span class="line">#</span><br><span class="line"># Generated automatically from man.conf.in by the</span><br><span class="line"># configure script.</span><br><span class="line">#</span><br><span class="line"># man.conf from man-1.6d</span><br><span class="line">....(中间省略)....</span><br><span class="line">--More--(28%)  &lt;== 重点在这一行喔！你的光标也会在这里等待你的命令</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 用 nl 列出 /etc/issue 的内容</span></span><br><span class="line">[root@www ~]<span class="comment"># nl /etc/issue</span></span><br><span class="line">     1  CentOS release 6.4 (Final)</span><br><span class="line">     2  Kernel \r on an \m</span><br></pre></td></tr></table></figure>
+<h4 id="more"><a href="#more" class="headerlink" title="more"></a>more</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 一页一页翻动</span></span><br><span class="line">[root@www ~]<span class="comment"># more /etc/man_db.config </span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Generated automatically from man.conf.in by the</span></span><br><span class="line"><span class="comment"># configure script.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># man.conf from man-1.6d</span></span><br><span class="line">....(中间省略)....</span><br><span class="line">--More--(28%)  &lt;== 重点在这一行喔！你的光标也会在这里等待你的命令</span><br></pre></td></tr></table></figure>
 <p>在 more 这个程序的运行过程中，你有几个按键可以按的：</p>
 <ul>
 <li>空白键 (space)：代表向下翻一页；</li>
@@ -365,8 +360,7 @@
 <li>q       ：代表立刻离开 more ，不再显示该文件内容。</li>
 <li>b 或 [ctrl]-b ：代表往回翻页，不过这动作只对文件有用，对管线无用。</li>
 </ul>
-<h4 id="less"><a href="#less" class="headerlink" title="less"></a>less</h4><p>一页一页翻动，以下实例输出/etc/man.config文件的内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@www ~]# less /etc/man.config</span><br><span class="line">#</span><br><span class="line"># Generated automatically from man.conf.in by the</span><br><span class="line"># configure script.</span><br><span class="line">#</span><br><span class="line"># man.conf from man-1.6d</span><br><span class="line">....(中间省略)....</span><br><span class="line">:   &lt;== 这里可以等待你输入命令！</span><br></pre></td></tr></table></figure>
+<h4 id="less"><a href="#less" class="headerlink" title="less"></a>less</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 一页一页翻动，以下实例输出/etc/man.config文件的内容：</span></span><br><span class="line">[root@www ~]<span class="comment"># less /etc/man.config</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Generated automatically from man.conf.in by the</span></span><br><span class="line"><span class="comment"># configure script.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># man.conf from man-1.6d</span></span><br><span class="line">....(中间省略)....</span><br><span class="line">:   &lt;== 这里可以等待你输入命令！</span><br></pre></td></tr></table></figure>
 <p>less运行时可以输入的命令有：</p>
 <ul>
 <li>空白键  ：向下翻动一页；</li>
@@ -378,15 +372,13 @@
 <li>N     ：反向的重复前一个搜寻 (与 / 或 ? 有关！)</li>
 <li>q     ：离开 less 这个程序；</li>
 </ul>
-<h4 id="head"><a href="#head" class="headerlink" title="head"></a>head</h4><p>取出文件前面几行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">head [-n number] 文件</span><br></pre></td></tr></table></figure>
+<h4 id="head"><a href="#head" class="headerlink" title="head"></a>head</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 取出文件前面几行</span></span><br><span class="line">head [-n number] 文件</span><br></pre></td></tr></table></figure>
 <p>选项与参数：</p>
 <ul>
 <li>-n ：后面接数字，代表显示几行的意思</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@www ~]# head /etc/man.config</span><br></pre></td></tr></table></figure>
 <p>默认的情况中，显示前面 10 行！若要显示前 20 行，就得要这样：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@www ~]# head -n 20 /etc/man.config</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@www ~]<span class="comment"># head -n 20 /etc/man.config</span></span><br></pre></td></tr></table></figure>
 <h4 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 取出文件后面几行</span></span><br><span class="line">tail [-n number] 文件</span><br></pre></td></tr></table></figure>
 <p>选项与参数：</p>
 <ul>
@@ -667,11 +659,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
+                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Smart pointer</a>
+                <a href="javascript:void(0)" class="js-tag color1">CMake</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -703,19 +695,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ns-3</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">仿真工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -755,11 +747,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Linear programming</a>
+                <a href="javascript:void(0)" class="js-tag color4">ACO</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ACO</a>
+                <a href="javascript:void(0)" class="js-tag color4">Linear programming</a>
               </li>
             
             <div class="clearfix"></div>
