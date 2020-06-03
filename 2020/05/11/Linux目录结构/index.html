@@ -16,7 +16,7 @@
 <meta property="og:description" content="目录树结构linux下一切皆为文件，以文件的形式管理，使用ls查看当前目录下的文件和文件夹。  /  根目录设备  /bin  重要执行文件，bin是Binary的缩写, 这个目录存放着最经常使用的命令；  /boot  启动Linux使用的一些核心文件，包括一些连接文件和镜像文件；  /dev  设备文件，dev是Device(设备)的缩写, 该目录下存放的是Linux的外部设备，在Linux中">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2020/05/11/Linux目录结构/Linux_dir.png">
-<meta property="og:updated_time" content="2020-06-02T17:21:46.451Z">
+<meta property="og:updated_time" content="2020-06-03T14:46:20.199Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux目录结构">
 <meta name="twitter:description" content="目录树结构linux下一切皆为文件，以文件的形式管理，使用ls查看当前目录下的文件和文件夹。  /  根目录设备  /bin  重要执行文件，bin是Binary的缩写, 这个目录存放着最经常使用的命令；  /boot  启动Linux使用的一些核心文件，包括一些连接文件和镜像文件；  /dev  设备文件，dev是Device(设备)的缩写, 该目录下存放的是Linux的外部设备，在Linux中">
@@ -295,11 +295,11 @@
 <li><strong>-i：</strong>若目标档(destination)已经存在时，在覆盖时会先询问动作的进行(常用)</li>
 <li><strong>-l：</strong>进行硬式连结(hard link)的连结档创建，而非复制文件本身；</li>
 <li><strong>-p：</strong>连同文件的属性一起复制过去，而非使用默认属性(备份常用)；</li>
-<li><strong>-r：</strong>递归持续复制，用於目录的复制行为；(常用)</li>
-<li><strong>-s：</strong>复制成为符号连结档 (symbolic link)，亦即『捷径』文件；</li>
+<li><strong>-r：</strong>递归持续复制，用于目录的复制行为；(常用)</li>
+<li><strong>-s：</strong>复制成为符号连结档 (symbolic link)，快捷方式文件；</li>
 <li><strong>-u：</strong>若 destination 比 source 旧才升级 destination ！</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 用 root 身份，将 root 目录下的 .bashrc 复制到 /tmp 下，并命名为 bashrc</span></span><br><span class="line">[root@www ~]<span class="comment"># cp ~/.bashrc /tmp/bashrc</span></span><br><span class="line">[root@www ~]<span class="comment"># cp -i ~/.bashrc /tmp/bashrc</span></span><br><span class="line">cp: overwrite `/tmp/bashrc<span class="string">'? n  &lt;==n不覆盖，y为覆盖</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 用root身份，将root目录下的.bashrc复制到/tmp下，并命名为bashrc</span></span><br><span class="line">[root@www ~]<span class="comment"># cp ~/.bashrc /tmp/bashrc</span></span><br><span class="line">[root@www ~]<span class="comment"># cp -i ~/.bashrc /tmp/bashrc</span></span><br><span class="line">cp: overwrite `/tmp/bashrc<span class="string">'? n  &lt;==n不覆盖，y为覆盖</span></span><br></pre></td></tr></table></figure>
 <h4 id="rm-移除文件或目录"><a href="#rm-移除文件或目录" class="headerlink" title="rm (移除文件或目录)"></a>rm (移除文件或目录)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm [-fir] 文件或目录</span><br></pre></td></tr></table></figure>
 <p>选项与参数：</p>
 <ul>
@@ -328,7 +328,6 @@
 <li>head 只看头几行</li>
 <li>tail 只看尾巴几行</li>
 </ul>
-<p>你可以使用 <em>man [命令]</em>来查看各个命令的使用文档，如 ：man cp。</p>
 <h4 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 由第一行开始显示文件内容</span></span><br><span class="line">cat [-AbEnTv]</span><br></pre></td></tr></table></figure>
 <p>选项与参数：</p>
 <ul>
@@ -341,7 +340,7 @@
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看/etc/issue这个文件的内容：</span></span><br><span class="line">[root@www ~]<span class="comment"># cat /etc/issue</span></span><br><span class="line">CentOS release 6.4 (Final)</span><br><span class="line">Kernel \r on an \m</span><br></pre></td></tr></table></figure>
 <h4 id="tac"><a href="#tac" class="headerlink" title="tac"></a>tac</h4><p>tac与cat命令刚好相反，文件内容从最后一行开始显示，可以看出 tac 是 cat 的倒着写！如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@www ~]<span class="comment"># tac /etc/issue</span></span><br><span class="line"></span><br><span class="line">Kernel \r on an \m</span><br><span class="line">CentOS release 6.4 (Final)</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@www ~]<span class="comment"># tac /etc/issue</span></span><br><span class="line">Kernel \r on an \m</span><br><span class="line">CentOS release 6.4 (Final)</span><br></pre></td></tr></table></figure>
 <h4 id="nl"><a href="#nl" class="headerlink" title="nl"></a>nl</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 显示行号</span></span><br><span class="line">nl [-bnw] 文件</span><br></pre></td></tr></table></figure>
 <p>选项与参数：</p>
 <ul>
@@ -354,10 +353,10 @@
 <p>在 more 这个程序的运行过程中，你有几个按键可以按的：</p>
 <ul>
 <li>空白键 (space)：代表向下翻一页；</li>
-<li>Enter     ：代表向下翻『一行』；</li>
-<li>/字串     ：代表在这个显示的内容当中，向下搜寻『字串』这个关键字；</li>
-<li>:f      ：立刻显示出档名以及目前显示的行数；</li>
-<li>q       ：代表立刻离开 more ，不再显示该文件内容。</li>
+<li>Enter：代表向下翻『一行』；</li>
+<li>/字串 ：代表在这个显示的内容当中，向下搜寻『字串』这个关键字；</li>
+<li>:f ：立刻显示出档名以及目前显示的行数；</li>
+<li>q ：代表立刻离开 more ，不再显示该文件内容。</li>
 <li>b 或 [ctrl]-b ：代表往回翻页，不过这动作只对文件有用，对管线无用。</li>
 </ul>
 <h4 id="less"><a href="#less" class="headerlink" title="less"></a>less</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 一页一页翻动，以下实例输出/etc/man.config文件的内容：</span></span><br><span class="line">[root@www ~]<span class="comment"># less /etc/man.config</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Generated automatically from man.conf.in by the</span></span><br><span class="line"><span class="comment"># configure script.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># man.conf from man-1.6d</span></span><br><span class="line">....(中间省略)....</span><br><span class="line">:   &lt;== 这里可以等待你输入命令！</span><br></pre></td></tr></table></figure>
@@ -377,8 +376,7 @@
 <ul>
 <li>-n ：后面接数字，代表显示几行的意思</li>
 </ul>
-<p>默认的情况中，显示前面 10 行！若要显示前 20 行，就得要这样：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@www ~]<span class="comment"># head -n 20 /etc/man.config</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 默认的情况中，显示前面 10 行！若要显示前 20 行：</span></span><br><span class="line">[root@www ~]<span class="comment"># head -n 20 /etc/man.config</span></span><br></pre></td></tr></table></figure>
 <h4 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 取出文件后面几行</span></span><br><span class="line">tail [-n number] 文件</span><br></pre></td></tr></table></figure>
 <p>选项与参数：</p>
 <ul>
@@ -671,6 +669,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">comand</a>
               </li>
              
@@ -683,23 +685,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">STL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ns-3</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">仿真工具</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -711,6 +701,14 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ns-3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">仿真工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">pandas</a>
               </li>
              
@@ -719,15 +717,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">BFS</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -747,11 +745,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ACO</a>
+                <a href="javascript:void(0)" class="js-tag color4">Linear programming</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Linear programming</a>
+                <a href="javascript:void(0)" class="js-tag color4">ACO</a>
               </li>
             
             <div class="clearfix"></div>
