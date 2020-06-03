@@ -16,7 +16,7 @@
 <meta property="og:description" content="目录树结构linux下一切皆为文件，以文件的形式管理，使用ls查看当前目录下的文件和文件夹。  /  根目录设备  /bin  重要执行文件，bin是Binary的缩写, 这个目录存放着最经常使用的命令；  /boot  启动Linux使用的一些核心文件，包括一些连接文件和镜像文件；  /dev  设备文件，dev是Device(设备)的缩写, 该目录下存放的是Linux的外部设备，在Linux中">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2020/05/11/Linux目录结构/Linux_dir.png">
-<meta property="og:updated_time" content="2020-06-03T14:57:42.186Z">
+<meta property="og:updated_time" content="2020-06-03T15:00:57.992Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux目录结构">
 <meta name="twitter:description" content="目录树结构linux下一切皆为文件，以文件的形式管理，使用ls查看当前目录下的文件和文件夹。  /  根目录设备  /bin  重要执行文件，bin是Binary的缩写, 这个目录存放着最经常使用的命令；  /boot  启动Linux使用的一些核心文件，包括一些连接文件和镜像文件；  /dev  设备文件，dev是Device(设备)的缩写, 该目录下存放的是Linux的外部设备，在Linux中">
@@ -245,14 +245,14 @@
 </ul>
 <p>&nbsp;</p>
 <h3 id="处理目录的常用命令"><a href="#处理目录的常用命令" class="headerlink" title="处理目录的常用命令"></a>处理目录的常用命令</h3><ul>
-<li><strong>ls:</strong> 列出目录及文件名</li>
+<li><strong>ls：</strong> 列出目录及文件名</li>
 <li><strong>cd：</strong>切换目录</li>
 <li><strong>pwd：</strong>显示目前的目录</li>
 <li><strong>mkdir：</strong>创建一个新的目录</li>
 <li><strong>rmdir：</strong>删除一个空的目录</li>
-<li><strong>cp:</strong> 复制文件或目录</li>
-<li><strong>rm:</strong> 移除文件或目录</li>
-<li><strong>mv:</strong> 移动文件与目录，或修改文件与目录的名称</li>
+<li><strong>cp：</strong> 复制文件或目录</li>
+<li><strong>rm：</strong> 移除文件或目录</li>
+<li><strong>mv：</strong> 移动文件与目录，或修改文件与目录的名称</li>
 </ul>
 <h4 id="ls-列出目录"><a href="#ls-列出目录" class="headerlink" title="ls (列出目录)"></a>ls (列出目录)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@www ~]<span class="comment"># ls [-aAdfFhilnrRSt] 目录名称</span></span><br></pre></td></tr></table></figure>
 <p>选项与参数：</p>
@@ -267,7 +267,7 @@
 <h4 id="pwd-显示目前所在的目录"><a href="#pwd-显示目前所在的目录" class="headerlink" title="pwd (显示目前所在的目录)"></a>pwd (显示目前所在的目录)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pwd 是 Print Working Directory 的缩写，也就是显示目前所在目录的命令。</span></span><br><span class="line">[root@www ~]<span class="comment"># pwd [-P]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 单纯显示出目前的工作目录</span></span><br><span class="line">[root@www ~]<span class="comment"># pwd</span></span><br><span class="line">/root   &lt;== 显示出目录</span><br></pre></td></tr></table></figure>
 <p>选项与参数：</p>
 <ul>
-<li><strong>-P</strong> ：显示出确实的路径，而非使用连结 (link) 路径。</li>
+<li>-P ：显示出确实的路径，而非使用连结 (link) 路径。</li>
 </ul>
 <p>实例显示出实际的工作目录，而非连结档本身的目录名而已。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@www ~]<span class="comment"># cd /var/mail   &lt;==注意，/var/mail是一个连结档</span></span><br><span class="line">[root@www mail]<span class="comment"># pwd</span></span><br><span class="line">/var/mail         &lt;==列出目前的工作目录</span><br><span class="line">[root@www mail]<span class="comment"># pwd -P</span></span><br><span class="line">/var/spool/mail   &lt;==和没有加-P不一样</span><br><span class="line">[root@www mail]<span class="comment"># ls -ld /var/mail</span></span><br><span class="line">lrwxrwxrwx 1 root root 10 Sep  4 17:54 /var/mail -&gt; spool/mail</span><br><span class="line"><span class="comment"># 因为/var/mail是连结档，连结到/var/spool/mail 所以，加上pwd -P的选项后，显示真正的完整路径</span></span><br></pre></td></tr></table></figure>
@@ -320,13 +320,13 @@
 <p>&nbsp;</p>
 <h3 id="Linux-文件内容查看"><a href="#Linux-文件内容查看" class="headerlink" title="Linux 文件内容查看"></a>Linux 文件内容查看</h3><p>Linux系统中使用以下命令来查看文件的内容：</p>
 <ul>
-<li>cat 由第一行开始显示文件内容</li>
-<li>tac 从最后一行开始显示，可以看出 tac 是 cat 的倒着写！</li>
-<li>nl  显示的时候，顺道输出行号！</li>
-<li>more 一页一页的显示文件内容</li>
-<li>less 与 more 类似，但是比 more 更好的是，他可以往前翻页！</li>
-<li>head 只看头几行</li>
-<li>tail 只看尾巴几行</li>
+<li><strong>cat：</strong>由第一行开始显示文件内容</li>
+<li><strong>tac：</strong>从最后一行开始显示，可以看出 tac 是 cat 的倒着写！</li>
+<li><strong>nl：</strong>显示的时候，顺道输出行号！</li>
+<li><strong>more：</strong>一页一页的显示文件内容</li>
+<li><strong>less：</strong>与 more 类似，但是比 more 更好的是，他可以往前翻页！</li>
+<li><strong>head：</strong>只看头几行</li>
+<li><strong>tail：</strong>只看尾巴几行</li>
 </ul>
 <h4 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 由第一行开始显示文件内容</span></span><br><span class="line">cat [-AbEnTv]</span><br></pre></td></tr></table></figure>
 <p>选项与参数：</p>
@@ -669,15 +669,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">comand</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JNI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">comand</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -717,6 +717,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">BFS</a>
               </li>
              
@@ -726,10 +730,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">sort</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
               </li>
              
               <li class="article-tag-list-item">
