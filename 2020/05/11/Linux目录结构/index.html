@@ -16,7 +16,7 @@
 <meta property="og:description" content="目录树结构linux下一切皆为文件，以文件的形式管理，使用ls查看当前目录下的文件和文件夹。  /  根目录设备  /bin  重要执行文件，bin是Binary的缩写, 这个目录存放着最经常使用的命令；  /boot  启动Linux使用的一些核心文件，包括一些连接文件和镜像文件；  /dev  设备文件，dev是Device(设备)的缩写, 该目录下存放的是Linux的外部设备，在Linux中">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2020/05/11/Linux目录结构/Linux_dir.png">
-<meta property="og:updated_time" content="2020-06-03T14:46:20.199Z">
+<meta property="og:updated_time" content="2020-06-03T14:57:42.186Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux目录结构">
 <meta name="twitter:description" content="目录树结构linux下一切皆为文件，以文件的形式管理，使用ls查看当前目录下的文件和文件夹。  /  根目录设备  /bin  重要执行文件，bin是Binary的缩写, 这个目录存放着最经常使用的命令；  /boot  启动Linux使用的一些核心文件，包括一些连接文件和镜像文件；  /dev  设备文件，dev是Device(设备)的缩写, 该目录下存放的是Linux的外部设备，在Linux中">
@@ -283,7 +283,7 @@
 <h4 id="rmdir-删除空的目录"><a href="#rmdir-删除空的目录" class="headerlink" title="rmdir (删除空的目录)"></a>rmdir (删除空的目录)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># rmdir 仅能删除空的目录，可以使用 rm 命令来删除非空目录</span></span><br><span class="line">rmdir [-p] 目录名称</span><br></pre></td></tr></table></figure>
 <p>选项与参数：</p>
 <ul>
-<li><strong>-p ：</strong>连同上一级『空的』目录也一起删除</li>
+<li>-p ：连同上一级『空的』目录也一起删除</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将 mkdir 实例中创建的目录(/tmp 底下)删除掉！</span></span><br><span class="line">[root@www tmp]<span class="comment"># ls -l</span></span><br><span class="line">drwxr-xr-x  3 root  root 4096 Jul 18 12:50 <span class="built_in">test</span></span><br><span class="line">drwxr-xr-x  3 root  root 4096 Jul 18 12:53 test1</span><br><span class="line">drwx--x--x  2 root  root 4096 Jul 18 12:54 test2</span><br><span class="line">[root@www tmp]<span class="comment"># rmdir test   &lt;==可直接删除掉，没问题</span></span><br><span class="line">[root@www tmp]<span class="comment"># rmdir test1  &lt;==因为尚有内容，所以无法删除</span></span><br><span class="line">rmdir: `test1<span class="string">': Directory not empty</span></span><br><span class="line"><span class="string">[root@www tmp]# rmdir -p test1/test2/test3/test4</span></span><br><span class="line"><span class="string">[root@www tmp]# ls -l        &lt;==输出中test与test1不见了</span></span><br><span class="line"><span class="string">drwx--x--x  2 root  root 4096 Jul 18 12:54 test2</span></span><br></pre></td></tr></table></figure>
 <h4 id="cp-复制文件或目录"><a href="#cp-复制文件或目录" class="headerlink" title="cp (复制文件或目录)"></a>cp (复制文件或目录)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@www ~]# cp [-adfilprsu] 来源档(source) 目标档(destination)</span><br><span class="line">[root@www ~]# cp [options] source1 source2 source3 .... directory</span><br></pre></td></tr></table></figure>
@@ -669,10 +669,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">comand</a>
               </li>
              
@@ -685,11 +681,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">STL</a>
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">STL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -725,11 +725,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
+                <a href="javascript:void(0)" class="js-tag color5">sort</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">sort</a>
+                <a href="javascript:void(0)" class="js-tag color5">dynamic programming</a>
               </li>
              
               <li class="article-tag-list-item">
